@@ -40,7 +40,6 @@ dependencies {
     testImplementation(libs.androidx.compose.ui.test)
     testImplementation(libs.androidx.test.espresso.core)
     testImplementation(libs.hilt.android.testing)
-    testImplementation(projects.uiTestHiltManifest)
     testImplementation(projects.feature.topic.impl)
     testImplementation(libs.androidx.navigation.testing)
 
