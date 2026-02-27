@@ -53,14 +53,14 @@ class InterestsViewModel @AssistedInject constructor(
         initialValue = key.initialTopicId,
     )
 
-    val uiState: StateFlow<InterestsUiState> = combine(
+    val uiState: StateFlow<ArtNearbyUiState> = combine(
         selectedTopicId,
         getFollowableTopics(sortBy = TopicSortField.NAME),
-        InterestsUiState::Interests,
+        ArtNearbyUiState::ArtLocations,
     ).stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = InterestsUiState.Loading,
+        initialValue = ArtNearbyUiState.Loading,
     )
 
     fun followTopic(followedTopicId: String, followed: Boolean) {
@@ -81,13 +81,13 @@ class InterestsViewModel @AssistedInject constructor(
     }
 }
 
-sealed interface InterestsUiState {
-    data object Loading : InterestsUiState
+sealed interface ArtNearbyUiState {
+    data object Loading : ArtNearbyUiState
 
-    data class Interests(
+    data class ArtLocations(
         val selectedTopicId: String?,
         val topics: List<FollowableTopic>,
-    ) : InterestsUiState
+    ) : ArtNearbyUiState
 
-    data object Empty : InterestsUiState
+    data object Empty : ArtNearbyUiState
 }

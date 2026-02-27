@@ -58,7 +58,7 @@ fun InterestsScreen(
 
 @Composable
 internal fun InterestsScreen(
-    uiState: InterestsUiState,
+    uiState: ArtNearbyUiState,
     followTopic: (String, Boolean) -> Unit,
     onTopicClick: (String) -> Unit,
     modifier: Modifier = Modifier,
@@ -69,12 +69,12 @@ internal fun InterestsScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         when (uiState) {
-            InterestsUiState.Loading ->
+            ArtNearbyUiState.Loading ->
                 NiaLoadingWheel(
                     contentDesc = stringResource(id = R.string.feature_interests_api_loading),
                 )
 
-            is InterestsUiState.Interests ->
+            is ArtNearbyUiState.ArtLocations ->
                 TopicsTabContent(
                     topics = uiState.topics,
                     onTopicClick = onTopicClick,
@@ -83,7 +83,7 @@ internal fun InterestsScreen(
                     shouldHighlightSelectedTopic = shouldHighlightSelectedTopic,
                 )
 
-            is InterestsUiState.Empty -> InterestsEmptyScreen()
+            is ArtNearbyUiState.Empty -> InterestsEmptyScreen()
         }
     }
     TrackScreenViewEvent(screenName = "Interests")
@@ -103,7 +103,7 @@ fun InterestsScreenPopulated(
     NiaTheme {
         NiaBackground {
             InterestsScreen(
-                uiState = InterestsUiState.Interests(
+                uiState = ArtNearbyUiState.ArtLocations(
                     selectedTopicId = null,
                     topics = followableTopics,
                 ),
@@ -120,7 +120,7 @@ fun InterestsScreenLoading() {
     NiaTheme {
         NiaBackground {
             InterestsScreen(
-                uiState = InterestsUiState.Loading,
+                uiState = ArtNearbyUiState.Loading,
                 followTopic = { _, _ -> },
                 onTopicClick = {},
             )
@@ -134,7 +134,7 @@ fun InterestsScreenEmpty() {
     NiaTheme {
         NiaBackground {
             InterestsScreen(
-                uiState = InterestsUiState.Empty,
+                uiState = ArtNearbyUiState.Empty,
                 followTopic = { _, _ -> },
                 onTopicClick = {},
             )

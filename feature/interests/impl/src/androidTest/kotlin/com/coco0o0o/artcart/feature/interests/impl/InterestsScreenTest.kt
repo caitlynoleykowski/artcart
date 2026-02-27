@@ -61,7 +61,7 @@ class InterestsScreenTest {
     @Test
     fun niaLoadingWheel_inTopics_whenScreenIsLoading_showLoading() {
         composeTestRule.setContent {
-            InterestsScreen(uiState = InterestsUiState.Loading)
+            InterestsScreen(uiState = ArtNearbyUiState.Loading)
         }
 
         composeTestRule
@@ -73,7 +73,7 @@ class InterestsScreenTest {
     fun interestsWithTopics_whenTopicsFollowed_showFollowedAndUnfollowedTopicsWithInfo() {
         composeTestRule.setContent {
             InterestsScreen(
-                uiState = InterestsUiState.Interests(
+                uiState = ArtNearbyUiState.ArtLocations(
                     topics = followableTopicTestData,
                     selectedTopicId = null,
                 ),
@@ -98,7 +98,7 @@ class InterestsScreenTest {
     @Test
     fun topicsEmpty_whenDataIsEmptyOccurs_thenShowEmptyScreen() {
         composeTestRule.setContent {
-            InterestsScreen(uiState = InterestsUiState.Empty)
+            InterestsScreen(uiState = ArtNearbyUiState.Empty)
         }
 
         composeTestRule
@@ -107,7 +107,7 @@ class InterestsScreenTest {
     }
 
     @Composable
-    private fun InterestsScreen(uiState: InterestsUiState) {
+    private fun InterestsScreen(uiState: ArtNearbyUiState) {
         InterestsScreen(
             uiState = uiState,
             followTopic = { _, _ -> },

@@ -25,7 +25,7 @@ import com.coco0o0o.artcart.core.testing.repository.TestTopicsRepository
 import com.coco0o0o.artcart.core.testing.repository.TestUserDataRepository
 import com.coco0o0o.artcart.core.testing.util.MainDispatcherRule
 import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
-import com.coco0o0o.artcart.feature.interests.impl.InterestsUiState
+import com.coco0o0o.artcart.feature.interests.impl.ArtNearbyUiState
 import com.coco0o0o.artcart.feature.interests.impl.InterestsViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -78,7 +78,7 @@ class InterestsViewModelTest {
 
     @Test
     fun uiState_whenInitialized_thenShowLoading() = runTest {
-        assertEquals(InterestsUiState.Loading, viewModel.uiState.value)
+        assertEquals(ArtNearbyUiState.Loading, viewModel.uiState.value)
     }
 
     @Test
@@ -86,7 +86,7 @@ class InterestsViewModelTest {
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.uiState.collect() }
 
         userDataRepository.setFollowedTopicIds(emptySet())
-        assertEquals(InterestsUiState.Loading, viewModel.uiState.value)
+        assertEquals(ArtNearbyUiState.Loading, viewModel.uiState.value)
     }
 
     @Test
@@ -99,7 +99,7 @@ class InterestsViewModelTest {
 
         assertEquals(
             false,
-            (viewModel.uiState.value as InterestsUiState.Interests)
+            (viewModel.uiState.value as ArtNearbyUiState.ArtLocations)
                 .topics.first { it.topic.id == toggleTopicId }.isFollowed,
         )
 
@@ -109,7 +109,7 @@ class InterestsViewModelTest {
         )
 
         assertEquals(
-            InterestsUiState.Interests(
+            ArtNearbyUiState.ArtLocations(
                 topics = testOutputTopics,
                 selectedTopicId = testInputTopics[0].topic.id,
             ),
@@ -130,7 +130,7 @@ class InterestsViewModelTest {
 
         assertEquals(
             true,
-            (viewModel.uiState.value as InterestsUiState.Interests)
+            (viewModel.uiState.value as ArtNearbyUiState.ArtLocations)
                 .topics.first { it.topic.id == toggleTopicId }.isFollowed,
         )
 
@@ -140,7 +140,7 @@ class InterestsViewModelTest {
         )
 
         assertEquals(
-            InterestsUiState.Interests(
+            ArtNearbyUiState.ArtLocations(
                 topics = testInputTopics,
                 selectedTopicId = testInputTopics[0].topic.id,
             ),
