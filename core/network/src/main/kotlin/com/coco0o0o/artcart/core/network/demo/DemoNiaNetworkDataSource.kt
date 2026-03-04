@@ -23,7 +23,9 @@ import com.coco0o0o.artcart.core.network.Dispatcher
 import com.coco0o0o.artcart.core.network.NiaDispatchers.IO
 import com.coco0o0o.artcart.core.network.NiaNetworkDataSource
 import com.coco0o0o.artcart.core.network.model.NetworkChangeList
+import com.coco0o0o.artcart.core.network.model.NetworkLocation
 import com.coco0o0o.artcart.core.network.model.NetworkNewsResource
+import com.coco0o0o.artcart.core.network.model.NetworkPlaces
 import com.coco0o0o.artcart.core.network.model.NetworkTopic
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -41,6 +43,9 @@ class DemoNiaNetworkDataSource @Inject constructor(
     private val networkJson: Json,
     private val assets: DemoAssetManager = JvmUnitTestDemoAssetManager,
 ) : NiaNetworkDataSource {
+
+    override suspend fun getLocations(latitude: Double, longitude: Double): NetworkPlaces =
+        getDataFromJsonFile<NetworkPlaces>(LOCATIONS_ASSET).first()
 
     override suspend fun getTopics(ids: List<String>?): List<NetworkTopic> =
         getDataFromJsonFile(TOPICS_ASSET)
@@ -78,6 +83,7 @@ class DemoNiaNetworkDataSource @Inject constructor(
     companion object {
         private const val NEWS_ASSET = "news.json"
         private const val TOPICS_ASSET = "topics.json"
+        private const val LOCATIONS_ASSET = "locations.json"
     }
 }
 

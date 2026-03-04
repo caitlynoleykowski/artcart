@@ -30,12 +30,12 @@ import com.coco0o0o.artcart.core.database.model.NewsResourceEntity
 import com.coco0o0o.artcart.core.database.model.NewsResourceTopicCrossRef
 import com.coco0o0o.artcart.core.database.model.PopulatedNewsResource
 import com.coco0o0o.artcart.core.database.model.TopicEntity
-import com.coco0o0o.artcart.core.database.model.asExternalModel
+import com.coco0o0o.artcart.core.database.model.asDomainModel
 import com.coco0o0o.artcart.core.datastore.NiaPreferencesDataSource
 import com.coco0o0o.artcart.core.datastore.UserPreferences
 import com.coco0o0o.artcart.core.datastore.test.InMemoryDataStore
 import com.coco0o0o.artcart.core.model.data.NewsResource
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.network.model.NetworkChangeList
 import com.coco0o0o.artcart.core.network.model.NetworkNewsResource
 import com.coco0o0o.artcart.core.testing.notifications.TestNotifier
@@ -93,7 +93,7 @@ class OfflineFirstNewsRepositoryTest {
             assertEquals(
                 newsResourceDao.getNewsResources()
                     .first()
-                    .map(PopulatedNewsResource::asExternalModel),
+                    .map(PopulatedNewsResource::asDomainModel),
                 subject.getNewsResources()
                     .first(),
             )
@@ -108,7 +108,7 @@ class OfflineFirstNewsRepositoryTest {
                     useFilterTopicIds = true,
                 )
                     .first()
-                    .map(PopulatedNewsResource::asExternalModel),
+                    .map(PopulatedNewsResource::asDomainModel),
                 actual = subject.getNewsResources(
                     query = NewsResourceQuery(
                         filterTopicIds = filteredInterestsIds,
@@ -137,11 +137,11 @@ class OfflineFirstNewsRepositoryTest {
 
             val newsResourcesFromNetwork = network.getNewsResources()
                 .map(NetworkNewsResource::asEntity)
-                .map(NewsResourceEntity::asExternalModel)
+                .map(NewsResourceEntity::asDomainModel)
 
             val newsResourcesFromDb = newsResourceDao.getNewsResources()
                 .first()
-                .map(PopulatedNewsResource::asExternalModel)
+                .map(PopulatedNewsResource::asDomainModel)
 
             assertEquals(
                 newsResourcesFromNetwork.map(NewsResource::id).sorted(),
@@ -166,7 +166,7 @@ class OfflineFirstNewsRepositoryTest {
 
             val newsResourcesFromNetwork = network.getNewsResources()
                 .map(NetworkNewsResource::asEntity)
-                .map(NewsResourceEntity::asExternalModel)
+                .map(NewsResourceEntity::asDomainModel)
 
             // Delete half of the items on the network
             val deletedItems = newsResourcesFromNetwork
@@ -187,7 +187,7 @@ class OfflineFirstNewsRepositoryTest {
 
             val newsResourcesFromDb = newsResourceDao.getNewsResources()
                 .first()
-                .map(PopulatedNewsResource::asExternalModel)
+                .map(PopulatedNewsResource::asDomainModel)
 
             // Assert that items marked deleted on the network have been deleted locally
             assertEquals(
@@ -228,12 +228,12 @@ class OfflineFirstNewsRepositoryTest {
 
             val newsResourcesFromNetwork = network.getNewsResources()
                 .map(NetworkNewsResource::asEntity)
-                .map(NewsResourceEntity::asExternalModel)
+                .map(NewsResourceEntity::asDomainModel)
                 .filter { it.id in changeListIds }
 
             val newsResourcesFromDb = newsResourceDao.getNewsResources()
                 .first()
-                .map(PopulatedNewsResource::asExternalModel)
+                .map(PopulatedNewsResource::asDomainModel)
 
             assertEquals(
                 expected = newsResourcesFromNetwork.map(NewsResource::id).sorted(),
@@ -357,18 +357,18 @@ class OfflineFirstNewsRepositoryTest {
                 .map(NetworkNewsResource::asEntity)
 
             val newsResources = networkNewsResources
-                .map(NewsResourceEntity::asExternalModel)
+                .map(NewsResourceEntity::asDomainModel)
 
             // Prepopulate dao with news resources
             newsResourceDao.upsertNewsResources(networkNewsResources)
 
-            val followedTopicIds = newsResources
-                .flatMap(NewsResource::topics)
-                .map(Topic::id)
+            val followedArtLocationIds = newsResources
+                .flatMap(NewsResource::artLocations)
+                .map(ArtLocation::id)
                 .toSet()
 
             // Follow all topics
-            niaPreferencesDataSource.setFollowedTopicIds(followedTopicIds)
+            niaPreferencesDataSource.setFollowedTopicIds(followedArtLocationIds)
 
             subject.syncWith(synchronizer)
 

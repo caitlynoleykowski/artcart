@@ -17,6 +17,7 @@
 package com.coco0o0o.artcart.core.database.di
 
 import com.coco0o0o.artcart.core.database.NiaDatabase
+import com.coco0o0o.artcart.core.database.dao.LocationDao
 import com.coco0o0o.artcart.core.database.dao.NewsResourceDao
 import com.coco0o0o.artcart.core.database.dao.NewsResourceFtsDao
 import com.coco0o0o.artcart.core.database.dao.RecentSearchQueryDao
@@ -54,4 +55,9 @@ internal object DaosModule {
     fun providesRecentSearchQueryDao(
         database: NiaDatabase,
     ): RecentSearchQueryDao = database.recentSearchQueryDao()
+
+    @Provides
+    fun providesLocationDao(
+        database: NiaDatabase,
+    ): LocationDao = database.locationDao()
 }

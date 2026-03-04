@@ -19,7 +19,7 @@ package com.coco0o0o.artcart.core.testing.repository
 import com.coco0o0o.artcart.core.data.repository.SearchContentsRepository
 import com.coco0o0o.artcart.core.model.data.NewsResource
 import com.coco0o0o.artcart.core.model.data.SearchResult
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -28,7 +28,7 @@ import org.jetbrains.annotations.TestOnly
 
 class TestSearchContentsRepository : SearchContentsRepository {
 
-    private val cachedTopics = MutableStateFlow(emptyList<Topic>())
+    private val cachedTopics = MutableStateFlow(emptyList<ArtLocation>())
     private val cachedNewsResources = MutableStateFlow(emptyList<NewsResource>())
 
     override suspend fun populateFtsData() = Unit
@@ -36,7 +36,7 @@ class TestSearchContentsRepository : SearchContentsRepository {
     override fun searchContents(searchQuery: String): Flow<SearchResult> =
         combine(cachedTopics, cachedNewsResources) { topics, news ->
             SearchResult(
-                topics = topics.filter {
+                artLocations = topics.filter {
                     searchQuery in it.name || searchQuery in it.shortDescription || searchQuery in it.longDescription
                 },
                 newsResources = news.filter {
@@ -48,7 +48,7 @@ class TestSearchContentsRepository : SearchContentsRepository {
     override fun getSearchContentsCount(): Flow<Int> = combine(cachedTopics, cachedNewsResources) { topics, news -> topics.size + news.size }
 
     @TestOnly
-    fun addTopics(topics: List<Topic>) = cachedTopics.update { it + topics }
+    fun addTopics(artLocations: List<ArtLocation>) = cachedTopics.update { it + artLocations }
 
     @TestOnly
     fun addNewsResources(newsResources: List<NewsResource>) =

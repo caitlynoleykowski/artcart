@@ -69,7 +69,8 @@ internal class OfflineFirstNewsRepository @Inject constructor(
             versionReader = ChangeListVersions::newsResourceVersion,
             changeListFetcher = { currentVersion ->
                 isFirstSync = currentVersion <= 0
-                network.getNewsResourceChangeList(after = currentVersion)
+                //network.getNewsResourceChangeList(after = currentVersion)
+                emptyList()
             },
             versionUpdater = { latestVersion ->
                 copy(newsResourceVersion = latestVersion)
@@ -101,27 +102,27 @@ internal class OfflineFirstNewsRepository @Inject constructor(
 
                 // Obtain the news resources which have changed from the network and upsert them locally
                 changedIds.chunked(SYNC_BATCH_SIZE).forEach { chunkedIds ->
-                    val networkNewsResources = network.getNewsResources(ids = chunkedIds)
-
-                    // Order of invocation matters to satisfy id and foreign key constraints!
-
-                    topicDao.insertOrIgnoreTopics(
-                        topicEntities = networkNewsResources
-                            .map(NetworkNewsResource::topicEntityShells)
-                            .flatten()
-                            .distinctBy(TopicEntity::id),
-                    )
-                    newsResourceDao.upsertNewsResources(
-                        newsResourceEntities = networkNewsResources.map(
-                            NetworkNewsResource::asEntity,
-                        ),
-                    )
-                    newsResourceDao.insertOrIgnoreTopicCrossRefEntities(
-                        newsResourceTopicCrossReferences = networkNewsResources
-                            .map(NetworkNewsResource::topicCrossReferences)
-                            .distinct()
-                            .flatten(),
-                    )
+//                    val networkNewsResources = network.getNewsResources(ids = chunkedIds)
+//
+//                    // Order of invocation matters to satisfy id and foreign key constraints!
+//
+//                    topicDao.insertOrIgnoreTopics(
+//                        topicEntities = networkNewsResources
+//                            .map(NetworkNewsResource::topicEntityShells)
+//                            .flatten()
+//                            .distinctBy(TopicEntity::id),
+//                    )
+//                    newsResourceDao.upsertNewsResources(
+//                        newsResourceEntities = networkNewsResources.map(
+//                            NetworkNewsResource::asEntity,
+//                        ),
+//                    )
+//                    newsResourceDao.insertOrIgnoreTopicCrossRefEntities(
+//                        newsResourceTopicCrossReferences = networkNewsResources
+//                            .map(NetworkNewsResource::topicCrossReferences)
+//                            .distinct()
+//                            .flatten(),
+//                    )
                 }
 
                 if (hasOnboarded) {

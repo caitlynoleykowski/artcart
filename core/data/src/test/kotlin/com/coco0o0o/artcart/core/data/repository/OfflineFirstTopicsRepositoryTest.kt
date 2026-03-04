@@ -23,11 +23,11 @@ import com.coco0o0o.artcart.core.data.testdoubles.TestNiaNetworkDataSource
 import com.coco0o0o.artcart.core.data.testdoubles.TestTopicDao
 import com.coco0o0o.artcart.core.database.dao.TopicDao
 import com.coco0o0o.artcart.core.database.model.TopicEntity
-import com.coco0o0o.artcart.core.database.model.asExternalModel
+import com.coco0o0o.artcart.core.database.model.asDomainModel
 import com.coco0o0o.artcart.core.datastore.NiaPreferencesDataSource
 import com.coco0o0o.artcart.core.datastore.UserPreferences
 import com.coco0o0o.artcart.core.datastore.test.InMemoryDataStore
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.network.model.NetworkTopic
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.TestScope
@@ -41,7 +41,7 @@ class OfflineFirstTopicsRepositoryTest {
 
     private val testScope = TestScope(UnconfinedTestDispatcher())
 
-    private lateinit var subject: OfflineFirstTopicsRepository
+    private lateinit var subject: OfflineFirstLocationsRepository
 
     private lateinit var topicDao: TopicDao
 
@@ -58,7 +58,7 @@ class OfflineFirstTopicsRepositoryTest {
         niaPreferences = NiaPreferencesDataSource(InMemoryDataStore(UserPreferences.getDefaultInstance()))
         synchronizer = TestSynchronizer(niaPreferences)
 
-        subject = OfflineFirstTopicsRepository(
+        subject = OfflineFirstLocationsRepository(
             topicDao = topicDao,
             network = network,
         )
@@ -72,8 +72,8 @@ class OfflineFirstTopicsRepositoryTest {
             assertEquals(
                 topicDao.getTopicEntities()
                     .first()
-                    .map(TopicEntity::asExternalModel),
-                subject.getTopics()
+                    .map(TopicEntity::asDomainModel),
+                subject.getLocations()
                     .first(),
             )
         }
@@ -136,11 +136,11 @@ class OfflineFirstTopicsRepositoryTest {
         testScope.runTest {
             val networkTopics = network.getTopics()
                 .map(NetworkTopic::asEntity)
-                .map(TopicEntity::asExternalModel)
+                .map(TopicEntity::asDomainModel)
 
             // Delete half of the items on the network
             val deletedItems = networkTopics
-                .map(Topic::id)
+                .map(ArtLocation::id)
                 .partition { it.chars().sum() % 2 == 0 }
                 .first
                 .toSet()
@@ -157,12 +157,12 @@ class OfflineFirstTopicsRepositoryTest {
 
             val dbTopics = topicDao.getTopicEntities()
                 .first()
-                .map(TopicEntity::asExternalModel)
+                .map(TopicEntity::asDomainModel)
 
             // Assert that items marked deleted on the network have been deleted locally
             assertEquals(
-                networkTopics.map(Topic::id) - deletedItems,
-                dbTopics.map(Topic::id),
+                networkTopics.map(ArtLocation::id) - deletedItems,
+                dbTopics.map(ArtLocation::id),
             )
 
             // After sync version should be updated

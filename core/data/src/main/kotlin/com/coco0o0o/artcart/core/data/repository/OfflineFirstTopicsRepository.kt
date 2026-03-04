@@ -50,17 +50,18 @@ internal class OfflineFirstTopicsRepository @Inject constructor(
         synchronizer.changeListSync(
             versionReader = ChangeListVersions::topicVersion,
             changeListFetcher = { currentVersion ->
-                network.getTopicChangeList(after = currentVersion)
+                //network.getTopicChangeList(after = currentVersion)
+                emptyList()
             },
             versionUpdater = { latestVersion ->
                 copy(topicVersion = latestVersion)
             },
             modelDeleter = topicDao::deleteTopics,
             modelUpdater = { changedIds ->
-                val networkTopics = network.getTopics(ids = changedIds)
-                topicDao.upsertTopics(
-                    entities = networkTopics.map(NetworkTopic::asEntity),
-                )
+                //val networkTopics = network.getTopics(ids = changedIds)
+                //topicDao.upsertTopics(
+                //    entities = networkTopics.map(NetworkTopic::asEntity),
+                //)
             },
         )
 }

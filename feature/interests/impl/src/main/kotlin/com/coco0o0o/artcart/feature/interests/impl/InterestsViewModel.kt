@@ -20,9 +20,9 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coco0o0o.artcart.core.data.repository.UserDataRepository
-import com.coco0o0o.artcart.core.domain.GetFollowableTopicsUseCase
-import com.coco0o0o.artcart.core.domain.TopicSortField
-import com.coco0o0o.artcart.core.model.data.FollowableTopic
+import com.coco0o0o.artcart.core.domain.GetFollowableLocationsUseCase
+import com.coco0o0o.artcart.core.domain.RefreshLocationsUseCase
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -30,7 +30,10 @@ import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -38,41 +41,35 @@ import kotlinx.coroutines.launch
 class InterestsViewModel @AssistedInject constructor(
     private val savedStateHandle: SavedStateHandle,
     val userDataRepository: UserDataRepository,
-    getFollowableTopics: GetFollowableTopicsUseCase,
+    getFollowableArtLocationsUseCase: GetFollowableLocationsUseCase,
+    val refreshLocationsUseCase: RefreshLocationsUseCase,
     // TODO: see comment below
     @Assisted val key: InterestsNavKey,
 ) : ViewModel() {
 
-    // TODO: this should no longer be necessary, the currently selected topic should be
-    //  available through the navigation state
-    // Key used to save and retrieve the currently selected topic id from saved state.
-    private val selectedTopicIdKey = "selectedTopicIdKey"
-
-    private val selectedTopicId = savedStateHandle.getStateFlow(
-        key = selectedTopicIdKey,
-        initialValue = key.initialTopicId,
-    )
-
-    val uiState: StateFlow<ArtNearbyUiState> = combine(
-        selectedTopicId,
-        getFollowableTopics(sortBy = TopicSortField.NAME),
-        ArtNearbyUiState::ArtLocations,
-    ).stateIn(
+    val uiState: StateFlow<ArtNearbyUiState> =
+        getFollowableArtLocationsUseCase().map {
+            ArtNearbyUiState.ArtLocations(it)
+        }
+    .stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),
         initialValue = ArtNearbyUiState.Loading,
     )
 
+    val currentLocation = flowOf(Pair(38.5636216, -121.4803345))
+
+    init {
+        currentLocation.onEach {
+            refreshLocationsUseCase(lat = it.first, lng = it.second)
+        }.launchIn(viewModelScope)
+    }
+
+    // TODO: favorite via locations db
     fun followTopic(followedTopicId: String, followed: Boolean) {
         viewModelScope.launch {
             userDataRepository.setTopicIdFollowed(followedTopicId, followed)
         }
-    }
-
-    fun onTopicClick(topicId: String?) {
-        // TODO: This should modify the navigation state directly rather than just updating the
-        //  savedStateHandle
-        savedStateHandle[selectedTopicIdKey] = topicId
     }
 
     @AssistedFactory
@@ -85,8 +82,7 @@ sealed interface ArtNearbyUiState {
     data object Loading : ArtNearbyUiState
 
     data class ArtLocations(
-        val selectedTopicId: String?,
-        val topics: List<FollowableTopic>,
+        val artLocations: List<ArtLocation>,
     ) : ArtNearbyUiState
 
     data object Empty : ArtNearbyUiState

@@ -24,7 +24,7 @@ import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performScrollToNode
-import com.coco0o0o.artcart.core.testing.data.followableTopicTestData
+import com.coco0o0o.artcart.core.testing.data.followableArtLocationTestData
 import com.coco0o0o.artcart.core.testing.data.userNewsResourcesTestData
 import com.coco0o0o.artcart.feature.topic.api.R
 import org.junit.Before
@@ -72,7 +72,7 @@ class TopicScreenTest {
 
     @Test
     fun topicTitle_whenTopicIsSuccess_isShown() {
-        val testTopic = followableTopicTestData.first()
+        val testTopic = followableArtLocationTestData.first()
         composeTestRule.setContent {
             TopicScreen(
                 topicUiState = TopicUiState.Success(testTopic),
@@ -88,12 +88,12 @@ class TopicScreenTest {
 
         // Name is shown
         composeTestRule
-            .onNodeWithText(testTopic.topic.name)
+            .onNodeWithText(testTopic.artLocation.name)
             .assertExists()
 
         // Description is shown
         composeTestRule
-            .onNodeWithText(testTopic.topic.longDescription)
+            .onNodeWithText(testTopic.artLocation.longDescription)
             .assertExists()
     }
 
@@ -120,7 +120,7 @@ class TopicScreenTest {
 
     @Test
     fun news_whenSuccessAndTopicIsSuccess_isShown() {
-        val testTopic = followableTopicTestData.first()
+        val testTopic = followableArtLocationTestData.first()
         composeTestRule.setContent {
             TopicScreen(
                 topicUiState = TopicUiState.Success(testTopic),

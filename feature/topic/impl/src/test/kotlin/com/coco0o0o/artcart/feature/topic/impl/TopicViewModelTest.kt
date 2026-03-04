@@ -17,11 +17,11 @@
 package com.coco0o0o.artcart.feature.topic.impl
 
 import com.coco0o0o.artcart.core.data.repository.CompositeUserNewsResourceRepository
-import com.coco0o0o.artcart.core.model.data.FollowableTopic
+import com.coco0o0o.artcart.core.model.data.FollowableArtLocation
 import com.coco0o0o.artcart.core.model.data.NewsResource
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.testing.repository.TestNewsRepository
-import com.coco0o0o.artcart.core.testing.repository.TestTopicsRepository
+import com.coco0o0o.artcart.core.testing.repository.TestLocationsRepository
 import com.coco0o0o.artcart.core.testing.repository.TestUserDataRepository
 import com.coco0o0o.artcart.core.testing.util.MainDispatcherRule
 import kotlinx.coroutines.flow.collect
@@ -47,7 +47,7 @@ class TopicViewModelTest {
     val dispatcherRule = MainDispatcherRule()
 
     private val userDataRepository = TestUserDataRepository()
-    private val topicsRepository = TestTopicsRepository()
+    private val topicsRepository = TestLocationsRepository()
     private val newsRepository = TestNewsRepository()
     private val userNewsResourceRepository = CompositeUserNewsResourceRepository(
         newsRepository = newsRepository,
@@ -59,30 +59,30 @@ class TopicViewModelTest {
     fun setup() {
         viewModel = TopicViewModel(
             userDataRepository = userDataRepository,
-            topicsRepository = topicsRepository,
+            locationsRepository = topicsRepository,
             userNewsResourceRepository = userNewsResourceRepository,
-            topicId = testInputTopics[0].topic.id,
+            topicId = testInputTopics[0].artLocation.id,
         )
     }
 
     @Test
     fun topicId_matchesTopicIdFromSavedStateHandle() =
-        assertEquals(testInputTopics[0].topic.id, viewModel.topicId)
+        assertEquals(testInputTopics[0].artLocation.id, viewModel.topicId)
 
     @Test
     fun uiStateTopic_whenSuccess_matchesTopicFromRepository() = runTest {
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.topicUiState.collect() }
 
-        topicsRepository.sendTopics(testInputTopics.map(FollowableTopic::topic))
-        userDataRepository.setFollowedTopicIds(setOf(testInputTopics[1].topic.id))
+        topicsRepository.sendTopics(testInputTopics.map(FollowableArtLocation::artLocation))
+        userDataRepository.setFollowedTopicIds(setOf(testInputTopics[1].artLocation.id))
         val item = viewModel.topicUiState.value
         assertIs<TopicUiState.Success>(item)
 
-        val topicFromRepository = topicsRepository.getTopic(
-            testInputTopics[0].topic.id,
+        val topicFromRepository = topicsRepository.getLocation(
+            testInputTopics[0].artLocation.id,
         ).first()
 
-        assertEquals(topicFromRepository, item.followableTopic.topic)
+        assertEquals(topicFromRepository, item.followableArtLocation.artLocation)
     }
 
     @Test
@@ -99,7 +99,7 @@ class TopicViewModelTest {
     fun uiStateTopic_whenFollowedIdsSuccessAndTopicLoading_thenShowLoading() = runTest {
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.topicUiState.collect() }
 
-        userDataRepository.setFollowedTopicIds(setOf(testInputTopics[1].topic.id))
+        userDataRepository.setFollowedTopicIds(setOf(testInputTopics[1].artLocation.id))
         assertEquals(TopicUiState.Loading, viewModel.topicUiState.value)
     }
 
@@ -108,8 +108,8 @@ class TopicViewModelTest {
         runTest {
             backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.topicUiState.collect() }
 
-            topicsRepository.sendTopics(testInputTopics.map { it.topic })
-            userDataRepository.setFollowedTopicIds(setOf(testInputTopics[1].topic.id))
+            topicsRepository.sendTopics(testInputTopics.map { it.artLocation })
+            userDataRepository.setFollowedTopicIds(setOf(testInputTopics[1].artLocation.id))
             val topicUiState = viewModel.topicUiState.value
             val newsUiState = viewModel.newsUiState.value
 
@@ -127,8 +127,8 @@ class TopicViewModelTest {
                     ::Pair,
                 ).collect()
             }
-            topicsRepository.sendTopics(testInputTopics.map { it.topic })
-            userDataRepository.setFollowedTopicIds(setOf(testInputTopics[1].topic.id))
+            topicsRepository.sendTopics(testInputTopics.map { it.artLocation })
+            userDataRepository.setFollowedTopicIds(setOf(testInputTopics[1].artLocation.id))
             newsRepository.sendNewsResources(sampleNewsResources)
             val topicUiState = viewModel.topicUiState.value
             val newsUiState = viewModel.newsUiState.value
@@ -141,14 +141,14 @@ class TopicViewModelTest {
     fun uiStateTopic_whenFollowingTopic_thenShowUpdatedTopic() = runTest {
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.topicUiState.collect() }
 
-        topicsRepository.sendTopics(testInputTopics.map { it.topic })
+        topicsRepository.sendTopics(testInputTopics.map { it.artLocation })
         // Set which topic IDs are followed, not including 0.
-        userDataRepository.setFollowedTopicIds(setOf(testInputTopics[1].topic.id))
+        userDataRepository.setFollowedTopicIds(setOf(testInputTopics[1].artLocation.id))
 
         viewModel.followTopicToggle(true)
 
         assertEquals(
-            TopicUiState.Success(followableTopic = testOutputTopics[0]),
+            TopicUiState.Success(followableArtLocation = testOutputTopics[0]),
             viewModel.topicUiState.value,
         )
     }
@@ -163,8 +163,8 @@ private const val TOPIC_URL = "URL"
 private const val TOPIC_IMAGE_URL = "Image URL"
 
 private val testInputTopics = listOf(
-    FollowableTopic(
-        Topic(
+    FollowableArtLocation(
+        ArtLocation(
             id = "0",
             name = TOPIC_1_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -172,10 +172,10 @@ private val testInputTopics = listOf(
             url = TOPIC_URL,
             imageUrl = TOPIC_IMAGE_URL,
         ),
-        isFollowed = true,
+        isFavorited = true,
     ),
-    FollowableTopic(
-        Topic(
+    FollowableArtLocation(
+        ArtLocation(
             id = "1",
             name = TOPIC_2_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -183,10 +183,10 @@ private val testInputTopics = listOf(
             url = TOPIC_URL,
             imageUrl = TOPIC_IMAGE_URL,
         ),
-        isFollowed = false,
+        isFavorited = false,
     ),
-    FollowableTopic(
-        Topic(
+    FollowableArtLocation(
+        ArtLocation(
             id = "2",
             name = TOPIC_3_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -194,13 +194,13 @@ private val testInputTopics = listOf(
             url = TOPIC_URL,
             imageUrl = TOPIC_IMAGE_URL,
         ),
-        isFollowed = false,
+        isFavorited = false,
     ),
 )
 
 private val testOutputTopics = listOf(
-    FollowableTopic(
-        Topic(
+    FollowableArtLocation(
+        ArtLocation(
             id = "0",
             name = TOPIC_1_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -208,10 +208,10 @@ private val testOutputTopics = listOf(
             url = TOPIC_URL,
             imageUrl = TOPIC_IMAGE_URL,
         ),
-        isFollowed = true,
+        isFavorited = true,
     ),
-    FollowableTopic(
-        Topic(
+    FollowableArtLocation(
+        ArtLocation(
             id = "1",
             name = TOPIC_2_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -219,10 +219,10 @@ private val testOutputTopics = listOf(
             url = TOPIC_URL,
             imageUrl = TOPIC_IMAGE_URL,
         ),
-        isFollowed = true,
+        isFavorited = true,
     ),
-    FollowableTopic(
-        Topic(
+    FollowableArtLocation(
+        ArtLocation(
             id = "2",
             name = TOPIC_3_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -230,7 +230,7 @@ private val testOutputTopics = listOf(
             url = TOPIC_URL,
             imageUrl = TOPIC_IMAGE_URL,
         ),
-        isFollowed = false,
+        isFavorited = false,
     ),
 )
 
@@ -246,8 +246,8 @@ private val sampleNewsResources = listOf(
         headerImageUrl = "https://i.ytimg.com/vi/-fJ6poHQrjM/maxresdefault.jpg",
         publishDate = Instant.parse("2021-11-09T00:00:00.000Z"),
         type = "Video 📺",
-        topics = listOf(
-            Topic(
+        artLocations = listOf(
+            ArtLocation(
                 id = "0",
                 name = "Headlines",
                 shortDescription = "",

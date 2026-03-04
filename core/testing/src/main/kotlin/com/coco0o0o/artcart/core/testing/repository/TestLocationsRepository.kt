@@ -17,30 +17,30 @@
 package com.coco0o0o.artcart.core.testing.repository
 
 import com.coco0o0o.artcart.core.data.Synchronizer
-import com.coco0o0o.artcart.core.data.repository.TopicsRepository
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.data.repository.LocationsRepository
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.map
 
-class TestTopicsRepository : TopicsRepository {
+class TestLocationsRepository : LocationsRepository {
     /**
      * The backing hot flow for the list of topics ids for testing.
      */
-    private val topicsFlow: MutableSharedFlow<List<Topic>> =
+    private val topicsFlow: MutableSharedFlow<List<ArtLocation>> =
         MutableSharedFlow(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
 
-    override fun getTopics(): Flow<List<Topic>> = topicsFlow
+    override fun getLocations(): Flow<List<ArtLocation>> = topicsFlow
 
-    override fun getTopic(id: String): Flow<Topic> =
+    override fun getLocation(id: String): Flow<ArtLocation> =
         topicsFlow.map { topics -> topics.find { it.id == id }!! }
 
     /**
      * A test-only API to allow controlling the list of topics from tests.
      */
-    fun sendTopics(topics: List<Topic>) {
-        topicsFlow.tryEmit(topics)
+    fun sendTopics(artLocations: List<ArtLocation>) {
+        topicsFlow.tryEmit(artLocations)
     }
 
     override suspend fun syncWith(synchronizer: Synchronizer) = true

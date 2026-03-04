@@ -29,7 +29,7 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performScrollToNode
 import com.coco0o0o.artcart.core.rules.GrantPostNotificationsPermissionRule
-import com.coco0o0o.artcart.core.testing.data.followableTopicTestData
+import com.coco0o0o.artcart.core.testing.data.followableArtLocationTestData
 import com.coco0o0o.artcart.core.testing.data.userNewsResourcesTestData
 import com.coco0o0o.artcart.core.ui.NewsFeedUiState
 import com.coco0o0o.artcart.feature.foryou.api.R
@@ -104,7 +104,7 @@ class ForYouScreenTest {
 
     @Test
     fun topicSelector_whenNoTopicsSelected_showsTopicChipsAndDisabledDoneButton() {
-        val testData = followableTopicTestData.map { it.copy(isFollowed = false) }
+        val testData = followableArtLocationTestData.map { it.copy(isFavorited = false) }
 
         composeTestRule.setContent {
             Box {
@@ -129,7 +129,7 @@ class ForYouScreenTest {
 
         testData.forEach { testTopic ->
             composeTestRule
-                .onNodeWithText(testTopic.topic.name)
+                .onNodeWithText(testTopic.artLocation.name)
                 .assertExists()
                 .assertHasClickAction()
         }
@@ -156,8 +156,8 @@ class ForYouScreenTest {
                     onboardingUiState =
                     OnboardingUiState.Shown(
                         // Follow one topic
-                        topics = followableTopicTestData.mapIndexed { index, testTopic ->
-                            testTopic.copy(isFollowed = index == 1)
+                        topics = followableArtLocationTestData.mapIndexed { index, testTopic ->
+                            testTopic.copy(isFavorited = index == 1)
                         },
                     ),
                     feedState = NewsFeedUiState.Success(
@@ -174,9 +174,9 @@ class ForYouScreenTest {
             }
         }
 
-        followableTopicTestData.forEach { testTopic ->
+        followableArtLocationTestData.forEach { testTopic ->
             composeTestRule
-                .onNodeWithText(testTopic.topic.name)
+                .onNodeWithText(testTopic.artLocation.name)
                 .assertExists()
                 .assertHasClickAction()
         }
@@ -202,7 +202,7 @@ class ForYouScreenTest {
                     isSyncing = false,
                     onboardingUiState =
                     OnboardingUiState.Shown(
-                        topics = followableTopicTestData,
+                        topics = followableArtLocationTestData,
                     ),
                     feedState = NewsFeedUiState.Loading,
                     deepLinkedUserNewsResource = null,

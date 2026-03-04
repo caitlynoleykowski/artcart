@@ -37,8 +37,8 @@ import androidx.test.espresso.NoActivityResumedException
 import com.coco0o0o.artcart.MainActivity
 import com.coco0o0o.artcart.R
 import com.coco0o0o.artcart.core.data.repository.NewsRepository
-import com.coco0o0o.artcart.core.data.repository.TopicsRepository
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.data.repository.LocationsRepository
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.rules.GrantPostNotificationsPermissionRule
 import com.coco0o0o.artcart.feature.interests.impl.LIST_PANE_TEST_TAG
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -80,7 +80,7 @@ class NavigationTest {
     val composeTestRule = createAndroidComposeRule<MainActivity>()
 
     @Inject
-    lateinit var topicsRepository: TopicsRepository
+    lateinit var locationsRepository: LocationsRepository
 
     @Inject
     lateinit var newsRepository: NewsRepository
@@ -264,14 +264,14 @@ class NavigationTest {
             onNodeWithText(interests).performClick()
 
             // Select the last topic
-            val topic = runBlocking {
-                topicsRepository.getTopics().first().sortedBy(Topic::name).last()
+            val artLocation = runBlocking {
+                locationsRepository.getLocations().first().sortedBy(ArtLocation::name).last()
             }
-            onNodeWithTag(LIST_PANE_TEST_TAG).performScrollToNode(hasText(topic.name))
-            onNodeWithText(topic.name).performClick()
+            onNodeWithTag(LIST_PANE_TEST_TAG).performScrollToNode(hasText(artLocation.name))
+            onNodeWithText(artLocation.name).performClick()
 
             // Verify the topic is still shown
-            onNodeWithTag("topic:${topic.id}").assertIsDisplayed()
+            onNodeWithTag("topic:${artLocation.id}").assertIsDisplayed()
 
             // Switch tab
             onNodeWithText(forYou).performClick()
@@ -279,7 +279,7 @@ class NavigationTest {
             onNodeWithText(interests).performClick()
 
             // Verify the topic is still shown
-            onNodeWithTag("topic:${topic.id}").assertExists()
+            onNodeWithTag("topic:${artLocation.id}").assertExists()
         }
     }
 
@@ -292,7 +292,7 @@ class NavigationTest {
             }
 
             // Get its first topic and follow it
-            val topic = newsResource.topics.first()
+            val topic = newsResource.artLocations.first()
             onNodeWithText(topic.name).performClick()
 
             // Get the news feed and scroll to the news resource

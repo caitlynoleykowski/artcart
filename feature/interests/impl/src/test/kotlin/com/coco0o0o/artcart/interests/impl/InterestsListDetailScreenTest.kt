@@ -32,9 +32,9 @@ import androidx.compose.ui.test.performClick
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import androidx.test.espresso.Espresso
-import com.coco0o0o.artcart.core.data.repository.TopicsRepository
+import com.coco0o0o.artcart.core.data.repository.LocationsRepository
 import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.navigation.Navigator
 import com.coco0o0o.artcart.core.navigation.rememberNavigationState
 import com.coco0o0o.artcart.core.navigation.toEntries
@@ -56,7 +56,6 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import javax.inject.Inject
-import kotlin.getValue
 import kotlin.properties.ReadOnlyProperty
 
 private const val EXPANDED_WIDTH = "w1200dp-h840dp"
@@ -74,17 +73,17 @@ class InterestsListDetailScreenTest {
     val composeTestRule = createAndroidComposeRule<HiltComponentActivity>()
 
     @Inject
-    lateinit var topicsRepository: TopicsRepository
+    lateinit var locationsRepository: LocationsRepository
 
     /** Convenience function for getting all topics during tests, */
-    private fun getTopics(): List<Topic> = runBlocking {
-        topicsRepository.getTopics().first().sortedBy { it.name }
+    private fun getTopics(): List<ArtLocation> = runBlocking {
+        locationsRepository.getLocations().first().sortedBy { it.name }
     }
 
     // The strings used for matching in these tests.
     private val placeholderText by composeTestRule.stringResource(R.string.feature_interests_api_select_an_interest)
 
-    private val Topic.testTag
+    private val ArtLocation.testTag
         get() = "topic:${this.id}"
 
     @Before

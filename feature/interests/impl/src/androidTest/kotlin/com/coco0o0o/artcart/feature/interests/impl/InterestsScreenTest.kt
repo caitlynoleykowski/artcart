@@ -24,7 +24,7 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithContentDescription
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
-import com.coco0o0o.artcart.core.testing.data.followableTopicTestData
+import com.coco0o0o.artcart.core.testing.data.followableArtLocationTestData
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -74,20 +74,20 @@ class InterestsScreenTest {
         composeTestRule.setContent {
             InterestsScreen(
                 uiState = ArtNearbyUiState.ArtLocations(
-                    topics = followableTopicTestData,
+                    artLocations = followableArtLocationTestData,
                     selectedTopicId = null,
                 ),
             )
         }
 
         composeTestRule
-            .onNodeWithText(followableTopicTestData[0].topic.name)
+            .onNodeWithText(followableArtLocationTestData[0].artLocation.name)
             .assertIsDisplayed()
         composeTestRule
-            .onNodeWithText(followableTopicTestData[1].topic.name)
+            .onNodeWithText(followableArtLocationTestData[1].artLocation.name)
             .assertIsDisplayed()
         composeTestRule
-            .onNodeWithText(followableTopicTestData[2].topic.name)
+            .onNodeWithText(followableArtLocationTestData[2].artLocation.name)
             .assertIsDisplayed()
 
         composeTestRule
@@ -116,4 +116,4 @@ class InterestsScreenTest {
     }
 }
 
-private val numberOfUnfollowedTopics = followableTopicTestData.filter { !it.isFollowed }.size
+private val numberOfUnfollowedTopics = followableArtLocationTestData.filter { !it.isFavorited }.size

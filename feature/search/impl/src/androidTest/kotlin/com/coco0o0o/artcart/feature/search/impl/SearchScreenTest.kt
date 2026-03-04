@@ -33,7 +33,7 @@ import com.coco0o0o.artcart.core.model.data.DarkThemeConfig.DARK
 import com.coco0o0o.artcart.core.model.data.ThemeBrand.ANDROID
 import com.coco0o0o.artcart.core.model.data.UserData
 import com.coco0o0o.artcart.core.model.data.UserNewsResource
-import com.coco0o0o.artcart.core.testing.data.followableTopicTestData
+import com.coco0o0o.artcart.core.testing.data.followableArtLocationTestData
 import com.coco0o0o.artcart.core.testing.data.newsResourcesTestData
 import com.coco0o0o.artcart.core.ui.R.string
 import com.coco0o0o.artcart.feature.search.api.R
@@ -136,7 +136,7 @@ class SearchScreenTest {
     fun searchResultWithTopics_allTopicsAreVisible_followButtonsVisibleForTheNumOfFollowedTopics() {
         composeTestRule.setContent {
             SearchScreen(
-                searchResultUiState = SearchResultUiState.Success(topics = followableTopicTestData),
+                searchResultUiState = SearchResultUiState.Success(topics = followableArtLocationTestData),
             )
         }
 
@@ -148,11 +148,11 @@ class SearchScreenTest {
             .onAllNodes(hasScrollToNodeAction())
             .onFirst()
 
-        followableTopicTestData.forEachIndexed { index, followableTopic ->
+        followableArtLocationTestData.forEachIndexed { index, followableTopic ->
             scrollableNode.performScrollToIndex(index)
 
             composeTestRule
-                .onNodeWithText(followableTopic.topic.name)
+                .onNodeWithText(followableTopic.artLocation.name)
                 .assertIsDisplayed()
         }
 

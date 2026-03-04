@@ -60,7 +60,7 @@ import androidx.core.graphics.Insets
 import androidx.core.view.WindowInsetsCompat
 import androidx.window.core.layout.WindowSizeClass
 import com.github.takahirom.roborazzi.captureRoboImage
-import com.coco0o0o.artcart.core.data.repository.TopicsRepository
+import com.coco0o0o.artcart.core.data.repository.LocationsRepository
 import com.coco0o0o.artcart.core.data.repository.UserNewsResourceRepository
 import com.coco0o0o.artcart.core.data.test.repository.FakeUserDataRepository
 import com.coco0o0o.artcart.core.data.util.NetworkMonitor
@@ -121,7 +121,7 @@ class SnackbarInsetsScreenshotTests {
     lateinit var userDataRepository: FakeUserDataRepository
 
     @Inject
-    lateinit var topicsRepository: TopicsRepository
+    lateinit var locationsRepository: LocationsRepository
 
     @Inject
     lateinit var userNewsResourceRepository: UserNewsResourceRepository
@@ -135,7 +135,7 @@ class SnackbarInsetsScreenshotTests {
             userDataRepository.setShouldHideOnboarding(true)
 
             userDataRepository.setFollowedTopicIds(
-                setOf(topicsRepository.getTopics().first().first().id),
+                setOf(locationsRepository.getLocations().first().first().id),
             )
         }
     }

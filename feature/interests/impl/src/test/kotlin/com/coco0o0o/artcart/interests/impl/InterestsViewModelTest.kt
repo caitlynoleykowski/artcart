@@ -17,11 +17,10 @@
 package com.coco0o0o.artcart.interests.impl
 
 import androidx.lifecycle.SavedStateHandle
-import androidx.navigation.testing.invoke
-import com.coco0o0o.artcart.core.domain.GetFollowableTopicsUseCase
-import com.coco0o0o.artcart.core.model.data.FollowableTopic
-import com.coco0o0o.artcart.core.model.data.Topic
-import com.coco0o0o.artcart.core.testing.repository.TestTopicsRepository
+import com.coco0o0o.artcart.core.domain.GetFollowableLocationsUseCase
+import com.coco0o0o.artcart.core.model.data.FollowableArtLocation
+import com.coco0o0o.artcart.core.model.data.ArtLocation
+import com.coco0o0o.artcart.core.testing.repository.TestLocationsRepository
 import com.coco0o0o.artcart.core.testing.repository.TestUserDataRepository
 import com.coco0o0o.artcart.core.testing.util.MainDispatcherRule
 import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
@@ -57,9 +56,9 @@ class InterestsViewModelTest {
     val mainDispatcherRule = MainDispatcherRule()
 
     private val userDataRepository = TestUserDataRepository()
-    private val topicsRepository = TestTopicsRepository()
-    private val getFollowableTopicsUseCase = GetFollowableTopicsUseCase(
-        topicsRepository = topicsRepository,
+    private val topicsRepository = TestLocationsRepository()
+    private val getFollowableLocationsUseCase = GetFollowableLocationsUseCase(
+        locationsRepository = topicsRepository,
         userDataRepository = userDataRepository,
     )
     private lateinit var viewModel: InterestsViewModel
@@ -68,11 +67,11 @@ class InterestsViewModelTest {
     fun setup() {
         viewModel = InterestsViewModel(
             savedStateHandle = SavedStateHandle(
-                route = InterestsNavKey(initialTopicId = testInputTopics[0].topic.id),
+                route = InterestsNavKey(initialTopicId = testInputTopics[0].artLocation.id),
             ),
             userDataRepository = userDataRepository,
-            getFollowableTopics = getFollowableTopicsUseCase,
-            InterestsNavKey(initialTopicId = testInputTopics[0].topic.id),
+            getFollowableArtLocationsUseCase = getFollowableLocationsUseCase,
+            InterestsNavKey(initialTopicId = testInputTopics[0].artLocation.id),
         )
     }
 
@@ -93,14 +92,14 @@ class InterestsViewModelTest {
     fun uiState_whenFollowingNewTopic_thenShowUpdatedTopics() = runTest {
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.uiState.collect() }
 
-        val toggleTopicId = testOutputTopics[1].topic.id
-        topicsRepository.sendTopics(testInputTopics.map { it.topic })
-        userDataRepository.setFollowedTopicIds(setOf(testInputTopics[0].topic.id))
+        val toggleTopicId = testOutputTopics[1].artLocation.id
+        topicsRepository.sendTopics(testInputTopics.map { it.artLocation })
+        userDataRepository.setFollowedTopicIds(setOf(testInputTopics[0].artLocation.id))
 
         assertEquals(
             false,
             (viewModel.uiState.value as ArtNearbyUiState.ArtLocations)
-                .topics.first { it.topic.id == toggleTopicId }.isFollowed,
+                .artLocations.first { it.artLocation.id == toggleTopicId }.isFavorited,
         )
 
         viewModel.followTopic(
@@ -110,8 +109,8 @@ class InterestsViewModelTest {
 
         assertEquals(
             ArtNearbyUiState.ArtLocations(
-                topics = testOutputTopics,
-                selectedTopicId = testInputTopics[0].topic.id,
+                artLocations = testOutputTopics,
+                selectedTopicId = testInputTopics[0].artLocation.id,
             ),
             viewModel.uiState.value,
         )
@@ -121,17 +120,17 @@ class InterestsViewModelTest {
     fun uiState_whenUnfollowingTopics_thenShowUpdatedTopics() = runTest {
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.uiState.collect() }
 
-        val toggleTopicId = testOutputTopics[1].topic.id
+        val toggleTopicId = testOutputTopics[1].artLocation.id
 
-        topicsRepository.sendTopics(testOutputTopics.map { it.topic })
+        topicsRepository.sendTopics(testOutputTopics.map { it.artLocation })
         userDataRepository.setFollowedTopicIds(
-            setOf(testOutputTopics[0].topic.id, testOutputTopics[1].topic.id),
+            setOf(testOutputTopics[0].artLocation.id, testOutputTopics[1].artLocation.id),
         )
 
         assertEquals(
             true,
             (viewModel.uiState.value as ArtNearbyUiState.ArtLocations)
-                .topics.first { it.topic.id == toggleTopicId }.isFollowed,
+                .artLocations.first { it.artLocation.id == toggleTopicId }.isFavorited,
         )
 
         viewModel.followTopic(
@@ -141,8 +140,8 @@ class InterestsViewModelTest {
 
         assertEquals(
             ArtNearbyUiState.ArtLocations(
-                topics = testInputTopics,
-                selectedTopicId = testInputTopics[0].topic.id,
+                artLocations = testInputTopics,
+                selectedTopicId = testInputTopics[0].artLocation.id,
             ),
             viewModel.uiState.value,
         )
@@ -158,8 +157,8 @@ private const val TOPIC_URL = "URL"
 private const val TOPIC_IMAGE_URL = "Image URL"
 
 private val testInputTopics = listOf(
-    FollowableTopic(
-        Topic(
+    FollowableArtLocation(
+        ArtLocation(
             id = "0",
             name = TOPIC_1_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -167,10 +166,10 @@ private val testInputTopics = listOf(
             url = TOPIC_URL,
             imageUrl = TOPIC_IMAGE_URL,
         ),
-        isFollowed = true,
+        isFavorited = true,
     ),
-    FollowableTopic(
-        Topic(
+    FollowableArtLocation(
+        ArtLocation(
             id = "1",
             name = TOPIC_2_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -178,10 +177,10 @@ private val testInputTopics = listOf(
             url = TOPIC_URL,
             imageUrl = TOPIC_IMAGE_URL,
         ),
-        isFollowed = false,
+        isFavorited = false,
     ),
-    FollowableTopic(
-        Topic(
+    FollowableArtLocation(
+        ArtLocation(
             id = "2",
             name = TOPIC_3_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -189,13 +188,13 @@ private val testInputTopics = listOf(
             url = TOPIC_URL,
             imageUrl = TOPIC_IMAGE_URL,
         ),
-        isFollowed = false,
+        isFavorited = false,
     ),
 )
 
 private val testOutputTopics = listOf(
-    FollowableTopic(
-        Topic(
+    FollowableArtLocation(
+        ArtLocation(
             id = "0",
             name = TOPIC_1_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -203,10 +202,10 @@ private val testOutputTopics = listOf(
             url = TOPIC_URL,
             imageUrl = TOPIC_IMAGE_URL,
         ),
-        isFollowed = true,
+        isFavorited = true,
     ),
-    FollowableTopic(
-        Topic(
+    FollowableArtLocation(
+        ArtLocation(
             id = "1",
             name = TOPIC_2_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -214,10 +213,10 @@ private val testOutputTopics = listOf(
             url = TOPIC_URL,
             imageUrl = TOPIC_IMAGE_URL,
         ),
-        isFollowed = true,
+        isFavorited = true,
     ),
-    FollowableTopic(
-        Topic(
+    FollowableArtLocation(
+        ArtLocation(
             id = "2",
             name = TOPIC_3_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -225,6 +224,6 @@ private val testOutputTopics = listOf(
             url = TOPIC_URL,
             imageUrl = TOPIC_IMAGE_URL,
         ),
-        isFollowed = false,
+        isFavorited = false,
     ),
 )

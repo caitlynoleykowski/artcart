@@ -20,7 +20,7 @@ import com.coco0o0o.artcart.core.data.Synchronizer
 import com.coco0o0o.artcart.core.data.repository.NewsRepository
 import com.coco0o0o.artcart.core.data.repository.NewsResourceQuery
 import com.coco0o0o.artcart.core.model.data.NewsResource
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -39,7 +39,7 @@ class TestNewsRepository : NewsRepository {
             var result = newsResources
             query.filterTopicIds?.let { filterTopicIds ->
                 result = newsResources.filter {
-                    it.topics.map(Topic::id).intersect(filterTopicIds).isNotEmpty()
+                    it.artLocations.map(ArtLocation::id).intersect(filterTopicIds).isNotEmpty()
                 }
             }
             query.filterNewsIds?.let { filterNewsIds ->

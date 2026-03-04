@@ -17,9 +17,9 @@
 package com.coco0o0o.artcart.core.domain
 
 import com.coco0o0o.artcart.core.domain.TopicSortField.NAME
-import com.coco0o0o.artcart.core.model.data.FollowableTopic
-import com.coco0o0o.artcart.core.model.data.Topic
-import com.coco0o0o.artcart.core.testing.repository.TestTopicsRepository
+import com.coco0o0o.artcart.core.model.data.FollowableArtLocation
+import com.coco0o0o.artcart.core.model.data.ArtLocation
+import com.coco0o0o.artcart.core.testing.repository.TestLocationsRepository
 import com.coco0o0o.artcart.core.testing.repository.TestUserDataRepository
 import com.coco0o0o.artcart.core.testing.util.MainDispatcherRule
 import kotlinx.coroutines.flow.first
@@ -33,10 +33,10 @@ class GetFollowableTopicsUseCaseTest {
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
-    private val topicsRepository = TestTopicsRepository()
+    private val topicsRepository = TestLocationsRepository()
     private val userDataRepository = TestUserDataRepository()
 
-    val useCase = GetFollowableTopicsUseCase(
+    val useCase = GetFollowableLocationsUseCase(
         topicsRepository,
         userDataRepository,
     )
@@ -47,15 +47,15 @@ class GetFollowableTopicsUseCaseTest {
         val followableTopics = useCase()
 
         // Send some test topics and their followed state.
-        topicsRepository.sendTopics(testTopics)
-        userDataRepository.setFollowedTopicIds(setOf(testTopics[0].id, testTopics[2].id))
+        topicsRepository.sendTopics(testArtLocations)
+        userDataRepository.setFollowedTopicIds(setOf(testArtLocations[0].id, testArtLocations[2].id))
 
         // Check that the order hasn't changed and that the correct topics are marked as followed.
         assertEquals(
             listOf(
-                FollowableTopic(testTopics[0], true),
-                FollowableTopic(testTopics[1], false),
-                FollowableTopic(testTopics[2], true),
+                FollowableArtLocation(testArtLocations[0], true),
+                FollowableArtLocation(testArtLocations[1], false),
+                FollowableArtLocation(testArtLocations[2], true),
             ),
             followableTopics.first(),
         )
@@ -69,23 +69,23 @@ class GetFollowableTopicsUseCaseTest {
         )
 
         // Send some test topics and their followed state.
-        topicsRepository.sendTopics(testTopics)
+        topicsRepository.sendTopics(testArtLocations)
         userDataRepository.setFollowedTopicIds(setOf())
 
         // Check that the followable topics are sorted by the topic name.
         assertEquals(
             followableTopics.first(),
-            testTopics
+            testArtLocations
                 .sortedBy { it.name }
                 .map {
-                    FollowableTopic(it, false)
+                    FollowableArtLocation(it, false)
                 },
         )
     }
 }
 
-private val testTopics = listOf(
-    Topic("1", "Headlines", "", "", "", ""),
-    Topic("2", "Android Studio", "", "", "", ""),
-    Topic("3", "Compose", "", "", "", ""),
+private val testArtLocations = listOf(
+    ArtLocation("1", "Headlines", "", "", "", ""),
+    ArtLocation("2", "Android Studio", "", "", "", ""),
+    ArtLocation("3", "Compose", "", "", "", ""),
 )

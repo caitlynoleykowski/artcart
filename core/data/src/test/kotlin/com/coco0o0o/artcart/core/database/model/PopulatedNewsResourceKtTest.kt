@@ -17,7 +17,7 @@
 package com.coco0o0o.artcart.core.database.model
 
 import com.coco0o0o.artcart.core.model.data.NewsResource
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import kotlinx.datetime.Instant
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -46,7 +46,7 @@ class PopulatedNewsResourceKtTest {
                 ),
             ),
         )
-        val newsResource = populatedNewsResource.asExternalModel()
+        val newsResource = populatedNewsResource.asDomainModel()
 
         assertEquals(
             NewsResource(
@@ -57,8 +57,8 @@ class PopulatedNewsResourceKtTest {
                 headerImageUrl = "headerImageUrl",
                 type = "Video 📺",
                 publishDate = Instant.fromEpochMilliseconds(1),
-                topics = listOf(
-                    Topic(
+                artLocations = listOf(
+                    ArtLocation(
                         id = "3",
                         name = "name",
                         shortDescription = "short description",

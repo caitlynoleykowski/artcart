@@ -19,7 +19,7 @@ package com.coco0o0o.artcart.core.database.dao
 import com.coco0o0o.artcart.core.database.model.NewsResourceEntity
 import com.coco0o0o.artcart.core.database.model.NewsResourceTopicCrossRef
 import com.coco0o0o.artcart.core.database.model.TopicEntity
-import com.coco0o0o.artcart.core.database.model.asExternalModel
+import com.coco0o0o.artcart.core.database.model.asDomainModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.Instant
@@ -58,7 +58,7 @@ internal class NewsResourceDaoTest : DatabaseTest() {
         assertEquals(
             listOf(3L, 2L, 1L, 0L),
             savedNewsResourceEntities.map {
-                it.asExternalModel().publishDate.toEpochMilliseconds()
+                it.asDomainModel().publishDate.toEpochMilliseconds()
             },
         )
     }

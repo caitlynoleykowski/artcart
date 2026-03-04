@@ -30,7 +30,7 @@ val newsResourcesTestData: List<NewsResource> = listOf(
         headerImageUrl = "https://developer.android.com/images/hero-assets/android-basics-compose.svg",
         publishDate = Instant.parse("2021-11-09T00:00:00.000Z"),
         type = "Codelab",
-        topics = listOf(topicsTestData[1]),
+        artLocations = listOf(topicsTestData[1]),
     ),
     NewsResource(
         id = "2",
@@ -43,7 +43,7 @@ val newsResourcesTestData: List<NewsResource> = listOf(
         headerImageUrl = "https://i.ytimg.com/vi/-fJ6poHQrjM/maxresdefault.jpg",
         publishDate = Instant.parse("2021-11-09T00:00:00.000Z"),
         type = "Video 📺",
-        topics = listOf(topicsTestData[0], topicsTestData[1]),
+        artLocations = listOf(topicsTestData[0], topicsTestData[1]),
     ),
     NewsResource(
         id = "3",
@@ -56,7 +56,7 @@ val newsResourcesTestData: List<NewsResource> = listOf(
         headerImageUrl = "https://i.ytimg.com/vi/ZARz0pjm5YM/maxresdefault.jpg",
         publishDate = Instant.parse("2021-11-01T00:00:00.000Z"),
         type = "Video 📺",
-        topics = listOf(topicsTestData[2]),
+        artLocations = listOf(topicsTestData[2]),
     ),
     NewsResource(
         id = "4",
@@ -67,6 +67,6 @@ val newsResourcesTestData: List<NewsResource> = listOf(
         headerImageUrl = "",
         publishDate = Instant.parse("2022-10-01T00:00:00.000Z"),
         type = "",
-        topics = listOf(topicsTestData[2]),
+        artLocations = listOf(topicsTestData[2]),
     ),
 )

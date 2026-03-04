@@ -168,8 +168,8 @@ class ForYouScreenScreenshotTests {
                 ForYouScreen(
                     isSyncing = false,
                     onboardingUiState = Shown(
-                        topics = userNewsResources.flatMap { news -> news.followableTopics }
-                            .distinctBy { it.topic.id },
+                        topics = userNewsResources.flatMap { news -> news.followableArtLocations }
+                            .distinctBy { it.artLocation.id },
                     ),
                     feedState = Success(
                         feed = userNewsResources,

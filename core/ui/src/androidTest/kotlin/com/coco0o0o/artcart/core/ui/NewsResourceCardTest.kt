@@ -22,7 +22,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
-import com.coco0o0o.artcart.core.testing.data.followableTopicTestData
+import com.coco0o0o.artcart.core.testing.data.followableArtLocationTestData
 import com.coco0o0o.artcart.core.testing.data.userNewsResourcesTestData
 import org.junit.Rule
 import org.junit.Test
@@ -87,14 +87,14 @@ class NewsResourceCardTest {
     fun testTopicsChipColorBackground_matchesFollowedState() {
         composeTestRule.setContent {
             NewsResourceTopics(
-                topics = followableTopicTestData,
+                topics = followableArtLocationTestData,
                 onTopicClick = {},
             )
         }
 
-        for (followableTopic in followableTopicTestData) {
-            val topicName = followableTopic.topic.name
-            val expectedContentDescription = if (followableTopic.isFollowed) {
+        for (followableTopic in followableArtLocationTestData) {
+            val topicName = followableTopic.artLocation.name
+            val expectedContentDescription = if (followableTopic.isFavorited) {
                 "$topicName is followed"
             } else {
                 "$topicName is not followed"

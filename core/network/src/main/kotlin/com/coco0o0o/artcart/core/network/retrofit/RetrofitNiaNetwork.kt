@@ -17,10 +17,11 @@
 package com.coco0o0o.artcart.core.network.retrofit
 
 import androidx.tracing.trace
-import com.coco0o0o.artcart.core.network.BuildConfig
 import com.coco0o0o.artcart.core.network.NiaNetworkDataSource
 import com.coco0o0o.artcart.core.network.model.NetworkChangeList
+import com.coco0o0o.artcart.core.network.model.NetworkLocation
 import com.coco0o0o.artcart.core.network.model.NetworkNewsResource
+import com.coco0o0o.artcart.core.network.model.NetworkPlaces
 import com.coco0o0o.artcart.core.network.model.NetworkTopic
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -28,15 +29,81 @@ import okhttp3.Call
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Headers
+import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.Int
+import kotlin.String
+import kotlin.collections.List
 
 /**
  * Retrofit API declaration for NIA Network API
  */
 private interface RetrofitNiaNetworkApi {
+
+    @Serializable
+    data class LatLng(
+        val latitude: Double,
+        val longitude: Double,
+    )
+    @Serializable
+    data class Circle(
+        val center: LatLng,
+        val radius: Double,
+    )
+    @Serializable
+    data class LocationRestriction(
+        val circle: Circle,
+    )
+    @Serializable
+    data class LocationsBody(
+        val includedTypes: List<String>,
+        val maxResultCount: Int,
+        val locationRestriction: LocationRestriction,
+    )
+
+//    @GET(value = "topics")
+//    suspend fun getTopics(
+//        @Query("id") ids: List<String>?,
+//    ): NetworkResponse<List<NetworkTopic>>
+
+    // e.g.
+    /*
+        {
+          "includedTypes": [
+            "art_gallery",
+            "art_museum",
+            "art_studio",
+            "museum",
+            "performing_arts_theater",
+            "sculpture"
+          ],
+          "maxResultCount": 10,
+          "locationRestriction": {
+            "circle": {
+              "center": {
+                "latitude": 38.5636216,
+                "longitude": -121.4803345
+              },
+              "radius": 500
+            }
+          }
+        }
+     */
+    @Headers(
+        "X-Goog-FieldMask: *",
+        "X-Goog-Api-Key: AIzaSyAqjWW92spl7JH6ah_u9yGiFAaLSBUuBos"
+    )
+    @POST(value = "v1/places:searchNearby")
+    suspend fun getLocations(
+        @Body locationsBody: LocationsBody,
+    ): NetworkPlaces
+
     @GET(value = "topics")
     suspend fun getTopics(
         @Query("id") ids: List<String>?,
@@ -58,7 +125,8 @@ private interface RetrofitNiaNetworkApi {
     ): List<NetworkChangeList>
 }
 
-private const val NIA_BASE_URL = BuildConfig.BACKEND_URL
+//private const val NIA_BASE_URL = "https://places.googleapis.com/v1/places/GyuEmsRBfy61i59si0?fields=addressComponents&key=YOUR_API_KEY"
+private const val NIA_BASE_URL = "https://places.googleapis.com"
 
 /**
  * Wrapper for data provided from the [NIA_BASE_URL]
@@ -86,12 +154,35 @@ internal class RetrofitNiaNetwork @Inject constructor(
             .addConverterFactory(
                 networkJson.asConverterFactory("application/json".toMediaType()),
             )
+            // Add http interceptor for the API key
             .build()
             .create(RetrofitNiaNetworkApi::class.java)
     }
 
     override suspend fun getTopics(ids: List<String>?): List<NetworkTopic> =
         networkApi.getTopics(ids = ids).data
+
+    override suspend fun getLocations(latitude: Double, longitude: Double): NetworkPlaces =
+        networkApi.getLocations(
+            RetrofitNiaNetworkApi.LocationsBody(
+                 includedTypes = listOf(
+                "art_gallery",
+                "art_museum",
+                "art_studio",
+                "sculpture"
+            ),
+             maxResultCount = 20,
+                locationRestriction = RetrofitNiaNetworkApi.LocationRestriction(
+                    RetrofitNiaNetworkApi.Circle(
+                        RetrofitNiaNetworkApi.LatLng(
+                            latitude = latitude,
+                            longitude = longitude
+                        ),
+                        radius = 3000.0
+                    )
+                ),
+            )
+        )
 
     override suspend fun getNewsResources(ids: List<String>?): List<NetworkNewsResource> =
         networkApi.getNewsResources(ids = ids).data

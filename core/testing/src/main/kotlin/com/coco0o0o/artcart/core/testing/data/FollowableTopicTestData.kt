@@ -18,12 +18,12 @@
 
 package com.coco0o0o.artcart.core.testing.data
 
-import com.coco0o0o.artcart.core.model.data.FollowableTopic
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.model.data.FollowableArtLocation
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 
-val followableTopicTestData: List<FollowableTopic> = listOf(
-    FollowableTopic(
-        topic = Topic(
+val followableArtLocationTestData: List<FollowableArtLocation> = listOf(
+    FollowableArtLocation(
+        artLocation = ArtLocation(
             id = "2",
             name = "Headlines",
             shortDescription = "News we want everyone to see",
@@ -31,10 +31,10 @@ val followableTopicTestData: List<FollowableTopic> = listOf(
             imageUrl = "https://firebasestorage.googleapis.com/v0/b/now-in-android.appspot.com/o/img%2Fic_topic_Headlines.svg?alt=media&token=506faab0-617a-4668-9e63-4a2fb996603f",
             url = "",
         ),
-        isFollowed = false,
+        isFavorited = false,
     ),
-    FollowableTopic(
-        topic = Topic(
+    FollowableArtLocation(
+        artLocation = ArtLocation(
             id = "3",
             name = "UI",
             shortDescription = "Material Design, Navigation, Text, Paging, Accessibility (a11y), Internationalization (i18n), Localization (l10n), Animations, Large Screens, Widgets",
@@ -42,10 +42,10 @@ val followableTopicTestData: List<FollowableTopic> = listOf(
             imageUrl = "https://firebasestorage.googleapis.com/v0/b/now-in-android.appspot.com/o/img%2Fic_topic_UI.svg?alt=media&token=0ee1842b-12e8-435f-87ba-a5bb02c47594",
             url = "",
         ),
-        isFollowed = true,
+        isFavorited = true,
     ),
-    FollowableTopic(
-        topic = Topic(
+    FollowableArtLocation(
+        artLocation = ArtLocation(
             id = "4",
             name = "Testing",
             shortDescription = "CI, Espresso, TestLab, etc",
@@ -53,6 +53,6 @@ val followableTopicTestData: List<FollowableTopic> = listOf(
             imageUrl = "https://firebasestorage.googleapis.com/v0/b/now-in-android.appspot.com/o/img%2Fic_topic_Testing.svg?alt=media&token=a11533c4-7cc8-4b11-91a3-806158ebf428",
             url = "",
         ),
-        isFollowed = false,
+        isFavorited = false,
     ),
 )

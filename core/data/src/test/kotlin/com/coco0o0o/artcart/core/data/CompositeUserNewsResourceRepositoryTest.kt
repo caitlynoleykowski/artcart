@@ -19,7 +19,7 @@ package com.coco0o0o.artcart.core.data
 import com.coco0o0o.artcart.core.data.repository.CompositeUserNewsResourceRepository
 import com.coco0o0o.artcart.core.data.repository.NewsResourceQuery
 import com.coco0o0o.artcart.core.model.data.NewsResource
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.model.data.mapToUserNewsResources
 import com.coco0o0o.artcart.core.testing.repository.TestNewsRepository
 import com.coco0o0o.artcart.core.testing.repository.TestUserDataRepository
@@ -51,7 +51,7 @@ class CompositeUserNewsResourceRepositoryTest {
         // Construct the test user data with bookmarks and followed topics.
         val userData = emptyUserData.copy(
             bookmarkedNewsResources = setOf(sampleNewsResources[0].id, sampleNewsResources[2].id),
-            followedTopics = setOf(sampleTopic1.id),
+            followedTopics = setOf(sampleArtLocation1.id),
         )
 
         userDataRepository.setUserData(userData)
@@ -70,7 +70,7 @@ class CompositeUserNewsResourceRepositoryTest {
             userNewsResourceRepository.observeAll(
                 NewsResourceQuery(
                     filterTopicIds = setOf(
-                        sampleTopic1.id,
+                        sampleArtLocation1.id,
                     ),
                 ),
             )
@@ -82,7 +82,7 @@ class CompositeUserNewsResourceRepositoryTest {
         // Check that only news resources with the given topic id are returned.
         assertEquals(
             sampleNewsResources
-                .filter { sampleTopic1 in it.topics }
+                .filter { sampleArtLocation1 in it.artLocations }
                 .mapToUserNewsResources(emptyUserData),
             userNewsResources.first(),
         )
@@ -96,7 +96,7 @@ class CompositeUserNewsResourceRepositoryTest {
 
         // Send test data into the repositories.
         val userData = emptyUserData.copy(
-            followedTopics = setOf(sampleTopic1.id),
+            followedTopics = setOf(sampleArtLocation1.id),
         )
         newsRepository.sendNewsResources(sampleNewsResources)
         userDataRepository.setUserData(userData)
@@ -104,7 +104,7 @@ class CompositeUserNewsResourceRepositoryTest {
         // Check that only news resources with the given topic id are returned.
         assertEquals(
             sampleNewsResources
-                .filter { sampleTopic1 in it.topics }
+                .filter { sampleArtLocation1 in it.artLocations }
                 .mapToUserNewsResources(userData),
             userNewsResources.first(),
         )
@@ -121,7 +121,7 @@ class CompositeUserNewsResourceRepositoryTest {
         // Construct the test user data with bookmarks and followed topics.
         val userData = emptyUserData.copy(
             bookmarkedNewsResources = setOf(sampleNewsResources[0].id, sampleNewsResources[2].id),
-            followedTopics = setOf(sampleTopic1.id),
+            followedTopics = setOf(sampleArtLocation1.id),
         )
 
         userDataRepository.setUserData(userData)
@@ -134,7 +134,7 @@ class CompositeUserNewsResourceRepositoryTest {
     }
 }
 
-private val sampleTopic1 = Topic(
+private val sampleArtLocation1 = ArtLocation(
     id = "Topic1",
     name = "Headlines",
     shortDescription = "",
@@ -143,7 +143,7 @@ private val sampleTopic1 = Topic(
     imageUrl = "image URL",
 )
 
-private val sampleTopic2 = Topic(
+private val sampleArtLocation2 = ArtLocation(
     id = "Topic2",
     name = "UI",
     shortDescription = "",
@@ -164,7 +164,7 @@ private val sampleNewsResources = listOf(
         headerImageUrl = "https://i.ytimg.com/vi/-fJ6poHQrjM/maxresdefault.jpg",
         publishDate = Instant.parse("2021-11-09T00:00:00.000Z"),
         type = "Video 📺",
-        topics = listOf(sampleTopic1),
+        artLocations = listOf(sampleArtLocation1),
     ),
     NewsResource(
         id = "2",
@@ -176,7 +176,7 @@ private val sampleNewsResources = listOf(
         headerImageUrl = "https://i.ytimg.com/vi/ZARz0pjm5YM/maxresdefault.jpg",
         publishDate = Instant.parse("2021-11-01T00:00:00.000Z"),
         type = "Video 📺",
-        topics = listOf(sampleTopic1, sampleTopic2),
+        artLocations = listOf(sampleArtLocation1, sampleArtLocation2),
     ),
     NewsResource(
         id = "3",
@@ -186,6 +186,6 @@ private val sampleNewsResources = listOf(
         headerImageUrl = "https://i.ytimg.com/vi/r5JgIyS3t3s/maxresdefault.jpg",
         publishDate = Instant.parse("2021-11-08T00:00:00.000Z"),
         type = "Video 📺",
-        topics = listOf(sampleTopic2),
+        artLocations = listOf(sampleArtLocation2),
     ),
 )

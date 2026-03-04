@@ -28,7 +28,7 @@ import com.coco0o0o.artcart.core.analytics.AnalyticsHelper
 import com.coco0o0o.artcart.core.data.Synchronizer
 import com.coco0o0o.artcart.core.data.repository.NewsRepository
 import com.coco0o0o.artcart.core.data.repository.SearchContentsRepository
-import com.coco0o0o.artcart.core.data.repository.TopicsRepository
+import com.coco0o0o.artcart.core.data.repository.LocationsRepository
 import com.coco0o0o.artcart.core.datastore.ChangeListVersions
 import com.coco0o0o.artcart.core.datastore.NiaPreferencesDataSource
 import com.coco0o0o.artcart.core.network.Dispatcher
@@ -39,8 +39,6 @@ import com.coco0o0o.artcart.sync.status.SyncSubscriber
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
 
 /**
@@ -52,7 +50,7 @@ internal class SyncWorker @AssistedInject constructor(
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters,
     private val niaPreferences: NiaPreferencesDataSource,
-    private val topicRepository: TopicsRepository,
+    private val topicRepository: LocationsRepository,
     private val newsRepository: NewsRepository,
     private val searchContentsRepository: SearchContentsRepository,
     @Dispatcher(IO) private val ioDispatcher: CoroutineDispatcher,
@@ -70,10 +68,11 @@ internal class SyncWorker @AssistedInject constructor(
             syncSubscriber.subscribe()
 
             // First sync the repositories in parallel
-            val syncedSuccessfully = awaitAll(
-                async { topicRepository.sync() },
-                async { newsRepository.sync() },
-            ).all { it }
+            val syncedSuccessfully = true
+//            val syncedSuccessfully = awaitAll(
+//                async { topicRepository.sync() },
+//                async { newsRepository.sync() },
+//            ).all { it }
 
             analyticsHelper.logSyncFinished(syncedSuccessfully)
 

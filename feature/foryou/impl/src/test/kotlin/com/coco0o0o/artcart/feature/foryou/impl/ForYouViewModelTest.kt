@@ -20,15 +20,15 @@ import androidx.lifecycle.SavedStateHandle
 import com.coco0o0o.artcart.core.analytics.AnalyticsEvent
 import com.coco0o0o.artcart.core.analytics.AnalyticsEvent.Param
 import com.coco0o0o.artcart.core.data.repository.CompositeUserNewsResourceRepository
-import com.coco0o0o.artcart.core.domain.GetFollowableTopicsUseCase
-import com.coco0o0o.artcart.core.model.data.FollowableTopic
+import com.coco0o0o.artcart.core.domain.GetFollowableLocationsUseCase
+import com.coco0o0o.artcart.core.model.data.FollowableArtLocation
 import com.coco0o0o.artcart.core.model.data.NewsResource
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.model.data.UserNewsResource
 import com.coco0o0o.artcart.core.model.data.mapToUserNewsResources
 import com.coco0o0o.artcart.core.notifications.DEEP_LINK_NEWS_RESOURCE_ID_KEY
 import com.coco0o0o.artcart.core.testing.repository.TestNewsRepository
-import com.coco0o0o.artcart.core.testing.repository.TestTopicsRepository
+import com.coco0o0o.artcart.core.testing.repository.TestLocationsRepository
 import com.coco0o0o.artcart.core.testing.repository.TestUserDataRepository
 import com.coco0o0o.artcart.core.testing.repository.emptyUserData
 import com.coco0o0o.artcart.core.testing.util.MainDispatcherRule
@@ -60,15 +60,15 @@ class ForYouViewModelTest {
     private val syncManager = TestSyncManager()
     private val analyticsHelper = TestAnalyticsHelper()
     private val userDataRepository = TestUserDataRepository()
-    private val topicsRepository = TestTopicsRepository()
+    private val topicsRepository = TestLocationsRepository()
     private val newsRepository = TestNewsRepository()
     private val userNewsResourceRepository = CompositeUserNewsResourceRepository(
         newsRepository = newsRepository,
         userDataRepository = userDataRepository,
     )
 
-    private val getFollowableTopicsUseCase = GetFollowableTopicsUseCase(
-        topicsRepository = topicsRepository,
+    private val getFollowableLocationsUseCase = GetFollowableLocationsUseCase(
+        locationsRepository = topicsRepository,
         userDataRepository = userDataRepository,
     )
 
@@ -83,7 +83,7 @@ class ForYouViewModelTest {
             analyticsHelper = analyticsHelper,
             userDataRepository = userDataRepository,
             userNewsResourceRepository = userNewsResourceRepository,
-            getFollowableTopics = getFollowableTopicsUseCase,
+            getFollowableTopics = getFollowableLocationsUseCase,
         )
     }
 
@@ -101,7 +101,7 @@ class ForYouViewModelTest {
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.onboardingUiState.collect() }
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.feedState.collect() }
 
-        topicsRepository.sendTopics(sampleTopics)
+        topicsRepository.sendTopics(sampleArtLocations)
 
         assertEquals(
             OnboardingUiState.Loading,
@@ -141,14 +141,14 @@ class ForYouViewModelTest {
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.onboardingUiState.collect() }
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.feedState.collect() }
 
-        topicsRepository.sendTopics(sampleTopics)
+        topicsRepository.sendTopics(sampleArtLocations)
         userDataRepository.setFollowedTopicIds(emptySet())
 
         assertEquals(
             OnboardingUiState.Shown(
                 topics = listOf(
-                    FollowableTopic(
-                        topic = Topic(
+                    FollowableArtLocation(
+                        artLocation = ArtLocation(
                             id = "0",
                             name = "Headlines",
                             shortDescription = "",
@@ -156,10 +156,10 @@ class ForYouViewModelTest {
                             url = "URL",
                             imageUrl = "image URL",
                         ),
-                        isFollowed = false,
+                        isFavorited = false,
                     ),
-                    FollowableTopic(
-                        topic = Topic(
+                    FollowableArtLocation(
+                        artLocation = ArtLocation(
                             id = "1",
                             name = "UI",
                             shortDescription = "",
@@ -167,10 +167,10 @@ class ForYouViewModelTest {
                             url = "URL",
                             imageUrl = "image URL",
                         ),
-                        isFollowed = false,
+                        isFavorited = false,
                     ),
-                    FollowableTopic(
-                        topic = Topic(
+                    FollowableArtLocation(
+                        artLocation = ArtLocation(
                             id = "2",
                             name = "Tools",
                             shortDescription = "",
@@ -178,7 +178,7 @@ class ForYouViewModelTest {
                             url = "URL",
                             imageUrl = "image URL",
                         ),
-                        isFollowed = false,
+                        isFavorited = false,
                     ),
                 ),
             ),
@@ -197,15 +197,15 @@ class ForYouViewModelTest {
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.onboardingUiState.collect() }
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.feedState.collect() }
 
-        topicsRepository.sendTopics(sampleTopics)
+        topicsRepository.sendTopics(sampleArtLocations)
         userDataRepository.setFollowedTopicIds(emptySet())
         newsRepository.sendNewsResources(sampleNewsResources)
 
         assertEquals(
             OnboardingUiState.Shown(
                 topics = listOf(
-                    FollowableTopic(
-                        topic = Topic(
+                    FollowableArtLocation(
+                        artLocation = ArtLocation(
                             id = "0",
                             name = "Headlines",
                             shortDescription = "",
@@ -213,10 +213,10 @@ class ForYouViewModelTest {
                             url = "URL",
                             imageUrl = "image URL",
                         ),
-                        isFollowed = false,
+                        isFavorited = false,
                     ),
-                    FollowableTopic(
-                        topic = Topic(
+                    FollowableArtLocation(
+                        artLocation = ArtLocation(
                             id = "1",
                             name = "UI",
                             shortDescription = "",
@@ -224,10 +224,10 @@ class ForYouViewModelTest {
                             url = "URL",
                             imageUrl = "image URL",
                         ),
-                        isFollowed = false,
+                        isFavorited = false,
                     ),
-                    FollowableTopic(
-                        topic = Topic(
+                    FollowableArtLocation(
+                        artLocation = ArtLocation(
                             id = "2",
                             name = "Tools",
                             shortDescription = "",
@@ -235,7 +235,7 @@ class ForYouViewModelTest {
                             url = "URL",
                             imageUrl = "image URL",
                         ),
-                        isFollowed = false,
+                        isFavorited = false,
                     ),
                 ),
             ),
@@ -254,7 +254,7 @@ class ForYouViewModelTest {
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.onboardingUiState.collect() }
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.feedState.collect() }
 
-        topicsRepository.sendTopics(sampleTopics)
+        topicsRepository.sendTopics(sampleArtLocations)
 
         val followedTopicIds = setOf("0", "1")
         val userData = emptyUserData.copy(followedTopics = followedTopicIds)
@@ -286,14 +286,14 @@ class ForYouViewModelTest {
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.onboardingUiState.collect() }
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.feedState.collect() }
 
-        topicsRepository.sendTopics(sampleTopics)
+        topicsRepository.sendTopics(sampleArtLocations)
         userDataRepository.setFollowedTopicIds(emptySet())
         newsRepository.sendNewsResources(sampleNewsResources)
 
         assertEquals(
             OnboardingUiState.Shown(
-                topics = sampleTopics.map {
-                    FollowableTopic(it, false)
+                topics = sampleArtLocations.map {
+                    FollowableArtLocation(it, false)
                 },
             ),
             viewModel.onboardingUiState.value,
@@ -305,13 +305,13 @@ class ForYouViewModelTest {
             viewModel.feedState.value,
         )
 
-        val followedTopicId = sampleTopics[1].id
+        val followedTopicId = sampleArtLocations[1].id
         viewModel.updateTopicSelection(followedTopicId, isChecked = true)
 
         assertEquals(
             OnboardingUiState.Shown(
-                topics = sampleTopics.map {
-                    FollowableTopic(it, it.id == followedTopicId)
+                topics = sampleArtLocations.map {
+                    FollowableArtLocation(it, it.id == followedTopicId)
                 },
             ),
             viewModel.onboardingUiState.value,
@@ -335,7 +335,7 @@ class ForYouViewModelTest {
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.onboardingUiState.collect() }
         backgroundScope.launch(UnconfinedTestDispatcher()) { viewModel.feedState.collect() }
 
-        topicsRepository.sendTopics(sampleTopics)
+        topicsRepository.sendTopics(sampleArtLocations)
         userDataRepository.setFollowedTopicIds(emptySet())
         newsRepository.sendNewsResources(sampleNewsResources)
         viewModel.updateTopicSelection("1", isChecked = true)
@@ -345,8 +345,8 @@ class ForYouViewModelTest {
         assertEquals(
             OnboardingUiState.Shown(
                 topics = listOf(
-                    FollowableTopic(
-                        topic = Topic(
+                    FollowableArtLocation(
+                        artLocation = ArtLocation(
                             id = "0",
                             name = "Headlines",
                             shortDescription = "",
@@ -354,10 +354,10 @@ class ForYouViewModelTest {
                             url = "URL",
                             imageUrl = "image URL",
                         ),
-                        isFollowed = false,
+                        isFavorited = false,
                     ),
-                    FollowableTopic(
-                        topic = Topic(
+                    FollowableArtLocation(
+                        artLocation = ArtLocation(
                             id = "1",
                             name = "UI",
                             shortDescription = "",
@@ -365,10 +365,10 @@ class ForYouViewModelTest {
                             url = "URL",
                             imageUrl = "image URL",
                         ),
-                        isFollowed = false,
+                        isFavorited = false,
                     ),
-                    FollowableTopic(
-                        topic = Topic(
+                    FollowableArtLocation(
+                        artLocation = ArtLocation(
                             id = "2",
                             name = "Tools",
                             shortDescription = "",
@@ -376,7 +376,7 @@ class ForYouViewModelTest {
                             url = "URL",
                             imageUrl = "image URL",
                         ),
-                        isFollowed = false,
+                        isFavorited = false,
                     ),
                 ),
             ),
@@ -401,7 +401,7 @@ class ForYouViewModelTest {
             shouldHideOnboarding = true,
         )
 
-        topicsRepository.sendTopics(sampleTopics)
+        topicsRepository.sendTopics(sampleArtLocations)
         userDataRepository.setUserData(userData)
         newsRepository.sendNewsResources(sampleNewsResources)
 
@@ -488,8 +488,8 @@ class ForYouViewModelTest {
     }
 }
 
-private val sampleTopics = listOf(
-    Topic(
+private val sampleArtLocations = listOf(
+    ArtLocation(
         id = "0",
         name = "Headlines",
         shortDescription = "",
@@ -497,7 +497,7 @@ private val sampleTopics = listOf(
         url = "URL",
         imageUrl = "image URL",
     ),
-    Topic(
+    ArtLocation(
         id = "1",
         name = "UI",
         shortDescription = "",
@@ -505,7 +505,7 @@ private val sampleTopics = listOf(
         url = "URL",
         imageUrl = "image URL",
     ),
-    Topic(
+    ArtLocation(
         id = "2",
         name = "Tools",
         shortDescription = "",
@@ -527,8 +527,8 @@ private val sampleNewsResources = listOf(
         headerImageUrl = "https://i.ytimg.com/vi/-fJ6poHQrjM/maxresdefault.jpg",
         publishDate = Instant.parse("2021-11-09T00:00:00.000Z"),
         type = "Video 📺",
-        topics = listOf(
-            Topic(
+        artLocations = listOf(
+            ArtLocation(
                 id = "0",
                 name = "Headlines",
                 shortDescription = "",
@@ -548,8 +548,8 @@ private val sampleNewsResources = listOf(
         headerImageUrl = "https://i.ytimg.com/vi/ZARz0pjm5YM/maxresdefault.jpg",
         publishDate = Instant.parse("2021-11-01T00:00:00.000Z"),
         type = "Video 📺",
-        topics = listOf(
-            Topic(
+        artLocations = listOf(
+            ArtLocation(
                 id = "1",
                 name = "UI",
                 shortDescription = "",
@@ -567,8 +567,8 @@ private val sampleNewsResources = listOf(
         headerImageUrl = "https://i.ytimg.com/vi/r5JgIyS3t3s/maxresdefault.jpg",
         publishDate = Instant.parse("2021-11-08T00:00:00.000Z"),
         type = "Video 📺",
-        topics = listOf(
-            Topic(
+        artLocations = listOf(
+            ArtLocation(
                 id = "1",
                 name = "UI",
                 shortDescription = "",

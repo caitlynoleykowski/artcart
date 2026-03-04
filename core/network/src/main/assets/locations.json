@@ -1,0 +1,2349 @@
+[
+  {
+  "places": [
+    {
+      "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU",
+      "id": "ChIJI7tWL-nQmoARx4CAJdlp1zU",
+      "types": [
+        "art_gallery",
+        "event_venue",
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "nationalPhoneNumber": "(916) 968-0304",
+      "internationalPhoneNumber": "+1 916-968-0304",
+      "formattedAddress": "1719 25th St, Sacramento, CA 95816, USA",
+      "addressComponents": [
+        {
+          "longText": "1719",
+          "shortText": "1719",
+          "types": [
+            "street_number"
+          ],
+          "languageCode": "en-US"
+        },
+        {
+          "longText": "25th Street",
+          "shortText": "25th St",
+          "types": [
+            "route"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "Midtown",
+          "shortText": "Midtown",
+          "types": [
+            "neighborhood",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "Sacramento",
+          "shortText": "Sacramento",
+          "types": [
+            "locality",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "Sacramento County",
+          "shortText": "Sacramento County",
+          "types": [
+            "administrative_area_level_2",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "California",
+          "shortText": "CA",
+          "types": [
+            "administrative_area_level_1",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "United States",
+          "shortText": "US",
+          "types": [
+            "country",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "95816",
+          "shortText": "95816",
+          "types": [
+            "postal_code"
+          ],
+          "languageCode": "en-US"
+        }
+      ],
+      "plusCode": {
+        "globalCode": "84CWHG8F+H9",
+        "compoundCode": "HG8F+H9 Sacramento, CA, USA"
+      },
+      "location": {
+        "latitude": 38.5664769,
+        "longitude": -121.4765462
+      },
+      "viewport": {
+        "low": {
+          "latitude": 38.5651033697085,
+          "longitude": -121.47789573029148
+        },
+        "high": {
+          "latitude": 38.5678013302915,
+          "longitude": -121.4751977697085
+        }
+      },
+      "rating": 4.5,
+      "googleMapsUri": "https://maps.google.com/?cid=3879685985360969927&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+      "websiteUri": "https://sacpoetrycenter.org/",
+      "regularOpeningHours": {
+        "openNow": true,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 9:00 AM – 10:00 PM",
+          "Tuesday: 9:00 AM – 10:00 PM",
+          "Wednesday: 9:00 AM – 10:00 PM",
+          "Thursday: 9:00 AM – 10:00 PM",
+          "Friday: 9:00 AM – 10:00 PM",
+          "Saturday: 9:00 AM – 10:00 PM",
+          "Sunday: 9:00 AM – 10:00 PM"
+        ],
+        "nextCloseTime": "2026-02-28T06:00:00Z"
+      },
+      "utcOffsetMinutes": -480,
+      "adrFormatAddress": "\u003cspan class=\"street-address\"\u003e1719 25th St\u003c/span\u003e, \u003cspan class=\"locality\"\u003eSacramento\u003c/span\u003e, \u003cspan class=\"region\"\u003eCA\u003c/span\u003e \u003cspan class=\"postal-code\"\u003e95816\u003c/span\u003e, \u003cspan class=\"country-name\"\u003eUSA\u003c/span\u003e",
+      "businessStatus": "OPERATIONAL",
+      "userRatingCount": 26,
+      "iconMaskBaseUri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/school_pinlet",
+      "iconBackgroundColor": "#7B9EB0",
+      "displayName": {
+        "text": "The Sacramento Poetry Center",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Association / Organization",
+        "languageCode": "en-US"
+      },
+      "currentOpeningHours": {
+        "openNow": true,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 3,
+                "day": 1
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 22,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 3,
+                "day": 1
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 3,
+                "day": 2
+              }
+            },
+            "close": {
+              "day": 1,
+              "hour": 22,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 3,
+                "day": 2
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 3,
+                "day": 3
+              }
+            },
+            "close": {
+              "day": 2,
+              "hour": 22,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 3,
+                "day": 3
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 3,
+                "day": 4
+              }
+            },
+            "close": {
+              "day": 3,
+              "hour": 22,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 3,
+                "day": 4
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 3,
+                "day": 5
+              }
+            },
+            "close": {
+              "day": 4,
+              "hour": 22,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 3,
+                "day": 5
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 2,
+                "day": 27
+              }
+            },
+            "close": {
+              "day": 5,
+              "hour": 22,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 2,
+                "day": 27
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 9,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 2,
+                "day": 28
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 22,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 2,
+                "day": 28
+              }
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 9:00 AM – 10:00 PM",
+          "Tuesday: 9:00 AM – 10:00 PM",
+          "Wednesday: 9:00 AM – 10:00 PM",
+          "Thursday: 9:00 AM – 10:00 PM",
+          "Friday: 9:00 AM – 10:00 PM",
+          "Saturday: 9:00 AM – 10:00 PM",
+          "Sunday: 9:00 AM – 10:00 PM"
+        ],
+        "nextCloseTime": "2026-02-28T06:00:00Z"
+      },
+      "currentSecondaryOpeningHours": [
+        {
+          "openNow": false,
+          "periods": [
+            {
+              "open": {
+                "day": 1,
+                "hour": 19,
+                "minute": 30,
+                "date": {
+                  "year": 2026,
+                  "month": 3,
+                  "day": 2
+                }
+              },
+              "close": {
+                "day": 1,
+                "hour": 21,
+                "minute": 0,
+                "date": {
+                  "year": 2026,
+                  "month": 3,
+                  "day": 2
+                }
+              }
+            },
+            {
+              "open": {
+                "day": 3,
+                "hour": 18,
+                "minute": 0,
+                "date": {
+                  "year": 2026,
+                  "month": 3,
+                  "day": 4
+                }
+              },
+              "close": {
+                "day": 3,
+                "hour": 20,
+                "minute": 0,
+                "date": {
+                  "year": 2026,
+                  "month": 3,
+                  "day": 4
+                }
+              }
+            },
+            {
+              "open": {
+                "day": 5,
+                "hour": 16,
+                "minute": 0,
+                "date": {
+                  "year": 2026,
+                  "month": 2,
+                  "day": 27
+                }
+              },
+              "close": {
+                "day": 5,
+                "hour": 18,
+                "minute": 0,
+                "date": {
+                  "year": 2026,
+                  "month": 2,
+                  "day": 27
+                }
+              }
+            }
+          ],
+          "weekdayDescriptions": [
+            "Monday: 7:30 – 9:00 PM",
+            "Tuesday: Closed",
+            "Wednesday: 6:00 – 8:00 PM",
+            "Thursday: Closed",
+            "Friday: 4:00 – 6:00 PM",
+            "Saturday: Closed",
+            "Sunday: Closed"
+          ],
+          "secondaryHoursType": "ONLINE_SERVICE_HOURS",
+          "nextOpenTime": "2026-03-03T03:30:00Z"
+        }
+      ],
+      "regularSecondaryOpeningHours": [
+        {
+          "openNow": false,
+          "periods": [
+            {
+              "open": {
+                "day": 1,
+                "hour": 19,
+                "minute": 30
+              },
+              "close": {
+                "day": 1,
+                "hour": 21,
+                "minute": 0
+              }
+            },
+            {
+              "open": {
+                "day": 3,
+                "hour": 18,
+                "minute": 0
+              },
+              "close": {
+                "day": 3,
+                "hour": 20,
+                "minute": 0
+              }
+            },
+            {
+              "open": {
+                "day": 5,
+                "hour": 16,
+                "minute": 0
+              },
+              "close": {
+                "day": 5,
+                "hour": 18,
+                "minute": 0
+              }
+            }
+          ],
+          "weekdayDescriptions": [
+            "Monday: 7:30 – 9:00 PM",
+            "Tuesday: Closed",
+            "Wednesday: 6:00 – 8:00 PM",
+            "Thursday: Closed",
+            "Friday: 4:00 – 6:00 PM",
+            "Saturday: Closed",
+            "Sunday: Closed"
+          ],
+          "secondaryHoursType": "ONLINE_SERVICE_HOURS",
+          "nextOpenTime": "2026-03-03T03:30:00Z"
+        }
+      ],
+      "primaryType": "association_or_organization",
+      "shortFormattedAddress": "1719 25th St, Sacramento",
+      "reviews": [
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/reviews/ChZDSUhNMG9nS0VJQ0FnTURvck5iTER3EAE",
+          "relativePublishTimeDescription": "10 months ago",
+          "rating": 5,
+          "text": {
+            "text": "The best place for poetry! So vibrant and diverse, so rich with history! Patrick and Julia are amazing! Thanks for the experience",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "The best place for poetry! So vibrant and diverse, so rich with history! Patrick and Julia are amazing! Thanks for the experience",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Ping Wang",
+            "uri": "https://www.google.com/maps/contrib/100378461444394603856/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWjClF2igroR_EgBPjYIk2LPfE4cbTvCMauHEyZHWOmBzzT5WmB6g=s128-c0x00000000-cc-rp-mo-ba6"
+          },
+          "publishTime": "2025-04-22T15:06:16.884793Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnTURvck5iTER3EAE&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnTURvck5iTER3EAE!2m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        },
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/reviews/ChdDSUhNMG9nS0VJQ0FnSURkbWJQdmpBRRAB",
+          "relativePublishTimeDescription": "2 years ago",
+          "rating": 5,
+          "text": {
+            "text": "In-Progress\n\"Has Legs With Which To Stand\"\nSacramento Poetry Center - Poetry Now\nPoetry\nFeb 4, 2019\n\n“Has Legs With Which To Stand”\n\nThe white Stork struts and strolls on long legs.\nPink Flamingo dancers have strange and unique habits.\n\nHas a leg to stand on.\nOnce upon a time.\nWhen mimicking mime.\nDumb ventriloquists sublime.\nLove is for the divine.\nI heard this in a clock tower’s hourly chime.\n\nYears and days pass so slow.\nHere below, the sky above.\nI’m reading what is written.\nThe world’s splits, spinning ahead.\n\nThe sun is red and never was led.\nPlastic covers the shores, it was said.\n\nSomething bathers ignore.\nAsking what’s it all for?\nLess than more.\nWent to a bodega’s grocery store.\nMusic pouring from my roof.\nWhich I abhor.\n\nYet, peculiarly, I adore it.\nPacing my living room floor.\nWatching all the golden gore.\nNo writing on the walls anymore.\n\nJon Billet",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "In-Progress\n\"Has Legs With Which To Stand\"\nSacramento Poetry Center - Poetry Now\nPoetry\nFeb 4, 2019\n\n“Has Legs With Which To Stand”\n\nThe white Stork struts and strolls on long legs.\nPink Flamingo dancers have strange and unique habits.\n\nHas a leg to stand on.\nOnce upon a time.\nWhen mimicking mime.\nDumb ventriloquists sublime.\nLove is for the divine.\nI heard this in a clock tower’s hourly chime.\n\nYears and days pass so slow.\nHere below, the sky above.\nI’m reading what is written.\nThe world’s splits, spinning ahead.\n\nThe sun is red and never was led.\nPlastic covers the shores, it was said.\n\nSomething bathers ignore.\nAsking what’s it all for?\nLess than more.\nWent to a bodega’s grocery store.\nMusic pouring from my roof.\nWhich I abhor.\n\nYet, peculiarly, I adore it.\nPacing my living room floor.\nWatching all the golden gore.\nNo writing on the walls anymore.\n\nJon Billet",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Jonathan Billet",
+            "uri": "https://www.google.com/maps/contrib/107557292113029259799/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocL5QzUSwzzTzeLyPKOIuRQcqyOSh21hgIaGlNizNg9u_rhOjKg=s128-c0x00000000-cc-rp-mo"
+          },
+          "publishTime": "2024-02-25T03:45:02.852473Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSURkbWJQdmpBRRAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSURkbWJQdmpBRRAB!2m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        },
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/reviews/ChZDSUhNMG9nS0VJQ0FnSURrLTZ1cllBEAE",
+          "relativePublishTimeDescription": "6 years ago",
+          "rating": 5,
+          "text": {
+            "text": "I supported local Slam Poet Rob Esperanza with sounds on Kalimba with his spoken word poem \"the World according to Rob\" which I must say was explosive in content and delivery spot on ...",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "I supported local Slam Poet Rob Esperanza with sounds on Kalimba with his spoken word poem \"the World according to Rob\" which I must say was explosive in content and delivery spot on ...",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "MichelleHardy Music",
+            "uri": "https://www.google.com/maps/contrib/110171135616960357887/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWi4ClojfY1Py7lTDDaSULT4hDXki0obKvF9koZhXPpm3zyHUU=s128-c0x00000000-cc-rp-mo-ba4"
+          },
+          "publishTime": "2019-07-09T18:09:48.950891Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSURrLTZ1cllBEAE&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURrLTZ1cllBEAE!2m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        },
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/reviews/ChZDSUhNMG9nS0VJQ0FnSUNpX2F5Z1dnEAE",
+          "relativePublishTimeDescription": "5 years ago",
+          "rating": 1,
+          "text": {
+            "text": "I highly suggest those who are members of the Sacramento Poetry Center cancel your memberships immediately.\n\nThrough a blatant coup, a new board named themselves, shoving out the most long-term volunteers on the board (who together make up 90 years of experience in serving on the board), without allowing paying members to have a voice in the operation (who desperately wanted a voice). It was very shady and underhanded, and something I’ve never heard of happening in similar non-profits. They also drove out a number of women who served on the board previous to this final massive overtaking, ultimately leaving only one (new) board member that identifies as a woman.\n\nIt was a truly appalling power grab. DON’T give them your money.\n\nNew poetry groups shall form and I suggest you keep a look out for those.",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "I highly suggest those who are members of the Sacramento Poetry Center cancel your memberships immediately.\n\nThrough a blatant coup, a new board named themselves, shoving out the most long-term volunteers on the board (who together make up 90 years of experience in serving on the board), without allowing paying members to have a voice in the operation (who desperately wanted a voice). It was very shady and underhanded, and something I’ve never heard of happening in similar non-profits. They also drove out a number of women who served on the board previous to this final massive overtaking, ultimately leaving only one (new) board member that identifies as a woman.\n\nIt was a truly appalling power grab. DON’T give them your money.\n\nNew poetry groups shall form and I suggest you keep a look out for those.",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "J P",
+            "uri": "https://www.google.com/maps/contrib/103974356012935939003/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocIoMFEckQZC5v1IfMfvzEv-9Da_CzVk_ccx8D7OmuDhblIZ=s128-c0x00000000-cc-rp-mo"
+          },
+          "publishTime": "2020-11-12T23:15:19.755162Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUNpX2F5Z1dnEAE&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNpX2F5Z1dnEAE!2m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        },
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/reviews/ChZDSUhNMG9nS0VJQ0FnSURRZzltLUN3EAE",
+          "relativePublishTimeDescription": "8 years ago",
+          "rating": 5,
+          "text": {
+            "text": "Absolutely wonderful to have a space to listen and share with so many amazing writers, poets and artists. Glad there is access to a bathroom, but I'll have to bring my wrench along to fix the sink knob!",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Absolutely wonderful to have a space to listen and share with so many amazing writers, poets and artists. Glad there is access to a bathroom, but I'll have to bring my wrench along to fix the sink knob!",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "gena di nixi",
+            "uri": "https://www.google.com/maps/contrib/113391193687421659075/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUCxf5UyCHX40vkKgXWKW3O2BpWjb0M2YdW6DA_gt-UYugP-Pg=s128-c0x00000000-cc-rp-mo-ba3"
+          },
+          "publishTime": "2018-02-09T01:54:22.431Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSURRZzltLUN3EAE&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURRZzltLUN3EAE!2m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        }
+      ],
+      "photos": [
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/photos/ATCDNfWKIvQ9h33UepVKG7LsT0O48slD9__Fxc6GIGHobvSGu7H5rK2zSHSJLkxdd4an95BNi7vfTSVDimzQTMhzpdaVgQTi1nfEpRqdVg38RUGzrIA3pQuMx3LMJnXszALo24Pp02CHIr2ZpYCQIkPOrAuDISJtuObqpgofOvHPLl2umQSrYvB91b1AakR1vHJfxjvvBjJnABAUHlXWNiInoGCRQnpAB3hKWXhKdJZFHOH5vno9AMMant5Iy9uqALvp_PKCzgq036Pm_4Yx-5pHLDeioS515JMxH9Wg3JOXA5QBJZlP8Py1PluyKXgplIzMoa5rVr6_YTw7lszkRp0aHK3SqV9RVxOFRI8Z90kWIhUPkP9EfUnTYEgDlv3TGalNu2NV37-HQoNDrwHdKGsF3-PZ9V6FrjzK69_XgJBeHoysZA",
+          "widthPx": 4032,
+          "heightPx": 2268,
+          "authorAttributions": [
+            {
+              "displayName": "Linda Michelle Hardy",
+              "uri": "https://maps.google.com/maps/contrib/103114275571523901810",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXRQSPoCwtATaeJ5xgVhqJteDwlz6bFzHbr2gFcT-Mcstit2XGw0A=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgICMtuL5XQ&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICMtuL5XQ!2e10!4m2!3m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        },
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/photos/ATCDNfUdYenNZojYcI7S_x6w7Q1BnI5QOmTL3FpSttTbW2PB9zoL6eErjjK9WgHLct9cS3w24srdLhoVa-7VteBktvOQ9MH3EnT9_3Ylyg8g0uIHgJ97mcvE2RsvNxQtT-ZOWBZFIZEqx43zQ4w_gl4NxcgsB49Oi1_0PVYVKlR-hH2bljOZfuzJ89JxwLQmCSkf_jUJpZI7frK4WnUFFYsLBM6tyf_-4DgyQbz5KgkUmiTqMtYRw_ny_EAoup51dRyqtqLRLAVkCkMEKcctzikG0YNluaHInpEEPcACYwGtkTZEZK78m9hIB-KAVfSxUapYknQc3VZOTLI_TpfO60IMVyXJWiPdR3WgQ3jpLrJXvyzRylkMAZoW-MqoAOML3C869ZzGvf45xf9JhLFFVSb1-4eEL1tim4Euw8PWbl7fRdhEc80",
+          "widthPx": 3120,
+          "heightPx": 4160,
+          "authorAttributions": [
+            {
+              "displayName": "Jewel Williams",
+              "uri": "https://maps.google.com/maps/contrib/113591918144127503263",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWzuk1dkfPetT-btXSkf5RCdCkzKW5CE-Qup0XmhBB26hJtsXXg=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgIDRwumCwAE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgIDRwumCwAE!2e10!4m2!3m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        },
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/photos/ATCDNfW0uDjNZcmEyID1y9IuDEl3q56f9upPh1NM5XkGjqyRq_tghiC71pAtxQFiP34u55Rfgw8IetHYyhc--SipBC8dPzHLGu1zrboebD8M7H0LWrZPyllDrwWswf-LDnKGvFzBEWy1qwk3nByDJUBpYqQSpa-9fLl4tkXUGLMaegH97W7DcBXElh_s4pYcaxJXn3vaIhETY4YLOQsqILe8ycvhGBlIzhkwMH1XhNwuNB1rcQebquNFLhT9Ki2Bc-rKUvuhrOgcFHBl9HFCQygsRI-khH5GDHN5h1rrRJ8hOdEEC5Z3lJVGFdB7zHnAz5veH8s5IZPauTVzJ65siCJiGFem7y-y-U7HKQh-mh7gXEPMS2VcPWEpyyQtuFA41-lCoiWSbDQqchcXnzTP2FtcqUeq493h-jKcGNchwGovOK0zjb_g",
+          "widthPx": 3024,
+          "heightPx": 4032,
+          "authorAttributions": [
+            {
+              "displayName": "Ping Wang",
+              "uri": "https://maps.google.com/maps/contrib/100378461444394603856",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWjClF2igroR_EgBPjYIk2LPfE4cbTvCMauHEyZHWOmBzzT5WmB6g=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgMDorNavgAE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgMDorNavgAE!2e10!4m2!3m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        },
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/photos/ATCDNfU4H2fmCwsbO2-xgkPBuYmDl_nhzoTQH0WKZP0w8GMkATMzGSF1J1-jp4AAhdAv0qc4OJDNxIMbw3js1Gs-f2A9QLjHtlaR94aOyfur4w1160xG_FwaoEJ4ZlvQIBYIXbERBbL9xVg6HAUXNJRbpbFt--9ed_ut_Ql5scOzEpbbZq5or6IcSjsMyZbat9izKWonjeIhF2x6rTC6ZWpUpIGo370KKm2dzJdfVWc2CbmCvy1wtZVwf1mE9a0yYUXcwpyhP2GnPO9CHMH8k_Gb4SGA_2EUN0-3AUDiRuSh1fTwvjtCsEXzpQAt6LFgrmpgzK3mpaOvVd6nZCjw3uMWY0ietSE5kixZowu3FKqys4MYd0Cfm2S-yxnFe_jhXuiWSgOeoYVmIZYHX93yqtliIaI4zosv-WRgI76OuoM4-F4",
+          "widthPx": 3264,
+          "heightPx": 1836,
+          "authorAttributions": [
+            {
+              "displayName": "Linda Michelle Hardy",
+              "uri": "https://maps.google.com/maps/contrib/103114275571523901810",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXRQSPoCwtATaeJ5xgVhqJteDwlz6bFzHbr2gFcT-Mcstit2XGw0A=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgIC45e-YbA&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgIC45e-YbA!2e10!4m2!3m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        },
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/photos/ATCDNfWQI_nAD05t1CKMMTUFVe0L3YAia9d8Ld5tnboR-oElckAgzMxQEHlmlFOCwGPaXywefhdYfiMx09jGcieJ12AyBZos3tc66mVXZ-zOPerZVCqdgW4OrWlpE7cp-YmXdlEMWgIrfnBKm3LOzvvRoYDUWexCbmD_up2hYqKhu2ZxDfFL-5uCDXJXp4PcQ-ge5cbN2Kz_fO73M5fy_JJgsXVuX06bv2lnIAVO5FzhewuR7zpTZvFXQT8QuRe_af_9ZB3tETpJrenlIDV9Hws-e7Tnpvx4gCtgc57fLDCVoje88xdRAPgv0vFb1et31XvHIxT2YdZzXbZ2E5UF-NLG2-34Wulm-y0L0pZ8XPQnRHh0Crhy-uXXYBRWEk3F0Owg1O5fQ22dKVM6Fgu0H6mQH37YD-mRjFc8tBVLsjWMJQQFEQ",
+          "widthPx": 4032,
+          "heightPx": 3024,
+          "authorAttributions": [
+            {
+              "displayName": "Ping Wang",
+              "uri": "https://maps.google.com/maps/contrib/100378461444394603856",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWjClF2igroR_EgBPjYIk2LPfE4cbTvCMauHEyZHWOmBzzT5WmB6g=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgMDorNbPPw&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgMDorNbPPw!2e10!4m2!3m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        },
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/photos/ATCDNfXcDdm5_EDQl2ff_jhj9BGmDDlNOabRfHtd3M6z1O1MJeBEw0-BCqm0qs7YC4_BRWxhXKmkDP-GE1fIM4kJ_O-kWrGFiyQXp1LpnW09hTWAbzq7O4GV2h3xyjDvYWXcH3xXem-BvF_klxGuD7roIPC2mlCIHF6JzSMpvFEC7kfba5StA2ew6Pc4VkXoY2ZknDONy30hl-7Saqq4GNiz379SdFyVV5qwgJhNrJVc3FtikLZHjJbVYG2GitPMnvtTzGkwPUeDVI_UFZMQdBYERCVmmwfquheUsYAeCN_C6y1CF2PuCYD6KEZhkvuGi4n0MwKNxi2rvdJh_dH5ZMUs6HfeyOJC5BW8dLFIoE-97ifw7pVdkXlhDP1dltcxIkoiEtC7eB55IC3OOXk99eeIsgOrVCDX9njWLf66ZJyR8U9kdw",
+          "widthPx": 4032,
+          "heightPx": 2268,
+          "authorAttributions": [
+            {
+              "displayName": "Linda Michelle Hardy",
+              "uri": "https://maps.google.com/maps/contrib/103114275571523901810",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXRQSPoCwtATaeJ5xgVhqJteDwlz6bFzHbr2gFcT-Mcstit2XGw0A=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgICMtqqtHQ&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICMtqqtHQ!2e10!4m2!3m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        },
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/photos/ATCDNfXnJaiqQ806Y6SLVCc2gcifVdIbtD8ajjXUwP-k9HVR41ZXD3Fb0iwZN40zYZxlwIyiSpyPxWYKlgZCBB5oT3IHeVIo8jsEhsVD38PhKHN1u4mlq8w3NxW9nAmrGsBe6aTD1_csKxnbpM0G7-1fSlUioPXaPkyuV0gol9BKJMB2b68_HqxRBhrmsCdXRmWkJz7jmyzP07fxEUe36dFkOWabOykF_ZkPA4xWK1f9piIvPG2tNvwC_4X4FRTpXtlV01WIzafK9De-0lt62B1A1bqnMYkCYWrqcJzFE2AV9p6UzU77U7M3eTe50AX8TJQlCHjOvVeUfv_rO3FSQoWj2la1Syut0wXnRyS0eTjFwCSoqvGYObY1-qMRHT5rlo9uuWeVc-7caDY1mfnRcB57wJRAgU1KGa6901rxJCxZKQ_I1yQx",
+          "widthPx": 3264,
+          "heightPx": 1836,
+          "authorAttributions": [
+            {
+              "displayName": "Linda Michelle Hardy",
+              "uri": "https://maps.google.com/maps/contrib/103114275571523901810",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXRQSPoCwtATaeJ5xgVhqJteDwlz6bFzHbr2gFcT-Mcstit2XGw0A=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgIC45ef4sgE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgIC45ef4sgE!2e10!4m2!3m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        },
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/photos/ATCDNfWSYVxG9HKN1BfwfUa0xNO27_w37yegxpOtwtv3UwrLvLCtvpqd4m90Yk0SXCJRStwOlJjoIkIHDyAcyrfbvWYnXB88PjIovrl3JAb82TXIfwBUXzGOBQa8gcb2Yj6Xd1RMajPbFCi-MJOu3efkfkubdv8-bSCrEySuoopNdUq3lLYVgbUmWuxaMLeAu_MFZsGKk2rHva5SiKRVzmHZbqVwj8n8lATt9ZG6M_fDgqkPK9jtTwk-DKDztHQtgO-fN1thIhRpRodpvm2oIdfHKyAwZGw7hg_0I24Mg5nR7q8MGHMxe6_lh365ZepfyCIqyNKdpFe0XwQUncbJYFy4BOqKDnKzIiPB6mXGak3dkxXln46FUsOoO4BNiGsRpgyvEYNS7h0Se9dEMa6HEkuSLgO-xk2Qb9BnBny54CoDI2MLDEKQ",
+          "widthPx": 4032,
+          "heightPx": 3024,
+          "authorAttributions": [
+            {
+              "displayName": "Ping Wang",
+              "uri": "https://maps.google.com/maps/contrib/100378461444394603856",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWjClF2igroR_EgBPjYIk2LPfE4cbTvCMauHEyZHWOmBzzT5WmB6g=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgMDorNbLzwE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgMDorNbLzwE!2e10!4m2!3m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        },
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/photos/ATCDNfWj14Z3FQCRT5rJWUGWDYnCxFbUzV6PbwFSb4w1uKBvN9xRJPewzxaqhfgKqGnJFUjsI9llIz701JejAeWMTHaYCvNHaLFS3lwpQp9cuoPeH6k63gp8tSGLeLPL9eyVpa7BolYyBDGNTHkKOp_nzxSVnQwgndJ62nW0InLdTqBUHrsoO7O6DwJKY3TUXZUIFcCOE8lzKBbx_uLqJ_tuBuC65gb0B_60FAI2l11_OCYJfFIe535CUd0meq6cEFaV3nFHBFgI0Fy4z0fCpl7lW1YqTL9u_4cyOGljrtDOsgxdYn6TGtbWsbETWEvzg5Qqn1Ie3gIZNL1d-06sVYoQJWmf93BsNiaOYJsFriLJNKyqgaduOj7md7bl5jmbCwv32pSvRCfOg81iFfjX82dkKZmsfC5SnfgF_xEpyswgJMIRKs5z",
+          "widthPx": 2348,
+          "heightPx": 1536,
+          "authorAttributions": [
+            {
+              "displayName": "Tanner White",
+              "uri": "https://maps.google.com/maps/contrib/105394316558421831980",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWK-Snqr_YCaG0epOxCIFD6e_OA7C_GF-3DdEaIFUoQEKwgDRGC=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgICW9pnJ_gE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICW9pnJ_gE!2e10!4m2!3m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        },
+        {
+          "name": "places/ChIJI7tWL-nQmoARx4CAJdlp1zU/photos/ATCDNfXehaf0OV05qhllYpqFyu2lvt9wUQYBXn1r6eJHPqa0POxW4CwMCraBfsBA-My70xbyIzvpLpk6QfX4RMETZ1eZswIrf4gfPGP9FrL-NJhGI_V3wg2msm5OTHVXbtM7ZKasqTR9wYiNZMh-Da3t2d-IOfJpmMt1EIaYvZzkKSKxJVBvG_EJSXOL3D_yA5yrnUbtmxPmdC-JJ-8KOBYNIXVex-fpsaHhpps70o22I-YcHopm8EFHq6Fre48ZDzmheNDL9AcuGdmjYABrAaP6UI8_hBwlA07gdt9RATru9b_4jVFx9w7G6xFxKw07SmqRuIzP9zhZT64FLOMI8ZV71Y-G8GREDgsDSo8IcZf7t9eCs9zbE4GV0rFT-KGoTaMZh6qO5VLkrksjf1tX_5mjQZGzxU9oRlRQdtmvmtHDNE4zIg",
+          "widthPx": 4032,
+          "heightPx": 2268,
+          "authorAttributions": [
+            {
+              "displayName": "MichelleHardy Music",
+              "uri": "https://maps.google.com/maps/contrib/110171135616960357887",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWi4ClojfY1Py7lTDDaSULT4hDXki0obKvF9koZhXPpm3zyHUU=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgIDk-5uoLQ&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgIDk-5uoLQ!2e10!4m2!3m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7"
+        }
+      ],
+      "accessibilityOptions": {
+        "wheelchairAccessibleParking": true,
+        "wheelchairAccessibleEntrance": true,
+        "wheelchairAccessibleRestroom": true
+      },
+      "containingPlaces": [
+        {
+          "name": "places/ChIJU0Zr1O7QmoARL6CfOMYnonk",
+          "id": "ChIJU0Zr1O7QmoARL6CfOMYnonk"
+        }
+      ],
+      "addressDescriptor": {
+        "landmarks": [
+          {
+            "name": "places/ChIJQ5TS_DTZmoARWz40d0DhLvk",
+            "placeId": "ChIJQ5TS_DTZmoARWz40d0DhLvk",
+            "displayName": {
+              "text": "Futures Explored, Inc",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "point_of_interest"
+            ],
+            "straightLineDistanceMeters": 52.930023,
+            "travelDistanceMeters": 228.30194
+          },
+          {
+            "name": "places/ChIJU0Zr1O7QmoARL6CfOMYnonk",
+            "placeId": "ChIJU0Zr1O7QmoARL6CfOMYnonk",
+            "displayName": {
+              "text": "The Wilkerson Theater",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "point_of_interest"
+            ],
+            "straightLineDistanceMeters": 36.269768,
+            "travelDistanceMeters": 117.92879
+          },
+          {
+            "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ",
+            "placeId": "ChIJ5XxLL-nQmoARqOkp0NsIOXQ",
+            "displayName": {
+              "text": "California Stage Co./25 Arts Center",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "point_of_interest"
+            ],
+            "spatialRelationship": "BESIDE",
+            "straightLineDistanceMeters": 18.101236,
+            "travelDistanceMeters": 19.773796
+          },
+          {
+            "name": "places/ChIJI2QGK-nQmoARNsJ8hNugyOE",
+            "placeId": "ChIJI2QGK-nQmoARNsJ8hNugyOE",
+            "displayName": {
+              "text": "Resurrection Theatre",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "point_of_interest"
+            ],
+            "spatialRelationship": "BESIDE",
+            "straightLineDistanceMeters": 21.612549,
+            "travelDistanceMeters": 9.501806
+          },
+          {
+            "name": "places/ChIJQ8ElxOjQmoARFK2SuPaaAF0",
+            "placeId": "ChIJQ8ElxOjQmoARFK2SuPaaAF0",
+            "displayName": {
+              "text": "California Conservation Corps",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "local_government_office",
+              "point_of_interest"
+            ],
+            "straightLineDistanceMeters": 116.02371,
+            "travelDistanceMeters": 195.84903
+          }
+        ],
+        "areas": [
+          {
+            "name": "places/ChIJe4GsWMLQmoAR7GlEZyFDMt4",
+            "placeId": "ChIJe4GsWMLQmoAR7GlEZyFDMt4",
+            "displayName": {
+              "text": "Midtown",
+              "languageCode": "en"
+            },
+            "containment": "OUTSKIRTS"
+          },
+          {
+            "name": "places/ChIJk90siOXQmoARPkAocZEPXKY",
+            "placeId": "ChIJk90siOXQmoARPkAocZEPXKY",
+            "displayName": {
+              "text": "Newton Booth",
+              "languageCode": "en"
+            },
+            "containment": "NEAR"
+          }
+        ]
+      },
+      "googleMapsLinks": {
+        "directionsUri": "https://www.google.com/maps/dir//''/data=!4m7!4m6!1m1!4e2!1m2!1m1!1s0x809ad0e92f56bb23:0x35d769d9258080c7!3e0?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "placeUri": "https://maps.google.com/?cid=3879685985360969927&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "writeAReviewUri": "https://www.google.com/maps/place//data=!4m3!3m2!1s0x809ad0e92f56bb23:0x35d769d9258080c7!12e1?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "reviewsUri": "https://www.google.com/maps/place//data=!4m4!3m3!1s0x809ad0e92f56bb23:0x35d769d9258080c7!9m1!1b1?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "photosUri": "https://www.google.com/maps/place//data=!4m3!3m2!1s0x809ad0e92f56bb23:0x35d769d9258080c7!10e5?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA"
+      },
+      "timeZone": {
+        "id": "America/Los_Angeles"
+      },
+      "postalAddress": {
+        "regionCode": "US",
+        "languageCode": "en-US",
+        "postalCode": "95816",
+        "administrativeArea": "California",
+        "locality": "Sacramento",
+        "addressLines": [
+          "1719 25th St"
+        ]
+      },
+      "googleMapsTypeLabel": {
+        "text": "Literacy Program",
+        "languageCode": "en-US"
+      }
+    },
+    {
+      "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ",
+      "id": "ChIJ5XxLL-nQmoARqOkp0NsIOXQ",
+      "types": [
+        "performing_arts_theater",
+        "event_venue",
+        "point_of_interest",
+        "establishment"
+      ],
+      "nationalPhoneNumber": "(916) 451-5822",
+      "internationalPhoneNumber": "+1 916-451-5822",
+      "formattedAddress": "2509 R St, Sacramento, CA 95816, USA",
+      "addressComponents": [
+        {
+          "longText": "2509",
+          "shortText": "2509",
+          "types": [
+            "street_number"
+          ],
+          "languageCode": "en-US"
+        },
+        {
+          "longText": "R Street",
+          "shortText": "R St",
+          "types": [
+            "route"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "Midtown",
+          "shortText": "Midtown",
+          "types": [
+            "neighborhood",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "Sacramento",
+          "shortText": "Sacramento",
+          "types": [
+            "locality",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "Sacramento County",
+          "shortText": "Sacramento County",
+          "types": [
+            "administrative_area_level_2",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "California",
+          "shortText": "CA",
+          "types": [
+            "administrative_area_level_1",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "United States",
+          "shortText": "US",
+          "types": [
+            "country",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "95816",
+          "shortText": "95816",
+          "types": [
+            "postal_code"
+          ],
+          "languageCode": "en-US"
+        }
+      ],
+      "plusCode": {
+        "globalCode": "84CWHG8F+J8",
+        "compoundCode": "HG8F+J8 Sacramento, CA, USA"
+      },
+      "location": {
+        "latitude": 38.566522,
+        "longitude": -121.4767007
+      },
+      "viewport": {
+        "low": {
+          "latitude": 38.565151869708494,
+          "longitude": -121.47807688029148
+        },
+        "high": {
+          "latitude": 38.567849830291493,
+          "longitude": -121.4753789197085
+        }
+      },
+      "rating": 4.5,
+      "googleMapsUri": "https://maps.google.com/?cid=8374734722255415720&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+      "websiteUri": "http://www.calstage.org/",
+      "regularOpeningHours": {
+        "openNow": false,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 13,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 15,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 12,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 20,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 10:00 AM – 12:00 PM",
+          "Tuesday: Closed",
+          "Wednesday: Closed",
+          "Thursday: Closed",
+          "Friday: Closed",
+          "Saturday: 8:00 – 10:00 PM",
+          "Sunday: 1:00 – 3:00 PM"
+        ],
+        "nextOpenTime": "2026-03-01T04:00:00Z"
+      },
+      "utcOffsetMinutes": -480,
+      "adrFormatAddress": "\u003cspan class=\"street-address\"\u003e2509 R St\u003c/span\u003e, \u003cspan class=\"locality\"\u003eSacramento\u003c/span\u003e, \u003cspan class=\"region\"\u003eCA\u003c/span\u003e \u003cspan class=\"postal-code\"\u003e95816\u003c/span\u003e, \u003cspan class=\"country-name\"\u003eUSA\u003c/span\u003e",
+      "businessStatus": "OPERATIONAL",
+      "userRatingCount": 53,
+      "iconMaskBaseUri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+      "iconBackgroundColor": "#13B5C7",
+      "displayName": {
+        "text": "California Stage Co./25 Arts Center",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Performing Arts Theater",
+        "languageCode": "en-US"
+      },
+      "currentOpeningHours": {
+        "openNow": false,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 13,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 3,
+                "day": 1
+              }
+            },
+            "close": {
+              "day": 0,
+              "hour": 15,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 3,
+                "day": 1
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 3,
+                "day": 2
+              }
+            },
+            "close": {
+              "day": 1,
+              "hour": 12,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 3,
+                "day": 2
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 20,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 2,
+                "day": 28
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 22,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 2,
+                "day": 28
+              }
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 10:00 AM – 12:00 PM",
+          "Tuesday: Closed",
+          "Wednesday: Closed",
+          "Thursday: Closed",
+          "Friday: Closed",
+          "Saturday: 8:00 – 10:00 PM",
+          "Sunday: 1:00 – 3:00 PM"
+        ],
+        "nextOpenTime": "2026-03-01T04:00:00Z"
+      },
+      "primaryType": "performing_arts_theater",
+      "shortFormattedAddress": "2509 R St, Sacramento",
+      "editorialSummary": {
+        "text": "Regional theater company presenting workshops & plays on 3 stages at R25 Arts Complex.",
+        "languageCode": "en"
+      },
+      "reviews": [
+        {
+          "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ/reviews/Ci9DQUlRQUNvZENodHljRjlvT25VNVltc3dkbkpTZG5WbGIzWjJkblJNZFV0Sk1HYxAB",
+          "relativePublishTimeDescription": "7 months ago",
+          "rating": 4,
+          "text": {
+            "text": "Cute, small little theater on 25th and R.  Had a chance to see one of our youth group act and co direct a play. Well done.",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Cute, small little theater on 25th and R.  Had a chance to see one of our youth group act and co direct a play. Well done.",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Douglas Judson",
+            "uri": "https://www.google.com/maps/contrib/112321433538067164986/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjW5wlHZYkV8hzTev1zxLtPJY0lQEXQF67YL1OitV97iMrOTDMQpwQ=s128-c0x00000000-cc-rp-mo-ba5"
+          },
+          "publishTime": "2025-07-29T13:07:00.268133434Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT25VNVltc3dkbkpTZG5WbGIzWjJkblJNZFV0Sk1HYxAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25VNVltc3dkbkpTZG5WbGIzWjJkblJNZFV0Sk1HYxAB!2m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8"
+        },
+        {
+          "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ/reviews/Ci9DQUlRQUNvZENodHljRjlvT2pOdFlreFNZbVkxYzFweWJtRTVjMXBuTjJkemVGRRAB",
+          "relativePublishTimeDescription": "4 months ago",
+          "rating": 5,
+          "text": {
+            "text": "Great small theater and terrific show!",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Great small theater and terrific show!",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Dawn Miller",
+            "uri": "https://www.google.com/maps/contrib/114756110351453937519/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUFIxTnPOE7QgBUK3JNXMXcimD8-dZrympE4z9uFbo2g4STvhh55w=s128-c0x00000000-cc-rp-mo-ba4"
+          },
+          "publishTime": "2025-10-04T09:15:26.436053150Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2pOdFlreFNZbVkxYzFweWJtRTVjMXBuTjJkemVGRRAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2pOdFlreFNZbVkxYzFweWJtRTVjMXBuTjJkemVGRRAB!2m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8"
+        },
+        {
+          "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ/reviews/ChZDSUhNMG9nS0VJQ0FnSURVa2J5blJ3EAE",
+          "relativePublishTimeDescription": "6 years ago",
+          "rating": 5,
+          "text": {
+            "text": "Great theater venue.  Older seats,  nothing fancy, theaters are small and cozy. Love the closeness of the stage and interaction with actors. I like that's it's right in mid town,  easy to make plans for dinner or other fun before or after a show. I go every chance I get! 💕",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Great theater venue.  Older seats,  nothing fancy, theaters are small and cozy. Love the closeness of the stage and interaction with actors. I like that's it's right in mid town,  easy to make plans for dinner or other fun before or after a show. I go every chance I get! 💕",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Aida Orozco",
+            "uri": "https://www.google.com/maps/contrib/108764265938762534125/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocLYFx0wyvxeJyzoWoIh75OxBGf8rquxp1BZiAalh2tjl7Eyug=s128-c0x00000000-cc-rp-mo-ba4"
+          },
+          "publishTime": "2019-08-26T06:31:50.043933Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSURVa2J5blJ3EAE&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURVa2J5blJ3EAE!2m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8"
+        },
+        {
+          "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ/reviews/ChZDSUhNMG9nS0VJQ0FnSURROWF2LVpBEAE",
+          "relativePublishTimeDescription": "7 years ago",
+          "rating": 4,
+          "text": {
+            "text": "A bit hard to find. The building houses a few businesses.  The entrance is on the side of the light rail train tracks.  You will see large metal roll up door that is painted red if they haven't open yet.  Intimate theater experience, friendly staff, reasonable prices.  Can buy basics snacks at intermission. Enjoy live theater.",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "A bit hard to find. The building houses a few businesses.  The entrance is on the side of the light rail train tracks.  You will see large metal roll up door that is painted red if they haven't open yet.  Intimate theater experience, friendly staff, reasonable prices.  Can buy basics snacks at intermission. Enjoy live theater.",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Alma Ortiz",
+            "uri": "https://www.google.com/maps/contrib/100694687893107262442/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUnO_QSa-WpZEU7RCEJYjxOzhF5IMHHW_15W53Jg3zRQA6nmHbC=s128-c0x00000000-cc-rp-mo-ba4"
+          },
+          "publishTime": "2018-04-13T01:51:13.538Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSURROWF2LVpBEAE&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURROWF2LVpBEAE!2m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8"
+        },
+        {
+          "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ/reviews/ChdDSUhNMG9nS0VJQ0FnSURLcmFPeDJnRRAB",
+          "relativePublishTimeDescription": "4 years ago",
+          "rating": 3,
+          "text": {
+            "text": "Glad to be able to get out to a venue and listen to some Live Jazz. I only wish this venue was not so near the light rail and I was able to enjoy a glass of wine and appetizer!",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Glad to be able to get out to a venue and listen to some Live Jazz. I only wish this venue was not so near the light rail and I was able to enjoy a glass of wine and appetizer!",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Drdroyzster",
+            "uri": "https://www.google.com/maps/contrib/109809902760484218748/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocIHwqNNu7R9wl15zs6nsz8CzswGBv3nKTXCIVIj8FNGVIvA7eJ_=s128-c0x00000000-cc-rp-mo-ba3"
+          },
+          "publishTime": "2021-05-16T21:09:02.316924Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSURLcmFPeDJnRRAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSURLcmFPeDJnRRAB!2m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8"
+        }
+      ],
+      "photos": [
+        {
+          "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ/photos/ATCDNfU3bkF47Mb3Vj2P82CUNB3YpB1J2tcGuaI-E9LZHN3LM3iN0sdxUifnKEXi9n2SyiEL81eAJsDILYK3T6qd8W5F30_5maOZccBHrdwqTI6QIlBFBGvMFvXKcXvjvAbm2oPz1OHOlZ19i9CG2wp7jOgvQ4KR0WuQ2kOhhkFHA4ZAMtQCGOo_Y2d_IFGYiy-5s2cyOcIQMBaFqiHfBWsrFQXCADgiycVSQQGdnaFiHqMwGY9gYmgezTKj238FFaVQ80_oIEs6T-hQIQ2UuxnacSIC5BWdaC6FDq730etJU7YxTOe_yoRRc5XX4WdMKUHKAMUz6v0jXgroYPdQvgLVnh9I5MmS5R5WRlmkWzkeKQr8GZDd9-wt3Xe3kI68xFhQCeSVN0ngQ2JmcrwOSQZaD3tBaUX_f2VANOTm2cuVXIIZ-w",
+          "widthPx": 4800,
+          "heightPx": 2700,
+          "authorAttributions": [
+            {
+              "displayName": "Dan Gilliland",
+              "uri": "https://maps.google.com/maps/contrib/112908561979629316750",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU_61_vsePi2QaOSm0YKIxpHGyQtGooWds7iS64PgOCL147FI92=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgICEzdCeIQ&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICEzdCeIQ!2e10!4m2!3m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8"
+        },
+        {
+          "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ/photos/ATCDNfU5iRLJLlQG58bXIewz0Vb5Jn7qPGAvea9gF_mOyPSmzUa1zstexGiwkXouwmVN_HTSZT8iAOTIy2RBRShB5Z_FJJ10yEiXoEWakf0dOph8UwTEodzj3hiqx3XSsdIzCuSuHUNA-JLIA3UdNFssc9dldsi8MYaQo2O719RweoNJW8_l8HdRX2nxbN6zar5M7O5eujGnU_VD0pfe-JSR1knIAxKEtEPV3peZoRWbHi1_vVzmzG15XQjeQiQan-pKi8taCfirfEXqi4PGAmFqzjMpVKdtMD0yBwLWNNSH2Qkp0SydQS9_F9Bpp4RpJh9Qv0Wo02l2YsZ4sQONnN6yY0EDZWewBbtORRDzVB7AN7snAFFEgv7cH4DPHH2KRGmDwcuiCL2Xa9gwH83t-9s7HMoBvRmQMnf3OdNtKAcwwnLZeYen",
+          "widthPx": 2411,
+          "heightPx": 2973,
+          "authorAttributions": [
+            {
+              "displayName": "Mark Urquhart",
+              "uri": "https://maps.google.com/maps/contrib/104812693050238485038",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUEqzFLx1wAuyTX5sqzkBKXbfebds9CF6ZPgpmmHeAsBIxFsC_XUQ=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgICEzvHhwgE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICEzvHhwgE!2e10!4m2!3m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8"
+        },
+        {
+          "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ/photos/ATCDNfXGiLuh2MiiKwLqiGN8KtmMlbca9PCp4RsOCP3zWKsTXbns0upV8p_8V9FyuGIn8SCDsx7RRo5WEEbjjLA8GunsN7sOhG8XokMH_Dv1Og3-Kk7MW5rZf8-cFbMpI_Kx9qxLGI9V3z0Es4vxI4M-VQrXvg_qsnSbpDY5XRsR-4TWq3a5v4a7vYlV_wu9bUO-DWlTXJtwfrufzE3uB4MT9Ze1oh8FkkHeZ8yV5trKBSippebZ0G1jlJVI2xy8FHay0vpC24pmbjnQu38CQi2c7TsxssN9Fc_5FWiDIAKUgoDEMPaIR7ASVQI1ZMGzHyEfi52n3UGXiPtB2Zemi-JSla8XmMiVVH3fQ0iRNCli-81hYhQXAWJ2QyDw1whx1v48q0guqR2w14uyxixBbvWsWpvgr3fFfgJcPmtO_0NPlyyNhOnx",
+          "widthPx": 3264,
+          "heightPx": 2448,
+          "authorAttributions": [
+            {
+              "displayName": "David Brotman",
+              "uri": "https://maps.google.com/maps/contrib/105065402068565050546",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUFp42uK-fWhiqFajpWGRnvwPF-EzYC1RQ9-hWaznz_r5nJGM8gYQ=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgID49JK51gE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgID49JK51gE!2e10!4m2!3m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8"
+        },
+        {
+          "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ/photos/ATCDNfWMtt9U3GfIHlF2PkKRlbQk8204unza-guPdOK_QHNQFK0Tf9qTRaCIvCvfsvSSQBsMWjj0h95qsWURn4AHAmtenrCdYqEtNc7FmZIEhQVRviEfFHxQjzv3A6cObNACBU8HiKsB06goyOFOH9xhz4NbjzYN48W8TgJQQjhiPUWzetJdnt0gZGJ7FTj4FwVb-Gjxjr1eSJbcV44Gh4aEHfKCJj4Llh1XC-yXEl5BE3meg1Mwgef1IyKqYqjgG3pYQ4w5BTAdjqcAtF0wwE_eLPe_OFUoHiKbpMb6DrgQgML6-tNCMSh9L4c5OZYPtpZCT2vMLez_p4nIOGyHzeddkDaUjyQrxeNMDtRVv9RaX42PtAUt3FCXGnDJChv4w70bRwZS8qhHNknZc4eQXN-mDzdQRg-yzVU9U8HsIKHQCiUb1iSa",
+          "widthPx": 3167,
+          "heightPx": 1190,
+          "authorAttributions": [
+            {
+              "displayName": "Mark Urquhart",
+              "uri": "https://maps.google.com/maps/contrib/104812693050238485038",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUEqzFLx1wAuyTX5sqzkBKXbfebds9CF6ZPgpmmHeAsBIxFsC_XUQ=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgICEzvGlxAE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICEzvGlxAE!2e10!4m2!3m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8"
+        },
+        {
+          "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ/photos/ATCDNfUsdRo-eWeQBGm4A-P462z_UBkUmXh3FGChBJdr-U6lZPrFgrtIbuz0CWFkeS4q-kRZqZRCnwwU3FYO18Fe3Vo9TvlmzGFXVCA_g_KC64CCgtS074kbkXg1ZG3h2lOolw_7C_wsN_xjHBMc3T3dBAsqnYdHXOSaHpzIr3LKNIHSdIZf__8c11wmOEGbn4pq8Trqo6P2rEMv4U6gmJrxQ1gqGOoGbac6rvkt1xZyndcPCUtPMVc45pOhI2gXxpjypR_l9pQuq3ltyWsqVj89cV587sWVbvCz3Vi4KSPP3IxT9o1cnzD6h314pKgtTQfxzMwpovrHgoIV4b8EP08YvIbc54zqDiKTL6ptkdPM29SVAAYZ1y7NbcZS393vQlHgN-7Cmsyst77Xjl5bTCf7kac1Gk3kURBuAhxUwz4BBIAOhm0q",
+          "widthPx": 3264,
+          "heightPx": 2448,
+          "authorAttributions": [
+            {
+              "displayName": "Helen Dennis",
+              "uri": "https://maps.google.com/maps/contrib/112073356081037583212",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUBYUjhByQBKoM3uiItubziWne2pFJL-7XX4v_X_s12W7LkeRNS=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgICc-Kz0oAE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICc-Kz0oAE!2e10!4m2!3m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8"
+        },
+        {
+          "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ/photos/ATCDNfWXP2wQOtDtJriTIL5om-vmpN-me37Uzwqgtmz3y_HI1C3qF2EZgz2dwCD15W6Wn_8rZ8BstrhHXKWePAJfC_52DzQN4YmxZbdOcrLSi-HxGW3sOK_B1_hMPi_RCpZYIovbCJRCrzei3H8XrEdFrFl2hYYC-n5zWdfiSbJrPCb9RnbTbWG-83ju7KXS-jrqVS3JYtwmrO4OgLvby_9Gi6HKmPQuYqaZsuJOETxh3hcHMYHInNhkAVgdr7CTAUMS0Bb6IB1NjmtY_q-K_ke9r6Q_4epYMmjTbmach6tGhQ8FuoqSuwyFTENj7rabYbY2GLmEYj9M16cW9Or_LHDrsV4u2p-WzbXnqJpCvwQR67bN1PPJRuV_I2hnJJ5k7sDmvY8pHGYtYUcbUDsvQiJlaOnorNR1uErjTJHeY2JcrhndvY3j",
+          "widthPx": 2576,
+          "heightPx": 1932,
+          "authorAttributions": [
+            {
+              "displayName": "Kelly Sobkowsky",
+              "uri": "https://maps.google.com/maps/contrib/104359071463927590167",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjW9JrpAIjc1JCi4HO5OZy9eHq2NRD8eAiqYau0qFDRrdj32DtCx=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgIDMguiWkAE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgIDMguiWkAE!2e10!4m2!3m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8"
+        },
+        {
+          "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ/photos/ATCDNfUmPISdMuDCOL_L8idGeXD4EC33LiW1xoRfe5rl647NO96J9nz9HVFbwIj1Hzs5c6HmZwQz1i2G5DFNaiy3Bhji9XmdTbVtty4ImydTK2uZsOQlXK-PyKHwFgYZq68LjB8F8Bs0lohnfmBzX-XV5rEJ7f2mUuekTC4yve5fi2sl_v-rRhO0ZgPSWp7UqkkwckJ6du2ppGMl2qwKYV2fTrr2FkEKubfNpdOk-zTXuD1f9rW-J6Yt2FwRLFSVWhTzJCIXBiJZHKA9Dxt_e_POmUwF_nsfGqJSi4UimdpHQnHGu13-e3_nwM7cpwZ_XQtraBOr_3GjeFOM4gu4UGwin5DyIYr4lGub9CRpRh496J0GuxlCpc9NMUfda2bXbqKaQQ9OKxSXUQH3HOtkgamx56SX-LLDNH9tIyB2ziyxr69xEg",
+          "widthPx": 3264,
+          "heightPx": 2448,
+          "authorAttributions": [
+            {
+              "displayName": "Helen Dennis",
+              "uri": "https://maps.google.com/maps/contrib/112073356081037583212",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUBYUjhByQBKoM3uiItubziWne2pFJL-7XX4v_X_s12W7LkeRNS=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgICc-MyNVQ&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICc-MyNVQ!2e10!4m2!3m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8"
+        },
+        {
+          "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ/photos/ATCDNfWBa32kRUS9yTyWk97V-V7RdM1g6UA6l6iL_oLphvlBCU5n4WaytUwFaqAnDWNI2NM431_yG_PtPgJCAY1pBKjqN2hiJjBFNHni3ndS9lQ62yBrd8ZBjQOCKTl22q4hOJSrLcgqBQmyzL7GVSzoBx4zL02VDQswpPMunMaK71_o9ZwZB1R2E7ivTIzey8ddsLRbgPWEA_mo_myBHEILtdznT_SCNWKI0veCRyoaeOy_hbUBh2T1VRgjWHKoy4Zn2PeLF2lF10biXNOuuKQNfG1JOkHD97PVEyKF-_Vi0IMr3zPRcA708mm0ilTxyN2G-BGJDVqpyJEEwJ8z3V4o2H-UcrgcVlrj1vDiryEPFlCx_0VnHo_SLH4nO6QX6CCCeEucI_I2RnnexmI3FV63S12i-ifIADuq7NT6tzpYhkMInP9MlXxYwKi8edmBOqX5",
+          "widthPx": 1848,
+          "heightPx": 4000,
+          "authorAttributions": [
+            {
+              "displayName": "Douglas Judson",
+              "uri": "https://maps.google.com/maps/contrib/112321433538067164986",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjW5wlHZYkV8hzTev1zxLtPJY0lQEXQF67YL1OitV97iMrOTDMQpwQ=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIABIhD2lewJTPTOVYSNiYj62rNS&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhD2lewJTPTOVYSNiYj62rNS!2e10!4m2!3m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8"
+        },
+        {
+          "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ/photos/ATCDNfWch9YX0wsOPBlW9dpjwCIAF3btTTPw9GJZHXovS2L3wi6qW2t4sDZ1BYF9rrBW-Lfyo1m8o-uCGXRC1_BjnM3DBcq6Swww5JmK57hITsLpxqPjSQIVuFqmD_RURq4A5rznurUnHk9un998p9QB7FFD0Y4TfHkiGFJE6ACUB8sTwo4BWiw5AFWMvVooIXBK6Aq9Pqu8budX7Jl3KDjze9vAmTBcwqsBppkg19GO2eJU-MDHVgqaM7Hf34vJO_hYV_bcpBsQqXd4kFCzHOCnBraLXY0aFppBkNjHUUzsaZnEJYiwpc7kWReevWcaN_3wi71mwrjW-RwHvVYT7-Z52wo7eugW7eu6YL74Cxb7rl2tesdQg4YNLEtH9UU43LgB8giOx1rPQzlH7yNtzcQpek9piHlcPjfeN7hyyVmD9hU",
+          "widthPx": 2576,
+          "heightPx": 1932,
+          "authorAttributions": [
+            {
+              "displayName": "Kelly Sobkowsky",
+              "uri": "https://maps.google.com/maps/contrib/104359071463927590167",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjW9JrpAIjc1JCi4HO5OZy9eHq2NRD8eAiqYau0qFDRrdj32DtCx=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgIDMgui-HA&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgIDMgui-HA!2e10!4m2!3m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8"
+        }
+      ],
+      "goodForChildren": true,
+      "restroom": true,
+      "paymentOptions": {
+        "acceptsCreditCards": true,
+        "acceptsDebitCards": true,
+        "acceptsCashOnly": false
+      },
+      "accessibilityOptions": {
+        "wheelchairAccessibleParking": true,
+        "wheelchairAccessibleEntrance": true,
+        "wheelchairAccessibleRestroom": true
+      },
+      "generativeSummary": {
+        "overview": {
+          "text": "Intimate, informal venue staging a mix of plays and live jazz, plus Saturday outdoor concerts.",
+          "languageCode": "en-US"
+        },
+        "overviewFlagContentUri": "https://www.google.com/local/content/rap/report?postId=CiUweDgwOWFkMGU5MmY0YjdjZTU6MHg3NDM5MDhkYmQwMjllOWE4MAI&d=17924085&t=12",
+        "disclosureText": {
+          "text": "Summarized with Gemini",
+          "languageCode": "en-US"
+        }
+      },
+      "containingPlaces": [
+        {
+          "name": "places/ChIJU0Zr1O7QmoARL6CfOMYnonk",
+          "id": "ChIJU0Zr1O7QmoARL6CfOMYnonk"
+        }
+      ],
+      "addressDescriptor": {
+        "landmarks": [
+          {
+            "name": "places/ChIJQ5TS_DTZmoARWz40d0DhLvk",
+            "placeId": "ChIJQ5TS_DTZmoARWz40d0DhLvk",
+            "displayName": {
+              "text": "Futures Explored, Inc",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "point_of_interest"
+            ],
+            "straightLineDistanceMeters": 70.8219,
+            "travelDistanceMeters": 155.21356
+          },
+          {
+            "name": "places/ChIJU0Zr1O7QmoARL6CfOMYnonk",
+            "placeId": "ChIJU0Zr1O7QmoARL6CfOMYnonk",
+            "displayName": {
+              "text": "The Wilkerson Theater",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "point_of_interest"
+            ],
+            "spatialRelationship": "WITHIN",
+            "straightLineDistanceMeters": 42.89395,
+            "travelDistanceMeters": 121.08704
+          },
+          {
+            "name": "places/ChIJ5XxLL-nQmoARtbCj5afQaWU",
+            "placeId": "ChIJ5XxLL-nQmoARtbCj5afQaWU",
+            "displayName": {
+              "text": "Actor's Workshop Of Sacramento",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "point_of_interest"
+            ],
+            "spatialRelationship": "BESIDE",
+            "straightLineDistanceMeters": 7.6439915,
+            "travelDistanceMeters": 19.061592
+          },
+          {
+            "name": "places/ChIJQ8ElxOjQmoARFK2SuPaaAF0",
+            "placeId": "ChIJQ8ElxOjQmoARFK2SuPaaAF0",
+            "displayName": {
+              "text": "California Conservation Corps",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "local_government_office",
+              "point_of_interest"
+            ],
+            "straightLineDistanceMeters": 99.33619,
+            "travelDistanceMeters": 195.61458
+          },
+          {
+            "name": "places/ChIJI2QGK-nQmoARNsJ8hNugyOE",
+            "placeId": "ChIJI2QGK-nQmoARNsJ8hNugyOE",
+            "displayName": {
+              "text": "Resurrection Theatre",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "point_of_interest"
+            ],
+            "spatialRelationship": "ACROSS_THE_ROAD",
+            "straightLineDistanceMeters": 37.34529,
+            "travelDistanceMeters": 63.58657
+          }
+        ],
+        "areas": [
+          {
+            "name": "places/ChIJe4GsWMLQmoAR7GlEZyFDMt4",
+            "placeId": "ChIJe4GsWMLQmoAR7GlEZyFDMt4",
+            "displayName": {
+              "text": "Midtown",
+              "languageCode": "en"
+            },
+            "containment": "OUTSKIRTS"
+          },
+          {
+            "name": "places/ChIJk90siOXQmoARPkAocZEPXKY",
+            "placeId": "ChIJk90siOXQmoARPkAocZEPXKY",
+            "displayName": {
+              "text": "Newton Booth",
+              "languageCode": "en"
+            },
+            "containment": "NEAR"
+          }
+        ]
+      },
+      "googleMapsLinks": {
+        "directionsUri": "https://www.google.com/maps/dir//''/data=!4m7!4m6!1m1!4e2!1m2!1m1!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8!3e0?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "placeUri": "https://maps.google.com/?cid=8374734722255415720&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "writeAReviewUri": "https://www.google.com/maps/place//data=!4m3!3m2!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8!12e1?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "reviewsUri": "https://www.google.com/maps/place//data=!4m4!3m3!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8!9m1!1b1?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "photosUri": "https://www.google.com/maps/place//data=!4m3!3m2!1s0x809ad0e92f4b7ce5:0x743908dbd029e9a8!10e5?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA"
+      },
+      "timeZone": {
+        "id": "America/Los_Angeles"
+      },
+      "postalAddress": {
+        "regionCode": "US",
+        "languageCode": "en-US",
+        "postalCode": "95816",
+        "administrativeArea": "California",
+        "locality": "Sacramento",
+        "addressLines": [
+          "2509 R St"
+        ]
+      },
+      "googleMapsTypeLabel": {
+        "text": "Performing Arts Theater",
+        "languageCode": "en-US"
+      }
+    },
+    {
+      "name": "places/ChIJI2QGK-nQmoARNsJ8hNugyOE",
+      "id": "ChIJI2QGK-nQmoARNsJ8hNugyOE",
+      "types": [
+        "performing_arts_theater",
+        "event_venue",
+        "point_of_interest",
+        "establishment"
+      ],
+      "nationalPhoneNumber": "(916) 223-9568",
+      "internationalPhoneNumber": "+1 916-223-9568",
+      "formattedAddress": "1723 25th St, Sacramento, CA 95816, USA",
+      "addressComponents": [
+        {
+          "longText": "1723",
+          "shortText": "1723",
+          "types": [
+            "street_number"
+          ],
+          "languageCode": "en-US"
+        },
+        {
+          "longText": "25th Street",
+          "shortText": "25th St",
+          "types": [
+            "route"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "Midtown",
+          "shortText": "Midtown",
+          "types": [
+            "neighborhood",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "Sacramento",
+          "shortText": "Sacramento",
+          "types": [
+            "locality",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "Sacramento County",
+          "shortText": "Sacramento County",
+          "types": [
+            "administrative_area_level_2",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "California",
+          "shortText": "CA",
+          "types": [
+            "administrative_area_level_1",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "United States",
+          "shortText": "US",
+          "types": [
+            "country",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "95816",
+          "shortText": "95816",
+          "types": [
+            "postal_code"
+          ],
+          "languageCode": "en-US"
+        }
+      ],
+      "plusCode": {
+        "globalCode": "84CWHG8F+FC",
+        "compoundCode": "HG8F+FC Sacramento, CA, USA"
+      },
+      "location": {
+        "latitude": 38.5662398,
+        "longitude": -121.47646780000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 38.5649856197085,
+          "longitude": -121.4779206802915
+        },
+        "high": {
+          "latitude": 38.5676835802915,
+          "longitude": -121.47522271970853
+        }
+      },
+      "rating": 4.7,
+      "googleMapsUri": "https://maps.google.com/?cid=16269430518556967478&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+      "websiteUri": "http://www.resurrectiontheatre.com/",
+      "regularOpeningHours": {
+        "openNow": true,
+        "periods": [
+          {
+            "open": {
+              "day": 5,
+              "hour": 16,
+              "minute": 30
+            },
+            "close": {
+              "day": 6,
+              "hour": 12,
+              "minute": 30
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 16,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: Closed",
+          "Tuesday: Closed",
+          "Wednesday: Closed",
+          "Thursday: Closed",
+          "Friday: 4:30 PM – 12:00 AM",
+          "Saturday: 12:00 AM – 12:30 PM, 4:00 – 10:00 PM",
+          "Sunday: Closed"
+        ],
+        "nextCloseTime": "2026-02-28T20:30:00Z"
+      },
+      "utcOffsetMinutes": -480,
+      "adrFormatAddress": "\u003cspan class=\"street-address\"\u003e1723 25th St\u003c/span\u003e, \u003cspan class=\"locality\"\u003eSacramento\u003c/span\u003e, \u003cspan class=\"region\"\u003eCA\u003c/span\u003e \u003cspan class=\"postal-code\"\u003e95816\u003c/span\u003e, \u003cspan class=\"country-name\"\u003eUSA\u003c/span\u003e",
+      "businessStatus": "OPERATIONAL",
+      "userRatingCount": 15,
+      "iconMaskBaseUri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+      "iconBackgroundColor": "#13B5C7",
+      "displayName": {
+        "text": "Resurrection Theatre",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Performing Arts Theater",
+        "languageCode": "en-US"
+      },
+      "currentOpeningHours": {
+        "openNow": true,
+        "periods": [
+          {
+            "open": {
+              "day": 5,
+              "hour": 16,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 2,
+                "day": 27
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 12,
+              "minute": 30,
+              "date": {
+                "year": 2026,
+                "month": 2,
+                "day": 28
+              }
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 16,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 2,
+                "day": 28
+              }
+            },
+            "close": {
+              "day": 6,
+              "hour": 22,
+              "minute": 0,
+              "date": {
+                "year": 2026,
+                "month": 2,
+                "day": 28
+              }
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: Closed",
+          "Tuesday: Closed",
+          "Wednesday: Closed",
+          "Thursday: Closed",
+          "Friday: 4:30 PM – 12:00 AM",
+          "Saturday: 12:00 AM – 12:30 PM, 4:00 – 10:00 PM",
+          "Sunday: Closed"
+        ],
+        "nextCloseTime": "2026-02-28T20:30:00Z"
+      },
+      "primaryType": "performing_arts_theater",
+      "shortFormattedAddress": "1723 25th St, Sacramento",
+      "reviews": [
+        {
+          "name": "places/ChIJI2QGK-nQmoARNsJ8hNugyOE/reviews/Ci9DQUlRQUNvZENodHljRjlvT21wSldtSnJRbE13U0dWbFEzZDNhbGt6WHpkMlRGRRAB",
+          "relativePublishTimeDescription": "7 months ago",
+          "rating": 3,
+          "text": {
+            "text": "The production was great, street parking wasn't too bad and there are a few spots (maybe 20?) in front of the theater, but the theater entrance is right by the light rail tracks, so be vigilant and watch your little ones! I marked it 3 stars because of the light rail, also because the theater was so hot! The cast and producers did hand out paper fans, which was a nice touch and for this particular production (Dusty Winds), it felt like you were sweating it out in the old west desert with them! I would go to a fall or a spring production there. Hmm, but maybe not another summer.",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "The production was great, street parking wasn't too bad and there are a few spots (maybe 20?) in front of the theater, but the theater entrance is right by the light rail tracks, so be vigilant and watch your little ones! I marked it 3 stars because of the light rail, also because the theater was so hot! The cast and producers did hand out paper fans, which was a nice touch and for this particular production (Dusty Winds), it felt like you were sweating it out in the old west desert with them! I would go to a fall or a spring production there. Hmm, but maybe not another summer.",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Charlene Spade",
+            "uri": "https://www.google.com/maps/contrib/104758135130682911058/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocJnv9vLGaCh8wfuwuEF3FZu6NUIWopVwKxdH5uRiS1l7bgSTQ=s128-c0x00000000-cc-rp-mo-ba4"
+          },
+          "publishTime": "2025-07-09T03:20:23.689234883Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT21wSldtSnJRbE13U0dWbFEzZDNhbGt6WHpkMlRGRRAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT21wSldtSnJRbE13U0dWbFEzZDNhbGt6WHpkMlRGRRAB!2m1!1s0x809ad0e92b066423:0xe1c8a0db847cc236"
+        },
+        {
+          "name": "places/ChIJI2QGK-nQmoARNsJ8hNugyOE/reviews/ChdDSUhNMG9nS0VJQ0FnSUNsMGVldzRRRRAB",
+          "relativePublishTimeDescription": "2 years ago",
+          "rating": 5,
+          "text": {
+            "text": "Just this past year, I have found out about Resurrection Theater and seen two different shows! I appreciate that this local theater company produces shows that are really thought provoking, powerful, and engaging. Every show I’ve seen has had talented casts and crew, creative sets, and very welcoming family vibe. A great date night out! Definitely check out their upcoming shows. Wherever they are producing it’s always a great time! Just bring a blanket/jacket or a cooling fan based on the time of year!",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Just this past year, I have found out about Resurrection Theater and seen two different shows! I appreciate that this local theater company produces shows that are really thought provoking, powerful, and engaging. Every show I’ve seen has had talented casts and crew, creative sets, and very welcoming family vibe. A great date night out! Definitely check out their upcoming shows. Wherever they are producing it’s always a great time! Just bring a blanket/jacket or a cooling fan based on the time of year!",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Rachel Marks",
+            "uri": "https://www.google.com/maps/contrib/117421228631325750627/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocJqSvgAF8Q5RkJGzEhMUIOb8HKMKG3i6xk395bTLnnjtQG2Qg=s128-c0x00000000-cc-rp-mo-ba2"
+          },
+          "publishTime": "2023-11-20T20:12:45.731777Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUNsMGVldzRRRRAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUNsMGVldzRRRRAB!2m1!1s0x809ad0e92b066423:0xe1c8a0db847cc236"
+        },
+        {
+          "name": "places/ChIJI2QGK-nQmoARNsJ8hNugyOE/reviews/ChZDSUhNMG9nS0VJQ0FnSURodWNfWkx3EAE",
+          "relativePublishTimeDescription": "2 years ago",
+          "rating": 5,
+          "text": {
+            "text": "Fantastic- great acting, thought-provoking play, intimate setting. In short, everything there is too love about live local theatre! I'm so glad we decided to mix it up and went to see a play on a Saturday night. 😍",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Fantastic- great acting, thought-provoking play, intimate setting. In short, everything there is too love about live local theatre! I'm so glad we decided to mix it up and went to see a play on a Saturday night. 😍",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Susan D",
+            "uri": "https://www.google.com/maps/contrib/103429656440978349486/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU9y70hGClCIe8DfdSgIK-qMt9FioVKj_uddbW-BZd1p_af6_GP=s128-c0x00000000-cc-rp-mo-ba3"
+          },
+          "publishTime": "2023-03-13T00:04:48.674409Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSURodWNfWkx3EAE&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURodWNfWkx3EAE!2m1!1s0x809ad0e92b066423:0xe1c8a0db847cc236"
+        },
+        {
+          "name": "places/ChIJI2QGK-nQmoARNsJ8hNugyOE/reviews/ChZDSUhNMG9nS0VJQ0FnSUR3M1BfTFVnEAE",
+          "relativePublishTimeDescription": "7 years ago",
+          "rating": 5,
+          "text": {
+            "text": "Very nice space in which you can form a connection with the characters. If you have not been to a small play I would really encourage you to go. It is such a great experience, and you will not be disappointed!",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Very nice space in which you can form a connection with the characters. If you have not been to a small play I would really encourage you to go. It is such a great experience, and you will not be disappointed!",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Jimmy Ross",
+            "uri": "https://www.google.com/maps/contrib/115786157716829611038/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjX0v4DTVq5nsmDSHlnTU9TZfE7U7C3q_GgrzFdSqMyOJZ5I3dVk=s128-c0x00000000-cc-rp-mo-ba2"
+          },
+          "publishTime": "2018-10-26T05:56:24.125085172Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUR3M1BfTFVnEAE&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUR3M1BfTFVnEAE!2m1!1s0x809ad0e92b066423:0xe1c8a0db847cc236"
+        },
+        {
+          "name": "places/ChIJI2QGK-nQmoARNsJ8hNugyOE/reviews/ChdDSUhNMG9nS0VJQ0FnSUNJZ3AtNWhRRRAB",
+          "relativePublishTimeDescription": "7 years ago",
+          "rating": 5,
+          "text": {
+            "text": "Absolutely adorable black box theatre! Saw Frankenstein tonight, will return to see The Guardians in January.",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Absolutely adorable black box theatre! Saw Frankenstein tonight, will return to see The Guardians in January.",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Jesse",
+            "uri": "https://www.google.com/maps/contrib/103812287963872031038/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUQ65P3dr0gXyoR1h_x5Cw8XVRjTtz5ODasNI14otV3b00SgodZ=s128-c0x00000000-cc-rp-mo-ba4"
+          },
+          "publishTime": "2018-11-03T06:19:25.200477130Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUNJZ3AtNWhRRRAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUNJZ3AtNWhRRRAB!2m1!1s0x809ad0e92b066423:0xe1c8a0db847cc236"
+        }
+      ],
+      "photos": [
+        {
+          "name": "places/ChIJI2QGK-nQmoARNsJ8hNugyOE/photos/ATCDNfUumnfA-X4XkHb0I79ubyX2vK-rtGYaTJesF1-qN5w9z_ZVhh8U9jai6KUwurH4rx-2Kc43v75X7dhp3Los5j4nCyx36kMLrmK13EuqNM5SDNs9wDPqu1TW65QGy7fHRNxL9IAeUqq6TI-XWR9GMeQHDkINb0_md__htoCPkxODHNL8_g2KZ59VGPSuWUoYPawrl1amsh_KSNv-IZrxbGacBtmmmlO0_g793QaiorKYbG3eQoomD847kIPbsXAUdvgxRJ27wYuE10fYe_17IiijbJKPjTnvQs-LuadowUHuZaR1KL82WgbWRvLoPgK_iHD1164AXiObWwU2eb_SIgblhtEq28j22w_DgRItbZn-_qnHx4upAK_DnMyTzlJhayBSkAoigUXZY09_CpXnzw2VHH-nEfhsQOKFyE_eCpij138",
+          "widthPx": 3840,
+          "heightPx": 2160,
+          "authorAttributions": [
+            {
+              "displayName": "Rue Mara",
+              "uri": "https://maps.google.com/maps/contrib/106821906951166821203",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU8HIYBnwH8ZKWEVzTooGO5t2_JR6u4hWAkojVUdQKa45R7_z75=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgIC42sTTyAE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgIC42sTTyAE!2e10!4m2!3m1!1s0x809ad0e92b066423:0xe1c8a0db847cc236"
+        },
+        {
+          "name": "places/ChIJI2QGK-nQmoARNsJ8hNugyOE/photos/ATCDNfVdULzR6mC4HGXo_YL9Zf1E6qeeBdlKcd-UA7RAxY_T-8qXAS54dxZdcdG1Ngt6iiBsK60wTYGoMtXAXT0o1Sk1wu2iMsNBUZIp8g1x_SG2uzx2apm7t3XqHwx_eNhk76xpRoacnz555yeGpHmL5BsH-9L-1hozhC8t3CdSP6WT3xID2UdN2lnH1vbg7nMZPrNMWqQv74yQFTN_ndJq0aGwEQFsB4z_UYkqcgLEFPIV4g-lBfehU2tviEPF04WHuePtgdedEe9DXq7-t8yjTybGAyiC5WAxX5lQy2kspJahFg",
+          "widthPx": 1800,
+          "heightPx": 1200,
+          "authorAttributions": [
+            {
+              "displayName": "Resurrection Theatre",
+              "uri": "https://maps.google.com/maps/contrib/104418019678359945706",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU35XslDlnzhuuWJJ28OcaXTuHPqYndXMgfKRrFsL3zSiatw4Y=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sAF1QipPfGGqXYs9gZz5YgHZMy8SMCM-H4pc_HxpuszC8&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipPfGGqXYs9gZz5YgHZMy8SMCM-H4pc_HxpuszC8!2e10!4m2!3m1!1s0x809ad0e92b066423:0xe1c8a0db847cc236"
+        },
+        {
+          "name": "places/ChIJI2QGK-nQmoARNsJ8hNugyOE/photos/ATCDNfUK-8vNpPB7mJ9iHvQ7KsDiUje54eRvCkM58v5TfAZH22qCUnICG2-tuFYpNaL2-ijsnpE3Hfh0A6TRrYErS2mYIOPPRepawNSJbncRMWMBTQZXk4aCbKij5ybTRC601HKCU-PYPI8twoHRcRhsnHz5gbkk5pCoJmTkXIaQkGetPUH6BGBfO5_O50Uy3NgXcuslDFEnsgA5IuEf1lIoZY0_VeCnhC2Av2W2aeeiucgs9fVkE8bgKsyt2N45zeFGdOiYooXw78mIQ4dxivss9HNHM2jAXJb0iAgsEzxM4ksUdQ",
+          "widthPx": 810,
+          "heightPx": 450,
+          "authorAttributions": [
+            {
+              "displayName": "Resurrection Theatre",
+              "uri": "https://maps.google.com/maps/contrib/104418019678359945706",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU35XslDlnzhuuWJJ28OcaXTuHPqYndXMgfKRrFsL3zSiatw4Y=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sAF1QipP_fa5qUmSRpEOi8e7UbTrdYa1UT5h8K1VLhv92&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipP_fa5qUmSRpEOi8e7UbTrdYa1UT5h8K1VLhv92!2e10!4m2!3m1!1s0x809ad0e92b066423:0xe1c8a0db847cc236"
+        }
+      ],
+      "restroom": true,
+      "paymentOptions": {
+        "acceptsCreditCards": true,
+        "acceptsDebitCards": true,
+        "acceptsCashOnly": false,
+        "acceptsNfc": true
+      },
+      "accessibilityOptions": {
+        "wheelchairAccessibleParking": true,
+        "wheelchairAccessibleEntrance": true,
+        "wheelchairAccessibleRestroom": true
+      },
+      "containingPlaces": [
+        {
+          "name": "places/ChIJU0Zr1O7QmoARL6CfOMYnonk",
+          "id": "ChIJU0Zr1O7QmoARL6CfOMYnonk"
+        }
+      ],
+      "addressDescriptor": {
+        "landmarks": [
+          {
+            "name": "places/ChIJQ5TS_DTZmoARWz40d0DhLvk",
+            "placeId": "ChIJQ5TS_DTZmoARWz40d0DhLvk",
+            "displayName": {
+              "text": "Futures Explored, Inc",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "point_of_interest"
+            ],
+            "straightLineDistanceMeters": 54.159092,
+            "travelDistanceMeters": 227.15474
+          },
+          {
+            "name": "places/ChIJU0Zr1O7QmoARL6CfOMYnonk",
+            "placeId": "ChIJU0Zr1O7QmoARL6CfOMYnonk",
+            "displayName": {
+              "text": "The Wilkerson Theater",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "point_of_interest"
+            ],
+            "spatialRelationship": "BESIDE",
+            "straightLineDistanceMeters": 18.686989,
+            "travelDistanceMeters": 116.781586
+          },
+          {
+            "name": "places/ChIJ5XxLL-nQmoARqOkp0NsIOXQ",
+            "placeId": "ChIJ5XxLL-nQmoARqOkp0NsIOXQ",
+            "displayName": {
+              "text": "California Stage Co./25 Arts Center",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "point_of_interest"
+            ],
+            "spatialRelationship": "ACROSS_THE_ROAD",
+            "straightLineDistanceMeters": 28.675962,
+            "travelDistanceMeters": 18.626602
+          },
+          {
+            "name": "places/ChIJQ8ElxOjQmoARFK2SuPaaAF0",
+            "placeId": "ChIJQ8ElxOjQmoARFK2SuPaaAF0",
+            "displayName": {
+              "text": "California Conservation Corps",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "local_government_office",
+              "point_of_interest"
+            ],
+            "straightLineDistanceMeters": 115.77561,
+            "travelDistanceMeters": 194.70184
+          },
+          {
+            "name": "places/ChIJ5XxLL-nQmoARtbCj5afQaWU",
+            "placeId": "ChIJ5XxLL-nQmoARtbCj5afQaWU",
+            "displayName": {
+              "text": "Actor's Workshop Of Sacramento",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "point_of_interest"
+            ],
+            "straightLineDistanceMeters": 29.59259,
+            "travelDistanceMeters": 52.879585
+          }
+        ],
+        "areas": [
+          {
+            "name": "places/ChIJe4GsWMLQmoAR7GlEZyFDMt4",
+            "placeId": "ChIJe4GsWMLQmoAR7GlEZyFDMt4",
+            "displayName": {
+              "text": "Midtown",
+              "languageCode": "en"
+            },
+            "containment": "OUTSKIRTS"
+          },
+          {
+            "name": "places/ChIJORZyzuXQmoARLBEEk2qpQRM",
+            "placeId": "ChIJORZyzuXQmoARLBEEk2qpQRM",
+            "displayName": {
+              "text": "Poverty Ridge",
+              "languageCode": "en"
+            },
+            "containment": "NEAR"
+          },
+          {
+            "name": "places/ChIJk90siOXQmoARPkAocZEPXKY",
+            "placeId": "ChIJk90siOXQmoARPkAocZEPXKY",
+            "displayName": {
+              "text": "Newton Booth",
+              "languageCode": "en"
+            },
+            "containment": "NEAR"
+          }
+        ]
+      },
+      "googleMapsLinks": {
+        "directionsUri": "https://www.google.com/maps/dir//''/data=!4m7!4m6!1m1!4e2!1m2!1m1!1s0x809ad0e92b066423:0xe1c8a0db847cc236!3e0?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "placeUri": "https://maps.google.com/?cid=16269430518556967478&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "writeAReviewUri": "https://www.google.com/maps/place//data=!4m3!3m2!1s0x809ad0e92b066423:0xe1c8a0db847cc236!12e1?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "reviewsUri": "https://www.google.com/maps/place//data=!4m4!3m3!1s0x809ad0e92b066423:0xe1c8a0db847cc236!9m1!1b1?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "photosUri": "https://www.google.com/maps/place//data=!4m3!3m2!1s0x809ad0e92b066423:0xe1c8a0db847cc236!10e5?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA"
+      },
+      "timeZone": {
+        "id": "America/Los_Angeles"
+      },
+      "postalAddress": {
+        "regionCode": "US",
+        "languageCode": "en-US",
+        "postalCode": "95816",
+        "administrativeArea": "California",
+        "locality": "Sacramento",
+        "addressLines": [
+          "1723 25th St"
+        ]
+      },
+      "googleMapsTypeLabel": {
+        "text": "Performing Arts Theater",
+        "languageCode": "en-US"
+      }
+    },
+    {
+      "name": "places/ChIJ9y5bYgDRmoARjtLYE2yH2lU",
+      "id": "ChIJ9y5bYgDRmoARjtLYE2yH2lU",
+      "types": [
+        "art_studio",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "2311 S St, Sacramento, CA 95816, USA",
+      "addressComponents": [
+        {
+          "longText": "2311",
+          "shortText": "2311",
+          "types": [
+            "street_number"
+          ],
+          "languageCode": "en-US"
+        },
+        {
+          "longText": "S Street",
+          "shortText": "S St",
+          "types": [
+            "route"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "Poverty Ridge",
+          "shortText": "Poverty Ridge",
+          "types": [
+            "neighborhood",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "Sacramento",
+          "shortText": "Sacramento",
+          "types": [
+            "locality",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "Sacramento County",
+          "shortText": "Sacramento County",
+          "types": [
+            "administrative_area_level_2",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "California",
+          "shortText": "CA",
+          "types": [
+            "administrative_area_level_1",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "United States",
+          "shortText": "US",
+          "types": [
+            "country",
+            "political"
+          ],
+          "languageCode": "en"
+        },
+        {
+          "longText": "95816",
+          "shortText": "95816",
+          "types": [
+            "postal_code"
+          ],
+          "languageCode": "en-US"
+        }
+      ],
+      "plusCode": {
+        "globalCode": "84CWHG8C+96",
+        "compoundCode": "HG8C+96 Sacramento, CA, USA"
+      },
+      "location": {
+        "latitude": 38.565985,
+        "longitude": -121.479496
+      },
+      "viewport": {
+        "low": {
+          "latitude": 38.5644272697085,
+          "longitude": -121.48094893029149
+        },
+        "high": {
+          "latitude": 38.5671252302915,
+          "longitude": -121.47825096970851
+        }
+      },
+      "googleMapsUri": "https://maps.google.com/?cid=6186405936405992078&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+      "utcOffsetMinutes": -480,
+      "adrFormatAddress": "\u003cspan class=\"street-address\"\u003e2311 S St\u003c/span\u003e, \u003cspan class=\"locality\"\u003eSacramento\u003c/span\u003e, \u003cspan class=\"region\"\u003eCA\u003c/span\u003e \u003cspan class=\"postal-code\"\u003e95816\u003c/span\u003e, \u003cspan class=\"country-name\"\u003eUSA\u003c/span\u003e",
+      "businessStatus": "OPERATIONAL",
+      "iconMaskBaseUri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+      "iconBackgroundColor": "#7B9EB0",
+      "displayName": {
+        "text": "Sunrider Studios",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Art Studio",
+        "languageCode": "en-US"
+      },
+      "primaryType": "art_studio",
+      "shortFormattedAddress": "2311 S St, Sacramento",
+      "photos": [
+        {
+          "name": "places/ChIJ9y5bYgDRmoARjtLYE2yH2lU/photos/ATCDNfVKvClBPBzAz-Mr3PzvyhxUT7UoIkMs__oKvIVd-Bif7UTHupz3uv_qSGKxCE2rXvO8Jjw-D-lIEEOhcvSFGm9Z18IAJb2mo65vh3HiYvMOTTh2EihHg3JoYmqpUMcVUJYy7SQB3HDmOFDor6f48Jfm7hWAyifgK8dPRNLv5il12sDxZsoxkd7iCNGCi_0y10ii6pC1lJYorwgNmv3HIEK21-Gp9ch0tzzsHlt0ZU30A8KkYFCnopXzuVQ5dMJAAZzNeBoBhrgoW4hPzYxEVEjMiGkd3GJWhJsYpHJO_7bG_Prx1aCS6oIkFNknM9vLc0mQVJGdWpGqHo0-OAdTbtKITXLD_SSjBT1vecA03bs4d3FsjGF87H8u9g-d63qRJ6pUT7AcxpS-q3qbG6rCwUdd43KIAAfrrreh45ezu6gE-w",
+          "widthPx": 3024,
+          "heightPx": 4032,
+          "authorAttributions": [
+            {
+              "displayName": "Ashley Tattersall-Diaz",
+              "uri": "https://maps.google.com/maps/contrib/115201649279238299393",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWMevaTgl7kSkx65rPEuVLerY5-LI3nuUrTnRiLs4HqHW8B_7wRcg=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgICtkMjeGA&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICtkMjeGA!2e10!4m2!3m1!1s0x809ad100625b2ef7:0x55da876c13d8d28e"
+        },
+        {
+          "name": "places/ChIJ9y5bYgDRmoARjtLYE2yH2lU/photos/ATCDNfWSA723Sa-KP2hPvIG17xJsf4Ij78mtOkZxbd_tJpjaG3Bg-z6IKu5-LRq3Z16YJ5R2ZDzyymhxHvg2JbNfb2jLv_5CMrlr-YQDGhZsYe6RwwyvcvlC1ng_aDWJ7mEegWnLj31I1VzIEfwo1YUys7IZYgHrOZIPAZcRK7dKY9Z6dfYQ6fXT6GNIyXWv-SeFO_zRVnqsXdodz6BAULVvlF1MCv7dIul_KyWTLu2IMtWU-nTYRqIOL5Oz3gDK6irfP2uUDGRXaDfAgaV0pNhIA_yHy-Zb_U__mONkKq4flN4s7uCL3jx0Ikr8w056AxoZPIJFaF_l1Z5pOMRh_6HDTgAcl7z9tlSEKNcddpwNvsopkpXbjgo4KNk3FsmuS2oRqb0Q9-wpPPkzJdGXgqLDnQ4c5du892qnjrvZp7o1f3TMUSM-",
+          "widthPx": 2168,
+          "heightPx": 2577,
+          "authorAttributions": [
+            {
+              "displayName": "Ashley Tattersall-Diaz",
+              "uri": "https://maps.google.com/maps/contrib/115201649279238299393",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWMevaTgl7kSkx65rPEuVLerY5-LI3nuUrTnRiLs4HqHW8B_7wRcg=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgICtkMjWkgE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICtkMjWkgE!2e10!4m2!3m1!1s0x809ad100625b2ef7:0x55da876c13d8d28e"
+        }
+      ],
+      "accessibilityOptions": {
+        "wheelchairAccessibleParking": true
+      },
+      "addressDescriptor": {
+        "landmarks": [
+          {
+            "name": "places/ChIJVxKzrujQmoAR3qXUxTPtQn4",
+            "placeId": "ChIJVxKzrujQmoAR3qXUxTPtQn4",
+            "displayName": {
+              "text": "The Banyan Tree",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "hair_care",
+              "point_of_interest"
+            ],
+            "spatialRelationship": "BESIDE",
+            "straightLineDistanceMeters": 29.848852,
+            "travelDistanceMeters": 0.002571106
+          },
+          {
+            "name": "places/ChIJQ5TS_DTZmoARWz40d0DhLvk",
+            "placeId": "ChIJQ5TS_DTZmoARWz40d0DhLvk",
+            "displayName": {
+              "text": "Futures Explored, Inc",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "point_of_interest"
+            ],
+            "straightLineDistanceMeters": 328.2744,
+            "travelDistanceMeters": 489.38245
+          },
+          {
+            "name": "places/ChIJC-LRoujQmoARPP8RWiX_QUQ",
+            "placeId": "ChIJC-LRoujQmoARPP8RWiX_QUQ",
+            "displayName": {
+              "text": "23rd Street Station (WB)",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "light_rail_station",
+              "point_of_interest",
+              "transit_station"
+            ],
+            "straightLineDistanceMeters": 126.04628,
+            "travelDistanceMeters": 256.83627
+          },
+          {
+            "name": "places/ChIJQ8ElxOjQmoARFK2SuPaaAF0",
+            "placeId": "ChIJQ8ElxOjQmoARFK2SuPaaAF0",
+            "displayName": {
+              "text": "California Conservation Corps",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "local_government_office",
+              "point_of_interest"
+            ],
+            "straightLineDistanceMeters": 199.66867,
+            "travelDistanceMeters": 238.04597
+          },
+          {
+            "name": "places/ChIJ2zUfuOjQmoARtgCWps7lbGY",
+            "placeId": "ChIJ2zUfuOjQmoARtgCWps7lbGY",
+            "displayName": {
+              "text": "23rd Street Station",
+              "languageCode": "en"
+            },
+            "types": [
+              "establishment",
+              "point_of_interest",
+              "transit_station"
+            ],
+            "spatialRelationship": "AROUND_THE_CORNER",
+            "straightLineDistanceMeters": 132.8403,
+            "travelDistanceMeters": 195.66066
+          }
+        ],
+        "areas": [
+          {
+            "name": "places/ChIJORZyzuXQmoARLBEEk2qpQRM",
+            "placeId": "ChIJORZyzuXQmoARLBEEk2qpQRM",
+            "displayName": {
+              "text": "Poverty Ridge",
+              "languageCode": "en"
+            },
+            "containment": "WITHIN"
+          },
+          {
+            "name": "places/ChIJk90siOXQmoARPkAocZEPXKY",
+            "placeId": "ChIJk90siOXQmoARPkAocZEPXKY",
+            "displayName": {
+              "text": "Newton Booth",
+              "languageCode": "en"
+            },
+            "containment": "WITHIN"
+          }
+        ]
+      },
+      "googleMapsLinks": {
+        "directionsUri": "https://www.google.com/maps/dir//''/data=!4m7!4m6!1m1!4e2!1m2!1m1!1s0x809ad100625b2ef7:0x55da876c13d8d28e!3e0?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "placeUri": "https://maps.google.com/?cid=6186405936405992078&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "writeAReviewUri": "https://www.google.com/maps/place//data=!4m3!3m2!1s0x809ad100625b2ef7:0x55da876c13d8d28e!12e1?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "reviewsUri": "https://www.google.com/maps/place//data=!4m4!3m3!1s0x809ad100625b2ef7:0x55da876c13d8d28e!9m1!1b1?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA",
+        "photosUri": "https://www.google.com/maps/place//data=!4m3!3m2!1s0x809ad100625b2ef7:0x55da876c13d8d28e!10e5?g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAEgAA"
+      },
+      "timeZone": {
+        "id": "America/Los_Angeles"
+      },
+      "postalAddress": {
+        "regionCode": "US",
+        "languageCode": "en-US",
+        "postalCode": "95816",
+        "administrativeArea": "California",
+        "locality": "Sacramento",
+        "addressLines": [
+          "2311 S St"
+        ]
+      },
+      "googleMapsTypeLabel": {
+        "text": "Art Studio",
+        "languageCode": "en-US"
+      }
+    }
+  ]
+}
+]

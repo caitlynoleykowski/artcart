@@ -17,8 +17,8 @@
 package com.coco0o0o.artcart.core.data.test.repository
 
 import com.coco0o0o.artcart.core.data.Synchronizer
-import com.coco0o0o.artcart.core.data.repository.TopicsRepository
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.data.repository.LocationsRepository
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.network.Dispatcher
 import com.coco0o0o.artcart.core.network.NiaDispatchers.IO
 import com.coco0o0o.artcart.core.network.demo.DemoNiaNetworkDataSource
@@ -30,20 +30,20 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 /**
- * Fake implementation of the [TopicsRepository] that retrieves the topics from a JSON String, and
+ * Fake implementation of the [LocationsRepository] that retrieves the topics from a JSON String, and
  * uses a local DataStore instance to save and retrieve followed topic ids.
  *
  * This allows us to run the app with fake data, without needing an internet connection or working
  * backend.
  */
-internal class FakeTopicsRepository @Inject constructor(
+internal class FakeLocationsRepository @Inject constructor(
     @Dispatcher(IO) private val ioDispatcher: CoroutineDispatcher,
     private val datasource: DemoNiaNetworkDataSource,
-) : TopicsRepository {
-    override fun getTopics(): Flow<List<Topic>> = flow {
+) : LocationsRepository {
+    override fun getLocations(): Flow<List<ArtLocation>> = flow {
         emit(
             datasource.getTopics().map {
-                Topic(
+                ArtLocation(
                     id = it.id,
                     name = it.name,
                     shortDescription = it.shortDescription,
@@ -55,7 +55,7 @@ internal class FakeTopicsRepository @Inject constructor(
         )
     }.flowOn(ioDispatcher)
 
-    override fun getTopic(id: String): Flow<Topic> = getTopics()
+    override fun getLocation(id: String): Flow<ArtLocation> = getLocations()
         .map { it.first { topic -> topic.id == id } }
 
     override suspend fun syncWith(synchronizer: Synchronizer) = true

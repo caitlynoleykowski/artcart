@@ -20,11 +20,13 @@ import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.coco0o0o.artcart.core.database.dao.LocationDao
 import com.coco0o0o.artcart.core.database.dao.NewsResourceDao
 import com.coco0o0o.artcart.core.database.dao.NewsResourceFtsDao
 import com.coco0o0o.artcart.core.database.dao.RecentSearchQueryDao
 import com.coco0o0o.artcart.core.database.dao.TopicDao
 import com.coco0o0o.artcart.core.database.dao.TopicFtsDao
+import com.coco0o0o.artcart.core.database.model.LocationEntity
 import com.coco0o0o.artcart.core.database.model.NewsResourceEntity
 import com.coco0o0o.artcart.core.database.model.NewsResourceFtsEntity
 import com.coco0o0o.artcart.core.database.model.NewsResourceTopicCrossRef
@@ -35,6 +37,7 @@ import com.coco0o0o.artcart.core.database.util.InstantConverter
 
 @Database(
     entities = [
+        LocationEntity::class,
         NewsResourceEntity::class,
         NewsResourceTopicCrossRef::class,
         NewsResourceFtsEntity::class,
@@ -56,4 +59,6 @@ internal abstract class NiaDatabase : RoomDatabase() {
     abstract fun topicFtsDao(): TopicFtsDao
     abstract fun newsResourceFtsDao(): NewsResourceFtsDao
     abstract fun recentSearchQueryDao(): RecentSearchQueryDao
+
+    abstract fun locationDao(): LocationDao
 }

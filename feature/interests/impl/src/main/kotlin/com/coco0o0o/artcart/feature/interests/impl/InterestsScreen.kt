@@ -28,7 +28,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.coco0o0o.artcart.core.designsystem.component.NiaBackground
 import com.coco0o0o.artcart.core.designsystem.component.NiaLoadingWheel
 import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
-import com.coco0o0o.artcart.core.model.data.FollowableTopic
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.ui.DevicePreviews
 import com.coco0o0o.artcart.core.ui.FollowableTopicPreviewParameterProvider
 import com.coco0o0o.artcart.core.ui.TrackScreenViewEvent
@@ -48,7 +48,7 @@ fun InterestsScreen(
         followTopic = viewModel::followTopic,
         onTopicClick = {
             // TODO: this violates SSOT, events should go through the ViewModel
-            viewModel.onTopicClick(it)
+            //viewModel.onTopicClick(it)
             onTopicClick(it)
         },
         shouldHighlightSelectedTopic = shouldHighlightSelectedTopic,
@@ -75,11 +75,11 @@ internal fun InterestsScreen(
                 )
 
             is ArtNearbyUiState.ArtLocations ->
-                TopicsTabContent(
-                    topics = uiState.topics,
+                ArtLocationTabContent(
+                    locations = uiState.artLocations,
                     onTopicClick = onTopicClick,
                     onFollowButtonClick = followTopic,
-                    selectedTopicId = uiState.selectedTopicId,
+                    selectedTopicId = null, // uiState.selectedTopicId,
                     shouldHighlightSelectedTopic = shouldHighlightSelectedTopic,
                 )
 
@@ -98,14 +98,13 @@ private fun InterestsEmptyScreen() {
 @Composable
 fun InterestsScreenPopulated(
     @PreviewParameter(FollowableTopicPreviewParameterProvider::class)
-    followableTopics: List<FollowableTopic>,
+    followableArtLocations: List<ArtLocation>,
 ) {
     NiaTheme {
         NiaBackground {
             InterestsScreen(
                 uiState = ArtNearbyUiState.ArtLocations(
-                    selectedTopicId = null,
-                    topics = followableTopics,
+                    artLocations = followableArtLocations,
                 ),
                 followTopic = { _, _ -> },
                 onTopicClick = {},

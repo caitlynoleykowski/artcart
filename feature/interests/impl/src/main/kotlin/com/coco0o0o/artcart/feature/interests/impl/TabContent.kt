@@ -38,12 +38,12 @@ import androidx.compose.ui.unit.dp
 import com.coco0o0o.artcart.core.designsystem.component.scrollbar.DraggableScrollbar
 import com.coco0o0o.artcart.core.designsystem.component.scrollbar.rememberDraggableScroller
 import com.coco0o0o.artcart.core.designsystem.component.scrollbar.scrollbarState
-import com.coco0o0o.artcart.core.model.data.FollowableTopic
+import com.coco0o0o.artcart.core.model.data.FollowableArtLocation
 import com.coco0o0o.artcart.core.ui.InterestsItem
 
 @Composable
 fun TopicsTabContent(
-    topics: List<FollowableTopic>,
+    topics: List<FollowableArtLocation>,
     onTopicClick: (String) -> Unit,
     onFollowButtonClick: (String, Boolean) -> Unit,
     modifier: Modifier = Modifier,
@@ -64,14 +64,14 @@ fun TopicsTabContent(
             state = scrollableState,
         ) {
             topics.forEach { followableTopic ->
-                val topicId = followableTopic.topic.id
+                val topicId = followableTopic.artLocation.id
                 item(key = topicId) {
                     val isSelected = shouldHighlightSelectedTopic && topicId == selectedTopicId
                     InterestsItem(
-                        name = followableTopic.topic.name,
-                        following = followableTopic.isFollowed,
-                        description = followableTopic.topic.shortDescription,
-                        topicImageUrl = followableTopic.topic.imageUrl,
+                        name = followableTopic.artLocation.name,
+                        following = followableTopic.isFavorited,
+                        description = "", // followableTopic.artLocation.shortDescription,
+                        topicImageUrl = "", // followableTopic.artLocation.imageUrl,
                         onClick = { onTopicClick(topicId) },
                         onFollowButtonClick = { onFollowButtonClick(topicId, it) },
                         isSelected = isSelected,

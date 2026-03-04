@@ -16,6 +16,7 @@
 
 package com.coco0o0o.artcart.feature.search.impl
 
+import com.coco0o0o.artcart.core.model.data.FollowableArtLocation
 import com.coco0o0o.artcart.core.model.data.FollowableTopic
 import com.coco0o0o.artcart.core.model.data.UserNewsResource
 

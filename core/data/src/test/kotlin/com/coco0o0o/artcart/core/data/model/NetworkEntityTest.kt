@@ -17,10 +17,10 @@
 package com.coco0o0o.artcart.core.data.model
 
 import com.coco0o0o.artcart.core.model.data.NewsResource
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.network.model.NetworkNewsResource
 import com.coco0o0o.artcart.core.network.model.NetworkTopic
-import com.coco0o0o.artcart.core.network.model.asExternalModel
+import com.coco0o0o.artcart.core.network.model.toDomainModel
 import kotlinx.datetime.Instant
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -81,7 +81,7 @@ class NetworkEntityTest {
             imageUrl = "imageUrl",
         )
 
-        val expected = Topic(
+        val expected = ArtLocation(
             id = "0",
             name = "Test",
             shortDescription = "short description",
@@ -90,7 +90,7 @@ class NetworkEntityTest {
             imageUrl = "imageUrl",
         )
 
-        assertEquals(expected, networkTopic.asExternalModel())
+        assertEquals(expected, networkTopic.toDomainModel())
     }
 
     @Test
@@ -133,7 +133,7 @@ class NetworkEntityTest {
             headerImageUrl = "headerImageUrl",
             publishDate = Instant.fromEpochMilliseconds(1),
             type = "Article 📚",
-            topics = networkTopics.map(NetworkTopic::asExternalModel),
+            artLocations = networkTopics.map(NetworkTopic::toDomainModel),
         )
         assertEquals(expected, networkNewsResource.asExternalModel(networkTopics))
     }

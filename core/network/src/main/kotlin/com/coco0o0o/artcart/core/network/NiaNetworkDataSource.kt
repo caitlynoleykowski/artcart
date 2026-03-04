@@ -17,13 +17,17 @@
 package com.coco0o0o.artcart.core.network
 
 import com.coco0o0o.artcart.core.network.model.NetworkChangeList
+import com.coco0o0o.artcart.core.network.model.NetworkLocation
 import com.coco0o0o.artcart.core.network.model.NetworkNewsResource
+import com.coco0o0o.artcart.core.network.model.NetworkPlaces
 import com.coco0o0o.artcart.core.network.model.NetworkTopic
 
 /**
  * Interface representing network calls to the NIA backend
  */
 interface NiaNetworkDataSource {
+    suspend fun getLocations(latitude: Double, longitude: Double): NetworkPlaces
+
     suspend fun getTopics(ids: List<String>? = null): List<NetworkTopic>
 
     suspend fun getNewsResources(ids: List<String>? = null): List<NetworkNewsResource>

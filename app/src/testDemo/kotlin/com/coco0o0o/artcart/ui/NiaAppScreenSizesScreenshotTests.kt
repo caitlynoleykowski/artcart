@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.window.core.layout.WindowSizeClass
 import com.github.takahirom.roborazzi.captureRoboImage
-import com.coco0o0o.artcart.core.data.repository.TopicsRepository
+import com.coco0o0o.artcart.core.data.repository.LocationsRepository
 import com.coco0o0o.artcart.core.data.repository.UserDataRepository
 import com.coco0o0o.artcart.core.data.repository.UserNewsResourceRepository
 import com.coco0o0o.artcart.core.data.util.NetworkMonitor
@@ -87,7 +87,7 @@ class NiaAppScreenSizesScreenshotTests {
     lateinit var userDataRepository: UserDataRepository
 
     @Inject
-    lateinit var topicsRepository: TopicsRepository
+    lateinit var locationsRepository: LocationsRepository
 
     @Inject
     lateinit var userNewsResourceRepository: UserNewsResourceRepository
@@ -101,7 +101,7 @@ class NiaAppScreenSizesScreenshotTests {
             userDataRepository.setShouldHideOnboarding(true)
 
             userDataRepository.setFollowedTopicIds(
-                setOf(topicsRepository.getTopics().first().first().id),
+                setOf(locationsRepository.getLocations().first().first().id),
             )
         }
     }

@@ -20,10 +20,12 @@ import com.coco0o0o.artcart.core.data.repository.DefaultRecentSearchRepository
 import com.coco0o0o.artcart.core.data.repository.DefaultSearchContentsRepository
 import com.coco0o0o.artcart.core.data.repository.NewsRepository
 import com.coco0o0o.artcart.core.data.repository.OfflineFirstNewsRepository
-import com.coco0o0o.artcart.core.data.repository.OfflineFirstTopicsRepository
+import com.coco0o0o.artcart.core.data.repository.OfflineFirstLocationsRepository
 import com.coco0o0o.artcart.core.data.repository.OfflineFirstUserDataRepository
 import com.coco0o0o.artcart.core.data.repository.RecentSearchRepository
 import com.coco0o0o.artcart.core.data.repository.SearchContentsRepository
+import com.coco0o0o.artcart.core.data.repository.LocationsRepository
+import com.coco0o0o.artcart.core.data.repository.OfflineFirstTopicsRepository
 import com.coco0o0o.artcart.core.data.repository.TopicsRepository
 import com.coco0o0o.artcart.core.data.repository.UserDataRepository
 import com.coco0o0o.artcart.core.data.util.ConnectivityManagerNetworkMonitor
@@ -38,6 +40,11 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class DataModule {
+
+    @Binds
+    internal abstract fun bindsLocationRepository(
+        topicsRepository: OfflineFirstLocationsRepository,
+    ): LocationsRepository
 
     @Binds
     internal abstract fun bindsTopicRepository(

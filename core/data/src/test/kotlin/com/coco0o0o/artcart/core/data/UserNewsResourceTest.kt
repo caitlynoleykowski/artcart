@@ -17,10 +17,10 @@
 package com.coco0o0o.artcart.core.data
 
 import com.coco0o0o.artcart.core.model.data.DarkThemeConfig.FOLLOW_SYSTEM
-import com.coco0o0o.artcart.core.model.data.FollowableTopic
+import com.coco0o0o.artcart.core.model.data.FollowableArtLocation
 import com.coco0o0o.artcart.core.model.data.NewsResource
 import com.coco0o0o.artcart.core.model.data.ThemeBrand.DEFAULT
-import com.coco0o0o.artcart.core.model.data.Topic
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.model.data.UserData
 import com.coco0o0o.artcart.core.model.data.UserNewsResource
 import kotlinx.datetime.Clock
@@ -45,8 +45,8 @@ class UserNewsResourceTest {
             headerImageUrl = "Test image URL",
             publishDate = Clock.System.now(),
             type = "Article 📚",
-            topics = listOf(
-                Topic(
+            artLocations = listOf(
+                ArtLocation(
                     id = "T1",
                     name = "Topic 1",
                     shortDescription = "Topic 1 short description",
@@ -54,7 +54,7 @@ class UserNewsResourceTest {
                     url = "Topic 1 URL",
                     imageUrl = "Topic 1 image URL",
                 ),
-                Topic(
+                ArtLocation(
                     id = "T2",
                     name = "Topic 2",
                     shortDescription = "Topic 2 short description",
@@ -86,14 +86,14 @@ class UserNewsResourceTest {
         assertEquals(newsResource1.publishDate, userNewsResource.publishDate)
 
         // Check that each Topic has been converted to a FollowedTopic correctly.
-        assertEquals(newsResource1.topics.size, userNewsResource.followableTopics.size)
-        for (topic in newsResource1.topics) {
+        assertEquals(newsResource1.artLocations.size, userNewsResource.followableArtLocations.size)
+        for (topic in newsResource1.artLocations) {
             // Construct the expected FollowableTopic.
-            val followableTopic = FollowableTopic(
-                topic = topic,
-                isFollowed = topic.id in userData.followedTopics,
+            val followableArtLocation = FollowableArtLocation(
+                artLocation = topic,
+                isFavorited = topic.id in userData.followedTopics,
             )
-            assertTrue(userNewsResource.followableTopics.contains(followableTopic))
+            assertTrue(userNewsResource.followableArtLocations.contains(followableArtLocation))
         }
 
         // Check that the saved flag is set correctly.
