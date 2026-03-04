@@ -22,6 +22,7 @@ import com.coco0o0o.artcart.core.database.model.asDomainModel
 import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.network.NiaNetworkDataSource
 import com.coco0o0o.artcart.core.network.model.NetworkLocation
+import com.coco0o0o.artcart.core.network.model.toPhotoUrl
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
@@ -66,6 +67,8 @@ internal class OfflineFirstLocationsRepository @Inject constructor(
             rating = rating,
             address = formattedAddress,
             url = "",
+            photoUrl = photos.firstOrNull()?.name?.toPhotoUrl() ?: "",
+            primaryTypeName = primaryTypeDisplayName.text,
             isFavorite = isFavorite,
         )
     }

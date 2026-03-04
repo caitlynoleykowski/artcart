@@ -25,5 +25,7 @@ data class ArtLocation(
     val name: String = "",
     val address: String = "",
     val url: String = "",
+    val photoUrl: String = "",
+    val primaryTypeName: String = "",
     val isFavorite: Boolean = false,
 )

@@ -30,6 +30,8 @@ data class LocationEntity(
     val rating: Float = 0.0f,
     val address: String = "",
     val url: String = "",
+    val photoUrl: String = "",
+    val primaryTypeName: String = "",
     val isFavorite: Boolean = false,
 )
 
@@ -39,5 +41,7 @@ fun LocationEntity.asDomainModel() = ArtLocation(
     rating = rating,
     address = address,
     url = url,
+    photoUrl = photoUrl,
+    primaryTypeName = primaryTypeName,
     isFavorite = isFavorite,
 )

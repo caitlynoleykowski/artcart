@@ -41,6 +41,8 @@ import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
 
+const val API_KEY = "AIzaSyAqjWW92spl7JH6ah_u9yGiFAaLSBUuBos"
+
 /**
  * Retrofit API declaration for NIA Network API
  */
@@ -97,7 +99,7 @@ private interface RetrofitNiaNetworkApi {
      */
     @Headers(
         "X-Goog-FieldMask: *",
-        "X-Goog-Api-Key: AIzaSyAqjWW92spl7JH6ah_u9yGiFAaLSBUuBos"
+        "X-Goog-Api-Key: $API_KEY"
     )
     @POST(value = "v1/places:searchNearby")
     suspend fun getLocations(

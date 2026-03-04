@@ -18,6 +18,8 @@ package com.coco0o0o.artcart.core.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -50,6 +52,7 @@ fun InterestsItem(
     modifier: Modifier = Modifier,
     iconModifier: Modifier = Modifier,
     description: String = "",
+    secondaryDescription: String = "",
     isSelected: Boolean = false,
 ) {
     ListItem(
@@ -60,7 +63,10 @@ fun InterestsItem(
             Text(text = name)
         },
         supportingContent = {
-            Text(text = description)
+            Column {
+                Text(text = description)
+                Text(text = secondaryDescription)
+            }
         },
         trailingContent = {
             NiaIconToggleButton(
@@ -127,6 +133,7 @@ private fun InterestsCardPreview() {
             InterestsItem(
                 name = "Compose",
                 description = "Description",
+                secondaryDescription = "Secondary description",
                 following = false,
                 topicImageUrl = "",
                 onClick = { },
@@ -144,6 +151,7 @@ private fun InterestsCardLongNamePreview() {
             InterestsItem(
                 name = "This is a very very very very long name",
                 description = "Description",
+                secondaryDescription = "Secondary description",
                 following = true,
                 topicImageUrl = "",
                 onClick = { },
@@ -162,6 +170,7 @@ private fun InterestsCardLongDescriptionPreview() {
                 name = "Compose",
                 description = "This is a very very very very very very very " +
                     "very very very long description",
+                secondaryDescription = "Secondary description",
                 following = false,
                 topicImageUrl = "",
                 onClick = { },
@@ -179,6 +188,7 @@ private fun InterestsCardWithEmptyDescriptionPreview() {
             InterestsItem(
                 name = "Compose",
                 description = "",
+                secondaryDescription = "",
                 following = true,
                 topicImageUrl = "",
                 onClick = { },
@@ -196,6 +206,7 @@ private fun InterestsCardSelectedPreview() {
             InterestsItem(
                 name = "Compose",
                 description = "",
+                secondaryDescription = "",
                 following = true,
                 topicImageUrl = "",
                 onClick = { },
