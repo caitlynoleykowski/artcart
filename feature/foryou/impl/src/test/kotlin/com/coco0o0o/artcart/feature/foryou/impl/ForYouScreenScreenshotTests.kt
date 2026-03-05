@@ -28,8 +28,8 @@ import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
 import com.coco0o0o.artcart.core.testing.util.DefaultTestDevices
 import com.coco0o0o.artcart.core.testing.util.captureForDevice
 import com.coco0o0o.artcart.core.testing.util.captureMultiDevice
-import com.coco0o0o.artcart.core.ui.NewsFeedUiState
-import com.coco0o0o.artcart.core.ui.NewsFeedUiState.Success
+import com.coco0o0o.artcart.core.ui.BookmarksUiState
+import com.coco0o0o.artcart.core.ui.BookmarksUiState.Success
 import com.coco0o0o.artcart.core.ui.UserNewsResourcePreviewParameterProvider
 import com.coco0o0o.artcart.feature.foryou.impl.OnboardingUiState.NotShown
 import com.coco0o0o.artcart.feature.foryou.impl.OnboardingUiState.Shown
@@ -97,7 +97,7 @@ class ForYouScreenScreenshotTests {
                 ForYouScreen(
                     isSyncing = false,
                     onboardingUiState = OnboardingUiState.Loading,
-                    feedState = NewsFeedUiState.Loading,
+                    feedState = BookmarksUiState.Loading,
                     onTopicCheckedChanged = { _, _ -> },
                     saveFollowedTopics = {},
                     onNewsResourcesCheckedChanged = { _, _ -> },

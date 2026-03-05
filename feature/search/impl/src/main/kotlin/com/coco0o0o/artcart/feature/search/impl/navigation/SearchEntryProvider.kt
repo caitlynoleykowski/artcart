@@ -28,7 +28,7 @@ fun EntryProviderScope<NavKey>.searchEntry(navigator: Navigator) {
     entry<SearchNavKey> {
         SearchScreen(
             onBackClick = { navigator.goBack() },
-            onInterestsClick = { navigator.navigate(InterestsNavKey()) },
+            onInterestsClick = { navigator.navigate(InterestsNavKey) },
             onTopicClick = navigator::navigateToTopic,
         )
     }

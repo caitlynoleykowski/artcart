@@ -26,6 +26,7 @@ import com.coco0o0o.artcart.core.network.model.toPhotoUrl
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.transform
 import javax.inject.Inject
 
 /**
@@ -78,15 +79,19 @@ internal class OfflineFirstLocationsRepository @Inject constructor(
             locationEntities.map(LocationEntity::asDomainModel)
         }
 
-    // TODO
-    override fun getLocation(id: String): Flow<ArtLocation> = flowOf(
-                        ArtLocation(
-                            id = "123",
-                            name = "Zigarut",
-                            url = "www.sacramento.com",
-                            rating = 0.0f,
-                            address = "123 T St",
-                            isFavorite = true,
-                        )
-                )
+    override fun getFavoriteLocations(): Flow<List<ArtLocation>> =
+        locationDao.getFavoriteLocationEntitiesFlow().map { locationEntities ->
+            locationEntities.map(LocationEntity::asDomainModel)
+        }
+
+    override suspend fun updateLocationIsFavorite(id: String, isFavorite: Boolean) {
+        locationDao.updateLocationIsFavorite(
+            id = id,
+            isFavorite = isFavorite,
+        )
+    }
+
+    override fun getLocation(id: String): Flow<ArtLocation> {
+        return locationDao.getLocationEntity(id).map(LocationEntity::asDomainModel)
+    }
 }

@@ -29,6 +29,8 @@ import com.coco0o0o.artcart.core.navigation.rememberNavigationState
 import com.coco0o0o.artcart.core.ui.TrackDisposableJank
 import com.coco0o0o.artcart.feature.bookmarks.api.navigation.BookmarksNavKey
 import com.coco0o0o.artcart.feature.foryou.api.navigation.ForYouNavKey
+import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
+import com.coco0o0o.artcart.navigation.INTERESTS
 import com.coco0o0o.artcart.navigation.TOP_LEVEL_NAV_ITEMS
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.SharingStarted
@@ -45,7 +47,7 @@ fun rememberNiaAppState(
     timeZoneMonitor: TimeZoneMonitor,
     coroutineScope: CoroutineScope = rememberCoroutineScope(),
 ): NiaAppState {
-    val navigationState = rememberNavigationState(ForYouNavKey, TOP_LEVEL_NAV_ITEMS.keys)
+    val navigationState = rememberNavigationState(    InterestsNavKey, TOP_LEVEL_NAV_ITEMS.keys)
 
     NavigationTrackingSideEffect(navigationState)
 

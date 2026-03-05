@@ -17,7 +17,6 @@
 package com.coco0o0o.artcart.core.data.repository
 
 import com.coco0o0o.artcart.core.model.data.ArtLocation
-import com.coco0o0o.artcart.core.model.data.FollowableArtLocation
 import kotlinx.coroutines.flow.Flow
 
 interface LocationsRepository { //}: Syncable {
@@ -28,9 +27,19 @@ interface LocationsRepository { //}: Syncable {
     suspend fun refreshLocations(lat: Double, lng: Double)
 
     /**
-     * Gets the available topics as a stream
+     * Gets the last locations as a stream
      */
     fun getLocations(): Flow<List<ArtLocation>>
+
+    /**
+     * Gets the available topics as a stream
+     */
+    fun getFavoriteLocations(): Flow<List<ArtLocation>>
+
+    /**
+     * Marks the item as not favorited
+     */
+    suspend fun updateLocationIsFavorite(id: String, isFavorite: Boolean)
 
     /**
      * Gets data for a specific topic

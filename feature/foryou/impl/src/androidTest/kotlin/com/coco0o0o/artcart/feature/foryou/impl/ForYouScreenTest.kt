@@ -31,7 +31,7 @@ import androidx.compose.ui.test.performScrollToNode
 import com.coco0o0o.artcart.core.rules.GrantPostNotificationsPermissionRule
 import com.coco0o0o.artcart.core.testing.data.followableArtLocationTestData
 import com.coco0o0o.artcart.core.testing.data.userNewsResourcesTestData
-import com.coco0o0o.artcart.core.ui.NewsFeedUiState
+import com.coco0o0o.artcart.core.ui.BookmarksUiState
 import com.coco0o0o.artcart.feature.foryou.api.R
 import org.junit.Rule
 import org.junit.Test
@@ -57,7 +57,7 @@ class ForYouScreenTest {
                 ForYouScreen(
                     isSyncing = false,
                     onboardingUiState = OnboardingUiState.Loading,
-                    feedState = NewsFeedUiState.Loading,
+                    feedState = BookmarksUiState.Loading,
                     deepLinkedUserNewsResource = null,
                     onTopicCheckedChanged = { _, _ -> },
                     onTopicClick = {},
@@ -83,7 +83,7 @@ class ForYouScreenTest {
                 ForYouScreen(
                     isSyncing = true,
                     onboardingUiState = OnboardingUiState.NotShown,
-                    feedState = NewsFeedUiState.Success(emptyList()),
+                    feedState = BookmarksUiState.Success(emptyList()),
                     deepLinkedUserNewsResource = null,
                     onTopicCheckedChanged = { _, _ -> },
                     onTopicClick = {},
@@ -113,7 +113,7 @@ class ForYouScreenTest {
                     onboardingUiState = OnboardingUiState.Shown(
                         topics = testData,
                     ),
-                    feedState = NewsFeedUiState.Success(
+                    feedState = BookmarksUiState.Success(
                         feed = emptyList(),
                     ),
                     deepLinkedUserNewsResource = null,
@@ -160,7 +160,7 @@ class ForYouScreenTest {
                             testTopic.copy(isFavorited = index == 1)
                         },
                     ),
-                    feedState = NewsFeedUiState.Success(
+                    feedState = BookmarksUiState.Success(
                         feed = emptyList(),
                     ),
                     deepLinkedUserNewsResource = null,
@@ -204,7 +204,7 @@ class ForYouScreenTest {
                     OnboardingUiState.Shown(
                         topics = followableArtLocationTestData,
                     ),
-                    feedState = NewsFeedUiState.Loading,
+                    feedState = BookmarksUiState.Loading,
                     deepLinkedUserNewsResource = null,
                     onTopicCheckedChanged = { _, _ -> },
                     onTopicClick = {},
@@ -230,7 +230,7 @@ class ForYouScreenTest {
                 ForYouScreen(
                     isSyncing = false,
                     onboardingUiState = OnboardingUiState.NotShown,
-                    feedState = NewsFeedUiState.Loading,
+                    feedState = BookmarksUiState.Loading,
                     deepLinkedUserNewsResource = null,
                     onTopicCheckedChanged = { _, _ -> },
                     onTopicClick = {},
@@ -255,7 +255,7 @@ class ForYouScreenTest {
             ForYouScreen(
                 isSyncing = false,
                 onboardingUiState = OnboardingUiState.NotShown,
-                feedState = NewsFeedUiState.Success(
+                feedState = BookmarksUiState.Success(
                     feed = userNewsResourcesTestData,
                 ),
                 deepLinkedUserNewsResource = null,

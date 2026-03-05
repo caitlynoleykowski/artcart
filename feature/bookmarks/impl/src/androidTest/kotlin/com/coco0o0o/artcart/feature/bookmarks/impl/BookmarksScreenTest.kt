@@ -35,7 +35,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.testing.TestLifecycleOwner
 import com.coco0o0o.artcart.core.testing.data.userNewsResourcesTestData
-import com.coco0o0o.artcart.core.ui.NewsFeedUiState
+import com.coco0o0o.artcart.core.ui.BookmarksUiState
 import com.coco0o0o.artcart.feature.bookmarks.api.R
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
@@ -55,7 +55,7 @@ class BookmarksScreenTest {
     fun loading_showsLoadingSpinner() {
         composeTestRule.setContent {
             BookmarksScreen(
-                feedState = NewsFeedUiState.Loading,
+                feedState = BookmarksUiState.Loading,
                 onShowSnackbar = { _, _ -> false },
                 removeFromBookmarks = {},
                 onTopicClick = {},
@@ -74,7 +74,7 @@ class BookmarksScreenTest {
     fun feed_whenHasBookmarks_showsBookmarks() {
         composeTestRule.setContent {
             BookmarksScreen(
-                feedState = NewsFeedUiState.Success(
+                feedState = BookmarksUiState.Success(
                     userNewsResourcesTestData.take(2),
                 ),
                 onShowSnackbar = { _, _ -> false },
@@ -115,7 +115,7 @@ class BookmarksScreenTest {
 
         composeTestRule.setContent {
             BookmarksScreen(
-                feedState = NewsFeedUiState.Success(
+                feedState = BookmarksUiState.Success(
                     userNewsResourcesTestData.take(2),
                 ),
                 onShowSnackbar = { _, _ -> false },
@@ -152,7 +152,7 @@ class BookmarksScreenTest {
     fun feed_whenHasNoBookmarks_showsEmptyState() {
         composeTestRule.setContent {
             BookmarksScreen(
-                feedState = NewsFeedUiState.Success(emptyList()),
+                feedState = BookmarksUiState.Success(emptyList()),
                 onShowSnackbar = { _, _ -> false },
                 removeFromBookmarks = {},
                 onTopicClick = {},
@@ -181,7 +181,7 @@ class BookmarksScreenTest {
         composeTestRule.setContent {
             CompositionLocalProvider(LocalLifecycleOwner provides testLifecycleOwner) {
                 BookmarksScreen(
-                    feedState = NewsFeedUiState.Success(emptyList()),
+                    feedState = BookmarksUiState.Success(emptyList()),
                     onShowSnackbar = { _, _ -> false },
                     removeFromBookmarks = {},
                     onTopicClick = {},

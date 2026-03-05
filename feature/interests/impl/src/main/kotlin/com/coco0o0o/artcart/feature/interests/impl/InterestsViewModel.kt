@@ -19,6 +19,7 @@ package com.coco0o0o.artcart.feature.interests.impl
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.coco0o0o.artcart.core.data.repository.LocationsRepository
 import com.coco0o0o.artcart.core.data.repository.UserDataRepository
 import com.coco0o0o.artcart.core.domain.GetFollowableLocationsUseCase
 import com.coco0o0o.artcart.core.domain.RefreshLocationsUseCase
@@ -42,7 +43,8 @@ class InterestsViewModel @AssistedInject constructor(
     private val savedStateHandle: SavedStateHandle,
     val userDataRepository: UserDataRepository,
     getFollowableArtLocationsUseCase: GetFollowableLocationsUseCase,
-    val refreshLocationsUseCase: RefreshLocationsUseCase,
+    private val refreshLocationsUseCase: RefreshLocationsUseCase,
+    private val locationsRepository: LocationsRepository,
     // TODO: see comment below
     @Assisted val key: InterestsNavKey,
 ) : ViewModel() {
@@ -65,10 +67,9 @@ class InterestsViewModel @AssistedInject constructor(
         }.launchIn(viewModelScope)
     }
 
-    // TODO: favorite via locations db
     fun followTopic(followedTopicId: String, followed: Boolean) {
         viewModelScope.launch {
-            userDataRepository.setTopicIdFollowed(followedTopicId, followed)
+            locationsRepository.updateLocationIsFavorite(followedTopicId, isFavorite = followed)
         }
     }
 

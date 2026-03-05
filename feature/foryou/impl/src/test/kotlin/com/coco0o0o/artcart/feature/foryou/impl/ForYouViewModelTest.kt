@@ -34,7 +34,7 @@ import com.coco0o0o.artcart.core.testing.repository.emptyUserData
 import com.coco0o0o.artcart.core.testing.util.MainDispatcherRule
 import com.coco0o0o.artcart.core.testing.util.TestAnalyticsHelper
 import com.coco0o0o.artcart.core.testing.util.TestSyncManager
-import com.coco0o0o.artcart.core.ui.NewsFeedUiState
+import com.coco0o0o.artcart.core.ui.BookmarksUiState
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -93,7 +93,7 @@ class ForYouViewModelTest {
             OnboardingUiState.Loading,
             viewModel.onboardingUiState.value,
         )
-        assertEquals(NewsFeedUiState.Loading, viewModel.feedState.value)
+        assertEquals(BookmarksUiState.Loading, viewModel.feedState.value)
     }
 
     @Test
@@ -107,7 +107,7 @@ class ForYouViewModelTest {
             OnboardingUiState.Loading,
             viewModel.onboardingUiState.value,
         )
-        assertEquals(NewsFeedUiState.Loading, viewModel.feedState.value)
+        assertEquals(BookmarksUiState.Loading, viewModel.feedState.value)
     }
 
     @Test
@@ -133,7 +133,7 @@ class ForYouViewModelTest {
             OnboardingUiState.Loading,
             viewModel.onboardingUiState.value,
         )
-        assertEquals(NewsFeedUiState.Success(emptyList()), viewModel.feedState.value)
+        assertEquals(BookmarksUiState.Success(emptyList()), viewModel.feedState.value)
     }
 
     @Test
@@ -185,7 +185,7 @@ class ForYouViewModelTest {
             viewModel.onboardingUiState.value,
         )
         assertEquals(
-            NewsFeedUiState.Success(
+            BookmarksUiState.Success(
                 feed = emptyList(),
             ),
             viewModel.feedState.value,
@@ -242,7 +242,7 @@ class ForYouViewModelTest {
             viewModel.onboardingUiState.value,
         )
         assertEquals(
-            NewsFeedUiState.Success(
+            BookmarksUiState.Success(
                 feed = emptyList(),
             ),
             viewModel.feedState.value,
@@ -265,7 +265,7 @@ class ForYouViewModelTest {
             OnboardingUiState.NotShown,
             viewModel.onboardingUiState.value,
         )
-        assertEquals(NewsFeedUiState.Loading, viewModel.feedState.value)
+        assertEquals(BookmarksUiState.Loading, viewModel.feedState.value)
 
         newsRepository.sendNewsResources(sampleNewsResources)
 
@@ -274,7 +274,7 @@ class ForYouViewModelTest {
             viewModel.onboardingUiState.value,
         )
         assertEquals(
-            NewsFeedUiState.Success(
+            BookmarksUiState.Success(
                 feed = sampleNewsResources.mapToUserNewsResources(userData),
             ),
             viewModel.feedState.value,
@@ -299,7 +299,7 @@ class ForYouViewModelTest {
             viewModel.onboardingUiState.value,
         )
         assertEquals(
-            NewsFeedUiState.Success(
+            BookmarksUiState.Success(
                 feed = emptyList(),
             ),
             viewModel.feedState.value,
@@ -320,7 +320,7 @@ class ForYouViewModelTest {
         val userData = emptyUserData.copy(followedTopics = setOf(followedTopicId))
 
         assertEquals(
-            NewsFeedUiState.Success(
+            BookmarksUiState.Success(
                 feed = listOf(
                     UserNewsResource(sampleNewsResources[1], userData),
                     UserNewsResource(sampleNewsResources[2], userData),
@@ -383,7 +383,7 @@ class ForYouViewModelTest {
             viewModel.onboardingUiState.value,
         )
         assertEquals(
-            NewsFeedUiState.Success(
+            BookmarksUiState.Success(
                 feed = emptyList(),
             ),
             viewModel.feedState.value,
@@ -420,7 +420,7 @@ class ForYouViewModelTest {
             viewModel.onboardingUiState.value,
         )
         assertEquals(
-            NewsFeedUiState.Success(
+            BookmarksUiState.Success(
                 feed = listOf(
                     UserNewsResource(newsResource = sampleNewsResources[1], userDataExpected),
                     UserNewsResource(newsResource = sampleNewsResources[2], userDataExpected),

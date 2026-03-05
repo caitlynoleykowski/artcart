@@ -64,17 +64,21 @@ fun ArtLocationTabContent(
             state = scrollableState,
         ) {
             locations.forEach { artLocation ->
-                val topicId = artLocation.id
-                item(key = topicId) {
-                    val isSelected = shouldHighlightSelectedTopic && topicId == selectedTopicId
+                val artLocationId = artLocation.id
+                item(key = artLocationId) {
+                    val isSelected = shouldHighlightSelectedTopic && artLocationId == selectedTopicId
                     InterestsItem(
                         name = artLocation.name,
                         following = artLocation.isFavorite,
                         description = artLocation.address,
                         secondaryDescription = artLocation.primaryTypeName,
                         topicImageUrl = artLocation.photoUrl,
-                        onClick = { onTopicClick(topicId) },
-                        onFollowButtonClick = { onFollowButtonClick(topicId, it) },
+                        onClick = {
+                            onTopicClick(artLocationId)
+                                  },
+                        onFollowButtonClick = {
+                            onFollowButtonClick(artLocationId, it)
+                                              },
                         isSelected = isSelected,
                         modifier = Modifier.fillMaxWidth(),
                     )

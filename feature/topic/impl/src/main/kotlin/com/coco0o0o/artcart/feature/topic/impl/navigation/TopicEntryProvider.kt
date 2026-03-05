@@ -24,9 +24,8 @@ import androidx.navigation3.runtime.NavKey
 import com.coco0o0o.artcart.core.navigation.Navigator
 import com.coco0o0o.artcart.feature.topic.api.navigation.TopicNavKey
 import com.coco0o0o.artcart.feature.topic.api.navigation.navigateToTopic
-import com.coco0o0o.artcart.feature.topic.impl.TopicScreen
-import com.coco0o0o.artcart.feature.topic.impl.TopicViewModel
-import com.coco0o0o.artcart.feature.topic.impl.TopicViewModel.Factory
+import com.coco0o0o.artcart.feature.topic.impl.LocationScreen
+import com.coco0o0o.artcart.feature.topic.impl.LocationViewModel
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 fun EntryProviderScope<NavKey>.topicEntry(navigator: Navigator) {
@@ -34,11 +33,21 @@ fun EntryProviderScope<NavKey>.topicEntry(navigator: Navigator) {
         metadata = ListDetailSceneStrategy.detailPane(),
     ) { key ->
         val id = key.id
-        TopicScreen(
+//        TopicScreen(
+//            showBackButton = true,
+//            onBackClick = { navigator.goBack() },
+//            onTopicClick = navigator::navigateToTopic,
+//            viewModel = hiltViewModel<TopicViewModel, Factory>(
+//                key = id,
+//            ) { factory ->
+//                factory.create(id)
+//            },
+//        )
+        LocationScreen(
             showBackButton = true,
             onBackClick = { navigator.goBack() },
             onTopicClick = navigator::navigateToTopic,
-            viewModel = hiltViewModel<TopicViewModel, Factory>(
+            viewModel = hiltViewModel<LocationViewModel, LocationViewModel.Factory>(
                 key = id,
             ) { factory ->
                 factory.create(id)
