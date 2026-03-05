@@ -25,6 +25,9 @@ android {
 }
 
 dependencies {
+    implementation("com.google.android.gms:play-services-location:21.1.0") // TODO: Fix and maybe move
+
+    implementation(libs.accompanist.permissions)
     implementation(projects.core.domain)
     implementation(projects.feature.topic.api)
     implementation(projects.feature.interests.api)

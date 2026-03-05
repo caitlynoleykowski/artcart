@@ -29,6 +29,8 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flowOf
@@ -59,12 +61,18 @@ class InterestsViewModel @AssistedInject constructor(
         initialValue = ArtNearbyUiState.Loading,
     )
 
-    val currentLocation = flowOf(Pair(38.5636216, -121.4803345))
+    private val currentLocation = MutableSharedFlow<Pair<Double, Double>>()
 
     init {
         currentLocation.onEach {
             refreshLocationsUseCase(lat = it.first, lng = it.second)
         }.launchIn(viewModelScope)
+    }
+
+    fun updateCurrentLocation(lat: Double, lng: Double) {
+        viewModelScope.launch {
+            currentLocation.emit(Pair(lat, lng))
+        }
     }
 
     fun followTopic(followedTopicId: String, followed: Boolean) {
