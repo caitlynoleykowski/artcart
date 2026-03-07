@@ -14,6 +14,12 @@ data class DisplayName(
 )
 
 @Serializable
+data class LatLng(
+    val latitude: Double = 0.0,
+    val longitude: Double = 0.0,
+)
+
+@Serializable
 data class Photos(
     val name: String,
 )
@@ -32,6 +38,7 @@ data class NetworkLocation(
     val rating: Float = 0.0f,
     val displayName: DisplayName = DisplayName(),
     val formattedAddress: String = "",
+    val location: LatLng, // TODO: This really shouldn't have a default value we should throw out the location if it's missing
     val photos: List<Photos> = emptyList(),
     val primaryTypeDisplayName: PrimaryTypeDisplayName = PrimaryTypeDisplayName(),
 )

@@ -167,12 +167,12 @@ internal class RetrofitNiaNetwork @Inject constructor(
     override suspend fun getLocations(latitude: Double, longitude: Double): NetworkPlaces =
         networkApi.getLocations(
             RetrofitNiaNetworkApi.LocationsBody(
-                 includedTypes = listOf(
-                "art_gallery",
-                "art_museum",
-                "art_studio",
-                "sculpture"
-            ),
+                includedTypes = listOf(
+                    "art_gallery",
+                    "art_museum",
+                    "art_studio",
+                    "sculpture"
+                ),
              maxResultCount = 20,
                 locationRestriction = RetrofitNiaNetworkApi.LocationRestriction(
                     RetrofitNiaNetworkApi.Circle(

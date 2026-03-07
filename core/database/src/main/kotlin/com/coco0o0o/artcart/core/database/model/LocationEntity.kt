@@ -27,8 +27,10 @@ data class LocationEntity(
     @PrimaryKey
     val id: String,
     val name: String,
-    val rating: Float = 0.0f,
     val address: String = "",
+    val latitude: Double = 0.0,
+    val longitude: Double = 0.0,
+    val rating: Float = 0.0f, // TODO: Why float, I guess cause we can?
     val url: String = "",
     val photoUrl: String = "",
     val primaryTypeName: String = "",
@@ -38,8 +40,10 @@ data class LocationEntity(
 fun LocationEntity.asDomainModel() = ArtLocation(
     id = id,
     name = name,
-    rating = rating,
     address = address,
+    latitude = latitude,
+    longitude = longitude,
+    rating = rating,
     url = url,
     photoUrl = photoUrl,
     primaryTypeName = primaryTypeName,

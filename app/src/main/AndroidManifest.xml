@@ -58,6 +58,7 @@
             </intent-filter>
         </activity>
 
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAqjWW92spl7JH6ah_u9yGiFAaLSBUuBos"/>
         <!-- Disable Firebase analytics by default. This setting is overwritten for the `prod`
         flavor -->
         <meta-data android:name="firebase_analytics_collection_deactivated" android:value="true" />

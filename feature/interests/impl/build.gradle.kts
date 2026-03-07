@@ -26,6 +26,16 @@ android {
 
 dependencies {
     implementation("com.google.android.gms:play-services-location:21.1.0") // TODO: Fix and maybe move
+    implementation("com.google.android.gms:play-services-maps:20.0.0") // TODO: Fix and maybe move
+    implementation("com.google.maps.android:maps-compose:8.2.0")
+// {x-release-please-version}
+// Optionally, you can include the Compose utils library for Clustering,
+// Street View metadata checks, etc.
+    implementation("com.google.maps.android:maps-compose-utils:8.2.0")
+// {x-release-please-version}
+// Optionally, you can include the widgets library for ScaleBar, etc.
+    implementation("com.google.maps.android:maps-compose-widgets:8.2.0")
+// {x-release-please-version}
 
     implementation(libs.accompanist.permissions)
     implementation(projects.core.domain)

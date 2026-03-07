@@ -17,24 +17,42 @@
 package com.coco0o0o.artcart.feature.interests.impl
 
 import android.Manifest
+import android.R.drawable.ic_menu_myplaces
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
+import android.os.Bundle
 import android.os.Looper
+import android.util.Log
+import android.widget.TextView
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresPermission
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color as ComposeColor
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
@@ -60,7 +78,22 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
+import com.google.android.gms.maps.GoogleMapOptions
+import com.google.android.gms.maps.model.AdvancedMarker
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.PinConfig
+import com.google.maps.android.compose.CameraPositionState
+import com.google.maps.android.compose.GoogleMap
+import com.google.maps.android.compose.Marker
+import com.google.maps.android.compose.MarkerState
+import com.google.maps.android.compose.rememberCameraPositionState
+import com.google.maps.android.compose.rememberUpdatedMarkerState
+import com.google.maps.android.ui.IconGenerator
 import java.util.concurrent.TimeUnit
+import kotlin.collections.forEach
+import kotlin.collections.plusAssign
 
 @SuppressLint("MissingPermission") // TODO: Confused as to whether this is a problem if the user has accepted yet
 @Composable
@@ -87,7 +120,7 @@ fun InterestsScreen(
     LaunchedEffect(locationRequest) {
         locationRequest = LocationRequest.Builder(
             Priority.PRIORITY_HIGH_ACCURACY,
-            TimeUnit.SECONDS.toMillis(3000)
+            TimeUnit.MINUTES.toMillis(3)
         ).build()
     }
     // Only register the location updates effect when we have a request
@@ -111,9 +144,13 @@ fun InterestsScreen(
       End handle location updates
      */
     Column() {
-        Text(
-            text = "Large Header",
-            style = MaterialTheme.typography.displayLarge // Predefined large style
+//        Text(
+//            text = "Large Header",
+//            style = MaterialTheme.typography.displayLarge // Predefined large style
+//        )
+        InterestsMap(
+            uiState,
+            modifier.fillMaxHeight(0.5f)
         )
         InterestsScreen(
             uiState = uiState,
@@ -124,10 +161,93 @@ fun InterestsScreen(
                 onTopicClick(it)
             },
             shouldHighlightSelectedTopic = shouldHighlightSelectedTopic,
-            modifier = modifier,
+            //modifier = modifier.background(ComposeColor.Red, RectangleShape),
         )
     }
 }
+
+@Composable
+fun InterestsMap(
+    uiState: ArtNearbyUiState,
+    modifier: Modifier = Modifier,
+) {
+    Screen(uiState, modifier)
+
+//
+//    when (uiState) {
+//        ArtNearbyUiState.Loading, ArtNearbyUiState.Empty -> { listOf()} // Do nothing
+//        is ArtNearbyUiState.ArtLocations -> {
+//            uiState.artLocations
+////            GoogleMap(
+////                googleMapOptionsFactory = {
+////                    GoogleMapOptions().mapId("DEMO_MAP_ID")
+////                },
+////                cameraPositionState = cameraPositionState,
+//////        onPOIClick = {
+//////            Log.d(TAG, "POI clicked: ${it.name}")
+//////        }
+////                modifier = modifier,
+////            ) {
+////                val context = LocalContext.current
+////            }
+////            GoogleMapWithLocations(
+////                artLocations = uiState.artLocations,
+////                modifier,
+////            )
+//        }
+//    }
+}
+
+//
+//@Composable
+//private fun GoogleMapWithLocations(
+//    artLocations: List<ArtLocation>,
+//    modifier: Modifier = Modifier,
+////    onAddLocation: (LocationData) -> Unit,
+////    onDeleteLocation: (LocationKey) -> Unit
+//) {
+//    val here = LatLng(38.5636174,-121.4777596)
+//    val hereMarkerState = rememberUpdatedMarkerState(position = here)
+//    val cameraPositionState = rememberCameraPositionState {
+//        position = CameraPosition.fromLatLngZoom(here, 10f)
+//    }
+//    GoogleMap(
+//        modifier = modifier,
+//        cameraPositionState = cameraPositionState,
+//        onMapClick = { position -> print("yayy2!") } //onAddLocation(LocationData(position)) }
+//    ) {
+//        Locations(artLocations)
+//    }
+//}
+//
+//@Composable
+//fun Marker(
+//    position: LatLng,
+//    onClick: () -> Boolean = { false },
+//) {
+//    val markerState = rememberUpdatedMarkerState(position = position)
+//
+//    Marker(
+//        state = markerState,
+//        onClick = { onClick() }
+//    )
+//}
+//
+//@Composable
+//private fun Locations(
+//    artLocations: List<ArtLocation>,
+//) = artLocations.forEach { artLocation ->
+//    key(artLocation.id) {
+//        Marker(
+//            position = LatLng(artLocation.latitude, artLocation.longitude),
+//            onClick = {
+//                print("yayy!!")
+//                true // consume click event to prevent camera move to marker
+//            }
+//        )
+//    }
+//}
+
 @Composable
 internal fun InterestsScreen(
     uiState: ArtNearbyUiState,
@@ -272,4 +392,155 @@ fun InterestsScreenEmpty() {
             )
         }
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//private class DataModel {
+//    /**
+//     * Location data.
+//     */
+//    val locationDataMap = mutableStateMapOf<LocationKey, LocationData>()
+//}
+
+/**
+ * Data type representing a location.
+ *
+ * This only stores location position, for demonstration purposes,
+ * but could hold other data related to the location.
+ */
+@Immutable
+private data class LocationData(val position: LatLng)
+
+/**
+ * Unique, stable key for location
+ */
+private class LocationKey
+
+private typealias KeyedLocationData = Pair<LocationKey, LocationData>
+
+/**
+ * Demonstrates how to sync a data model with a changing collection of
+ * location markers using keys.
+ *
+ * The user can add a location marker to the model by clicking the map and delete a location from
+ * the model by clicking a marker.
+ *
+ * This example reuses the simple non-draggable Marker approach from the
+ * `UpdatingNoDragMarkerWithDataModelActivity` example, which encapsulates
+ * [MarkerState] to provide a cleaner API surface.
+ */
+//class MarkersCollectionActivity : ComponentActivity() {
+//    private val dataModel = DataModel()
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        enableEdgeToEdge()
+//        setContent {
+//            MapsComposeSampleTheme {
+//                Screen(
+//                    dataModel = dataModel,
+//                    modifier = Modifier.fillMaxSize()
+//                        .systemBarsPadding(),
+//                )
+//            }
+//        }
+//    }
+//}
+
+val sacramento = LatLng(38.5636174,-121.4777596)
+val defaultCameraPosition = CameraPosition.fromLatLngZoom(sacramento, 11f)
+
+@Composable
+private fun Screen(
+    uiState: ArtNearbyUiState,
+    modifier: Modifier = Modifier
+) = GoogleMapWithLocations(
+    modifier = modifier,
+    keyedLocationData = when(uiState) {
+        ArtNearbyUiState.Loading, ArtNearbyUiState.Empty -> emptyList()
+        is ArtNearbyUiState.ArtLocations -> uiState.artLocations.map { LocationKey() to LocationData(LatLng(it.latitude, it.longitude))}
+    },
+//    onAddLocation = { locationData ->
+//        dataModel.locationDataMap += LocationKey() to locationData
+//    },
+//    onDeleteLocation = { key ->
+//        dataModel.locationDataMap -= key
+//    }
+)
+
+/**
+ * A GoogleMap with locations represented by markers
+ *
+ * @param keyedLocationData model data for location markers with unique keys.
+ * Uses a [Collection] type to keep it independent of our data model.
+ * @param onAddLocation location addition events for updating data model
+ * @param onDeleteLocation location deletion events for updating data model
+ */
+@Composable
+private fun GoogleMapWithLocations(
+    keyedLocationData: Collection<KeyedLocationData>,
+    modifier: Modifier = Modifier,
+//    onAddLocation: (LocationData) -> Unit,
+//    onDeleteLocation: (LocationKey) -> Unit
+) {
+    val cameraPositionState = rememberCameraPositionState { position = defaultCameraPosition }
+
+    GoogleMap(
+        modifier = modifier,
+        cameraPositionState = cameraPositionState,
+        onMapClick = {} // position -> onAddLocation(LocationData(position)) }
+    ) {
+        Locations(
+            keyedLocationData = keyedLocationData,
+            onLocationClick = {} // onDeleteLocation
+        )
+    }
+}
+
+/**
+ * Renders locations on a GoogleMap
+ *
+ * @param keyedLocationData model data for location markers with unique keys.
+ * @param onLocationClick location click events
+ */
+@Composable
+private fun Locations(
+    keyedLocationData: Collection<KeyedLocationData>,
+    onLocationClick: (LocationKey) -> Unit
+) = keyedLocationData.forEach { (key, locationData) ->
+    key(key) {
+        Marker(
+            position = locationData.position,
+            onClick = {
+                onLocationClick(key)
+                true // consume click event to prevent camera move to marker
+            }
+        )
+    }
+}
+
+@Composable
+fun Marker(
+    position: LatLng,
+    onClick: () -> Boolean = { false },
+) {
+    val markerState = rememberUpdatedMarkerState(position = position)
+
+    Marker(
+        state = markerState,
+        onClick = { onClick() }
+    )
 }

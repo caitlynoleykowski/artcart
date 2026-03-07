@@ -65,8 +65,10 @@ internal class OfflineFirstLocationsRepository @Inject constructor(
         return LocationEntity(
             id = id,
             name = displayName.text,
-            rating = rating,
             address = formattedAddress,
+            latitude = location.latitude,
+            longitude = location.longitude,
+            rating = rating,
             url = "",
             photoUrl = photos.firstOrNull()?.name?.toPhotoUrl() ?: "",
             primaryTypeName = primaryTypeDisplayName.text,
