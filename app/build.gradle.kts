@@ -70,8 +70,6 @@ android {
 dependencies {
     implementation(projects.feature.interests.api)
     implementation(projects.feature.interests.impl)
-    implementation(projects.feature.foryou.api)
-    implementation(projects.feature.foryou.impl)
     implementation(projects.feature.bookmarks.api)
     implementation(projects.feature.bookmarks.impl)
     implementation(projects.feature.topic.api)
@@ -133,8 +131,6 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test)
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.kotlin.test)
-
-    baselineProfile(projects.benchmarks)
 }
 
 baselineProfile {

@@ -27,7 +27,6 @@ import com.coco0o0o.artcart.core.testing.repository.TestUserDataRepository
 import com.coco0o0o.artcart.core.testing.util.TestNetworkMonitor
 import com.coco0o0o.artcart.core.testing.util.TestTimeZoneMonitor
 import com.coco0o0o.artcart.feature.bookmarks.api.navigation.BookmarksNavKey
-import com.coco0o0o.artcart.feature.foryou.api.navigation.ForYouNavKey
 import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
@@ -66,10 +65,9 @@ class NiaAppStateTest {
     private lateinit var state: NiaAppState
 
     private fun testNavigationState() = NavigationState(
-        startKey = ForYouNavKey,
-        topLevelStack = NavBackStack(ForYouNavKey),
+        startKey = InterestsNavKey,
+        topLevelStack = NavBackStack(InterestsNavKey),
         subStacks = mapOf(
-            ForYouNavKey to NavBackStack(ForYouNavKey),
             BookmarksNavKey to NavBackStack(BookmarksNavKey),
         ),
     )
@@ -91,8 +89,8 @@ class NiaAppStateTest {
             }
         }
 
-        assertEquals(ForYouNavKey, state.navigationState.currentTopLevelKey)
-        assertEquals(ForYouNavKey, state.navigationState.currentKey)
+        assertEquals(InterestsNavKey, state.navigationState.currentTopLevelKey)
+        assertEquals(InterestsNavKey, state.navigationState.currentKey)
 
         // Navigate to another destination once
         navigator.navigate(BookmarksNavKey)
@@ -117,7 +115,7 @@ class NiaAppStateTest {
 
         assertEquals(3, navigationState.topLevelKeys.size)
         assertEquals(
-            setOf(ForYouNavKey, BookmarksNavKey, InterestsNavKey(null)),
+            setOf(BookmarksNavKey, InterestsNavKey),
             navigationState.topLevelKeys,
         )
     }

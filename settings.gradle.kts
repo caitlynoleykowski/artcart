@@ -46,7 +46,6 @@ rootProject.name = "nowinandroid"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
-include(":benchmarks")
 include(":core:analytics")
 include(":core:common")
 include(":core:data")
@@ -65,8 +64,6 @@ include(":core:screenshot-testing")
 include(":core:testing")
 include(":core:ui")
 
-include(":feature:foryou:api")
-include(":feature:foryou:impl")
 include(":feature:interests:api")
 include(":feature:interests:impl")
 include(":feature:bookmarks:api")

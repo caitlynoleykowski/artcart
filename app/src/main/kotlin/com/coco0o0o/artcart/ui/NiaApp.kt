@@ -71,13 +71,10 @@ import com.coco0o0o.artcart.core.designsystem.component.NiaNavigationSuiteScaffo
 import com.coco0o0o.artcart.core.designsystem.component.NiaTopAppBar
 import com.coco0o0o.artcart.core.designsystem.icon.NiaIcons
 import com.coco0o0o.artcart.core.designsystem.theme.GradientColors
-import com.coco0o0o.artcart.core.designsystem.theme.LocalGradientColors
 import com.coco0o0o.artcart.core.navigation.Navigator
 import com.coco0o0o.artcart.core.navigation.toEntries
 import com.coco0o0o.artcart.feature.bookmarks.impl.navigation.LocalSnackbarHostState
 import com.coco0o0o.artcart.feature.bookmarks.impl.navigation.bookmarksEntry
-import com.coco0o0o.artcart.feature.foryou.api.navigation.ForYouNavKey
-import com.coco0o0o.artcart.feature.foryou.impl.navigation.forYouEntry
 import com.coco0o0o.artcart.feature.interests.impl.navigation.interestsEntry
 import com.coco0o0o.artcart.feature.search.api.navigation.SearchNavKey
 import com.coco0o0o.artcart.feature.search.impl.navigation.searchEntry
@@ -92,16 +89,11 @@ fun NiaApp(
     modifier: Modifier = Modifier,
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(),
 ) {
-    val shouldShowGradientBackground = appState.navigationState.currentTopLevelKey == ForYouNavKey
     var showSettingsDialog by rememberSaveable { mutableStateOf(false) }
 
     NiaBackground(modifier = modifier) {
         NiaGradientBackground(
-            gradientColors = if (shouldShowGradientBackground) {
-                LocalGradientColors.current
-            } else {
-                GradientColors()
-            },
+            gradientColors = GradientColors()
         ) {
             val snackbarHostState = remember { SnackbarHostState() }
 
@@ -257,7 +249,6 @@ internal fun NiaApp(
                     val listDetailStrategy = rememberListDetailSceneStrategy<NavKey>()
 
                     val entryProvider = entryProvider {
-                        forYouEntry(navigator)
                         bookmarksEntry(navigator)
                         interestsEntry(navigator)
                         topicEntry(navigator)

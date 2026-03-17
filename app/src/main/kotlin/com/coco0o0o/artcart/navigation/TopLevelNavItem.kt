@@ -21,10 +21,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import com.coco0o0o.artcart.R
 import com.coco0o0o.artcart.core.designsystem.icon.NiaIcons
 import com.coco0o0o.artcart.feature.bookmarks.api.navigation.BookmarksNavKey
-import com.coco0o0o.artcart.feature.foryou.api.navigation.ForYouNavKey
 import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
 import com.coco0o0o.artcart.feature.bookmarks.api.R as bookmarksR
-import com.coco0o0o.artcart.feature.foryou.api.R as forYouR
 import com.coco0o0o.artcart.feature.search.api.R as searchR
 
 /**
@@ -43,13 +41,6 @@ data class TopLevelNavItem(
     val unselectedIcon: ImageVector,
     @StringRes val iconTextId: Int,
     @StringRes val titleTextId: Int,
-)
-
-val FOR_YOU = TopLevelNavItem(
-    selectedIcon = NiaIcons.Upcoming,
-    unselectedIcon = NiaIcons.UpcomingBorder,
-    iconTextId = forYouR.string.feature_foryou_api_title,
-    titleTextId = R.string.app_name,
 )
 
 val BOOKMARKS = TopLevelNavItem(
