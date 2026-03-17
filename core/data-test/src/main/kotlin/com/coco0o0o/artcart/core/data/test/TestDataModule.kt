@@ -17,16 +17,10 @@
 package com.coco0o0o.artcart.core.data.test
 
 import com.coco0o0o.artcart.core.data.di.DataModule
-import com.coco0o0o.artcart.core.data.repository.NewsRepository
 import com.coco0o0o.artcart.core.data.repository.RecentSearchRepository
 import com.coco0o0o.artcart.core.data.repository.SearchContentsRepository
-import com.coco0o0o.artcart.core.data.repository.LocationsRepository
-import com.coco0o0o.artcart.core.data.repository.UserDataRepository
-import com.coco0o0o.artcart.core.data.test.repository.FakeNewsRepository
 import com.coco0o0o.artcart.core.data.test.repository.FakeRecentSearchRepository
 import com.coco0o0o.artcart.core.data.test.repository.FakeSearchContentsRepository
-import com.coco0o0o.artcart.core.data.test.repository.FakeLocationsRepository
-import com.coco0o0o.artcart.core.data.test.repository.FakeUserDataRepository
 import com.coco0o0o.artcart.core.data.util.NetworkMonitor
 import com.coco0o0o.artcart.core.data.util.TimeZoneMonitor
 import dagger.Binds
@@ -40,20 +34,6 @@ import dagger.hilt.testing.TestInstallIn
     replaces = [DataModule::class],
 )
 internal interface TestDataModule {
-    @Binds
-    fun bindsTopicRepository(
-        fakeTopicsRepository: FakeLocationsRepository,
-    ): LocationsRepository
-
-    @Binds
-    fun bindsNewsResourceRepository(
-        fakeNewsRepository: FakeNewsRepository,
-    ): NewsRepository
-
-    @Binds
-    fun bindsUserDataRepository(
-        userDataRepository: FakeUserDataRepository,
-    ): UserDataRepository
 
     @Binds
     fun bindsRecentSearchRepository(

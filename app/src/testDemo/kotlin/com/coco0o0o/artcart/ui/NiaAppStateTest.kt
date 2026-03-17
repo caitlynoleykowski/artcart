@@ -19,11 +19,8 @@ package com.coco0o0o.artcart.ui
 import androidx.compose.runtime.remember
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.navigation3.runtime.NavBackStack
-import com.coco0o0o.artcart.core.data.repository.CompositeUserNewsResourceRepository
 import com.coco0o0o.artcart.core.navigation.NavigationState
 import com.coco0o0o.artcart.core.navigation.Navigator
-import com.coco0o0o.artcart.core.testing.repository.TestNewsRepository
-import com.coco0o0o.artcart.core.testing.repository.TestUserDataRepository
 import com.coco0o0o.artcart.core.testing.util.TestNetworkMonitor
 import com.coco0o0o.artcart.core.testing.util.TestTimeZoneMonitor
 import com.coco0o0o.artcart.feature.bookmarks.api.navigation.BookmarksNavKey
@@ -58,9 +55,6 @@ class NiaAppStateTest {
 
     private val timeZoneMonitor = TestTimeZoneMonitor()
 
-    private val userNewsResourceRepository =
-        CompositeUserNewsResourceRepository(TestNewsRepository(), TestUserDataRepository())
-
     // Subject under test.
     private lateinit var state: NiaAppState
 
@@ -82,7 +76,6 @@ class NiaAppStateTest {
                 NiaAppState(
                     coroutineScope = backgroundScope,
                     networkMonitor = networkMonitor,
-                    userNewsResourceRepository = userNewsResourceRepository,
                     timeZoneMonitor = timeZoneMonitor,
                     navigationState = navigationState,
                 )
@@ -121,24 +114,25 @@ class NiaAppStateTest {
     }
 
     @Test
-    fun niaAppState_whenNetworkMonitorIsOffline_StateIsOffline() = runTest(UnconfinedTestDispatcher()) {
-        composeTestRule.setContent {
-            state = NiaAppState(
-                coroutineScope = backgroundScope,
-                networkMonitor = networkMonitor,
-                userNewsResourceRepository = userNewsResourceRepository,
-                timeZoneMonitor = timeZoneMonitor,
-                navigationState = testNavigationState(),
+    fun niaAppState_whenNetworkMonitorIsOffline_StateIsOffline() =
+        runTest(UnconfinedTestDispatcher()) {
+            composeTestRule.setContent {
+                state = NiaAppState(
+                    coroutineScope = backgroundScope,
+                    networkMonitor = networkMonitor,
+                    userNewsResourceRepository = userNewsResourceRepository,
+                    timeZoneMonitor = timeZoneMonitor,
+                    navigationState = testNavigationState(),
+                )
+            }
+
+            backgroundScope.launch { state.isOffline.collect() }
+            networkMonitor.setConnected(false)
+            assertEquals(
+                true,
+                state.isOffline.value,
             )
         }
-
-        backgroundScope.launch { state.isOffline.collect() }
-        networkMonitor.setConnected(false)
-        assertEquals(
-            true,
-            state.isOffline.value,
-        )
-    }
 
     @Test
     fun niaAppState_differentTZ_withTimeZoneMonitorChange() = runTest(UnconfinedTestDispatcher()) {

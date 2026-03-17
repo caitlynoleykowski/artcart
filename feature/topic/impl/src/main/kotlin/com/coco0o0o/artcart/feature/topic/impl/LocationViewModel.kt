@@ -19,14 +19,7 @@ package com.coco0o0o.artcart.feature.topic.impl
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coco0o0o.artcart.core.data.repository.LocationsRepository
-import com.coco0o0o.artcart.core.data.repository.NewsResourceQuery
-import com.coco0o0o.artcart.core.data.repository.TopicsRepository
-import com.coco0o0o.artcart.core.data.repository.UserDataRepository
-import com.coco0o0o.artcart.core.data.repository.UserNewsResourceRepository
 import com.coco0o0o.artcart.core.model.data.ArtLocation
-import com.coco0o0o.artcart.core.model.data.FollowableTopic
-import com.coco0o0o.artcart.core.model.data.Topic
-import com.coco0o0o.artcart.core.model.data.UserNewsResource
 import com.coco0o0o.artcart.core.result.Result
 import com.coco0o0o.artcart.core.result.asResult
 import dagger.assisted.Assisted
@@ -36,7 +29,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -81,7 +73,7 @@ private fun locationUiState(
                 is Result.Success -> {
                     val location = locationResult.data
                     LocationUiState.Success(
-                        location
+                        location,
                     )
                 }
 

@@ -24,14 +24,10 @@ import com.coco0o0o.artcart.core.analytics.AnalyticsEvent.Param
 import com.coco0o0o.artcart.core.analytics.AnalyticsHelper
 import com.coco0o0o.artcart.core.data.repository.RecentSearchRepository
 import com.coco0o0o.artcart.core.data.repository.SearchContentsRepository
-import com.coco0o0o.artcart.core.data.repository.UserDataRepository
 import com.coco0o0o.artcart.core.domain.GetRecentSearchQueriesUseCase
-import com.coco0o0o.artcart.core.domain.GetSearchContentsUseCase
-import com.coco0o0o.artcart.core.model.data.UserSearchResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
@@ -41,11 +37,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    getSearchContentsUseCase: GetSearchContentsUseCase,
     recentSearchQueriesUseCase: GetRecentSearchQueriesUseCase,
     private val searchContentsRepository: SearchContentsRepository,
     private val recentSearchRepository: RecentSearchRepository,
-    private val userDataRepository: UserDataRepository,
+//    private val userDataRepository: UserDataRepository,
     private val savedStateHandle: SavedStateHandle,
     private val analyticsHelper: AnalyticsHelper,
 ) : ViewModel() {
@@ -62,16 +57,22 @@ class SearchViewModel @Inject constructor(
                         if (query.trim().length < SEARCH_QUERY_MIN_LENGTH) {
                             flowOf(SearchResultUiState.EmptyQuery)
                         } else {
-                            getSearchContentsUseCase(query)
-                                // Not using .asResult() here, because it emits Loading state every
-                                // time the user types a letter in the search box, which flickers the screen.
-                                .map<UserSearchResult, SearchResultUiState> { data ->
-                                    SearchResultUiState.Success(
-                                        topics = data.topics,
-                                        newsResources = data.newsResources,
-                                    )
-                                }
-                                .catch { emit(SearchResultUiState.LoadFailed) }
+//                            getSearchContentsUseCase(query)
+//                                // Not using .asResult() here, because it emits Loading state every
+//                                // time the user types a letter in the search box, which flickers the screen.
+//                                .map<UserSearchResult, SearchResultUiState> { data ->
+//                                    SearchResultUiState.Success(
+//                                        topics = data.topics,
+//                                        newsResources = data.newsResources,
+//                                    )
+//                                }
+//                                .catch { emit(SearchResultUiState.LoadFailed) }
+                            flowOf(
+                                SearchResultUiState.Success(
+                                    topics = emptyList(),
+                                    newsResources = emptyList(),
+                                ),
+                            )
                         }
                     }
                 }
@@ -116,21 +117,21 @@ class SearchViewModel @Inject constructor(
     }
 
     fun setNewsResourceBookmarked(newsResourceId: String, isChecked: Boolean) {
-        viewModelScope.launch {
-            userDataRepository.setNewsResourceBookmarked(newsResourceId, isChecked)
-        }
+//        viewModelScope.launch {
+//            userDataRepository.setNewsResourceBookmarked(newsResourceId, isChecked)
+//        }
     }
 
     fun followTopic(followedTopicId: String, followed: Boolean) {
-        viewModelScope.launch {
-            userDataRepository.setTopicIdFollowed(followedTopicId, followed)
-        }
+//        viewModelScope.launch {
+//            userDataRepository.setTopicIdFollowed(followedTopicId, followed)
+//        }
     }
 
     fun setNewsResourceViewed(newsResourceId: String, viewed: Boolean) {
-        viewModelScope.launch {
-            userDataRepository.setNewsResourceViewed(newsResourceId, viewed)
-        }
+//        viewModelScope.launch {
+//            userDataRepository.setNewsResourceViewed(newsResourceId, viewed)
+//        }
     }
 }
 

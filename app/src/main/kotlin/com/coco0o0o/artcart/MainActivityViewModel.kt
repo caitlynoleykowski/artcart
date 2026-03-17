@@ -17,50 +17,29 @@
 package com.coco0o0o.artcart
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.coco0o0o.artcart.MainActivityUiState.Loading
 import com.coco0o0o.artcart.MainActivityUiState.Success
-import com.coco0o0o.artcart.core.data.repository.UserDataRepository
-import com.coco0o0o.artcart.core.model.data.DarkThemeConfig
-import com.coco0o0o.artcart.core.model.data.ThemeBrand
-import com.coco0o0o.artcart.core.model.data.UserData
+import com.coco0o0o.artcart.core.data.repository.LocationsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
-    userDataRepository: UserDataRepository,
+    locationsRepository: LocationsRepository, // TODO: Remove this as well as maybe the whole viewmodel
 ) : ViewModel() {
-    val uiState: StateFlow<MainActivityUiState> = userDataRepository.userData.map {
-        Success(it)
-    }.stateIn(
-        scope = viewModelScope,
-        initialValue = Loading,
-        started = SharingStarted.WhileSubscribed(5_000),
-    )
+    val uiState: StateFlow<MainActivityUiState> = MutableStateFlow(Success)
 }
 
 sealed interface MainActivityUiState {
     data object Loading : MainActivityUiState
 
-    data class Success(val userData: UserData) : MainActivityUiState {
-        override val shouldDisableDynamicTheming = !userData.useDynamicColor
+    data object Success : MainActivityUiState {
+        override val shouldDisableDynamicTheming = true
 
-        override val shouldUseAndroidTheme: Boolean = when (userData.themeBrand) {
-            ThemeBrand.DEFAULT -> false
-            ThemeBrand.ANDROID -> true
-        }
+        override val shouldUseAndroidTheme: Boolean = false
 
-        override fun shouldUseDarkTheme(isSystemDarkTheme: Boolean) =
-            when (userData.darkThemeConfig) {
-                DarkThemeConfig.FOLLOW_SYSTEM -> isSystemDarkTheme
-                DarkThemeConfig.LIGHT -> false
-                DarkThemeConfig.DARK -> true
-            }
+        override fun shouldUseDarkTheme(isSystemDarkTheme: Boolean) = isSystemDarkTheme
     }
 
     /**

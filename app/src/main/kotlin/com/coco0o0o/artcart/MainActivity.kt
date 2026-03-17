@@ -36,7 +36,6 @@ import androidx.tracing.trace
 import com.coco0o0o.artcart.MainActivityUiState.Loading
 import com.coco0o0o.artcart.core.analytics.AnalyticsHelper
 import com.coco0o0o.artcart.core.analytics.LocalAnalyticsHelper
-import com.coco0o0o.artcart.core.data.repository.UserNewsResourceRepository
 import com.coco0o0o.artcart.core.data.util.NetworkMonitor
 import com.coco0o0o.artcart.core.data.util.TimeZoneMonitor
 import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
@@ -69,9 +68,6 @@ class MainActivity : ComponentActivity() {
 
     @Inject
     lateinit var analyticsHelper: AnalyticsHelper
-
-    @Inject
-    lateinit var userNewsResourceRepository: UserNewsResourceRepository
 
     private val viewModel: MainActivityViewModel by viewModels()
 
@@ -135,7 +131,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             val appState = rememberNiaAppState(
                 networkMonitor = networkMonitor,
-                userNewsResourceRepository = userNewsResourceRepository,
                 timeZoneMonitor = timeZoneMonitor,
             )
 

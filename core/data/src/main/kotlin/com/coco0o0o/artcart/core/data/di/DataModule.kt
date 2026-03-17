@@ -18,16 +18,10 @@ package com.coco0o0o.artcart.core.data.di
 
 import com.coco0o0o.artcart.core.data.repository.DefaultRecentSearchRepository
 import com.coco0o0o.artcart.core.data.repository.DefaultSearchContentsRepository
-import com.coco0o0o.artcart.core.data.repository.NewsRepository
-import com.coco0o0o.artcart.core.data.repository.OfflineFirstNewsRepository
+import com.coco0o0o.artcart.core.data.repository.LocationsRepository
 import com.coco0o0o.artcart.core.data.repository.OfflineFirstLocationsRepository
-import com.coco0o0o.artcart.core.data.repository.OfflineFirstUserDataRepository
 import com.coco0o0o.artcart.core.data.repository.RecentSearchRepository
 import com.coco0o0o.artcart.core.data.repository.SearchContentsRepository
-import com.coco0o0o.artcart.core.data.repository.LocationsRepository
-import com.coco0o0o.artcart.core.data.repository.OfflineFirstTopicsRepository
-import com.coco0o0o.artcart.core.data.repository.TopicsRepository
-import com.coco0o0o.artcart.core.data.repository.UserDataRepository
 import com.coco0o0o.artcart.core.data.util.ConnectivityManagerNetworkMonitor
 import com.coco0o0o.artcart.core.data.util.NetworkMonitor
 import com.coco0o0o.artcart.core.data.util.TimeZoneBroadcastMonitor
@@ -45,21 +39,6 @@ abstract class DataModule {
     internal abstract fun bindsLocationRepository(
         topicsRepository: OfflineFirstLocationsRepository,
     ): LocationsRepository
-
-    @Binds
-    internal abstract fun bindsTopicRepository(
-        topicsRepository: OfflineFirstTopicsRepository,
-    ): TopicsRepository
-
-    @Binds
-    internal abstract fun bindsNewsResourceRepository(
-        newsRepository: OfflineFirstNewsRepository,
-    ): NewsRepository
-
-    @Binds
-    internal abstract fun bindsUserDataRepository(
-        userDataRepository: OfflineFirstUserDataRepository,
-    ): UserDataRepository
 
     @Binds
     internal abstract fun bindsRecentSearchRepository(

@@ -22,7 +22,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coco0o0o.artcart.core.data.repository.LocationsRepository
-import com.coco0o0o.artcart.core.data.repository.UserDataRepository
 import com.coco0o0o.artcart.core.model.data.ArtLocation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
@@ -35,7 +34,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BookmarksViewModel2 @Inject constructor(
-    private val userDataRepository: UserDataRepository,
     private val locationsRepository: LocationsRepository,
 ) : ViewModel() {
 
@@ -57,12 +55,6 @@ class BookmarksViewModel2 @Inject constructor(
             shouldDisplayUndoBookmark = true
             lastRemovedBookmarkId = newsResourceId
             locationsRepository.updateLocationIsFavorite(newsResourceId, isFavorite = false)
-        }
-    }
-
-    fun setNewsResourceViewed(newsResourceId: String, viewed: Boolean) {
-        viewModelScope.launch {
-            userDataRepository.setNewsResourceViewed(newsResourceId, viewed)
         }
     }
 

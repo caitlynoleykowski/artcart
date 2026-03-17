@@ -78,7 +78,6 @@ import com.coco0o0o.artcart.feature.bookmarks.impl.navigation.bookmarksEntry
 import com.coco0o0o.artcart.feature.interests.impl.navigation.interestsEntry
 import com.coco0o0o.artcart.feature.search.api.navigation.SearchNavKey
 import com.coco0o0o.artcart.feature.search.impl.navigation.searchEntry
-import com.coco0o0o.artcart.feature.settings.impl.SettingsDialog
 import com.coco0o0o.artcart.feature.topic.impl.navigation.topicEntry
 import com.coco0o0o.artcart.navigation.TOP_LEVEL_NAV_ITEMS
 import com.coco0o0o.artcart.feature.settings.impl.R as settingsR
@@ -138,13 +137,11 @@ internal fun NiaApp(
     modifier: Modifier = Modifier,
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(),
 ) {
-    val unreadNavKeys by appState.topLevelNavKeysWithUnreadResources
-        .collectAsStateWithLifecycle()
 
     if (showSettingsDialog) {
-        SettingsDialog(
-            onDismiss = { onSettingsDismissed() },
-        )
+//        SettingsDialog(
+//            onDismiss = { onSettingsDismissed() },
+//        )
     }
 
     val snackbarHostState = LocalSnackbarHostState.current
@@ -154,7 +151,6 @@ internal fun NiaApp(
     NiaNavigationSuiteScaffold(
         navigationSuiteItems = {
             TOP_LEVEL_NAV_ITEMS.forEach { (navKey, navItem) ->
-                val hasUnread = unreadNavKeys.contains(navKey)
                 val selected = navKey == appState.navigationState.currentTopLevelKey
                 item(
                     selected = selected,
@@ -172,9 +168,6 @@ internal fun NiaApp(
                         )
                     },
                     label = { Text(stringResource(navItem.iconTextId)) },
-                    modifier = Modifier
-                        .testTag("NiaNavItem")
-                        .then(if (hasUnread) Modifier.notificationDot() else Modifier),
                 )
             }
         },

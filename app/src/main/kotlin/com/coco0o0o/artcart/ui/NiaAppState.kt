@@ -20,21 +20,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.navigation3.runtime.NavKey
-import com.coco0o0o.artcart.core.data.repository.UserNewsResourceRepository
 import com.coco0o0o.artcart.core.data.util.NetworkMonitor
 import com.coco0o0o.artcart.core.data.util.TimeZoneMonitor
 import com.coco0o0o.artcart.core.navigation.NavigationState
 import com.coco0o0o.artcart.core.navigation.rememberNavigationState
 import com.coco0o0o.artcart.core.ui.TrackDisposableJank
-import com.coco0o0o.artcart.feature.bookmarks.api.navigation.BookmarksNavKey
 import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
-import com.coco0o0o.artcart.navigation.INTERESTS
 import com.coco0o0o.artcart.navigation.TOP_LEVEL_NAV_ITEMS
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.datetime.TimeZone
@@ -42,11 +36,10 @@ import kotlinx.datetime.TimeZone
 @Composable
 fun rememberNiaAppState(
     networkMonitor: NetworkMonitor,
-    userNewsResourceRepository: UserNewsResourceRepository,
     timeZoneMonitor: TimeZoneMonitor,
     coroutineScope: CoroutineScope = rememberCoroutineScope(),
 ): NiaAppState {
-    val navigationState = rememberNavigationState(    InterestsNavKey, TOP_LEVEL_NAV_ITEMS.keys)
+    val navigationState = rememberNavigationState(InterestsNavKey, TOP_LEVEL_NAV_ITEMS.keys)
 
     NavigationTrackingSideEffect(navigationState)
 
@@ -54,14 +47,12 @@ fun rememberNiaAppState(
         navigationState,
         coroutineScope,
         networkMonitor,
-        userNewsResourceRepository,
         timeZoneMonitor,
     ) {
         NiaAppState(
             navigationState = navigationState,
             coroutineScope = coroutineScope,
             networkMonitor = networkMonitor,
-            userNewsResourceRepository = userNewsResourceRepository,
             timeZoneMonitor = timeZoneMonitor,
         )
     }
@@ -72,7 +63,6 @@ class NiaAppState(
     val navigationState: NavigationState,
     coroutineScope: CoroutineScope,
     networkMonitor: NetworkMonitor,
-    userNewsResourceRepository: UserNewsResourceRepository,
     timeZoneMonitor: TimeZoneMonitor,
 ) {
     val isOffline = networkMonitor.isOnline
@@ -82,22 +72,6 @@ class NiaAppState(
             started = SharingStarted.WhileSubscribed(5_000),
             initialValue = false,
         )
-
-    /**
-     * The top level nav keys that have unread news resources.
-     */
-    val topLevelNavKeysWithUnreadResources: StateFlow<Set<NavKey>> =
-        userNewsResourceRepository.observeAllForFollowedTopics()
-            .combine(userNewsResourceRepository.observeAllBookmarked()) { forYouNewsResources, bookmarkedNewsResources ->
-                setOfNotNull(
-                    BookmarksNavKey.takeIf { bookmarkedNewsResources.any { !it.hasBeenViewed } },
-                )
-            }
-            .stateIn(
-                coroutineScope,
-                SharingStarted.WhileSubscribed(5_000),
-                initialValue = emptySet(),
-            )
 
     val currentTimeZone = timeZoneMonitor.currentTimeZone
         .stateIn(

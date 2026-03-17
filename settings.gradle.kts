@@ -74,8 +74,6 @@ include(":feature:search:api")
 include(":feature:search:impl")
 include(":feature:settings:impl")
 include(":lint")
-include(":sync:work")
-include(":sync:sync-test")
 
 check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
     """

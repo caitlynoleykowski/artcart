@@ -25,7 +25,6 @@ import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import com.coco0o0o.artcart.core.navigation.Navigator
 import com.coco0o0o.artcart.feature.bookmarks.api.navigation.BookmarksNavKey
-import com.coco0o0o.artcart.feature.bookmarks.impl.BookmarksScreen
 import com.coco0o0o.artcart.feature.bookmarks.impl.BookmarksScreen2
 import com.coco0o0o.artcart.feature.bookmarks.impl.BookmarksViewModel2
 import com.coco0o0o.artcart.feature.topic.api.navigation.navigateToTopic

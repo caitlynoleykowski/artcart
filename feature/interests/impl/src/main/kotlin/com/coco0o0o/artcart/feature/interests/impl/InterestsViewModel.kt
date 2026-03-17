@@ -20,7 +20,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coco0o0o.artcart.core.data.repository.LocationsRepository
-import com.coco0o0o.artcart.core.data.repository.UserDataRepository
 import com.coco0o0o.artcart.core.domain.GetFollowableLocationsUseCase
 import com.coco0o0o.artcart.core.domain.RefreshLocationsUseCase
 import com.coco0o0o.artcart.core.model.data.ArtLocation
@@ -43,7 +42,6 @@ import kotlinx.coroutines.launch
 @HiltViewModel(assistedFactory = InterestsViewModel.Factory::class)
 class InterestsViewModel @AssistedInject constructor(
     private val savedStateHandle: SavedStateHandle,
-    val userDataRepository: UserDataRepository,
     getFollowableArtLocationsUseCase: GetFollowableLocationsUseCase,
     private val refreshLocationsUseCase: RefreshLocationsUseCase,
     private val locationsRepository: LocationsRepository,
