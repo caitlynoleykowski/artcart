@@ -73,7 +73,6 @@ include(":feature:topic:impl")
 include(":feature:search:api")
 include(":feature:search:impl")
 include(":feature:settings:impl")
-include(":lint")
 
 check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
     """
