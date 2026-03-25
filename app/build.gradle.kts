@@ -20,7 +20,6 @@ plugins {
     alias(libs.plugins.artcart.android.application.compose)
     alias(libs.plugins.artcart.android.application.flavors)
     alias(libs.plugins.artcart.android.application.jacoco)
-    alias(libs.plugins.artcart.android.application.firebase)
     alias(libs.plugins.artcart.hilt)
     alias(libs.plugins.google.osslicenses)
     alias(libs.plugins.baselineprofile)
@@ -111,7 +110,6 @@ dependencies {
     kspTest(libs.hilt.compiler)
 
     testImplementation(projects.core.dataTest)
-    testImplementation(projects.core.datastoreTest)
     testImplementation(libs.hilt.android.testing)
     testImplementation(libs.kotlin.test)
 
@@ -123,7 +121,6 @@ dependencies {
 
     androidTestImplementation(projects.core.testing)
     androidTestImplementation(projects.core.dataTest)
-    androidTestImplementation(projects.core.datastoreTest)
     androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.androidx.compose.ui.test)
     androidTestImplementation(libs.hilt.android.testing)
