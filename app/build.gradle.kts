@@ -16,12 +16,12 @@
 import com.coco0o0o.artcart.NiaBuildType
 
 plugins {
-    alias(libs.plugins.nowinandroid.android.application)
-    alias(libs.plugins.nowinandroid.android.application.compose)
-    alias(libs.plugins.nowinandroid.android.application.flavors)
-    alias(libs.plugins.nowinandroid.android.application.jacoco)
-    alias(libs.plugins.nowinandroid.android.application.firebase)
-    alias(libs.plugins.nowinandroid.hilt)
+    alias(libs.plugins.artcart.android.application)
+    alias(libs.plugins.artcart.android.application.compose)
+    alias(libs.plugins.artcart.android.application.flavors)
+    alias(libs.plugins.artcart.android.application.jacoco)
+    alias(libs.plugins.artcart.android.application.firebase)
+    alias(libs.plugins.artcart.hilt)
     alias(libs.plugins.google.osslicenses)
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi)

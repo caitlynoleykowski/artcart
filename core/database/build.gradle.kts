@@ -15,10 +15,10 @@
  */
 
 plugins {
-    alias(libs.plugins.nowinandroid.android.library)
-    alias(libs.plugins.nowinandroid.android.library.jacoco)
-    alias(libs.plugins.nowinandroid.android.room)
-    alias(libs.plugins.nowinandroid.hilt)
+    alias(libs.plugins.artcart.android.library)
+    alias(libs.plugins.artcart.android.library.jacoco)
+    alias(libs.plugins.artcart.android.room)
+    alias(libs.plugins.artcart.hilt)
 }
 
 android {

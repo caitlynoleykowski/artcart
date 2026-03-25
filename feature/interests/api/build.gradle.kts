@@ -15,7 +15,7 @@
  */
 
 plugins {
-    alias(libs.plugins.nowinandroid.android.feature.api)
+    alias(libs.plugins.artcart.android.feature.api)
 }
 
 android {

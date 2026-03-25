@@ -32,7 +32,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             apply(plugin = "com.android.library")
-            apply(plugin = "nowinandroid.android.lint")
+            apply(plugin = "artcart.android.lint")
 
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)

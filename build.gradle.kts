@@ -38,5 +38,5 @@ plugins {
     alias(libs.plugins.roborazzi) apply false
     alias(libs.plugins.google.osslicenses) apply false
     alias(libs.plugins.room) apply false
-    alias(libs.plugins.nowinandroid.root)
+    alias(libs.plugins.artcart.root)
 }

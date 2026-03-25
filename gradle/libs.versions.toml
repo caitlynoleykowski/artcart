@@ -193,19 +193,19 @@ roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
 room = { id = "androidx.room", version.ref = "room" }
 
 # Plugins defined by this project
-nowinandroid-android-application = { id = "nowinandroid.android.application" }
-nowinandroid-android-application-compose = { id = "nowinandroid.android.application.compose" }
-nowinandroid-android-application-firebase = { id = "nowinandroid.android.application.firebase" }
-nowinandroid-android-application-flavors = { id = "nowinandroid.android.application.flavors" }
-nowinandroid-android-application-jacoco = { id = "nowinandroid.android.application.jacoco" }
-nowinandroid-android-feature-impl = { id = "nowinandroid.android.feature.impl" }
-nowinandroid-android-feature-api = { id = "nowinandroid.android.feature.api" }
-nowinandroid-android-library = { id = "nowinandroid.android.library" }
-nowinandroid-android-library-compose = { id = "nowinandroid.android.library.compose" }
-nowinandroid-android-library-jacoco = { id = "nowinandroid.android.library.jacoco" }
-nowinandroid-android-lint = { id = "nowinandroid.android.lint" }
-nowinandroid-android-room = { id = "nowinandroid.android.room" }
-nowinandroid-android-test = { id = "nowinandroid.android.test" }
-nowinandroid-hilt = { id = "nowinandroid.hilt" }
-nowinandroid-jvm-library = { id = "nowinandroid.jvm.library" }
-nowinandroid-root = { id = "nowinandroid.root" }
+artcart-android-application = { id = "artcart.android.application" }
+artcart-android-application-compose = { id = "artcart.android.application.compose" }
+artcart-android-application-firebase = { id = "artcart.android.application.firebase" }
+artcart-android-application-flavors = { id = "artcart.android.application.flavors" }
+artcart-android-application-jacoco = { id = "artcart.android.application.jacoco" }
+artcart-android-feature-impl = { id = "artcart.android.feature.impl" }
+artcart-android-feature-api = { id = "artcart.android.feature.api" }
+artcart-android-library = { id = "artcart.android.library" }
+artcart-android-library-compose = { id = "artcart.android.library.compose" }
+artcart-android-library-jacoco = { id = "artcart.android.library.jacoco" }
+artcart-android-lint = { id = "artcart.android.lint" }
+artcart-android-room = { id = "artcart.android.room" }
+artcart-android-test = { id = "artcart.android.test" }
+artcart-hilt = { id = "artcart.hilt" }
+artcart-jvm-library = { id = "artcart.jvm.library" }
+artcart-root = { id = "artcart.root" }

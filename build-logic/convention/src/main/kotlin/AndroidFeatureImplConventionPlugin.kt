@@ -26,8 +26,8 @@ import org.gradle.kotlin.dsl.dependencies
 class AndroidFeatureImplConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            apply(plugin = "nowinandroid.android.library")
-            apply(plugin = "nowinandroid.hilt")
+            apply(plugin = "artcart.android.library")
+            apply(plugin = "artcart.hilt")
 
             extensions.configure<LibraryExtension> {
                 testOptions.animationsDisabled = true
