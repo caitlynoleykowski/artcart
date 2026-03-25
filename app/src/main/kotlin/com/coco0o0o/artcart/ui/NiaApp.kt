@@ -80,7 +80,6 @@ import com.coco0o0o.artcart.feature.search.api.navigation.SearchNavKey
 import com.coco0o0o.artcart.feature.search.impl.navigation.searchEntry
 import com.coco0o0o.artcart.feature.topic.impl.navigation.topicEntry
 import com.coco0o0o.artcart.navigation.TOP_LEVEL_NAV_ITEMS
-import com.coco0o0o.artcart.feature.settings.impl.R as settingsR
 
 @Composable
 fun NiaApp(
@@ -215,16 +214,11 @@ internal fun NiaApp(
                         titleRes = destination.titleTextId,
                         navigationIcon = NiaIcons.Search,
                         navigationIconContentDescription = stringResource(
-                            id = settingsR.string.feature_settings_impl_top_app_bar_navigation_icon_description,
-                        ),
-                        actionIcon = NiaIcons.Settings,
-                        actionIconContentDescription = stringResource(
-                            id = settingsR.string.feature_settings_impl_top_app_bar_action_icon_description,
+                            id = com.coco0o0o.artcart.feature.search.api.R.string.feature_search_api_title
                         ),
                         colors = TopAppBarDefaults.topAppBarColors(
                             containerColor = Color.Transparent,
                         ),
-                        onActionClick = { onTopAppBarActionClick() },
                         onNavigationClick = { navigator.navigate(SearchNavKey) },
                     )
                 }

@@ -42,12 +42,9 @@ fun NiaTopAppBar(
     @StringRes titleRes: Int,
     navigationIcon: ImageVector,
     navigationIconContentDescription: String,
-    actionIcon: ImageVector,
-    actionIconContentDescription: String,
     modifier: Modifier = Modifier,
     colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(),
     onNavigationClick: () -> Unit = {},
-    onActionClick: () -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
         title = { Text(text = stringResource(id = titleRes)) },
@@ -61,13 +58,13 @@ fun NiaTopAppBar(
             }
         },
         actions = {
-            IconButton(onClick = onActionClick) {
-                Icon(
-                    imageVector = actionIcon,
-                    contentDescription = actionIconContentDescription,
-                    tint = MaterialTheme.colorScheme.onSurface,
-                )
-            }
+//            IconButton(onClick = onActionClick) {
+//                Icon(
+//                    imageVector = actionIcon,
+//                    contentDescription = actionIconContentDescription,
+//                    tint = MaterialTheme.colorScheme.onSurface,
+//                )
+//            }
         },
         colors = colors,
         modifier = modifier.testTag("niaTopAppBar"),
@@ -83,8 +80,6 @@ private fun NiaTopAppBarPreview() {
             titleRes = android.R.string.untitled,
             navigationIcon = NiaIcons.Search,
             navigationIconContentDescription = "Navigation icon",
-            actionIcon = NiaIcons.MoreVert,
-            actionIconContentDescription = "Action icon",
         )
     }
 }
