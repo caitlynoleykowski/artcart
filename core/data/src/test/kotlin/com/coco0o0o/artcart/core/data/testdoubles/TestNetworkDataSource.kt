@@ -16,8 +16,8 @@
 
 package com.coco0o0o.artcart.core.data.testdoubles
 
-import com.coco0o0o.artcart.core.network.NiaNetworkDataSource
-import com.coco0o0o.artcart.core.network.demo.DemoNiaNetworkDataSource
+import com.coco0o0o.artcart.core.network.NetworkDataSource
+import com.coco0o0o.artcart.core.network.demo.DemoNetworkDataSource
 import com.coco0o0o.artcart.core.network.model.NetworkChangeList
 import com.coco0o0o.artcart.core.network.model.NetworkNewsResource
 import com.coco0o0o.artcart.core.network.model.NetworkTopic
@@ -31,11 +31,11 @@ enum class CollectionType {
 }
 
 /**
- * Test double for [NiaNetworkDataSource]
+ * Test double for [NetworkDataSource]
  */
-class TestNiaNetworkDataSource : NiaNetworkDataSource {
+class TestNetworkDataSource : NetworkDataSource {
 
-    private val source = DemoNiaNetworkDataSource(
+    private val source = DemoNetworkDataSource(
         UnconfinedTestDispatcher(),
         Json { ignoreUnknownKeys = true },
     )

@@ -31,13 +31,13 @@ import kotlin.test.assertEquals
 
 class DemoNiaNetworkDataSourceTest {
 
-    private lateinit var subject: DemoNiaNetworkDataSource
+    private lateinit var subject: DemoNetworkDataSource
 
     private val testDispatcher = StandardTestDispatcher()
 
     @Before
     fun setUp() {
-        subject = DemoNiaNetworkDataSource(
+        subject = DemoNetworkDataSource(
             ioDispatcher = testDispatcher,
             networkJson = Json { ignoreUnknownKeys = true },
             assets = JvmUnitTestDemoAssetManager,

@@ -27,10 +27,10 @@ import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
 /**
- * [Application] class for NiA
+ * [Application] class for ArtCart
  */
 @HiltAndroidApp
-class NiaApplication : Application(), ImageLoaderFactory {
+class ArtCartApplication : Application(), ImageLoaderFactory {
     @Inject
     lateinit var imageLoader: dagger.Lazy<ImageLoader>
 

@@ -20,13 +20,11 @@ import com.coco0o0o.artcart.core.database.dao.LocationDao
 import com.coco0o0o.artcart.core.database.model.LocationEntity
 import com.coco0o0o.artcart.core.database.model.asDomainModel
 import com.coco0o0o.artcart.core.model.data.ArtLocation
-import com.coco0o0o.artcart.core.network.NiaNetworkDataSource
+import com.coco0o0o.artcart.core.network.NetworkDataSource
 import com.coco0o0o.artcart.core.network.model.NetworkLocation
 import com.coco0o0o.artcart.core.network.model.toPhotoUrl
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.transform
 import javax.inject.Inject
 
 /**
@@ -35,7 +33,7 @@ import javax.inject.Inject
  */
 internal class OfflineFirstLocationsRepository @Inject constructor(
     private val locationDao: LocationDao,
-    private val network: NiaNetworkDataSource,
+    private val network: NetworkDataSource,
 ) : LocationsRepository {
 
     override suspend fun refreshLocations(lat: Double, lng: Double) { // TODO: insert params lat lng

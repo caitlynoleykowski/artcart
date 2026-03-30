@@ -106,7 +106,6 @@ dependencies {
 
     kspTest(libs.hilt.compiler)
 
-    testImplementation(projects.core.dataTest)
     testImplementation(libs.hilt.android.testing)
     testImplementation(libs.kotlin.test)
 
@@ -116,7 +115,6 @@ dependencies {
     testDemoImplementation(projects.core.testing)
 
     androidTestImplementation(projects.core.testing)
-    androidTestImplementation(projects.core.dataTest)
     androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.androidx.compose.ui.test)
     androidTestImplementation(libs.hilt.android.testing)

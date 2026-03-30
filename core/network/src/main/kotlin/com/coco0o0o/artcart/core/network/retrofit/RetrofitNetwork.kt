@@ -17,12 +17,8 @@
 package com.coco0o0o.artcart.core.network.retrofit
 
 import androidx.tracing.trace
-import com.coco0o0o.artcart.core.network.NiaNetworkDataSource
-import com.coco0o0o.artcart.core.network.model.NetworkChangeList
-import com.coco0o0o.artcart.core.network.model.NetworkLocation
-import com.coco0o0o.artcart.core.network.model.NetworkNewsResource
+import com.coco0o0o.artcart.core.network.NetworkDataSource
 import com.coco0o0o.artcart.core.network.model.NetworkPlaces
-import com.coco0o0o.artcart.core.network.model.NetworkTopic
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import okhttp3.Call
@@ -30,11 +26,8 @@ import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.Int
@@ -105,47 +98,19 @@ private interface RetrofitNiaNetworkApi {
     suspend fun getLocations(
         @Body locationsBody: LocationsBody,
     ): NetworkPlaces
-
-    @GET(value = "topics")
-    suspend fun getTopics(
-        @Query("id") ids: List<String>?,
-    ): NetworkResponse<List<NetworkTopic>>
-
-    @GET(value = "newsresources")
-    suspend fun getNewsResources(
-        @Query("id") ids: List<String>?,
-    ): NetworkResponse<List<NetworkNewsResource>>
-
-    @GET(value = "changelists/topics")
-    suspend fun getTopicChangeList(
-        @Query("after") after: Int?,
-    ): List<NetworkChangeList>
-
-    @GET(value = "changelists/newsresources")
-    suspend fun getNewsResourcesChangeList(
-        @Query("after") after: Int?,
-    ): List<NetworkChangeList>
 }
 
 //private const val NIA_BASE_URL = "https://places.googleapis.com/v1/places/GyuEmsRBfy61i59si0?fields=addressComponents&key=YOUR_API_KEY"
 private const val NIA_BASE_URL = "https://places.googleapis.com"
 
 /**
- * Wrapper for data provided from the [NIA_BASE_URL]
- */
-@Serializable
-private data class NetworkResponse<T>(
-    val data: T,
-)
-
-/**
- * [Retrofit] backed [NiaNetworkDataSource]
+ * [Retrofit] backed [NetworkDataSource]
  */
 @Singleton
-internal class RetrofitNiaNetwork @Inject constructor(
+internal class RetrofitNetwork @Inject constructor(
     networkJson: Json,
     okhttpCallFactory: dagger.Lazy<Call.Factory>,
-) : NiaNetworkDataSource {
+) : NetworkDataSource {
 
     private val networkApi = trace("RetrofitNiaNetwork") {
         Retrofit.Builder()
@@ -160,9 +125,6 @@ internal class RetrofitNiaNetwork @Inject constructor(
             .build()
             .create(RetrofitNiaNetworkApi::class.java)
     }
-
-    override suspend fun getTopics(ids: List<String>?): List<NetworkTopic> =
-        networkApi.getTopics(ids = ids).data
 
     override suspend fun getLocations(latitude: Double, longitude: Double): NetworkPlaces =
         networkApi.getLocations(
@@ -185,13 +147,4 @@ internal class RetrofitNiaNetwork @Inject constructor(
                 ),
             )
         )
-
-    override suspend fun getNewsResources(ids: List<String>?): List<NetworkNewsResource> =
-        networkApi.getNewsResources(ids = ids).data
-
-    override suspend fun getTopicChangeList(after: Int?): List<NetworkChangeList> =
-        networkApi.getTopicChangeList(after = after)
-
-    override suspend fun getNewsResourceChangeList(after: Int?): List<NetworkChangeList> =
-        networkApi.getNewsResourcesChangeList(after = after)
 }

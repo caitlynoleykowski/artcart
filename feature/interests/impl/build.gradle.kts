@@ -48,7 +48,6 @@ dependencies {
     implementation(libs.androidx.compose.material3.adaptive.navigation3)
 
     testImplementation(projects.core.testing)
-    testImplementation(projects.core.dataTest)
     testImplementation(libs.robolectric)
     testImplementation(libs.androidx.compose.ui.test)
     testImplementation(libs.androidx.test.espresso.core)
