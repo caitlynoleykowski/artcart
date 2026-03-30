@@ -16,7 +16,6 @@
 
 package com.coco0o0o.artcart.core.data.testdoubles
 
-import com.coco0o0o.artcart.core.database.dao.TopicDao
 import com.coco0o0o.artcart.core.database.model.TopicEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow

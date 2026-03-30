@@ -18,12 +18,11 @@ package com.coco0o0o.artcart.navigation
 
 import androidx.annotation.StringRes
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.coco0o0o.artcart.R
 import com.coco0o0o.artcart.core.designsystem.icon.NiaIcons
 import com.coco0o0o.artcart.feature.bookmarks.api.navigation.BookmarksNavKey
+import com.coco0o0o.artcart.feature.interests.api.R
 import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
 import com.coco0o0o.artcart.feature.bookmarks.api.R as bookmarksR
-import com.coco0o0o.artcart.feature.search.api.R as searchR
 
 /**
  * Type for the top level navigation items in the application. Contains UI information about the
@@ -53,8 +52,8 @@ val BOOKMARKS = TopLevelNavItem(
 val INTERESTS = TopLevelNavItem(
     selectedIcon = NiaIcons.Grid3x3,
     unselectedIcon = NiaIcons.Grid3x3,
-    iconTextId = searchR.string.feature_search_api_interests,
-    titleTextId = searchR.string.feature_search_api_interests,
+    iconTextId = R.string.feature_interests_api_title,
+    titleTextId = R.string.feature_interests_api_title,
 )
 
 val TOP_LEVEL_NAV_ITEMS = mapOf(

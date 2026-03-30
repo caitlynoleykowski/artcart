@@ -16,12 +16,8 @@
 
 package com.coco0o0o.artcart.core.data.di
 
-import com.coco0o0o.artcart.core.data.repository.DefaultRecentSearchRepository
-import com.coco0o0o.artcart.core.data.repository.DefaultSearchContentsRepository
 import com.coco0o0o.artcart.core.data.repository.LocationsRepository
 import com.coco0o0o.artcart.core.data.repository.OfflineFirstLocationsRepository
-import com.coco0o0o.artcart.core.data.repository.RecentSearchRepository
-import com.coco0o0o.artcart.core.data.repository.SearchContentsRepository
 import com.coco0o0o.artcart.core.data.util.ConnectivityManagerNetworkMonitor
 import com.coco0o0o.artcart.core.data.util.NetworkMonitor
 import com.coco0o0o.artcart.core.data.util.TimeZoneBroadcastMonitor
@@ -39,16 +35,6 @@ abstract class DataModule {
     internal abstract fun bindsLocationRepository(
         topicsRepository: OfflineFirstLocationsRepository,
     ): LocationsRepository
-
-    @Binds
-    internal abstract fun bindsRecentSearchRepository(
-        recentSearchRepository: DefaultRecentSearchRepository,
-    ): RecentSearchRepository
-
-    @Binds
-    internal abstract fun bindsSearchContentsRepository(
-        searchContentsRepository: DefaultSearchContentsRepository,
-    ): SearchContentsRepository
 
     @Binds
     internal abstract fun bindsNetworkMonitor(

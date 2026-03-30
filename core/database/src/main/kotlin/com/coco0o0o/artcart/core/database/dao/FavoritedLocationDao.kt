@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
 import com.coco0o0o.artcart.core.database.model.LocationEntity
-import com.coco0o0o.artcart.core.database.model.TopicEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

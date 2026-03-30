@@ -76,8 +76,6 @@ import com.coco0o0o.artcart.core.navigation.toEntries
 import com.coco0o0o.artcart.feature.bookmarks.impl.navigation.LocalSnackbarHostState
 import com.coco0o0o.artcart.feature.bookmarks.impl.navigation.bookmarksEntry
 import com.coco0o0o.artcart.feature.interests.impl.navigation.interestsEntry
-import com.coco0o0o.artcart.feature.search.api.navigation.SearchNavKey
-import com.coco0o0o.artcart.feature.search.impl.navigation.searchEntry
 import com.coco0o0o.artcart.feature.topic.impl.navigation.topicEntry
 import com.coco0o0o.artcart.navigation.TOP_LEVEL_NAV_ITEMS
 
@@ -214,12 +212,12 @@ internal fun NiaApp(
                         titleRes = destination.titleTextId,
                         navigationIcon = NiaIcons.Search,
                         navigationIconContentDescription = stringResource(
-                            id = com.coco0o0o.artcart.feature.search.api.R.string.feature_search_api_title
+                            id = R.string.app_name
                         ),
                         colors = TopAppBarDefaults.topAppBarColors(
                             containerColor = Color.Transparent,
                         ),
-                        onNavigationClick = { navigator.navigate(SearchNavKey) },
+                        onNavigationClick = { }//navigator.navigate(SearchNavKey) },
                     )
                 }
 
@@ -239,7 +237,6 @@ internal fun NiaApp(
                         bookmarksEntry(navigator)
                         interestsEntry(navigator)
                         topicEntry(navigator)
-                        searchEntry(navigator)
                     }
 
                     NavDisplay(
