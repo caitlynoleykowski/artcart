@@ -43,5 +43,4 @@ dependencies {
     
     testImplementation(libs.hilt.android.testing)
     testImplementation(libs.robolectric)
-    testImplementation(projects.core.screenshotTesting)
 }

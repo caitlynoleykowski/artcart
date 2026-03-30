@@ -57,7 +57,6 @@ include(":core:model")
 include(":core:navigation")
 include(":core:network")
 include(":core:notifications")
-include(":core:screenshot-testing")
 include(":core:testing")
 include(":core:ui")
 
