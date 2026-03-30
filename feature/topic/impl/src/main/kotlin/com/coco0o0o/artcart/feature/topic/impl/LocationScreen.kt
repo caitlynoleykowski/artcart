@@ -53,7 +53,6 @@ import com.coco0o0o.artcart.core.designsystem.component.NiaLoadingWheel
 import com.coco0o0o.artcart.core.designsystem.icon.NiaIcons
 import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
 import com.coco0o0o.artcart.core.model.data.ArtLocation
-import com.coco0o0o.artcart.core.ui.TrackScreenViewEvent
 import com.coco0o0o.artcart.core.ui.TrackScrollJank
 import com.coco0o0o.artcart.core.ui.R as UiR
 import com.coco0o0o.artcart.feature.topic.api.R as TopicR
@@ -68,7 +67,6 @@ fun LocationScreen(
 ) {
     val locationUiState: LocationUiState by viewModel.locationUiState.collectAsStateWithLifecycle()
 
-    TrackScreenViewEvent(screenName = "Location: ${viewModel.locationId}")
     LocationScreen(
         locationUiState = locationUiState,
         modifier = modifier.testTag("location:${viewModel.locationId}"),

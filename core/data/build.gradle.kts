@@ -30,8 +30,6 @@ dependencies {
     api(projects.core.database)
     api(projects.core.network)
 
-    implementation(projects.core.analytics)
-
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotlinx.serialization.json)
     testImplementation(projects.core.testing)

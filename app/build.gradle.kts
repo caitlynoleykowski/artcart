@@ -79,7 +79,6 @@ dependencies {
     implementation(projects.core.designsystem)
     implementation(projects.core.data)
     implementation(projects.core.model)
-    implementation(projects.core.analytics)
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)

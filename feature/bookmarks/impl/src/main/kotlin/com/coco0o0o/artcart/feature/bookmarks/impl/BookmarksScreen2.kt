@@ -26,7 +26,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.coco0o0o.artcart.core.designsystem.component.NiaLoadingWheel
-import com.coco0o0o.artcart.core.ui.TrackScreenViewEvent
 
 @Composable
 fun BookmarksScreen2(
@@ -77,7 +76,6 @@ internal fun BookmarksScreen2(
             is FavoritedArtLocationsUiState.Empty -> InterestsEmptyScreen()
         }
     }
-    TrackScreenViewEvent(screenName = "Interests")
 }
 
 @Composable

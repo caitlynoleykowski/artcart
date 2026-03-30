@@ -34,8 +34,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.metrics.performance.JankStats
 import androidx.tracing.trace
 import com.coco0o0o.artcart.MainActivityUiState.Loading
-import com.coco0o0o.artcart.core.analytics.AnalyticsHelper
-import com.coco0o0o.artcart.core.analytics.LocalAnalyticsHelper
 import com.coco0o0o.artcart.core.data.util.NetworkMonitor
 import com.coco0o0o.artcart.core.data.util.TimeZoneMonitor
 import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
@@ -65,9 +63,6 @@ class MainActivity : ComponentActivity() {
 
     @Inject
     lateinit var timeZoneMonitor: TimeZoneMonitor
-
-    @Inject
-    lateinit var analyticsHelper: AnalyticsHelper
 
     private val viewModel: MainActivityViewModel by viewModels()
 
@@ -137,7 +132,6 @@ class MainActivity : ComponentActivity() {
             val currentTimeZone by appState.currentTimeZone.collectAsStateWithLifecycle()
 
             CompositionLocalProvider(
-                LocalAnalyticsHelper provides analyticsHelper,
                 LocalTimeZone provides currentTimeZone,
             ) {
                 NiaTheme(

@@ -46,7 +46,6 @@ rootProject.name = "artcart"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
-include(":core:analytics")
 include(":core:common")
 include(":core:data")
 include(":core:data-test")
