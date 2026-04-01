@@ -40,7 +40,7 @@ import org.robolectric.annotation.Config
 import kotlin.test.assertEquals
 
 /**
- * Tests [NiaAppState].
+ * Tests [ArtCartAppState].
  */
 @RunWith(RobolectricTestRunner::class)
 @Config(application = HiltTestApplication::class)
@@ -56,7 +56,7 @@ class NiaAppStateTest {
     private val timeZoneMonitor = TestTimeZoneMonitor()
 
     // Subject under test.
-    private lateinit var state: NiaAppState
+    private lateinit var state: ArtCartAppState
 
     private fun testNavigationState() = NavigationState(
         startKey = InterestsNavKey,
@@ -73,7 +73,7 @@ class NiaAppStateTest {
 
         composeTestRule.setContent {
             state = remember(navigationState) {
-                NiaAppState(
+                ArtCartAppState(
                     coroutineScope = backgroundScope,
                     networkMonitor = networkMonitor,
                     timeZoneMonitor = timeZoneMonitor,
@@ -97,7 +97,7 @@ class NiaAppStateTest {
     @Test
     fun niaAppState_destinations() = runTest {
         composeTestRule.setContent {
-            state = rememberNiaAppState(
+            state = rememberArtCartAppState(
                 networkMonitor = networkMonitor,
                 userNewsResourceRepository = userNewsResourceRepository,
                 timeZoneMonitor = timeZoneMonitor,
@@ -117,7 +117,7 @@ class NiaAppStateTest {
     fun niaAppState_whenNetworkMonitorIsOffline_StateIsOffline() =
         runTest(UnconfinedTestDispatcher()) {
             composeTestRule.setContent {
-                state = NiaAppState(
+                state = ArtCartAppState(
                     coroutineScope = backgroundScope,
                     networkMonitor = networkMonitor,
                     userNewsResourceRepository = userNewsResourceRepository,
@@ -137,7 +137,7 @@ class NiaAppStateTest {
     @Test
     fun niaAppState_differentTZ_withTimeZoneMonitorChange() = runTest(UnconfinedTestDispatcher()) {
         composeTestRule.setContent {
-            state = NiaAppState(
+            state = ArtCartAppState(
                 coroutineScope = backgroundScope,
                 networkMonitor = networkMonitor,
                 userNewsResourceRepository = userNewsResourceRepository,

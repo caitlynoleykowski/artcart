@@ -101,7 +101,7 @@ private interface RetrofitNiaNetworkApi {
 }
 
 //private const val NIA_BASE_URL = "https://places.googleapis.com/v1/places/GyuEmsRBfy61i59si0?fields=addressComponents&key=YOUR_API_KEY"
-private const val NIA_BASE_URL = "https://places.googleapis.com"
+private const val PLACES_BASE_URL = "https://places.googleapis.com"
 
 /**
  * [Retrofit] backed [NetworkDataSource]
@@ -112,16 +112,16 @@ internal class RetrofitNetwork @Inject constructor(
     okhttpCallFactory: dagger.Lazy<Call.Factory>,
 ) : NetworkDataSource {
 
-    private val networkApi = trace("RetrofitNiaNetwork") {
+    private val networkApi = trace("RetrofitArtCartNetwork") {
         Retrofit.Builder()
-            .baseUrl(NIA_BASE_URL)
+            .baseUrl(PLACES_BASE_URL)
             // We use callFactory lambda here with dagger.Lazy<Call.Factory>
             // to prevent initializing OkHttp on the main thread.
             .callFactory { okhttpCallFactory.get().newCall(it) }
             .addConverterFactory(
                 networkJson.asConverterFactory("application/json".toMediaType()),
             )
-            // Add http interceptor for the API key
+            // Add ok http interceptor for the API key
             .build()
             .create(RetrofitNiaNetworkApi::class.java)
     }

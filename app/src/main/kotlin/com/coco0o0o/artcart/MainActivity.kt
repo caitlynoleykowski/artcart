@@ -38,8 +38,8 @@ import com.coco0o0o.artcart.core.data.util.NetworkMonitor
 import com.coco0o0o.artcart.core.data.util.TimeZoneMonitor
 import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
 import com.coco0o0o.artcart.core.ui.LocalTimeZone
-import com.coco0o0o.artcart.ui.NiaApp
-import com.coco0o0o.artcart.ui.rememberNiaAppState
+import com.coco0o0o.artcart.ui.ArtCartApp
+import com.coco0o0o.artcart.ui.rememberArtCartAppState
 import com.coco0o0o.artcart.util.isSystemInDarkTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.combine
@@ -124,7 +124,7 @@ class MainActivity : ComponentActivity() {
         splashScreen.setKeepOnScreenCondition { viewModel.uiState.value.shouldKeepSplashScreen() }
 
         setContent {
-            val appState = rememberNiaAppState(
+            val appState = rememberArtCartAppState(
                 networkMonitor = networkMonitor,
                 timeZoneMonitor = timeZoneMonitor,
             )
@@ -139,7 +139,7 @@ class MainActivity : ComponentActivity() {
                     androidTheme = themeSettings.androidTheme,
                     disableDynamicTheming = themeSettings.disableDynamicTheming,
                 ) {
-                    NiaApp(appState)
+                    ArtCartApp(appState)
                 }
             }
         }

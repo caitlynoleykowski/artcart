@@ -24,7 +24,6 @@ import com.coco0o0o.artcart.core.data.util.NetworkMonitor
 import com.coco0o0o.artcart.core.data.util.TimeZoneMonitor
 import com.coco0o0o.artcart.core.navigation.NavigationState
 import com.coco0o0o.artcart.core.navigation.rememberNavigationState
-import com.coco0o0o.artcart.core.ui.TrackDisposableJank
 import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
 import com.coco0o0o.artcart.navigation.TOP_LEVEL_NAV_ITEMS
 import kotlinx.coroutines.CoroutineScope
@@ -34,14 +33,12 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.datetime.TimeZone
 
 @Composable
-fun rememberNiaAppState(
+fun rememberArtCartAppState(
     networkMonitor: NetworkMonitor,
     timeZoneMonitor: TimeZoneMonitor,
     coroutineScope: CoroutineScope = rememberCoroutineScope(),
-): NiaAppState {
+): ArtCartAppState {
     val navigationState = rememberNavigationState(InterestsNavKey, TOP_LEVEL_NAV_ITEMS.keys)
-
-    NavigationTrackingSideEffect(navigationState)
 
     return remember(
         navigationState,
@@ -49,7 +46,7 @@ fun rememberNiaAppState(
         networkMonitor,
         timeZoneMonitor,
     ) {
-        NiaAppState(
+        ArtCartAppState(
             navigationState = navigationState,
             coroutineScope = coroutineScope,
             networkMonitor = networkMonitor,
@@ -59,7 +56,7 @@ fun rememberNiaAppState(
 }
 
 @Stable
-class NiaAppState(
+class ArtCartAppState(
     val navigationState: NavigationState,
     coroutineScope: CoroutineScope,
     networkMonitor: NetworkMonitor,
@@ -79,15 +76,4 @@ class NiaAppState(
             SharingStarted.WhileSubscribed(5_000),
             TimeZone.currentSystemDefault(),
         )
-}
-
-/**
- * Stores information about navigation events to be used with JankStats
- */
-@Composable
-private fun NavigationTrackingSideEffect(navigationState: NavigationState) {
-    TrackDisposableJank(navigationState.currentKey) { metricsHolder ->
-        metricsHolder.state?.putState("Navigation", navigationState.currentKey.toString())
-        onDispose {}
-    }
 }

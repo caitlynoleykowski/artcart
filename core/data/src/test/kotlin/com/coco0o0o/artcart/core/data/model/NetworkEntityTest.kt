@@ -16,11 +16,6 @@
 
 package com.coco0o0o.artcart.core.data.model
 
-import com.coco0o0o.artcart.core.model.data.NewsResource
-import com.coco0o0o.artcart.core.model.data.Topic
-import com.coco0o0o.artcart.core.network.model.NetworkNewsResource
-import com.coco0o0o.artcart.core.network.model.NetworkTopic
-import com.coco0o0o.artcart.core.network.model.asExternalModel
 import kotlinx.datetime.Instant
 import org.junit.Test
 import kotlin.test.assertEquals

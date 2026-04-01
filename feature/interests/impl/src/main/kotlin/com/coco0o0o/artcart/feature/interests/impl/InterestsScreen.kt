@@ -67,7 +67,6 @@ import com.coco0o0o.artcart.core.designsystem.component.NiaLoadingWheel
 import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
 import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.ui.DevicePreviews
-import com.coco0o0o.artcart.core.ui.FollowableTopicPreviewParameterProvider
 import com.coco0o0o.artcart.feature.interests.api.R
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionStatus
@@ -341,25 +340,6 @@ fun LocationUpdatesEffect(
         onDispose {
             locationClient.removeLocationUpdates(locationCallback)
             lifecycleOwner.lifecycle.removeObserver(observer)
-        }
-    }
-}
-
-@DevicePreviews
-@Composable
-fun InterestsScreenPopulated(
-    @PreviewParameter(FollowableTopicPreviewParameterProvider::class)
-    followableArtLocations: List<ArtLocation>,
-) {
-    NiaTheme {
-        NiaBackground {
-            InterestsScreen(
-                uiState = ArtNearbyUiState.ArtLocations(
-                    artLocations = followableArtLocations,
-                ),
-                followTopic = { _, _ -> },
-                onTopicClick = {},
-            )
         }
     }
 }

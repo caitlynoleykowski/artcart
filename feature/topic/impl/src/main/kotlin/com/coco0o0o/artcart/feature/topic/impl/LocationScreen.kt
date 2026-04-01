@@ -33,16 +33,19 @@ import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextLayoutInput
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -67,14 +70,39 @@ fun LocationScreen(
 ) {
     val locationUiState: LocationUiState by viewModel.locationUiState.collectAsStateWithLifecycle()
 
-    LocationScreen(
-        locationUiState = locationUiState,
-        modifier = modifier.testTag("location:${viewModel.locationId}"),
-        showBackButton = showBackButton,
-        onBackClick = onBackClick,
-        onFollowClick = viewModel::followLocationToggle,
-        onTopicClick = onTopicClick,
-    )
+//    LocationScreen(
+//        locationUiState = locationUiState,
+//        modifier = modifier.testTag("location:${viewModel.locationId}"),
+//        showBackButton = showBackButton,
+//        onBackClick = onBackClick,
+//        onFollowClick = viewModel::followLocationToggle,
+//        onTopicClick = onTopicClick,
+//    )
+    TestScreen()
+}
+
+@Composable
+internal fun TestScreen(
+    list: List<String> = listOf("test", "testasf", "teoaifsd", "0832rhds"),
+    modifier: Modifier = Modifier,
+) {
+    LazyColumn(
+        modifier = modifier,
+    ) {
+        items(list.size) {
+            Text(text = list[it])
+        }
+        item {
+            Button({}) {
+                Text(text = "Click here")
+            }
+            TextField(
+                value = "Default",
+                onValueChange = {},
+                label = { Text("Label") },
+            )
+        }
+    }
 }
 
 @VisibleForTesting

@@ -22,7 +22,6 @@ import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.util.DebugLogger
 import com.coco0o0o.artcart.core.network.BuildConfig
-import com.coco0o0o.artcart.core.network.demo.DemoAssetManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,13 +45,7 @@ internal object NetworkModule {
 
     @Provides
     @Singleton
-    fun providesDemoAssetManager(
-        @ApplicationContext context: Context,
-    ): DemoAssetManager = DemoAssetManager(context.assets::open)
-
-    @Provides
-    @Singleton
-    fun okHttpCallFactory(): Call.Factory = trace("NiaOkHttpClient") {
+    fun okHttpCallFactory(): Call.Factory = trace("ArtCartOkHttpClient") {
         OkHttpClient.Builder()
             .addInterceptor(
                 HttpLoggingInterceptor()
@@ -78,7 +71,7 @@ internal object NetworkModule {
         // We specifically request dagger.Lazy here, so that it's not instantiated from Dagger.
         okHttpCallFactory: dagger.Lazy<Call.Factory>,
         @ApplicationContext application: Context,
-    ): ImageLoader = trace("NiaImageLoader") {
+    ): ImageLoader = trace("ArtCartImageLoader") {
         ImageLoader.Builder(application)
             .callFactory { okHttpCallFactory.get() }
             .components { add(SvgDecoder.Factory()) }

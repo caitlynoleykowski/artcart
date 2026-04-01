@@ -51,15 +51,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
-import androidx.compose.ui.draw.drawWithContent
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
@@ -80,8 +75,8 @@ import com.coco0o0o.artcart.feature.topic.impl.navigation.topicEntry
 import com.coco0o0o.artcart.navigation.TOP_LEVEL_NAV_ITEMS
 
 @Composable
-fun NiaApp(
-    appState: NiaAppState,
+fun ArtCartApp(
+    appState: ArtCartAppState,
     modifier: Modifier = Modifier,
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(),
 ) {
@@ -106,7 +101,7 @@ fun NiaApp(
                 }
             }
             CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
-                NiaApp(
+                ArtCartApp(
                     appState = appState,
 
                     // TODO: Settings should be a dialog screen
@@ -126,8 +121,8 @@ fun NiaApp(
     ExperimentalComposeUiApi::class,
     ExperimentalMaterial3AdaptiveApi::class,
 )
-internal fun NiaApp(
-    appState: NiaAppState,
+internal fun ArtCartApp(
+    appState: ArtCartAppState,
     showSettingsDialog: Boolean,
     onSettingsDismissed: () -> Unit,
     onTopAppBarActionClick: () -> Unit,
@@ -252,22 +247,3 @@ internal fun NiaApp(
         }
     }
 }
-
-private fun Modifier.notificationDot(): Modifier =
-    composed {
-        val tertiaryColor = MaterialTheme.colorScheme.tertiary
-        drawWithContent {
-            drawContent()
-            drawCircle(
-                tertiaryColor,
-                radius = 5.dp.toPx(),
-                // This is based on the dimensions of the NavigationBar's "indicator pill";
-                // however, its parameters are private, so we must depend on them implicitly
-                // (NavigationBarTokens.ActiveIndicatorWidth = 64.dp)
-                center = center + Offset(
-                    64.dp.toPx() * .45f,
-                    32.dp.toPx() * -.45f - 6.dp.toPx(),
-                ),
-            )
-        }
-    }

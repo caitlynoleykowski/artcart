@@ -33,16 +33,6 @@ fun EntryProviderScope<NavKey>.topicEntry(navigator: Navigator) {
         metadata = ListDetailSceneStrategy.detailPane(),
     ) { key ->
         val id = key.id
-//        TopicScreen(
-//            showBackButton = true,
-//            onBackClick = { navigator.goBack() },
-//            onTopicClick = navigator::navigateToTopic,
-//            viewModel = hiltViewModel<TopicViewModel, Factory>(
-//                key = id,
-//            ) { factory ->
-//                factory.create(id)
-//            },
-//        )
         LocationScreen(
             showBackButton = true,
             onBackClick = { navigator.goBack() },
