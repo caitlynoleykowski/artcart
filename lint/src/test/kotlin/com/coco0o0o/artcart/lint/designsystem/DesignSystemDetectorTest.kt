@@ -114,34 +114,6 @@ class DesignSystemDetectorTest {
             )
     }
 
-    @Test
-    fun `detect replacements of Receiver`() {
-        lint()
-            .issues(ISSUE)
-            .allowMissingSdk()
-            .files(
-                COMPOSABLE_STUB,
-                STUBS,
-                @Suppress("LintImplTrimIndent")
-                kotlin(
-                    """
-                    |fun main() {
-                    ${RECEIVER_NAMES.keys.joinToString("\n") { "|    $it.toString()" }}
-                    |}
-                    """.trimMargin(),
-                ).indented(),
-            )
-            .run()
-            .expect(
-                """
-                src/test.kt:2: Error: Using Icons instead of NiaIcons [DesignSystem]
-                    Icons.toString()
-                    ~~~~~~~~~~~~~~~~
-                1 errors, 0 warnings
-                """.trimIndent(),
-            )
-    }
-
     private companion object {
 
         private val COMPOSABLE_STUB: TestFile = kotlin(

@@ -16,6 +16,9 @@
 
 package com.coco0o0o.artcart.core.designsystem.component
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Bookmark
+import androidx.compose.material.icons.rounded.BookmarkBorder
 import androidx.compose.material3.FilledIconToggleButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -24,7 +27,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.coco0o0o.artcart.core.designsystem.icon.NiaIcons
 import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
 
 /**
@@ -80,13 +82,13 @@ fun IconButtonPreview() {
             onCheckedChange = { },
             icon = {
                 Icon(
-                    imageVector = NiaIcons.BookmarkBorder,
+                    imageVector = Icons.Rounded.BookmarkBorder,
                     contentDescription = null,
                 )
             },
             checkedIcon = {
                 Icon(
-                    imageVector = NiaIcons.Bookmark,
+                    imageVector = Icons.Rounded.BookmarkBorder,
                     contentDescription = null,
                 )
             },
@@ -103,13 +105,13 @@ fun IconButtonPreviewUnchecked() {
             onCheckedChange = { },
             icon = {
                 Icon(
-                    imageVector = NiaIcons.BookmarkBorder,
+                    imageVector = Icons.Rounded.BookmarkBorder,
                     contentDescription = null,
                 )
             },
             checkedIcon = {
                 Icon(
-                    imageVector = NiaIcons.Bookmark,
+                    imageVector = Icons.Rounded.Bookmark,
                     contentDescription = null,
                 )
             },

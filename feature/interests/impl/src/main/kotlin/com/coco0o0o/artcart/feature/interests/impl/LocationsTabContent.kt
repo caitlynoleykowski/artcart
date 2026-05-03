@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.coco0o0o.artcart.feature.bookmarks.impl
+package com.coco0o0o.artcart.feature.interests.impl
 
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.Box
@@ -42,7 +42,7 @@ import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.ui.InterestsItem
 
 @Composable
-fun ArtLocationTabContent(
+fun LocationsTabContent(
     locations: List<ArtLocation>,
     onTopicClick: (String) -> Unit,
     onFollowButtonClick: (String, Boolean) -> Unit,
@@ -58,23 +58,27 @@ fun ArtLocationTabContent(
         val scrollableState = rememberLazyListState()
         LazyColumn(
             modifier = Modifier
-                .padding(horizontal = 24.dp),
-//                .testTag(LIST_PANE_TEST_TAG),
+                .padding(horizontal = 24.dp)
+                .testTag(LIST_PANE_TEST_TAG),
             contentPadding = PaddingValues(vertical = 16.dp),
             state = scrollableState,
         ) {
             locations.forEach { artLocation ->
-                val topicId = artLocation.id
-                item(key = topicId) {
-                    val isSelected = shouldHighlightSelectedTopic && topicId == selectedTopicId
+                val artLocationId = artLocation.id
+                item(key = artLocationId) {
+                    val isSelected = shouldHighlightSelectedTopic && artLocationId == selectedTopicId
                     InterestsItem(
                         name = artLocation.name,
                         following = artLocation.isFavorite,
                         description = artLocation.address,
                         secondaryDescription = artLocation.primaryTypeName,
                         topicImageUrl = artLocation.photoUrl,
-                        onClick = { onTopicClick(topicId) },
-                        onFollowButtonClick = { onFollowButtonClick(topicId, it) },
+                        onClick = {
+                            onTopicClick(artLocationId)
+                                  },
+                        onFollowButtonClick = {
+                            onFollowButtonClick(artLocationId, it)
+                                              },
                         isSelected = isSelected,
                         modifier = Modifier.fillMaxWidth(),
                     )
@@ -104,3 +108,5 @@ fun ArtLocationTabContent(
         )
     }
 }
+
+val LIST_PANE_TEST_TAG = "interests:topics"

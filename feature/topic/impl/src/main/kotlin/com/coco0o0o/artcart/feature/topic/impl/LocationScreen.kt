@@ -33,6 +33,8 @@ import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -53,10 +55,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.coco0o0o.artcart.core.designsystem.component.DynamicAsyncImage
 import com.coco0o0o.artcart.core.designsystem.component.NiaFilterChip
 import com.coco0o0o.artcart.core.designsystem.component.NiaLoadingWheel
-import com.coco0o0o.artcart.core.designsystem.icon.NiaIcons
 import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
 import com.coco0o0o.artcart.core.model.data.ArtLocation
-import com.coco0o0o.artcart.core.ui.TrackScrollJank
 import com.coco0o0o.artcart.core.ui.R as UiR
 import com.coco0o0o.artcart.feature.topic.api.R as TopicR
 
@@ -116,7 +116,6 @@ internal fun LocationScreen(
     modifier: Modifier = Modifier,
 ) {
     val state = rememberLazyListState()
-    TrackScrollJank(scrollableState = state, stateName = "location:screen")
     Box(
         modifier = modifier,
     ) {
@@ -260,7 +259,7 @@ private fun LocationToolbar(
         if (showBackButton) {
             IconButton(onClick = { onBackClick() }) {
                 Icon(
-                    imageVector = NiaIcons.ArrowBack,
+                    imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
                     contentDescription = stringResource(
                         id = UiR.string.core_ui_back,
                     ),

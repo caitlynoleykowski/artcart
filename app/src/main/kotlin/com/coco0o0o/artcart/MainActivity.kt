@@ -52,12 +52,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    /**
-     * Lazily inject [JankStats], which is used to track jank throughout the app.
-     */
-    @Inject
-    lateinit var lazyStats: dagger.Lazy<JankStats>
-
     @Inject
     lateinit var networkMonitor: NetworkMonitor
 
@@ -143,16 +137,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        lazyStats.get().isTrackingEnabled = true
-    }
-
-    override fun onPause() {
-        super.onPause()
-        lazyStats.get().isTrackingEnabled = false
     }
 }
 

@@ -65,7 +65,7 @@ internal fun BookmarksScreen2(
                 )
 
             is FavoritedArtLocationsUiState.ArtLocations ->
-                ArtLocationTabContent(
+                BookmarksTabContent(
                     locations = uiState.artLocations,
                     onTopicClick = onTopicClick,
                     onFollowButtonClick = {

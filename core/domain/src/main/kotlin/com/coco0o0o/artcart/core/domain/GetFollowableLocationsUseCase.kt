@@ -16,6 +16,7 @@
 
 package com.coco0o0o.artcart.core.domain
 
+import android.util.Log
 import com.coco0o0o.artcart.core.data.repository.LocationsRepository
 import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.model.data.FollowableArtLocation
@@ -34,6 +35,8 @@ class GetFollowableLocationsUseCase @Inject constructor(
      * @param sortBy - the field used to sort the topics. Default NONE = no sorting.
      */
     operator fun invoke(): Flow<List<ArtLocation>> {
+        print("playing around early")
+        Log.i("GetFollowableLocationsUseCase", "playing around early")
         return locationsRepository.getLocations()
     }
 }

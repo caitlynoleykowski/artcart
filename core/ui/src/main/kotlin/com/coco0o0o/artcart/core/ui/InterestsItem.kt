@@ -22,6 +22,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
@@ -38,7 +42,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.coco0o0o.artcart.core.designsystem.component.DynamicAsyncImage
 import com.coco0o0o.artcart.core.designsystem.component.NiaIconToggleButton
-import com.coco0o0o.artcart.core.designsystem.icon.NiaIcons
 import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
 import com.coco0o0o.artcart.core.ui.R.string
 
@@ -74,7 +77,7 @@ fun InterestsItem(
                 onCheckedChange = onFollowButtonClick,
                 icon = {
                     Icon(
-                        imageVector = NiaIcons.Add,
+                        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
                         contentDescription = stringResource(
                             id = string.core_ui_interests_card_follow_button_content_desc,
                         ),
@@ -82,7 +85,7 @@ fun InterestsItem(
                 },
                 checkedIcon = {
                     Icon(
-                        imageVector = NiaIcons.Check,
+                        imageVector = Icons.Rounded.Check,
                         contentDescription = stringResource(
                             id = string.core_ui_interests_card_unfollow_button_content_desc,
                         ),
@@ -112,7 +115,7 @@ private fun InterestsIcon(topicImageUrl: String, modifier: Modifier = Modifier) 
             modifier = modifier
                 .background(MaterialTheme.colorScheme.surface)
                 .padding(4.dp),
-            imageVector = NiaIcons.Person,
+            imageVector = Icons.Rounded.Person,
             // decorative image
             contentDescription = null,
         )

@@ -23,6 +23,8 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.sizeIn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -33,7 +35,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.coco0o0o.artcart.core.designsystem.icon.NiaIcons
 import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
 
 /**
@@ -293,7 +294,7 @@ fun NiaButtonLeadingIconPreview() {
             NiaButton(
                 onClick = {},
                 text = { Text("Test button") },
-                leadingIcon = { Icon(imageVector = NiaIcons.Add, contentDescription = null) },
+                leadingIcon = { Icon(imageVector = Icons.Rounded.Add, contentDescription = null) },
             )
         }
     }

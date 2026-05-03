@@ -17,8 +17,11 @@
 package com.coco0o0o.artcart.navigation
 
 import androidx.annotation.StringRes
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Bookmarks
+import androidx.compose.material.icons.rounded.Bookmarks
+import androidx.compose.material.icons.rounded.Grid3x3
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.coco0o0o.artcart.core.designsystem.icon.NiaIcons
 import com.coco0o0o.artcart.feature.bookmarks.api.navigation.BookmarksNavKey
 import com.coco0o0o.artcart.feature.interests.api.R
 import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
@@ -43,15 +46,15 @@ data class TopLevelNavItem(
 )
 
 val BOOKMARKS = TopLevelNavItem(
-    selectedIcon = NiaIcons.Bookmarks,
-    unselectedIcon = NiaIcons.BookmarksBorder,
+    selectedIcon = Icons.Rounded.Bookmarks,
+    unselectedIcon = Icons.Outlined.Bookmarks,
     iconTextId = bookmarksR.string.feature_bookmarks_api_title,
     titleTextId = bookmarksR.string.feature_bookmarks_api_title,
 )
 
 val INTERESTS = TopLevelNavItem(
-    selectedIcon = NiaIcons.Grid3x3,
-    unselectedIcon = NiaIcons.Grid3x3,
+    selectedIcon = Icons.Rounded.Grid3x3,
+    unselectedIcon = Icons.Rounded.Grid3x3,
     iconTextId = R.string.feature_interests_api_title,
     titleTextId = R.string.feature_interests_api_title,
 )

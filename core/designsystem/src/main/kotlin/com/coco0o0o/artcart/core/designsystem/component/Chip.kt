@@ -18,6 +18,8 @@ package com.coco0o0o.artcart.core.designsystem.component
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
@@ -28,7 +30,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.coco0o0o.artcart.core.designsystem.icon.NiaIcons
 import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
 
 /**
@@ -62,7 +63,7 @@ fun NiaFilterChip(
         leadingIcon = if (selected) {
             {
                 Icon(
-                    imageVector = NiaIcons.Check,
+                    imageVector = Icons.Rounded.Check,
                     contentDescription = null,
                 )
             }

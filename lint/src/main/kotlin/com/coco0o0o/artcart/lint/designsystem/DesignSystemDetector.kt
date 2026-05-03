@@ -96,9 +96,6 @@ class DesignSystemDetector : Detector(), Detector.UastScanner {
             "MediumTopAppBar" to "NiaTopAppBar",
             "LargeTopAppBar" to "NiaTopAppBar",
         )
-        val RECEIVER_NAMES = mapOf(
-            "Icons" to "NiaIcons",
-        )
 
         fun reportIssue(
             context: JavaContext,

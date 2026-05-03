@@ -28,6 +28,8 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -64,7 +66,6 @@ import com.coco0o0o.artcart.core.designsystem.component.NiaBackground
 import com.coco0o0o.artcart.core.designsystem.component.NiaGradientBackground
 import com.coco0o0o.artcart.core.designsystem.component.NiaNavigationSuiteScaffold
 import com.coco0o0o.artcart.core.designsystem.component.NiaTopAppBar
-import com.coco0o0o.artcart.core.designsystem.icon.NiaIcons
 import com.coco0o0o.artcart.core.designsystem.theme.GradientColors
 import com.coco0o0o.artcart.core.navigation.Navigator
 import com.coco0o0o.artcart.core.navigation.toEntries
@@ -106,8 +107,6 @@ fun ArtCartApp(
 
                     // TODO: Settings should be a dialog screen
                     showSettingsDialog = showSettingsDialog,
-                    onSettingsDismissed = { showSettingsDialog = false },
-                    onTopAppBarActionClick = { showSettingsDialog = true },
                     windowAdaptiveInfo = windowAdaptiveInfo,
                 )
             }
@@ -124,8 +123,6 @@ fun ArtCartApp(
 internal fun ArtCartApp(
     appState: ArtCartAppState,
     showSettingsDialog: Boolean,
-    onSettingsDismissed: () -> Unit,
-    onTopAppBarActionClick: () -> Unit,
     modifier: Modifier = Modifier,
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(),
 ) {
@@ -205,7 +202,7 @@ internal fun ArtCartApp(
 
                     NiaTopAppBar(
                         titleRes = destination.titleTextId,
-                        navigationIcon = NiaIcons.Search,
+                        navigationIcon = Icons.Rounded.Search,
                         navigationIconContentDescription = stringResource(
                             id = R.string.app_name
                         ),

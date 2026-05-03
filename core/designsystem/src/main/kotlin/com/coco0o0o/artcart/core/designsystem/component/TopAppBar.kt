@@ -19,6 +19,8 @@
 package com.coco0o0o.artcart.core.designsystem.component
 
 import androidx.annotation.StringRes
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -33,7 +35,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.coco0o0o.artcart.core.designsystem.icon.NiaIcons
 import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -78,7 +79,7 @@ private fun NiaTopAppBarPreview() {
     NiaTheme {
         NiaTopAppBar(
             titleRes = android.R.string.untitled,
-            navigationIcon = NiaIcons.Search,
+            navigationIcon = Icons.Rounded.Search,
             navigationIconContentDescription = "Navigation icon",
         )
     }

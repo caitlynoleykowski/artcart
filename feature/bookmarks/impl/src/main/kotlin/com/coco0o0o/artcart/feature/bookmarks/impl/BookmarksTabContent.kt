@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.coco0o0o.artcart.feature.interests.impl
+package com.coco0o0o.artcart.feature.bookmarks.impl
 
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.Box
@@ -33,17 +33,16 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.coco0o0o.artcart.core.designsystem.component.scrollbar.DraggableScrollbar
 import com.coco0o0o.artcart.core.designsystem.component.scrollbar.rememberDraggableScroller
 import com.coco0o0o.artcart.core.designsystem.component.scrollbar.scrollbarState
-import com.coco0o0o.artcart.core.model.data.FollowableArtLocation
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.ui.InterestsItem
 
 @Composable
-fun TopicsTabContent(
-    topics: List<FollowableArtLocation>,
+fun BookmarksTabContent(
+    locations: List<ArtLocation>,
     onTopicClick: (String) -> Unit,
     onFollowButtonClick: (String, Boolean) -> Unit,
     modifier: Modifier = Modifier,
@@ -58,20 +57,21 @@ fun TopicsTabContent(
         val scrollableState = rememberLazyListState()
         LazyColumn(
             modifier = Modifier
-                .padding(horizontal = 24.dp)
-                .testTag(LIST_PANE_TEST_TAG),
+                .padding(horizontal = 24.dp),
+//                .testTag(LIST_PANE_TEST_TAG),
             contentPadding = PaddingValues(vertical = 16.dp),
             state = scrollableState,
         ) {
-            topics.forEach { followableTopic ->
-                val topicId = followableTopic.artLocation.id
+            locations.forEach { artLocation ->
+                val topicId = artLocation.id
                 item(key = topicId) {
                     val isSelected = shouldHighlightSelectedTopic && topicId == selectedTopicId
                     InterestsItem(
-                        name = followableTopic.artLocation.name,
-                        following = followableTopic.isFavorited,
-                        description = "", // followableTopic.artLocation.shortDescription,
-                        topicImageUrl = "", // followableTopic.artLocation.imageUrl,
+                        name = artLocation.name,
+                        following = artLocation.isFavorite,
+                        description = artLocation.address,
+                        secondaryDescription = artLocation.primaryTypeName,
+                        topicImageUrl = artLocation.photoUrl,
                         onClick = { onTopicClick(topicId) },
                         onFollowButtonClick = { onFollowButtonClick(topicId, it) },
                         isSelected = isSelected,
@@ -87,7 +87,7 @@ fun TopicsTabContent(
             }
         }
         val scrollbarState = scrollableState.scrollbarState(
-            itemsAvailable = topics.size,
+            itemsAvailable = locations.size,
         )
         scrollableState.DraggableScrollbar(
             modifier = Modifier
@@ -98,10 +98,8 @@ fun TopicsTabContent(
             state = scrollbarState,
             orientation = Orientation.Vertical,
             onThumbMoved = scrollableState.rememberDraggableScroller(
-                itemsAvailable = topics.size,
+                itemsAvailable = locations.size,
             ),
         )
     }
 }
-
-val LIST_PANE_TEST_TAG = "interests:topics"

@@ -18,6 +18,12 @@ package com.coco0o0o.artcart.core.designsystem.component
 
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Bookmarks
+import androidx.compose.material.icons.outlined.Upcoming
+import androidx.compose.material.icons.rounded.Bookmarks
+import androidx.compose.material.icons.rounded.Grid3x3
+import androidx.compose.material.icons.rounded.Upcoming
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -39,7 +45,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.coco0o0o.artcart.core.designsystem.icon.NiaIcons
 import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
 
 /**
@@ -268,14 +273,14 @@ class NiaNavigationSuiteScope internal constructor(
 fun NiaNavigationBarPreview() {
     val items = listOf("For you", "Saved", "Interests")
     val icons = listOf(
-        NiaIcons.UpcomingBorder,
-        NiaIcons.BookmarksBorder,
-        NiaIcons.Grid3x3,
+        Icons.Outlined.Upcoming,
+        Icons.Outlined.Bookmarks,
+        Icons.Rounded.Grid3x3,
     )
     val selectedIcons = listOf(
-        NiaIcons.Upcoming,
-        NiaIcons.Bookmarks,
-        NiaIcons.Grid3x3,
+        Icons.Rounded.Upcoming,
+        Icons.Rounded.Bookmarks,
+        Icons.Rounded.Grid3x3,
     )
 
     NiaTheme {
@@ -308,14 +313,14 @@ fun NiaNavigationBarPreview() {
 fun NiaNavigationRailPreview() {
     val items = listOf("For you", "Saved", "Interests")
     val icons = listOf(
-        NiaIcons.UpcomingBorder,
-        NiaIcons.BookmarksBorder,
-        NiaIcons.Grid3x3,
+        Icons.Outlined.Upcoming,
+        Icons.Outlined.Bookmarks,
+        Icons.Rounded.Grid3x3,
     )
     val selectedIcons = listOf(
-        NiaIcons.Upcoming,
-        NiaIcons.Bookmarks,
-        NiaIcons.Grid3x3,
+        Icons.Rounded.Upcoming,
+        Icons.Rounded.Bookmarks,
+        Icons.Rounded.Grid3x3,
     )
 
     NiaTheme {
