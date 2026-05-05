@@ -43,12 +43,12 @@ import com.coco0o0o.artcart.core.ui.InterestsItem
 @Composable
 fun BookmarksTabContent(
     locations: List<ArtLocation>,
-    onTopicClick: (String) -> Unit,
+    onLocationClick: (String) -> Unit,
     onFollowButtonClick: (String, Boolean) -> Unit,
     modifier: Modifier = Modifier,
     withBottomSpacer: Boolean = true,
-    selectedTopicId: String? = null,
-    shouldHighlightSelectedTopic: Boolean = false,
+    selectedLocationId: String? = null,
+    shouldHighlightSelectedLocation: Boolean = false,
 ) {
     Box(
         modifier = modifier
@@ -63,17 +63,17 @@ fun BookmarksTabContent(
             state = scrollableState,
         ) {
             locations.forEach { artLocation ->
-                val topicId = artLocation.id
-                item(key = topicId) {
-                    val isSelected = shouldHighlightSelectedTopic && topicId == selectedTopicId
+                val artLocationId = artLocation.id
+                item(key = artLocationId) {
+                    val isSelected = shouldHighlightSelectedLocation && artLocationId == selectedLocationId
                     InterestsItem(
                         name = artLocation.name,
                         following = artLocation.isFavorite,
                         description = artLocation.address,
                         secondaryDescription = artLocation.primaryTypeName,
-                        topicImageUrl = artLocation.photoUrl,
-                        onClick = { onTopicClick(topicId) },
-                        onFollowButtonClick = { onFollowButtonClick(topicId, it) },
+                        locationImageUrl = artLocation.photoUrl,
+                        onClick = { onLocationClick(artLocationId) },
+                        onFollowButtonClick = { onFollowButtonClick(artLocationId, it) },
                         isSelected = isSelected,
                         modifier = Modifier.fillMaxWidth(),
                     )

@@ -17,6 +17,7 @@
 package com.coco0o0o.artcart.core.database.dao
 
 import android.content.Context
+import android.health.connect.datatypes.ExerciseRoute
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.coco0o0o.artcart.core.database.NiaDatabase
@@ -26,8 +27,7 @@ import org.junit.Before
 internal abstract class DatabaseTest {
 
     private lateinit var db: NiaDatabase
-    protected lateinit var newsResourceDao: NewsResourceDao
-    protected lateinit var topicDao: TopicDao
+    protected lateinit var locationDao: LocationDao
 
     @Before
     fun setup() {
@@ -38,8 +38,7 @@ internal abstract class DatabaseTest {
                 NiaDatabase::class.java,
             ).build()
         }
-        newsResourceDao = db.newsResourceDao()
-        topicDao = db.topicDao()
+        locationDao = db.locationDao()
     }
 
     @After

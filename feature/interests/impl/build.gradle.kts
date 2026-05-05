@@ -39,7 +39,7 @@ dependencies {
 
     implementation(libs.accompanist.permissions)
     implementation(projects.core.domain)
-    implementation(projects.feature.topic.api)
+    implementation(projects.feature.locationdetails.api)
     implementation(projects.feature.interests.api)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material3.adaptive)
@@ -52,7 +52,7 @@ dependencies {
     testImplementation(libs.androidx.compose.ui.test)
     testImplementation(libs.androidx.test.espresso.core)
     testImplementation(libs.hilt.android.testing)
-    testImplementation(projects.feature.topic.impl)
+    testImplementation(projects.feature.locationdetails.impl)
     testImplementation(libs.androidx.navigation.testing)
 
     androidTestImplementation(libs.bundles.androidx.compose.ui.test)

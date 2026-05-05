@@ -16,7 +16,6 @@
 
 package com.coco0o0o.artcart.core.testing.repository
 
-import com.coco0o0o.artcart.core.data.Synchronizer
 import com.coco0o0o.artcart.core.data.repository.LocationsRepository
 import com.coco0o0o.artcart.core.model.data.ArtLocation
 import kotlinx.coroutines.channels.BufferOverflow
@@ -25,23 +24,28 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.map
 
 class TestLocationsRepository : LocationsRepository {
-    /**
-     * The backing hot flow for the list of topics ids for testing.
-     */
-    private val topicsFlow: MutableSharedFlow<List<ArtLocation>> =
+    private val locationsFlow: MutableSharedFlow<List<ArtLocation>> =
         MutableSharedFlow(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
 
-    override fun getLocations(): Flow<List<ArtLocation>> = topicsFlow
-
-    override fun getLocation(id: String): Flow<ArtLocation> =
-        topicsFlow.map { topics -> topics.find { it.id == id }!! }
-
-    /**
-     * A test-only API to allow controlling the list of topics from tests.
-     */
-    fun sendTopics(artLocations: List<ArtLocation>) {
-        topicsFlow.tryEmit(artLocations)
+    override suspend fun refreshLocations(lat: Double, lng: Double) {
+        TODO("Not yet implemented")
     }
 
-    override suspend fun syncWith(synchronizer: Synchronizer) = true
+    override fun getLocations(): Flow<List<ArtLocation>> = locationsFlow
+    override fun getFavoriteLocations(): Flow<List<ArtLocation>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updateLocationIsFavorite(id: String, isFavorite: Boolean) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getLocation(id: String): Flow<ArtLocation> =
+        locationsFlow.map { topics -> topics.find { it.id == id }!! }
+
+    // Used by tests only
+    fun updateLocations(artLocations: List<ArtLocation>) {
+        locationsFlow.tryEmit(artLocations)
+    }
+
 }

@@ -36,9 +36,6 @@ import kotlin.collections.List
 
 const val API_KEY = "AIzaSyAqjWW92spl7JH6ah_u9yGiFAaLSBUuBos"
 
-/**
- * Retrofit API declaration for NIA Network API
- */
 private interface RetrofitNiaNetworkApi {
 
     @Serializable
@@ -62,34 +59,6 @@ private interface RetrofitNiaNetworkApi {
         val locationRestriction: LocationRestriction,
     )
 
-//    @GET(value = "topics")
-//    suspend fun getTopics(
-//        @Query("id") ids: List<String>?,
-//    ): NetworkResponse<List<NetworkTopic>>
-
-    // e.g.
-    /*
-        {
-          "includedTypes": [
-            "art_gallery",
-            "art_museum",
-            "art_studio",
-            "museum",
-            "performing_arts_theater",
-            "sculpture"
-          ],
-          "maxResultCount": 10,
-          "locationRestriction": {
-            "circle": {
-              "center": {
-                "latitude": 38.5636216,
-                "longitude": -121.4803345
-              },
-              "radius": 500
-            }
-          }
-        }
-     */
     @Headers(
         "X-Goog-FieldMask: *",
         "X-Goog-Api-Key: $API_KEY"
@@ -100,12 +69,8 @@ private interface RetrofitNiaNetworkApi {
     ): NetworkPlaces
 }
 
-//private const val NIA_BASE_URL = "https://places.googleapis.com/v1/places/GyuEmsRBfy61i59si0?fields=addressComponents&key=YOUR_API_KEY"
 private const val PLACES_BASE_URL = "https://places.googleapis.com"
 
-/**
- * [Retrofit] backed [NetworkDataSource]
- */
 @Singleton
 internal class RetrofitNetwork @Inject constructor(
     networkJson: Json,

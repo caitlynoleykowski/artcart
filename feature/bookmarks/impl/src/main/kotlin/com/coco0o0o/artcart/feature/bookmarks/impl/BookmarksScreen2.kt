@@ -29,7 +29,7 @@ import com.coco0o0o.artcart.core.designsystem.component.NiaLoadingWheel
 
 @Composable
 fun BookmarksScreen2(
-    onTopicClick: (String) -> Unit,
+    onLocationClick: (String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: BookmarksViewModel2 = hiltViewModel(),
 ) {
@@ -40,8 +40,8 @@ fun BookmarksScreen2(
         removeFavorite = { id: String, isFavorite: Boolean ->
             viewModel.removeFromSavedResources(id) // TODO: should be able to undo?
         },
-        onTopicClick = {
-            onTopicClick(it)
+        onLocationClick = {
+            onLocationClick(it)
         },
         modifier = modifier,
     )
@@ -51,7 +51,7 @@ fun BookmarksScreen2(
 internal fun BookmarksScreen2(
     uiState: FavoritedArtLocationsUiState,
     removeFavorite: (String, Boolean) -> Unit,
-    onTopicClick: (String) -> Unit,
+    onLocationClick: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -67,7 +67,7 @@ internal fun BookmarksScreen2(
             is FavoritedArtLocationsUiState.ArtLocations ->
                 BookmarksTabContent(
                     locations = uiState.artLocations,
-                    onTopicClick = onTopicClick,
+                    onLocationClick = onLocationClick,
                     onFollowButtonClick = {
                         id: String, isFavorite: Boolean -> removeFavorite(id, isFavorite)
                     }

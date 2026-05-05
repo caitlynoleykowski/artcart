@@ -16,9 +16,6 @@
 
 package com.coco0o0o.artcart.core.model.data
 
-/**
- * External data layer representation of a NiA Topic
- */
 data class ArtLocation(
     val id: String,
     val name: String = "",

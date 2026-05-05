@@ -61,8 +61,8 @@ include(":feature:interests:api")
 include(":feature:interests:impl")
 include(":feature:bookmarks:api")
 include(":feature:bookmarks:impl")
-include(":feature:topic:api")
-include(":feature:topic:impl")
+include(":feature:locationdetails:api")
+include(":feature:locationdetails:impl")
 include(":lint")
 
 check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {

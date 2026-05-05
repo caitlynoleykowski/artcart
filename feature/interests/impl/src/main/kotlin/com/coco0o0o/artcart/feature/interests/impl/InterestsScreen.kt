@@ -71,7 +71,7 @@ import kotlin.collections.forEach
 @SuppressLint("MissingPermission") // TODO: Confused as to whether this is a problem if the user has accepted yet
 @Composable
 fun InterestsScreen(
-    onTopicClick: (String) -> Unit,
+    onLocationClick: (String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: InterestsViewModel,
     shouldHighlightSelectedTopic: Boolean = false,
@@ -127,13 +127,11 @@ fun InterestsScreen(
         )
         InterestsScreen(
             uiState = uiState,
-            followTopic = viewModel::followTopic,
-            onTopicClick = {
-                // TODO: this violates SSOT, events should go through the ViewModel
-                //viewModel.onTopicClick(it)
-                onTopicClick(it)
+            saveLocation = viewModel::saveLocation,
+            onLocationClick = {
+                onLocationClick(it)
             },
-            shouldHighlightSelectedTopic = shouldHighlightSelectedTopic,
+            shouldHighlightSelectedLocation = shouldHighlightSelectedTopic,
             //modifier = modifier.background(ComposeColor.Red, RectangleShape),
         )
     }
@@ -224,10 +222,10 @@ fun InterestsMap(
 @Composable
 internal fun InterestsScreen(
     uiState: ArtNearbyUiState,
-    followTopic: (String, Boolean) -> Unit,
-    onTopicClick: (String) -> Unit,
+    saveLocation: (String, Boolean) -> Unit,
+    onLocationClick: (String) -> Unit,
     modifier: Modifier = Modifier,
-    shouldHighlightSelectedTopic: Boolean = false,
+    shouldHighlightSelectedLocation: Boolean = false,
 ) {
 
 
@@ -244,10 +242,10 @@ internal fun InterestsScreen(
             is ArtNearbyUiState.ArtLocations ->
                 LocationsTabContent(
                     locations = uiState.artLocations,
-                    onTopicClick = onTopicClick,
-                    onFollowButtonClick = followTopic,
-                    selectedTopicId = null, // uiState.selectedTopicId,
-                    shouldHighlightSelectedTopic = shouldHighlightSelectedTopic,
+                    onLocationClick = onLocationClick,
+                    onSaveClick = saveLocation,
+                    selectedLocationId = null, // TODO: uiState.selectedLocationId,
+                    shouldHighlightSelectedLocation = shouldHighlightSelectedLocation,
                 )
 
             is ArtNearbyUiState.Empty -> InterestsEmptyScreen()
@@ -326,8 +324,8 @@ fun InterestsScreenLoading() {
         NiaBackground {
             InterestsScreen(
                 uiState = ArtNearbyUiState.Loading,
-                followTopic = { _, _ -> },
-                onTopicClick = {},
+                saveLocation = { _, _ -> },
+                onLocationClick = {},
             )
         }
     }
@@ -340,8 +338,8 @@ fun InterestsScreenEmpty() {
         NiaBackground {
             InterestsScreen(
                 uiState = ArtNearbyUiState.Empty,
-                followTopic = { _, _ -> },
-                onTopicClick = {},
+                saveLocation = { _, _ -> },
+                onLocationClick = {},
             )
         }
     }

@@ -44,12 +44,12 @@ import com.coco0o0o.artcart.core.ui.InterestsItem
 @Composable
 fun LocationsTabContent(
     locations: List<ArtLocation>,
-    onTopicClick: (String) -> Unit,
-    onFollowButtonClick: (String, Boolean) -> Unit,
+    onLocationClick: (String) -> Unit,
+    onSaveClick: (String, Boolean) -> Unit,
     modifier: Modifier = Modifier,
     withBottomSpacer: Boolean = true,
-    selectedTopicId: String? = null,
-    shouldHighlightSelectedTopic: Boolean = false,
+    selectedLocationId: String? = null,
+    shouldHighlightSelectedLocation: Boolean = false,
 ) {
     Box(
         modifier = modifier
@@ -66,18 +66,18 @@ fun LocationsTabContent(
             locations.forEach { artLocation ->
                 val artLocationId = artLocation.id
                 item(key = artLocationId) {
-                    val isSelected = shouldHighlightSelectedTopic && artLocationId == selectedTopicId
+                    val isSelected = shouldHighlightSelectedLocation && artLocationId == selectedLocationId
                     InterestsItem(
                         name = artLocation.name,
                         following = artLocation.isFavorite,
                         description = artLocation.address,
                         secondaryDescription = artLocation.primaryTypeName,
-                        topicImageUrl = artLocation.photoUrl,
+                        locationImageUrl = artLocation.photoUrl,
                         onClick = {
-                            onTopicClick(artLocationId)
+                            onLocationClick(artLocationId)
                                   },
                         onFollowButtonClick = {
-                            onFollowButtonClick(artLocationId, it)
+                            onSaveClick(artLocationId, it)
                                               },
                         isSelected = isSelected,
                         modifier = Modifier.fillMaxWidth(),
@@ -109,4 +109,4 @@ fun LocationsTabContent(
     }
 }
 
-val LIST_PANE_TEST_TAG = "interests:topics"
+val LIST_PANE_TEST_TAG = "interests:locations"

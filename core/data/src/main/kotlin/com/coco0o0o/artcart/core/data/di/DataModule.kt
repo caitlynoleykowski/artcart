@@ -33,7 +33,7 @@ abstract class DataModule {
 
     @Binds
     internal abstract fun bindsLocationRepository(
-        topicsRepository: OfflineFirstLocationsRepository,
+        offlineFirstLocationsRepository: OfflineFirstLocationsRepository,
     ): LocationsRepository
 
     @Binds

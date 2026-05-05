@@ -26,7 +26,7 @@ import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
 import com.coco0o0o.artcart.feature.interests.impl.InterestsDetailPlaceholder
 import com.coco0o0o.artcart.feature.interests.impl.InterestsScreen
 import com.coco0o0o.artcart.feature.interests.impl.InterestsViewModel
-import com.coco0o0o.artcart.feature.topic.api.navigation.navigateToTopic
+import com.coco0o0o.artcart.feature.locationdetails.api.navigation.navigateToLocationDetails
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 fun EntryProviderScope<NavKey>.interestsEntry(navigator: Navigator) {
@@ -40,7 +40,7 @@ fun EntryProviderScope<NavKey>.interestsEntry(navigator: Navigator) {
         }
         InterestsScreen(
             // TODO: This event should either be provided by the ViewModel or by the navigator, not both
-            onTopicClick = navigator::navigateToTopic,
+            onLocationClick = navigator::navigateToLocationDetails,
 
             // TODO: This should be dynamically calculated based on the rendering scene
             //  See https://github.com/android/nav3-recipes/commit/488f4811791ca3ed7192f4fe3c86e7371b32ebdc#diff-374e02026cdd2f68057dd940f203dc4ba7319930b33e9555c61af7e072211cabR89

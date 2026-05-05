@@ -17,22 +17,11 @@
 package com.coco0o0o.artcart.core.domain
 
 import com.coco0o0o.artcart.core.data.repository.LocationsRepository
-import com.coco0o0o.artcart.core.model.data.ArtLocation
-import com.coco0o0o.artcart.core.model.data.FollowableArtLocation
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-/**
- * A use case which obtains a list of topics with their followed state.
- */
 class RefreshLocationsUseCase @Inject constructor(
     private val locationsRepository: LocationsRepository,
 ) {
-    /**
-     * Returns a list of topics with their associated followed state.
-     *
-     * @param sortBy - the field used to sort the topics. Default NONE = no sorting.
-     */
     suspend operator fun invoke(lat: Double, lng: Double) {
         return locationsRepository.refreshLocations(lat, lng)
     }

@@ -16,30 +16,36 @@
 
 package com.coco0o0o.artcart.core.data.model
 
+import com.coco0o0o.artcart.core.network.model.DisplayName
+import com.coco0o0o.artcart.core.network.model.LatLng
+import com.coco0o0o.artcart.core.network.model.NetworkLocation
+import com.coco0o0o.artcart.core.network.model.PrimaryTypeDisplayName
 import kotlinx.datetime.Instant
 import org.junit.Test
 import kotlin.test.assertEquals
 
 class NetworkEntityTest {
 
-    // TODO: NetworkLocation
-//    @Test
-//    fun networkTopicMapsToDatabaseModel() {
-//        val networkModel = NetworkTopic(
-//            id = "0",
-//            name = "Test",
-//            shortDescription = "short description",
-//            longDescription = "long description",
-//            url = "URL",
-//            imageUrl = "image URL",
-//        )
-//        val entity = networkModel.asEntity()
-//
-//        assertEquals("0", entity.id)
-//        assertEquals("Test", entity.name)
-//        assertEquals("short description", entity.shortDescription)
-//        assertEquals("long description", entity.longDescription)
-//        assertEquals("URL", entity.url)
-//        assertEquals("image URL", entity.imageUrl)
-//    }
+    @Test
+    fun networkLocationToDatabaseModel() {
+        val networkLocation = NetworkLocation(
+            id = "0",
+            rating = 0f,
+            displayName = DisplayName(
+                text = "testname0",
+                languageCode = "test language"
+            ),
+            formattedAddress = "test address 0",
+            location = LatLng(0.0, 0.0),
+            photos = emptyList(),
+            primaryTypeDisplayName = PrimaryTypeDisplayName(
+                text = "test type"
+            ),
+        )
+        val entity = networkLocation.toLocationEntity() // TODO
+
+        assertEquals("0", entity.id)
+        assertEquals("testname0", entity.name)
+        assertEquals("testurl0", entity.url)
+    }
 }

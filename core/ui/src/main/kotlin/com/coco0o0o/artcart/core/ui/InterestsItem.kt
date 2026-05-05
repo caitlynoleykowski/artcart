@@ -18,7 +18,6 @@ package com.coco0o0o.artcart.core.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -49,7 +48,7 @@ import com.coco0o0o.artcart.core.ui.R.string
 fun InterestsItem(
     name: String,
     following: Boolean,
-    topicImageUrl: String,
+    locationImageUrl: String,
     onClick: () -> Unit,
     onFollowButtonClick: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
@@ -60,7 +59,7 @@ fun InterestsItem(
 ) {
     ListItem(
         leadingContent = {
-            InterestsIcon(topicImageUrl, iconModifier.size(48.dp))
+            InterestsIcon(locationImageUrl, iconModifier.size(48.dp))
         },
         headlineContent = {
             Text(text = name)
@@ -138,7 +137,7 @@ private fun InterestsCardPreview() {
                 description = "Description",
                 secondaryDescription = "Secondary description",
                 following = false,
-                topicImageUrl = "",
+                locationImageUrl = "",
                 onClick = { },
                 onFollowButtonClick = { },
             )
@@ -156,7 +155,7 @@ private fun InterestsCardLongNamePreview() {
                 description = "Description",
                 secondaryDescription = "Secondary description",
                 following = true,
-                topicImageUrl = "",
+                locationImageUrl = "",
                 onClick = { },
                 onFollowButtonClick = { },
             )
@@ -175,7 +174,7 @@ private fun InterestsCardLongDescriptionPreview() {
                     "very very very long description",
                 secondaryDescription = "Secondary description",
                 following = false,
-                topicImageUrl = "",
+                locationImageUrl = "",
                 onClick = { },
                 onFollowButtonClick = { },
             )
@@ -193,7 +192,7 @@ private fun InterestsCardWithEmptyDescriptionPreview() {
                 description = "",
                 secondaryDescription = "",
                 following = true,
-                topicImageUrl = "",
+                locationImageUrl = "",
                 onClick = { },
                 onFollowButtonClick = { },
             )
@@ -211,7 +210,7 @@ private fun InterestsCardSelectedPreview() {
                 description = "",
                 secondaryDescription = "",
                 following = true,
-                topicImageUrl = "",
+                locationImageUrl = "",
                 onClick = { },
                 onFollowButtonClick = { },
                 isSelected = true,

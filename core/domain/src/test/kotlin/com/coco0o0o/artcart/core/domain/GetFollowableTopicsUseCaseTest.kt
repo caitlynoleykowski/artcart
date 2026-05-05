@@ -17,10 +17,9 @@
 package com.coco0o0o.artcart.core.domain
 
 import com.coco0o0o.artcart.core.domain.TopicSortField.NAME
-import com.coco0o0o.artcart.core.model.data.FollowableArtLocation
+import com.coco0o0o.artcart.core.model.data.FavoriteableArtLocation
 import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.testing.repository.TestLocationsRepository
-import com.coco0o0o.artcart.core.testing.repository.TestUserDataRepository
 import com.coco0o0o.artcart.core.testing.util.MainDispatcherRule
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
@@ -28,57 +27,47 @@ import org.junit.Rule
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class GetFollowableTopicsUseCaseTest {
+class GetFollowableLocationsUseCaseTest {
 
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
-    private val topicsRepository = TestLocationsRepository()
-    private val userDataRepository = TestUserDataRepository()
+    private val locationsRepository = TestLocationsRepository()
 
-    val useCase = GetFollowableLocationsUseCase(
-        topicsRepository,
-        userDataRepository,
+    val useCase = GetFavoriteableLocationsUseCase(
+        locationsRepository,
     )
 
     @Test
     fun whenNoParams_followableTopicsAreReturnedWithNoSorting() = runTest {
-        // Obtain a stream of followable topics.
-        val followableTopics = useCase()
+        val favoriteableLocations = useCase()
 
-        // Send some test topics and their followed state.
-        topicsRepository.sendTopics(testArtLocations)
-        userDataRepository.setFollowedTopicIds(setOf(testArtLocations[0].id, testArtLocations[2].id))
+        // Send some test topics and their favorited state.
+        locationsRepository.updateLocations(testArtLocations)
 
-        // Check that the order hasn't changed and that the correct topics are marked as followed.
+        // Check that the order hasn't changed and that the correct locations are marked as favorited.
         assertEquals(
             listOf(
-                FollowableArtLocation(testArtLocations[0], true),
-                FollowableArtLocation(testArtLocations[1], false),
-                FollowableArtLocation(testArtLocations[2], true),
+                FavoriteableArtLocation(testArtLocations[0], true),
+                FavoriteableArtLocation(testArtLocations[1], false),
+                FavoriteableArtLocation(testArtLocations[2], true),
             ),
-            followableTopics.first(),
+            favoriteableLocations.first(),
         )
     }
 
     @Test
     fun whenSortOrderIsByName_topicsSortedByNameAreReturned() = runTest {
-        // Obtain a stream of followable topics, sorted by name.
-        val followableTopics = useCase(
-            sortBy = NAME,
-        )
+        val favoriteableLocations = useCase()
 
-        // Send some test topics and their followed state.
-        topicsRepository.sendTopics(testArtLocations)
-        userDataRepository.setFollowedTopicIds(setOf())
+        locationsRepository.updateLocations(testArtLocations)
 
-        // Check that the followable topics are sorted by the topic name.
         assertEquals(
-            followableTopics.first(),
+            favoriteableLocations.first(),
             testArtLocations
                 .sortedBy { it.name }
                 .map {
-                    FollowableArtLocation(it, false)
+                    FavoriteableArtLocation(it, false)
                 },
         )
     }

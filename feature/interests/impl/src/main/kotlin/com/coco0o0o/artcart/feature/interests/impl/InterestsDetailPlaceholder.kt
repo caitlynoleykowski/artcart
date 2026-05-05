@@ -65,7 +65,7 @@ fun InterestsDetailPlaceholder(modifier: Modifier = Modifier) {
 
 @Preview(widthDp = 200, heightDp = 300)
 @Composable
-fun TopicDetailPlaceholderPreview() {
+fun InterestsDetailPlaceholderPreview() {
     NiaTheme {
         InterestsDetailPlaceholder()
     }

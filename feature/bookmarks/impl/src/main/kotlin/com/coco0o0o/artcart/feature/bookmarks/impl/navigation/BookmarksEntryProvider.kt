@@ -27,12 +27,12 @@ import com.coco0o0o.artcart.core.navigation.Navigator
 import com.coco0o0o.artcart.feature.bookmarks.api.navigation.BookmarksNavKey
 import com.coco0o0o.artcart.feature.bookmarks.impl.BookmarksScreen2
 import com.coco0o0o.artcart.feature.bookmarks.impl.BookmarksViewModel2
-import com.coco0o0o.artcart.feature.topic.api.navigation.navigateToTopic
+import com.coco0o0o.artcart.feature.locationdetails.api.navigation.navigateToLocationDetails
 
 fun EntryProviderScope<NavKey>.bookmarksEntry(navigator: Navigator) {
     entry<BookmarksNavKey> {
         BookmarksScreen2(
-            onTopicClick = navigator::navigateToTopic,
+            onLocationClick = navigator::navigateToLocationDetails,
         )
     }
 }

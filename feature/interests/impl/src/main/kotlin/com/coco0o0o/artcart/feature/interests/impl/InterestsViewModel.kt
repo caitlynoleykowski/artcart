@@ -20,7 +20,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coco0o0o.artcart.core.data.repository.LocationsRepository
-import com.coco0o0o.artcart.core.domain.GetFollowableLocationsUseCase
+import com.coco0o0o.artcart.core.domain.GetFavoriteableLocationsUseCase
 import com.coco0o0o.artcart.core.domain.RefreshLocationsUseCase
 import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
@@ -29,10 +29,8 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
@@ -42,7 +40,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel(assistedFactory = InterestsViewModel.Factory::class)
 class InterestsViewModel @AssistedInject constructor(
     private val savedStateHandle: SavedStateHandle,
-    getFollowableArtLocationsUseCase: GetFollowableLocationsUseCase,
+    getFollowableArtLocationsUseCase: GetFavoriteableLocationsUseCase,
     private val refreshLocationsUseCase: RefreshLocationsUseCase,
     private val locationsRepository: LocationsRepository,
     // TODO: see comment below
@@ -73,9 +71,9 @@ class InterestsViewModel @AssistedInject constructor(
         }
     }
 
-    fun followTopic(followedTopicId: String, followed: Boolean) {
+    fun saveLocation(locationId: String, followed: Boolean) {
         viewModelScope.launch {
-            locationsRepository.updateLocationIsFavorite(followedTopicId, isFavorite = followed)
+            locationsRepository.updateLocationIsFavorite(locationId, isFavorite = followed)
         }
     }
 

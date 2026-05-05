@@ -105,7 +105,7 @@ fun NiaTabRow(
 @Composable
 fun TabsPreview() {
     NiaTheme {
-        val titles = listOf("Topics", "People")
+        val titles = listOf("Locations", "Saved")
         NiaTabRow(selectedTabIndex = 0) {
             titles.forEachIndexed { index, title ->
                 NiaTab(

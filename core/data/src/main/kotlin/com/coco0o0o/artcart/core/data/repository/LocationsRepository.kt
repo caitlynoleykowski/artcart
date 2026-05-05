@@ -21,28 +21,13 @@ import kotlinx.coroutines.flow.Flow
 
 interface LocationsRepository { //}: Syncable {
 
-    /**
-     * Refreshes topics from network
-     */
     suspend fun refreshLocations(lat: Double, lng: Double)
 
-    /**
-     * Gets the last locations as a stream
-     */
     fun getLocations(): Flow<List<ArtLocation>>
 
-    /**
-     * Gets the available topics as a stream
-     */
     fun getFavoriteLocations(): Flow<List<ArtLocation>>
 
-    /**
-     * Marks the item as not favorited
-     */
     suspend fun updateLocationIsFavorite(id: String, isFavorite: Boolean)
 
-    /**
-     * Gets data for a specific topic
-     */
     fun getLocation(id: String): Flow<ArtLocation>
 }
