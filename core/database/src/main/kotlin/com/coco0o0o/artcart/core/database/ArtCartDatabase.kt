@@ -35,7 +35,7 @@ import com.coco0o0o.artcart.core.database.util.InstantConverter
 @TypeConverters(
     InstantConverter::class,
 )
-internal abstract class NiaDatabase : RoomDatabase() {
+internal abstract class ArtCartDatabase : RoomDatabase() {
 
     abstract fun locationDao(): LocationDao
 }

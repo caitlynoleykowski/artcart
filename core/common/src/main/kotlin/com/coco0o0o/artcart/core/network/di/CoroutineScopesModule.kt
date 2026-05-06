@@ -17,7 +17,7 @@
 package com.coco0o0o.artcart.core.network.di
 
 import com.coco0o0o.artcart.core.network.Dispatcher
-import com.coco0o0o.artcart.core.network.NiaDispatchers.Default
+import com.coco0o0o.artcart.core.network.Dispatchers.Default
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

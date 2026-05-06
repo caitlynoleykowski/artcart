@@ -45,9 +45,9 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.coco0o0o.artcart.core.designsystem.component.NiaBackground
-import com.coco0o0o.artcart.core.designsystem.component.NiaLoadingWheel
-import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartBackground
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartLoadingWheel
+import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 import com.coco0o0o.artcart.core.ui.DevicePreviews
 import com.coco0o0o.artcart.feature.interests.api.R
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -235,7 +235,7 @@ internal fun InterestsScreen(
     ) {
         when (uiState) {
             ArtNearbyUiState.Loading ->
-                NiaLoadingWheel(
+                ArtCartLoadingWheel(
                     contentDesc = stringResource(id = R.string.feature_interests_api_loading),
                 )
 
@@ -320,8 +320,8 @@ fun LocationUpdatesEffect(
 @DevicePreviews
 @Composable
 fun InterestsScreenLoading() {
-    NiaTheme {
-        NiaBackground {
+    ArtCartTheme {
+        ArtCartBackground {
             InterestsScreen(
                 uiState = ArtNearbyUiState.Loading,
                 saveLocation = { _, _ -> },
@@ -334,8 +334,8 @@ fun InterestsScreenLoading() {
 @DevicePreviews
 @Composable
 fun InterestsScreenEmpty() {
-    NiaTheme {
-        NiaBackground {
+    ArtCartTheme {
+        ArtCartBackground {
             InterestsScreen(
                 uiState = ArtNearbyUiState.Empty,
                 saveLocation = { _, _ -> },

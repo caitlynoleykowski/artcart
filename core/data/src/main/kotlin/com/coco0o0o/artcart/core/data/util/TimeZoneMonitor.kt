@@ -24,7 +24,7 @@ import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
 import androidx.tracing.trace
 import com.coco0o0o.artcart.core.network.Dispatcher
-import com.coco0o0o.artcart.core.network.NiaDispatchers.IO
+import com.coco0o0o.artcart.core.network.Dispatchers.IO
 import com.coco0o0o.artcart.core.network.di.ApplicationScope
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineDispatcher

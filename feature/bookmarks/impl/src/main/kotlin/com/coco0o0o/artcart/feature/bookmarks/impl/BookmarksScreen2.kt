@@ -25,7 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.coco0o0o.artcart.core.designsystem.component.NiaLoadingWheel
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartLoadingWheel
 
 @Composable
 fun BookmarksScreen2(
@@ -60,7 +60,7 @@ internal fun BookmarksScreen2(
     ) {
         when (uiState) {
             FavoritedArtLocationsUiState.Loading ->
-                NiaLoadingWheel(
+                ArtCartLoadingWheel(
                     contentDesc = stringResource(id = com.coco0o0o.artcart.feature.bookmarks.api.R.string.feature_bookmarks_api_loading),
                 )
 

@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.sp
 /**
  * Now in Android typography.
  */
-internal val NiaTypography = Typography(
+internal val ArtCartTypography = Typography(
     displayLarge = TextStyle(
         fontWeight = FontWeight.Normal,
         fontSize = 57.sp,

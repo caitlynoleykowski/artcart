@@ -35,11 +35,11 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
+import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NiaTopAppBar(
+fun ArtCartTopAppBar(
     @StringRes titleRes: Int,
     navigationIcon: ImageVector,
     navigationIconContentDescription: String,
@@ -68,16 +68,16 @@ fun NiaTopAppBar(
 //            }
         },
         colors = colors,
-        modifier = modifier.testTag("niaTopAppBar"),
+        modifier = modifier.testTag("ArtCartTopAppBar"),
     )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview("Top App Bar")
 @Composable
-private fun NiaTopAppBarPreview() {
-    NiaTheme {
-        NiaTopAppBar(
+private fun ArtCartTopAppBarPreview() {
+    ArtCartTheme {
+        ArtCartTopAppBar(
             titleRes = android.R.string.untitled,
             navigationIcon = Icons.Rounded.Search,
             navigationIconContentDescription = "Navigation icon",

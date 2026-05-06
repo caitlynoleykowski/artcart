@@ -16,14 +16,13 @@
 
 package com.coco0o0o.artcart.core.data.repository
 
-import android.util.Log
 import com.coco0o0o.artcart.core.database.dao.LocationDao
 import com.coco0o0o.artcart.core.database.model.LocationEntity
 import com.coco0o0o.artcart.core.database.model.asDomainModel
 import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.network.Dispatcher
 import com.coco0o0o.artcart.core.network.NetworkDataSource
-import com.coco0o0o.artcart.core.network.NiaDispatchers
+import com.coco0o0o.artcart.core.network.Dispatchers
 import com.coco0o0o.artcart.core.network.di.ApplicationScope
 import com.coco0o0o.artcart.core.network.model.NetworkLocation
 import com.coco0o0o.artcart.core.network.model.toPhotoUrl
@@ -31,8 +30,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
-import java.io.IOException
 import javax.inject.Inject
 
 /**
@@ -43,7 +40,7 @@ internal class OfflineFirstLocationsRepository @Inject constructor(
     private val locationDao: LocationDao,
     private val network: NetworkDataSource,
     @ApplicationScope private val applicationScope: CoroutineScope,
-    @Dispatcher(NiaDispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
+    @Dispatcher(Dispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
 ) : LocationsRepository {
 
     override suspend fun refreshLocations(lat: Double, lng: Double) { // TODO: insert params lat lng

@@ -45,7 +45,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
+import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 
 /**
  * Now in Android navigation bar item with icon and label content slots. Wraps Material 3
@@ -63,7 +63,7 @@ import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
  * only be shown when this item is selected.
  */
 @Composable
-fun RowScope.NiaNavigationBarItem(
+fun RowScope.ArtCartNavigationBarItem(
     selected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -82,11 +82,11 @@ fun RowScope.NiaNavigationBarItem(
         label = label,
         alwaysShowLabel = alwaysShowLabel,
         colors = NavigationBarItemDefaults.colors(
-            selectedIconColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedIconColor = NiaNavigationDefaults.navigationContentColor(),
-            selectedTextColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedTextColor = NiaNavigationDefaults.navigationContentColor(),
-            indicatorColor = NiaNavigationDefaults.navigationIndicatorColor(),
+            selectedIconColor = ArtCartNavigationDefaults.navigationSelectedItemColor(),
+            unselectedIconColor = ArtCartNavigationDefaults.navigationContentColor(),
+            selectedTextColor = ArtCartNavigationDefaults.navigationSelectedItemColor(),
+            unselectedTextColor = ArtCartNavigationDefaults.navigationContentColor(),
+            indicatorColor = ArtCartNavigationDefaults.navigationIndicatorColor(),
         ),
     )
 }
@@ -99,13 +99,13 @@ fun RowScope.NiaNavigationBarItem(
  * [NavigationBarItem]s.
  */
 @Composable
-fun NiaNavigationBar(
+fun ArtCartNavigationBar(
     modifier: Modifier = Modifier,
     content: @Composable RowScope.() -> Unit,
 ) {
     NavigationBar(
         modifier = modifier,
-        contentColor = NiaNavigationDefaults.navigationContentColor(),
+        contentColor = ArtCartNavigationDefaults.navigationContentColor(),
         tonalElevation = 0.dp,
         content = content,
     )
@@ -127,7 +127,7 @@ fun NiaNavigationBar(
  * only be shown when this item is selected.
  */
 @Composable
-fun NiaNavigationRailItem(
+fun ArtCartNavigationRailItem(
     selected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -146,11 +146,11 @@ fun NiaNavigationRailItem(
         label = label,
         alwaysShowLabel = alwaysShowLabel,
         colors = NavigationRailItemDefaults.colors(
-            selectedIconColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedIconColor = NiaNavigationDefaults.navigationContentColor(),
-            selectedTextColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedTextColor = NiaNavigationDefaults.navigationContentColor(),
-            indicatorColor = NiaNavigationDefaults.navigationIndicatorColor(),
+            selectedIconColor = ArtCartNavigationDefaults.navigationSelectedItemColor(),
+            unselectedIconColor = ArtCartNavigationDefaults.navigationContentColor(),
+            selectedTextColor = ArtCartNavigationDefaults.navigationSelectedItemColor(),
+            unselectedTextColor = ArtCartNavigationDefaults.navigationContentColor(),
+            indicatorColor = ArtCartNavigationDefaults.navigationIndicatorColor(),
         ),
     )
 }
@@ -164,7 +164,7 @@ fun NiaNavigationRailItem(
  * [NavigationRailItem]s.
  */
 @Composable
-fun NiaNavigationRail(
+fun ArtCartNavigationRail(
     modifier: Modifier = Modifier,
     header: @Composable (ColumnScope.() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit,
@@ -172,7 +172,7 @@ fun NiaNavigationRail(
     NavigationRail(
         modifier = modifier,
         containerColor = Color.Transparent,
-        contentColor = NiaNavigationDefaults.navigationContentColor(),
+        contentColor = ArtCartNavigationDefaults.navigationContentColor(),
         header = header,
         content = content,
     )
@@ -183,13 +183,13 @@ fun NiaNavigationRail(
  * Wraps Material 3 [NavigationSuiteScaffold].
  *
  * @param modifier Modifier to be applied to the navigation suite scaffold.
- * @param navigationSuiteItems A slot to display multiple items via [NiaNavigationSuiteScope].
+ * @param navigationSuiteItems A slot to display multiple items via [ArtCartNavigationSuiteScope].
  * @param windowAdaptiveInfo The window adaptive info.
  * @param content The app content inside the scaffold.
  */
 @Composable
-fun NiaNavigationSuiteScaffold(
-    navigationSuiteItems: NiaNavigationSuiteScope.() -> Unit,
+fun ArtCartNavigationSuiteScaffold(
+    navigationSuiteItems: ArtCartNavigationSuiteScope.() -> Unit,
     modifier: Modifier = Modifier,
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(),
     content: @Composable () -> Unit,
@@ -198,30 +198,30 @@ fun NiaNavigationSuiteScaffold(
         .calculateFromAdaptiveInfo(windowAdaptiveInfo)
     val navigationSuiteItemColors = NavigationSuiteItemColors(
         navigationBarItemColors = NavigationBarItemDefaults.colors(
-            selectedIconColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedIconColor = NiaNavigationDefaults.navigationContentColor(),
-            selectedTextColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedTextColor = NiaNavigationDefaults.navigationContentColor(),
-            indicatorColor = NiaNavigationDefaults.navigationIndicatorColor(),
+            selectedIconColor = ArtCartNavigationDefaults.navigationSelectedItemColor(),
+            unselectedIconColor = ArtCartNavigationDefaults.navigationContentColor(),
+            selectedTextColor = ArtCartNavigationDefaults.navigationSelectedItemColor(),
+            unselectedTextColor = ArtCartNavigationDefaults.navigationContentColor(),
+            indicatorColor = ArtCartNavigationDefaults.navigationIndicatorColor(),
         ),
         navigationRailItemColors = NavigationRailItemDefaults.colors(
-            selectedIconColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedIconColor = NiaNavigationDefaults.navigationContentColor(),
-            selectedTextColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedTextColor = NiaNavigationDefaults.navigationContentColor(),
-            indicatorColor = NiaNavigationDefaults.navigationIndicatorColor(),
+            selectedIconColor = ArtCartNavigationDefaults.navigationSelectedItemColor(),
+            unselectedIconColor = ArtCartNavigationDefaults.navigationContentColor(),
+            selectedTextColor = ArtCartNavigationDefaults.navigationSelectedItemColor(),
+            unselectedTextColor = ArtCartNavigationDefaults.navigationContentColor(),
+            indicatorColor = ArtCartNavigationDefaults.navigationIndicatorColor(),
         ),
         navigationDrawerItemColors = NavigationDrawerItemDefaults.colors(
-            selectedIconColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedIconColor = NiaNavigationDefaults.navigationContentColor(),
-            selectedTextColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedTextColor = NiaNavigationDefaults.navigationContentColor(),
+            selectedIconColor = ArtCartNavigationDefaults.navigationSelectedItemColor(),
+            unselectedIconColor = ArtCartNavigationDefaults.navigationContentColor(),
+            selectedTextColor = ArtCartNavigationDefaults.navigationSelectedItemColor(),
+            unselectedTextColor = ArtCartNavigationDefaults.navigationContentColor(),
         ),
     )
 
     NavigationSuiteScaffold(
         navigationSuiteItems = {
-            NiaNavigationSuiteScope(
+            ArtCartNavigationSuiteScope(
                 navigationSuiteScope = this,
                 navigationSuiteItemColors = navigationSuiteItemColors,
             ).run(navigationSuiteItems)
@@ -229,7 +229,7 @@ fun NiaNavigationSuiteScaffold(
         layoutType = layoutType,
         containerColor = Color.Transparent,
         navigationSuiteColors = NavigationSuiteDefaults.colors(
-            navigationBarContentColor = NiaNavigationDefaults.navigationContentColor(),
+            navigationBarContentColor = ArtCartNavigationDefaults.navigationContentColor(),
             navigationRailContainerColor = Color.Transparent,
         ),
         modifier = modifier,
@@ -241,7 +241,7 @@ fun NiaNavigationSuiteScaffold(
 /**
  * A wrapper around [NavigationSuiteScope] to declare navigation items.
  */
-class NiaNavigationSuiteScope internal constructor(
+class ArtCartNavigationSuiteScope internal constructor(
     private val navigationSuiteScope: NavigationSuiteScope,
     private val navigationSuiteItemColors: NavigationSuiteItemColors,
 ) {
@@ -270,7 +270,7 @@ class NiaNavigationSuiteScope internal constructor(
 
 @ThemePreviews
 @Composable
-fun NiaNavigationBarPreview() {
+fun ArtCartNavigationBarPreview() {
     val items = listOf("For you", "Saved", "Interests")
     val icons = listOf(
         Icons.Outlined.Upcoming,
@@ -283,10 +283,10 @@ fun NiaNavigationBarPreview() {
         Icons.Rounded.Grid3x3,
     )
 
-    NiaTheme {
-        NiaNavigationBar {
+    ArtCartTheme {
+        ArtCartNavigationBar {
             items.forEachIndexed { index, item ->
-                NiaNavigationBarItem(
+                ArtCartNavigationBarItem(
                     icon = {
                         Icon(
                             imageVector = icons[index],
@@ -310,7 +310,7 @@ fun NiaNavigationBarPreview() {
 
 @ThemePreviews
 @Composable
-fun NiaNavigationRailPreview() {
+fun ArtCartNavigationRailPreview() {
     val items = listOf("For you", "Saved", "Interests")
     val icons = listOf(
         Icons.Outlined.Upcoming,
@@ -323,10 +323,10 @@ fun NiaNavigationRailPreview() {
         Icons.Rounded.Grid3x3,
     )
 
-    NiaTheme {
-        NiaNavigationRail {
+    ArtCartTheme {
+        ArtCartNavigationRail {
             items.forEachIndexed { index, item ->
-                NiaNavigationRailItem(
+                ArtCartNavigationRailItem(
                     icon = {
                         Icon(
                             imageVector = icons[index],
@@ -351,7 +351,7 @@ fun NiaNavigationRailPreview() {
 /**
  * Now in Android navigation default values.
  */
-object NiaNavigationDefaults {
+object ArtCartNavigationDefaults {
     @Composable
     fun navigationContentColor() = MaterialTheme.colorScheme.onSurfaceVariant
 

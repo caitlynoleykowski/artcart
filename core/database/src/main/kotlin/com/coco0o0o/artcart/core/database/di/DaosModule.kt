@@ -16,7 +16,7 @@
 
 package com.coco0o0o.artcart.core.database.di
 
-import com.coco0o0o.artcart.core.database.NiaDatabase
+import com.coco0o0o.artcart.core.database.ArtCartDatabase
 import com.coco0o0o.artcart.core.database.dao.LocationDao
 import dagger.Module
 import dagger.Provides
@@ -29,6 +29,6 @@ internal object DaosModule {
 
     @Provides
     fun providesLocationDao(
-        database: NiaDatabase,
+        database: ArtCartDatabase,
     ): LocationDao = database.locationDao()
 }

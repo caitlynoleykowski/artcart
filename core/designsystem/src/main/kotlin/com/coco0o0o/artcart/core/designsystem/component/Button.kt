@@ -35,7 +35,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
+import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 
 /**
  * Now in Android filled button with generic content slot. Wraps Material 3 [Button].
@@ -49,7 +49,7 @@ import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
  * @param content The button content.
  */
 @Composable
-fun NiaButton(
+fun ArtCartButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -79,14 +79,14 @@ fun NiaButton(
  * @param leadingIcon The button leading icon content. Pass `null` here for no leading icon.
  */
 @Composable
-fun NiaButton(
+fun ArtCartButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     text: @Composable () -> Unit,
     leadingIcon: @Composable (() -> Unit)? = null,
 ) {
-    NiaButton(
+    ArtCartButton(
         onClick = onClick,
         modifier = modifier,
         enabled = enabled,
@@ -96,7 +96,7 @@ fun NiaButton(
             ButtonDefaults.ContentPadding
         },
     ) {
-        NiaButtonContent(
+        ArtCartButtonContent(
             text = text,
             leadingIcon = leadingIcon,
         )
@@ -115,7 +115,7 @@ fun NiaButton(
  * @param content The button content.
  */
 @Composable
-fun NiaOutlinedButton(
+fun ArtCartOutlinedButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -130,12 +130,12 @@ fun NiaOutlinedButton(
             contentColor = MaterialTheme.colorScheme.onBackground,
         ),
         border = BorderStroke(
-            width = NiaButtonDefaults.OutlinedButtonBorderWidth,
+            width = ArtCartButtonDefaults.OutlinedButtonBorderWidth,
             color = if (enabled) {
                 MaterialTheme.colorScheme.outline
             } else {
                 MaterialTheme.colorScheme.onSurface.copy(
-                    alpha = NiaButtonDefaults.DISABLED_OUTLINED_BUTTON_BORDER_ALPHA,
+                    alpha = ArtCartButtonDefaults.DISABLED_OUTLINED_BUTTON_BORDER_ALPHA,
                 )
             },
         ),
@@ -155,14 +155,14 @@ fun NiaOutlinedButton(
  * @param leadingIcon The button leading icon content. Pass `null` here for no leading icon.
  */
 @Composable
-fun NiaOutlinedButton(
+fun ArtCartOutlinedButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     text: @Composable () -> Unit,
     leadingIcon: @Composable (() -> Unit)? = null,
 ) {
-    NiaOutlinedButton(
+    ArtCartOutlinedButton(
         onClick = onClick,
         modifier = modifier,
         enabled = enabled,
@@ -172,7 +172,7 @@ fun NiaOutlinedButton(
             ButtonDefaults.ContentPadding
         },
     ) {
-        NiaButtonContent(
+        ArtCartButtonContent(
             text = text,
             leadingIcon = leadingIcon,
         )
@@ -189,7 +189,7 @@ fun NiaOutlinedButton(
  * @param content The button content.
  */
 @Composable
-fun NiaTextButton(
+fun ArtCartTextButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -217,19 +217,19 @@ fun NiaTextButton(
  * @param leadingIcon The button leading icon content. Pass `null` here for no leading icon.
  */
 @Composable
-fun NiaTextButton(
+fun ArtCartTextButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     text: @Composable () -> Unit,
     leadingIcon: @Composable (() -> Unit)? = null,
 ) {
-    NiaTextButton(
+    ArtCartTextButton(
         onClick = onClick,
         modifier = modifier,
         enabled = enabled,
     ) {
-        NiaButtonContent(
+        ArtCartButtonContent(
             text = text,
             leadingIcon = leadingIcon,
         )
@@ -243,7 +243,7 @@ fun NiaTextButton(
  * @param leadingIcon The button leading icon content. Default is `null` for no leading icon.Ï
  */
 @Composable
-private fun NiaButtonContent(
+private fun ArtCartButtonContent(
     text: @Composable () -> Unit,
     leadingIcon: @Composable (() -> Unit)? = null,
 ) {
@@ -268,30 +268,30 @@ private fun NiaButtonContent(
 
 @ThemePreviews
 @Composable
-fun NiaButtonPreview() {
-    NiaTheme {
-        NiaBackground(modifier = Modifier.size(150.dp, 50.dp)) {
-            NiaButton(onClick = {}, text = { Text("Test button") })
+fun ArtCartButtonPreview() {
+    ArtCartTheme {
+        ArtCartBackground(modifier = Modifier.size(150.dp, 50.dp)) {
+            ArtCartButton(onClick = {}, text = { Text("Test button") })
         }
     }
 }
 
 @ThemePreviews
 @Composable
-fun NiaOutlinedButtonPreview() {
-    NiaTheme {
-        NiaBackground(modifier = Modifier.size(150.dp, 50.dp)) {
-            NiaOutlinedButton(onClick = {}, text = { Text("Test button") })
+fun ArtCartOutlinedButtonPreview() {
+    ArtCartTheme {
+        ArtCartBackground(modifier = Modifier.size(150.dp, 50.dp)) {
+            ArtCartOutlinedButton(onClick = {}, text = { Text("Test button") })
         }
     }
 }
 
 @ThemePreviews
 @Composable
-fun NiaButtonLeadingIconPreview() {
-    NiaTheme {
-        NiaBackground(modifier = Modifier.size(150.dp, 50.dp)) {
-            NiaButton(
+fun ArtCartButtonLeadingIconPreview() {
+    ArtCartTheme {
+        ArtCartBackground(modifier = Modifier.size(150.dp, 50.dp)) {
+            ArtCartButton(
                 onClick = {},
                 text = { Text("Test button") },
                 leadingIcon = { Icon(imageVector = Icons.Rounded.Add, contentDescription = null) },
@@ -303,7 +303,7 @@ fun NiaButtonLeadingIconPreview() {
 /**
  * Now in Android button default values.
  */
-object NiaButtonDefaults {
+object ArtCartButtonDefaults {
     // TODO: File bug
     // OutlinedButton border color doesn't respect disabled state by default
     const val DISABLED_OUTLINED_BUTTON_BORDER_ALPHA = 0.12f

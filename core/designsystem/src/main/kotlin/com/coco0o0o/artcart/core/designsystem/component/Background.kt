@@ -37,7 +37,7 @@ import androidx.compose.ui.unit.dp
 import com.coco0o0o.artcart.core.designsystem.theme.GradientColors
 import com.coco0o0o.artcart.core.designsystem.theme.LocalBackgroundTheme
 import com.coco0o0o.artcart.core.designsystem.theme.LocalGradientColors
-import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
+import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 import kotlin.math.tan
 
 /**
@@ -48,7 +48,7 @@ import kotlin.math.tan
  * @param content The background content.
  */
 @Composable
-fun NiaBackground(
+fun ArtCartBackground(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
@@ -74,7 +74,7 @@ fun NiaBackground(
  * @param content The background content.
  */
 @Composable
-fun NiaGradientBackground(
+fun ArtCartGradientBackground(
     modifier: Modifier = Modifier,
     gradientColors: GradientColors = LocalGradientColors.current,
     content: @Composable () -> Unit,
@@ -150,47 +150,47 @@ annotation class ThemePreviews
 @ThemePreviews
 @Composable
 fun BackgroundDefault() {
-    NiaTheme(disableDynamicTheming = true) {
-        NiaBackground(Modifier.size(100.dp), content = {})
+    ArtCartTheme(disableDynamicTheming = true) {
+        ArtCartBackground(Modifier.size(100.dp), content = {})
     }
 }
 
 @ThemePreviews
 @Composable
 fun BackgroundDynamic() {
-    NiaTheme(disableDynamicTheming = false) {
-        NiaBackground(Modifier.size(100.dp), content = {})
+    ArtCartTheme(disableDynamicTheming = false) {
+        ArtCartBackground(Modifier.size(100.dp), content = {})
     }
 }
 
 @ThemePreviews
 @Composable
 fun BackgroundAndroid() {
-    NiaTheme(androidTheme = true) {
-        NiaBackground(Modifier.size(100.dp), content = {})
+    ArtCartTheme(androidTheme = true) {
+        ArtCartBackground(Modifier.size(100.dp), content = {})
     }
 }
 
 @ThemePreviews
 @Composable
 fun GradientBackgroundDefault() {
-    NiaTheme(disableDynamicTheming = true) {
-        NiaGradientBackground(Modifier.size(100.dp), content = {})
+    ArtCartTheme(disableDynamicTheming = true) {
+        ArtCartGradientBackground(Modifier.size(100.dp), content = {})
     }
 }
 
 @ThemePreviews
 @Composable
 fun GradientBackgroundDynamic() {
-    NiaTheme(disableDynamicTheming = false) {
-        NiaGradientBackground(Modifier.size(100.dp), content = {})
+    ArtCartTheme(disableDynamicTheming = false) {
+        ArtCartGradientBackground(Modifier.size(100.dp), content = {})
     }
 }
 
 @ThemePreviews
 @Composable
 fun GradientBackgroundAndroid() {
-    NiaTheme(androidTheme = true) {
-        NiaGradientBackground(Modifier.size(100.dp), content = {})
+    ArtCartTheme(androidTheme = true) {
+        ArtCartGradientBackground(Modifier.size(100.dp), content = {})
     }
 }

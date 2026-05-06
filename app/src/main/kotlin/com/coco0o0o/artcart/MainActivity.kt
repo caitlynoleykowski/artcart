@@ -31,12 +31,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.metrics.performance.JankStats
 import androidx.tracing.trace
 import com.coco0o0o.artcart.MainActivityUiState.Loading
 import com.coco0o0o.artcart.core.data.util.NetworkMonitor
 import com.coco0o0o.artcart.core.data.util.TimeZoneMonitor
-import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
+import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 import com.coco0o0o.artcart.core.ui.LocalTimeZone
 import com.coco0o0o.artcart.ui.ArtCartApp
 import com.coco0o0o.artcart.ui.rememberArtCartAppState
@@ -91,7 +90,7 @@ class MainActivity : ComponentActivity() {
                     .map { it.darkTheme }
                     .distinctUntilChanged()
                     .collect { darkTheme ->
-                        trace("niaEdgeToEdge") {
+                        trace("artCartEdgeToEdge") {
                             // Turn off the decor fitting system windows, which allows us to handle insets,
                             // including IME animations, and go edge-to-edge.
                             // This is the same parameters as the default enableEdgeToEdge call, but we manually
@@ -128,7 +127,7 @@ class MainActivity : ComponentActivity() {
             CompositionLocalProvider(
                 LocalTimeZone provides currentTimeZone,
             ) {
-                NiaTheme(
+                ArtCartTheme(
                     darkTheme = themeSettings.darkTheme,
                     androidTheme = themeSettings.androidTheme,
                     disableDynamicTheming = themeSettings.disableDynamicTheming,

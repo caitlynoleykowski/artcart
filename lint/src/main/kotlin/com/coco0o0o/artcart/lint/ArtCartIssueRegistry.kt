@@ -19,12 +19,10 @@ package com.coco0o0o.artcart.lint
 import com.android.tools.lint.client.api.IssueRegistry
 import com.android.tools.lint.client.api.Vendor
 import com.android.tools.lint.detector.api.CURRENT_API
-import com.coco0o0o.artcart.lint.designsystem.DesignSystemDetector
 
-class NiaIssueRegistry : IssueRegistry() {
+class ArtCartIssueRegistry : IssueRegistry() {
 
     override val issues = listOf(
-        DesignSystemDetector.ISSUE,
         TestMethodNameDetector.FORMAT,
         TestMethodNameDetector.PREFIX,
     )
@@ -34,8 +32,8 @@ class NiaIssueRegistry : IssueRegistry() {
     override val minApi: Int = 12
 
     override val vendor: Vendor = Vendor(
-        vendorName = "Now in Android",
-        feedbackUrl = "https://github.com/android/nowinandroid/issues",
-        contact = "https://github.com/android/nowinandroid",
+        vendorName = "ArtCart",
+        feedbackUrl = "https://github.com/caitlynoleykowski/artcart/issues",
+        contact = "https://github.com/caitlynoleykowski/artcart",
     )
 }

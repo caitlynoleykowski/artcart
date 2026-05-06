@@ -45,17 +45,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextLayoutInput
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.coco0o0o.artcart.core.designsystem.component.DynamicAsyncImage
-import com.coco0o0o.artcart.core.designsystem.component.NiaFilterChip
-import com.coco0o0o.artcart.core.designsystem.component.NiaLoadingWheel
-import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartFilterChip
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartLoadingWheel
+import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.ui.R as UiR
 import com.coco0o0o.artcart.feature.locationdetails.api.R as LocationDetailsR
@@ -128,7 +126,7 @@ internal fun LocationScreen(
             }
             when (locationUiState) {
                 LocationUiState.Loading -> item {
-                    NiaLoadingWheel(
+                    ArtCartLoadingWheel(
                         modifier = modifier,
                         contentDesc = stringResource(id = LocationDetailsR.string.feature_locationdetails_api_loading),
                     )
@@ -199,7 +197,7 @@ private fun LocationHeader(name: String, description: String, imageUrl: String) 
 @Preview
 @Composable
 private fun LocationBodyPreview() {
-    NiaTheme {
+    ArtCartTheme {
         LazyColumn {
             locationBody(
                 name = "Jetpack Compose",
@@ -236,11 +234,11 @@ private fun LocationToolbar(
                 )
             }
         } else {
-            // Keeps the NiaFilterChip aligned to the end of the Row.
+            // Keeps the ArtCartFilterChip aligned to the end of the Row.
             Spacer(modifier = Modifier.width(1.dp))
         }
         val selected = uiState.isFavorite
-        NiaFilterChip(
+        ArtCartFilterChip(
             selected = selected,
             onSelectedChange = onFollowClick,
             modifier = Modifier.padding(end = 24.dp),

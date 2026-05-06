@@ -37,9 +37,9 @@ import androidx.compose.ui.unit.dp
  */
 @VisibleForTesting
 val LightDefaultColorScheme = lightColorScheme(
-    primary = Purple40,
+    primary = Color(0x99e34a87),
     onPrimary = Color.White,
-    primaryContainer = Purple90,
+    primaryContainer = Color(0x99e34a87),
     onPrimaryContainer = Purple10,
     secondary = Orange40,
     onSecondary = Color.White,
@@ -190,7 +190,7 @@ val DarkAndroidBackgroundTheme = BackgroundTheme(color = Color.Black)
  *        supported. This parameter has no effect if [androidTheme] is `true`.
  */
 @Composable
-fun NiaTheme(
+fun ArtCartTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     androidTheme: Boolean = false,
     disableDynamicTheming: Boolean = true,
@@ -240,7 +240,7 @@ fun NiaTheme(
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
-            typography = NiaTypography,
+            typography = ArtCartTypography,
             content = content,
         )
     }

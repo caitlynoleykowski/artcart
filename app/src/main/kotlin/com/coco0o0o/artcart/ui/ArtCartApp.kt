@@ -62,10 +62,10 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import com.coco0o0o.artcart.R
-import com.coco0o0o.artcart.core.designsystem.component.NiaBackground
-import com.coco0o0o.artcart.core.designsystem.component.NiaGradientBackground
-import com.coco0o0o.artcart.core.designsystem.component.NiaNavigationSuiteScaffold
-import com.coco0o0o.artcart.core.designsystem.component.NiaTopAppBar
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartBackground
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartGradientBackground
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartNavigationSuiteScaffold
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartTopAppBar
 import com.coco0o0o.artcart.core.designsystem.theme.GradientColors
 import com.coco0o0o.artcart.core.navigation.Navigator
 import com.coco0o0o.artcart.core.navigation.toEntries
@@ -83,8 +83,8 @@ fun ArtCartApp(
 ) {
     var showSettingsDialog by rememberSaveable { mutableStateOf(false) }
 
-    NiaBackground(modifier = modifier) {
-        NiaGradientBackground(
+    ArtCartBackground(modifier = modifier) {
+        ArtCartGradientBackground(
             gradientColors = GradientColors()
         ) {
             val snackbarHostState = remember { SnackbarHostState() }
@@ -137,7 +137,7 @@ internal fun ArtCartApp(
 
     val navigator = remember { Navigator(appState.navigationState) }
 
-    NiaNavigationSuiteScaffold(
+    ArtCartNavigationSuiteScaffold(
         navigationSuiteItems = {
             TOP_LEVEL_NAV_ITEMS.forEach { (navKey, navItem) ->
                 val selected = navKey == appState.navigationState.currentTopLevelKey
@@ -200,7 +200,7 @@ internal fun ArtCartApp(
                     val destination = TOP_LEVEL_NAV_ITEMS[appState.navigationState.currentTopLevelKey]
                         ?: error("Top level nav item not found for ${appState.navigationState.currentTopLevelKey}")
 
-                    NiaTopAppBar(
+                    ArtCartTopAppBar(
                         titleRes = destination.titleTextId,
                         navigationIcon = Icons.Rounded.Search,
                         navigationIconContentDescription = stringResource(

@@ -22,7 +22,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.Icon
@@ -40,8 +40,8 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.coco0o0o.artcart.core.designsystem.component.DynamicAsyncImage
-import com.coco0o0o.artcart.core.designsystem.component.NiaIconToggleButton
-import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartIconToggleButton
+import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 import com.coco0o0o.artcart.core.ui.R.string
 
 @Composable
@@ -71,12 +71,12 @@ fun InterestsItem(
             }
         },
         trailingContent = {
-            NiaIconToggleButton(
+            ArtCartIconToggleButton(
                 checked = following,
                 onCheckedChange = onFollowButtonClick,
                 icon = {
                     Icon(
-                        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                        imageVector = Icons.Rounded.Add,
                         contentDescription = stringResource(
                             id = string.core_ui_interests_card_follow_button_content_desc,
                         ),
@@ -130,7 +130,7 @@ private fun InterestsIcon(topicImageUrl: String, modifier: Modifier = Modifier) 
 @Preview
 @Composable
 private fun InterestsCardPreview() {
-    NiaTheme {
+    ArtCartTheme {
         Surface {
             InterestsItem(
                 name = "Compose",
@@ -148,7 +148,7 @@ private fun InterestsCardPreview() {
 @Preview
 @Composable
 private fun InterestsCardLongNamePreview() {
-    NiaTheme {
+    ArtCartTheme {
         Surface {
             InterestsItem(
                 name = "This is a very very very very long name",
@@ -166,7 +166,7 @@ private fun InterestsCardLongNamePreview() {
 @Preview
 @Composable
 private fun InterestsCardLongDescriptionPreview() {
-    NiaTheme {
+    ArtCartTheme {
         Surface {
             InterestsItem(
                 name = "Compose",
@@ -185,7 +185,7 @@ private fun InterestsCardLongDescriptionPreview() {
 @Preview
 @Composable
 private fun InterestsCardWithEmptyDescriptionPreview() {
-    NiaTheme {
+    ArtCartTheme {
         Surface {
             InterestsItem(
                 name = "Compose",
@@ -203,7 +203,7 @@ private fun InterestsCardWithEmptyDescriptionPreview() {
 @Preview
 @Composable
 private fun InterestsCardSelectedPreview() {
-    NiaTheme {
+    ArtCartTheme {
         Surface {
             InterestsItem(
                 name = "Compose",

@@ -47,11 +47,11 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import com.coco0o0o.artcart.core.designsystem.theme.NiaTheme
+import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 import kotlinx.coroutines.launch
 
 @Composable
-fun NiaLoadingWheel(
+fun ArtCartLoadingWheel(
     contentDesc: String,
     modifier: Modifier = Modifier,
 ) {
@@ -132,7 +132,7 @@ fun NiaLoadingWheel(
 }
 
 @Composable
-fun NiaOverlayLoadingWheel(
+fun ArtCartOverlayLoadingWheel(
     contentDesc: String,
     modifier: Modifier = Modifier,
 ) {
@@ -143,7 +143,7 @@ fun NiaOverlayLoadingWheel(
         modifier = modifier
             .size(60.dp),
     ) {
-        NiaLoadingWheel(
+        ArtCartLoadingWheel(
             contentDesc = contentDesc,
         )
     }
@@ -151,20 +151,20 @@ fun NiaOverlayLoadingWheel(
 
 @ThemePreviews
 @Composable
-fun NiaLoadingWheelPreview() {
-    NiaTheme {
+fun ArtCartLoadingWheelPreview() {
+    ArtCartTheme {
         Surface {
-            NiaLoadingWheel(contentDesc = "LoadingWheel")
+            ArtCartLoadingWheel(contentDesc = "LoadingWheel")
         }
     }
 }
 
 @ThemePreviews
 @Composable
-fun NiaOverlayLoadingWheelPreview() {
-    NiaTheme {
+fun ArtCartOverlayLoadingWheelPreview() {
+    ArtCartTheme {
         Surface {
-            NiaOverlayLoadingWheel(contentDesc = "LoadingWheel")
+            ArtCartOverlayLoadingWheel(contentDesc = "LoadingWheel")
         }
     }
 }

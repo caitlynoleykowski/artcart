@@ -26,7 +26,7 @@ import android.net.NetworkRequest.Builder
 import androidx.core.content.getSystemService
 import androidx.tracing.trace
 import com.coco0o0o.artcart.core.network.Dispatcher
-import com.coco0o0o.artcart.core.network.NiaDispatchers.IO
+import com.coco0o0o.artcart.core.network.Dispatchers.IO
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.channels.awaitClose

@@ -17,16 +17,15 @@
 package com.coco0o0o.artcart.core.database.dao
 
 import android.content.Context
-import android.health.connect.datatypes.ExerciseRoute
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import com.coco0o0o.artcart.core.database.NiaDatabase
+import com.coco0o0o.artcart.core.database.ArtCartDatabase
 import org.junit.After
 import org.junit.Before
 
 internal abstract class DatabaseTest {
 
-    private lateinit var db: NiaDatabase
+    private lateinit var db: ArtCartDatabase
     protected lateinit var locationDao: LocationDao
 
     @Before
@@ -35,7 +34,7 @@ internal abstract class DatabaseTest {
             val context = ApplicationProvider.getApplicationContext<Context>()
             Room.inMemoryDatabaseBuilder(
                 context,
-                NiaDatabase::class.java,
+                ArtCartDatabase::class.java,
             ).build()
         }
         locationDao = db.locationDao()

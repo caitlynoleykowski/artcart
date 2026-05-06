@@ -36,7 +36,7 @@ import kotlin.collections.List
 
 const val API_KEY = "AIzaSyAqjWW92spl7JH6ah_u9yGiFAaLSBUuBos"
 
-private interface RetrofitNiaNetworkApi {
+private interface RetrofitArtCartNetworkApi {
 
     @Serializable
     data class LatLng(
@@ -88,12 +88,12 @@ internal class RetrofitNetwork @Inject constructor(
             )
             // Add ok http interceptor for the API key
             .build()
-            .create(RetrofitNiaNetworkApi::class.java)
+            .create(RetrofitArtCartNetworkApi::class.java)
     }
 
     override suspend fun getLocations(latitude: Double, longitude: Double): NetworkPlaces =
         networkApi.getLocations(
-            RetrofitNiaNetworkApi.LocationsBody(
+            RetrofitArtCartNetworkApi.LocationsBody(
                 includedTypes = listOf(
                     "art_gallery",
                     "art_museum",
@@ -101,9 +101,9 @@ internal class RetrofitNetwork @Inject constructor(
                     "sculpture"
                 ),
              maxResultCount = 20,
-                locationRestriction = RetrofitNiaNetworkApi.LocationRestriction(
-                    RetrofitNiaNetworkApi.Circle(
-                        RetrofitNiaNetworkApi.LatLng(
+                locationRestriction = RetrofitArtCartNetworkApi.LocationRestriction(
+                    RetrofitArtCartNetworkApi.Circle(
+                        RetrofitArtCartNetworkApi.LatLng(
                             latitude = latitude,
                             longitude = longitude
                         ),

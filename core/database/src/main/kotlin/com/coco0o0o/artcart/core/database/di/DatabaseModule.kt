@@ -18,7 +18,7 @@ package com.coco0o0o.artcart.core.database.di
 
 import android.content.Context
 import androidx.room.Room
-import com.coco0o0o.artcart.core.database.NiaDatabase
+import com.coco0o0o.artcart.core.database.ArtCartDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,11 +31,11 @@ import javax.inject.Singleton
 internal object DatabaseModule {
     @Provides
     @Singleton
-    fun providesNiaDatabase(
+    fun providesArtCartDatabase(
         @ApplicationContext context: Context,
-    ): NiaDatabase = Room.databaseBuilder(
+    ): ArtCartDatabase = Room.databaseBuilder(
         context,
-        NiaDatabase::class.java,
-        "nia-database",
+        ArtCartDatabase::class.java,
+        "artcart-database",
     ).build()
 }
