@@ -24,7 +24,7 @@ import com.coco0o0o.artcart.core.data.util.NetworkMonitor
 import com.coco0o0o.artcart.core.data.util.TimeZoneMonitor
 import com.coco0o0o.artcart.core.navigation.NavigationState
 import com.coco0o0o.artcart.core.navigation.rememberNavigationState
-import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
+import com.coco0o0o.artcart.feature.locations.api.navigation.LocationsNavKey
 import com.coco0o0o.artcart.navigation.TOP_LEVEL_NAV_ITEMS
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.SharingStarted
@@ -38,7 +38,7 @@ fun rememberArtCartAppState(
     timeZoneMonitor: TimeZoneMonitor,
     coroutineScope: CoroutineScope = rememberCoroutineScope(),
 ): ArtCartAppState {
-    val navigationState = rememberNavigationState(InterestsNavKey, TOP_LEVEL_NAV_ITEMS.keys)
+    val navigationState = rememberNavigationState(LocationsNavKey, TOP_LEVEL_NAV_ITEMS.keys)
 
     return remember(
         navigationState,

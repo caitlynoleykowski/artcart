@@ -38,7 +38,7 @@ import com.coco0o0o.artcart.core.designsystem.component.scrollbar.DraggableScrol
 import com.coco0o0o.artcart.core.designsystem.component.scrollbar.rememberDraggableScroller
 import com.coco0o0o.artcart.core.designsystem.component.scrollbar.scrollbarState
 import com.coco0o0o.artcart.core.model.data.ArtLocation
-import com.coco0o0o.artcart.core.ui.InterestsItem
+import com.coco0o0o.artcart.core.ui.LocationsItem
 
 @Composable
 fun SavedTabContent(
@@ -66,7 +66,7 @@ fun SavedTabContent(
                 val artLocationId = artLocation.id
                 item(key = artLocationId) {
                     val isSelected = shouldHighlightSelectedLocation && artLocationId == selectedLocationId
-                    InterestsItem(
+                    LocationsItem(
                         name = artLocation.name,
                         following = artLocation.isFavorite,
                         description = artLocation.address,

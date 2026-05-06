@@ -271,7 +271,7 @@ class ArtCartNavigationSuiteScope internal constructor(
 @ThemePreviews
 @Composable
 fun ArtCartNavigationBarPreview() {
-    val items = listOf("For you", "Saved", "Interests")
+    val items = listOf("For you", "Saved", "Locations")
     val icons = listOf(
         Icons.Outlined.Upcoming,
         Icons.Outlined.Bookmark,
@@ -311,7 +311,7 @@ fun ArtCartNavigationBarPreview() {
 @ThemePreviews
 @Composable
 fun ArtCartNavigationRailPreview() {
-    val items = listOf("For you", "Saved", "Interests")
+    val items = listOf("For you", "Saved", "Locations")
     val icons = listOf(
         Icons.Outlined.Upcoming,
         Icons.Outlined.Bookmark,

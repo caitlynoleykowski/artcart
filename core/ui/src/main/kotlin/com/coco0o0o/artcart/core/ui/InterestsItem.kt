@@ -45,7 +45,7 @@ import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 import com.coco0o0o.artcart.core.ui.R.string
 
 @Composable
-fun InterestsItem(
+fun LocationsItem(
     name: String,
     following: Boolean,
     locationImageUrl: String,
@@ -59,7 +59,7 @@ fun InterestsItem(
 ) {
     ListItem(
         leadingContent = {
-            InterestsIcon(locationImageUrl, iconModifier.size(48.dp))
+            LocationsIcon(locationImageUrl, iconModifier.size(48.dp))
         },
         headlineContent = {
             Text(text = name)
@@ -78,7 +78,7 @@ fun InterestsItem(
                     Icon(
                         imageVector = Icons.Rounded.Add,
                         contentDescription = stringResource(
-                            id = string.core_ui_interests_card_follow_button_content_desc,
+                            id = string.core_ui_locations_card_follow_button_content_desc,
                         ),
                     )
                 },
@@ -86,7 +86,7 @@ fun InterestsItem(
                     Icon(
                         imageVector = Icons.Rounded.Check,
                         contentDescription = stringResource(
-                            id = string.core_ui_interests_card_unfollow_button_content_desc,
+                            id = string.core_ui_locations_card_unfollow_button_content_desc,
                         ),
                     )
                 },
@@ -108,7 +108,7 @@ fun InterestsItem(
 }
 
 @Composable
-private fun InterestsIcon(topicImageUrl: String, modifier: Modifier = Modifier) {
+private fun LocationsIcon(topicImageUrl: String, modifier: Modifier = Modifier) {
     if (topicImageUrl.isEmpty()) {
         Icon(
             modifier = modifier
@@ -129,10 +129,10 @@ private fun InterestsIcon(topicImageUrl: String, modifier: Modifier = Modifier) 
 
 @Preview
 @Composable
-private fun InterestsCardPreview() {
+private fun LocationsCardPreview() {
     ArtCartTheme {
         Surface {
-            InterestsItem(
+            LocationsItem(
                 name = "Compose",
                 description = "Description",
                 secondaryDescription = "Secondary description",
@@ -147,10 +147,10 @@ private fun InterestsCardPreview() {
 
 @Preview
 @Composable
-private fun InterestsCardLongNamePreview() {
+private fun LocationsCardLongNamePreview() {
     ArtCartTheme {
         Surface {
-            InterestsItem(
+            LocationsItem(
                 name = "This is a very very very very long name",
                 description = "Description",
                 secondaryDescription = "Secondary description",
@@ -165,10 +165,10 @@ private fun InterestsCardLongNamePreview() {
 
 @Preview
 @Composable
-private fun InterestsCardLongDescriptionPreview() {
+private fun LocationsCardLongDescriptionPreview() {
     ArtCartTheme {
         Surface {
-            InterestsItem(
+            LocationsItem(
                 name = "Compose",
                 description = "This is a very very very very very very very " +
                     "very very very long description",
@@ -184,10 +184,10 @@ private fun InterestsCardLongDescriptionPreview() {
 
 @Preview
 @Composable
-private fun InterestsCardWithEmptyDescriptionPreview() {
+private fun LocationsCardWithEmptyDescriptionPreview() {
     ArtCartTheme {
         Surface {
-            InterestsItem(
+            LocationsItem(
                 name = "Compose",
                 description = "",
                 secondaryDescription = "",
@@ -202,10 +202,10 @@ private fun InterestsCardWithEmptyDescriptionPreview() {
 
 @Preview
 @Composable
-private fun InterestsCardSelectedPreview() {
+private fun LocationsCardSelectedPreview() {
     ArtCartTheme {
         Surface {
-            InterestsItem(
+            LocationsItem(
                 name = "Compose",
                 description = "",
                 secondaryDescription = "",

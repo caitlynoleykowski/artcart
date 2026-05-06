@@ -73,12 +73,12 @@ internal fun SavedScreen2(
                     }
                 )
 
-            is FavoritedArtLocationsUiState.Empty -> InterestsEmptyScreen()
+            is FavoritedArtLocationsUiState.Empty -> LocationsEmptyScreen()
         }
     }
 }
 
 @Composable
-private fun InterestsEmptyScreen() {
+private fun LocationsEmptyScreen() {
     Text(text = stringResource(id = com.coco0o0o.artcart.feature.saved.api.R.string.feature_saved_api_empty_error))
 }

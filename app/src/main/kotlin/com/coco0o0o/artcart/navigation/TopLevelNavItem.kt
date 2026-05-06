@@ -23,8 +23,8 @@ import androidx.compose.material.icons.rounded.LocationCity
 import androidx.compose.material.icons.rounded.ShoppingCart
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.coco0o0o.artcart.feature.saved.api.navigation.SavedNavKey
-import com.coco0o0o.artcart.feature.interests.api.R
-import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
+import com.coco0o0o.artcart.feature.locations.api.R
+import com.coco0o0o.artcart.feature.locations.api.navigation.LocationsNavKey
 import com.coco0o0o.artcart.feature.saved.api.R as savedR
 
 /**
@@ -55,11 +55,11 @@ val BOOKMARKS = TopLevelNavItem(
 val INTERESTS = TopLevelNavItem(
     selectedIcon = Icons.Rounded.LocationCity,
     unselectedIcon = Icons.Rounded.LocationCity,
-    iconTextId = R.string.feature_interests_api_title,
-    titleTextId = R.string.feature_interests_api_title,
+    iconTextId = R.string.feature_locations_api_title,
+    titleTextId = R.string.feature_locations_api_title,
 )
 
 val TOP_LEVEL_NAV_ITEMS = mapOf(
-    InterestsNavKey to INTERESTS,
+    LocationsNavKey to INTERESTS,
     SavedNavKey to BOOKMARKS,
 )

@@ -52,8 +52,8 @@ android {
 }
 
 dependencies {
-    implementation(projects.feature.interests.api)
-    implementation(projects.feature.interests.impl)
+    implementation(projects.feature.locations.api)
+    implementation(projects.feature.locations.impl)
     implementation(projects.feature.saved.api)
     implementation(projects.feature.saved.impl)
     implementation(projects.feature.locationdetails.api)
