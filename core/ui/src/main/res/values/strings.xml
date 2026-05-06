@@ -15,7 +15,7 @@
      limitations under the License.
 -->
 <resources>
-    <string name="core_ui_bookmark">Bookmark</string>
+    <string name="core_ui_bookmark">Saved</string>
     <string name="core_ui_unbookmark">Unbookmark</string>
     <string name="core_ui_back">Back</string>
 

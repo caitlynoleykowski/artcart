@@ -19,9 +19,9 @@ package com.coco0o0o.artcart.core.designsystem.component
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Bookmarks
+import androidx.compose.material.icons.outlined.Bookmark
 import androidx.compose.material.icons.outlined.Upcoming
-import androidx.compose.material.icons.rounded.Bookmarks
+import androidx.compose.material.icons.rounded.Bookmark
 import androidx.compose.material.icons.rounded.Grid3x3
 import androidx.compose.material.icons.rounded.Upcoming
 import androidx.compose.material3.Icon
@@ -274,12 +274,12 @@ fun ArtCartNavigationBarPreview() {
     val items = listOf("For you", "Saved", "Interests")
     val icons = listOf(
         Icons.Outlined.Upcoming,
-        Icons.Outlined.Bookmarks,
+        Icons.Outlined.Bookmark,
         Icons.Rounded.Grid3x3,
     )
     val selectedIcons = listOf(
         Icons.Rounded.Upcoming,
-        Icons.Rounded.Bookmarks,
+        Icons.Rounded.Bookmark,
         Icons.Rounded.Grid3x3,
     )
 
@@ -314,12 +314,12 @@ fun ArtCartNavigationRailPreview() {
     val items = listOf("For you", "Saved", "Interests")
     val icons = listOf(
         Icons.Outlined.Upcoming,
-        Icons.Outlined.Bookmarks,
+        Icons.Outlined.Bookmark,
         Icons.Rounded.Grid3x3,
     )
     val selectedIcons = listOf(
         Icons.Rounded.Upcoming,
-        Icons.Rounded.Bookmarks,
+        Icons.Rounded.Bookmark,
         Icons.Rounded.Grid3x3,
     )
 

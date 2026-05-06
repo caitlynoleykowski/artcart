@@ -54,8 +54,8 @@ android {
 dependencies {
     implementation(projects.feature.interests.api)
     implementation(projects.feature.interests.impl)
-    implementation(projects.feature.bookmarks.api)
-    implementation(projects.feature.bookmarks.impl)
+    implementation(projects.feature.saved.api)
+    implementation(projects.feature.saved.impl)
     implementation(projects.feature.locationdetails.api)
     implementation(projects.feature.locationdetails.impl)
 

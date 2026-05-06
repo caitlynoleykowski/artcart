@@ -69,8 +69,8 @@ import com.coco0o0o.artcart.core.designsystem.component.ArtCartTopAppBar
 import com.coco0o0o.artcart.core.designsystem.theme.GradientColors
 import com.coco0o0o.artcart.core.navigation.Navigator
 import com.coco0o0o.artcart.core.navigation.toEntries
-import com.coco0o0o.artcart.feature.bookmarks.impl.navigation.LocalSnackbarHostState
-import com.coco0o0o.artcart.feature.bookmarks.impl.navigation.bookmarksEntry
+import com.coco0o0o.artcart.feature.saved.impl.navigation.LocalSnackbarHostState
+import com.coco0o0o.artcart.feature.saved.impl.navigation.savedEntry
 import com.coco0o0o.artcart.feature.interests.impl.navigation.interestsEntry
 import com.coco0o0o.artcart.feature.locationdetails.impl.navigation.locationDetailsEntry
 import com.coco0o0o.artcart.navigation.TOP_LEVEL_NAV_ITEMS
@@ -226,7 +226,7 @@ internal fun ArtCartApp(
                     val listDetailStrategy = rememberListDetailSceneStrategy<NavKey>()
 
                     val entryProvider = entryProvider {
-                        bookmarksEntry(navigator)
+                        savedEntry(navigator)
                         interestsEntry(navigator)
                         locationDetailsEntry(navigator)
                     }

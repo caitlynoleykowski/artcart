@@ -18,17 +18,14 @@ package com.coco0o0o.artcart.navigation
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Bookmarks
 import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.material.icons.rounded.Bookmarks
-import androidx.compose.material.icons.rounded.Grid3x3
 import androidx.compose.material.icons.rounded.LocationCity
 import androidx.compose.material.icons.rounded.ShoppingCart
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.coco0o0o.artcart.feature.bookmarks.api.navigation.BookmarksNavKey
+import com.coco0o0o.artcart.feature.saved.api.navigation.SavedNavKey
 import com.coco0o0o.artcart.feature.interests.api.R
 import com.coco0o0o.artcart.feature.interests.api.navigation.InterestsNavKey
-import com.coco0o0o.artcart.feature.bookmarks.api.R as bookmarksR
+import com.coco0o0o.artcart.feature.saved.api.R as savedR
 
 /**
  * Type for the top level navigation items in the application. Contains UI information about the
@@ -51,8 +48,8 @@ data class TopLevelNavItem(
 val BOOKMARKS = TopLevelNavItem(
     selectedIcon = Icons.Rounded.ShoppingCart,
     unselectedIcon = Icons.Outlined.ShoppingCart,
-    iconTextId = bookmarksR.string.feature_bookmarks_api_title,
-    titleTextId = bookmarksR.string.feature_bookmarks_api_title,
+    iconTextId = savedR.string.feature_saved_api_title,
+    titleTextId = savedR.string.feature_saved_api_title,
 )
 
 val INTERESTS = TopLevelNavItem(
@@ -64,5 +61,5 @@ val INTERESTS = TopLevelNavItem(
 
 val TOP_LEVEL_NAV_ITEMS = mapOf(
     InterestsNavKey to INTERESTS,
-    BookmarksNavKey to BOOKMARKS,
+    SavedNavKey to BOOKMARKS,
 )
