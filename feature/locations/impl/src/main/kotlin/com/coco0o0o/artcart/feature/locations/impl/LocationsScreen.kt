@@ -2,6 +2,8 @@ package com.coco0o0o.artcart.feature.locations.impl
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
 import android.os.Looper
@@ -24,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
@@ -42,6 +45,8 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.GoogleMap
@@ -462,7 +467,7 @@ private fun Locations(
             onClick = {
                 onLocationClick(key)
                 true // consume click event to prevent camera move to marker
-            }
+            },
         )
     }
 }
@@ -473,9 +478,35 @@ fun Marker(
     onClick: () -> Boolean = { false },
 ) {
     val markerState = rememberUpdatedMarkerState(position = position)
+    val markerIcon = rememberMarkerIcon()
 
     Marker(
         state = markerState,
-        onClick = { onClick() }
+        onClick = { onClick() },
+        icon = rememberMarkerIcon()
     )
+}
+
+@Composable
+fun rememberMarkerIcon(): BitmapDescriptor {
+    val context = LocalContext.current
+
+    return remember {
+        val drawable = ContextCompat.getDrawable(
+            context,
+            R.drawable.feature_locations_api_ic_map_marker
+        )!!
+
+        val bitmap = Bitmap.createBitmap(
+            drawable.intrinsicWidth,
+            drawable.intrinsicHeight,
+            Bitmap.Config.ARGB_8888
+        )
+
+        val canvas = Canvas(bitmap)
+        drawable.setBounds(0, 0, canvas.width, canvas.height)
+        drawable.draw(canvas)
+
+        BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
 }
