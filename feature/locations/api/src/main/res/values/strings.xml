@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="feature_locations_api_title">Locations</string>
+    <string name="feature_locations_api_title">ArtCart</string>
     <string name="feature_locations_api_loading">Loading data</string>
     <string name="feature_locations_api_empty_header">"No available data"</string>
     <string name="feature_locations_api_location_permissions_not_granted">"Location permissions needed"</string>
