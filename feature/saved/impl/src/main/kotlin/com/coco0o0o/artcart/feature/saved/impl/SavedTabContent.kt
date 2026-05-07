@@ -14,10 +14,12 @@ import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartButton
 import com.coco0o0o.artcart.core.designsystem.component.scrollbar.DraggableScrollbar
 import com.coco0o0o.artcart.core.designsystem.component.scrollbar.rememberDraggableScroller
 import com.coco0o0o.artcart.core.designsystem.component.scrollbar.scrollbarState
@@ -28,6 +30,7 @@ import com.coco0o0o.artcart.core.ui.LocationsItem
 fun SavedTabContent(
     locations: List<ArtLocation>,
     onLocationClick: (String) -> Unit,
+    onCheckoutClicked: () -> Unit,
     onFollowButtonClick: (String, Boolean) -> Unit,
     modifier: Modifier = Modifier,
     withBottomSpacer: Boolean = true,
@@ -85,5 +88,15 @@ fun SavedTabContent(
                 itemsAvailable = locations.size,
             ),
         )
+        if (locations.size > 1) {
+            ArtCartButton(
+                onClick = { onCheckoutClicked() },
+                text = { Text("Check out your optimized route ->") },
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            )
+        }
     }
 }

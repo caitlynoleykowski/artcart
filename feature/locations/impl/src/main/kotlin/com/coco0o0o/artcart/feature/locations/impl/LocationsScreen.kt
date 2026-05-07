@@ -2,12 +2,16 @@ package com.coco0o0o.artcart.feature.locations.impl
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
 import android.os.Looper
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresPermission
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.material3.Text
@@ -45,6 +49,7 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
@@ -66,6 +71,9 @@ fun LocationsScreen(
     shouldHighlightSelectedTopic: Boolean = false,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val currentLocation by viewModel.currentLocation.collectAsStateWithLifecycle()
+
+    val context = LocalContext.current
 
     /*
       Start handle location updates
@@ -73,17 +81,52 @@ fun LocationsScreen(
     var locationRequest by remember {
         mutableStateOf<LocationRequest?>(null)
     }
+    val fusedLocationClient = remember {
+        LocationServices.getFusedLocationProviderClient(context)
+    }
     // Keeps track of received location updates as text
     var locationUpdates by remember {
         mutableStateOf("")
     }
+    var hasLocationPermission by remember {
+        mutableStateOf(
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        )
+    }
 
-    // TODO: This is aggressively updating the location, reconsider
-    LaunchedEffect(locationRequest) {
-        locationRequest = LocationRequest.Builder(
-            Priority.PRIORITY_HIGH_ACCURACY,
-            TimeUnit.MINUTES.toMillis(3)
-        ).build()
+    val permissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        viewModel.onLocationPermissionResult(granted)
+        hasLocationPermission = granted
+    }
+
+    LaunchedEffect(Unit) {
+        if (!hasLocationPermission) {
+            permissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+        }
+    }
+
+    LaunchedEffect(hasLocationPermission) {
+        if (hasLocationPermission) {
+            viewModel.onLocationPermissionResult(granted = true)
+            // Get initial location
+            fusedLocationClient.getCurrentLocation(
+                Priority.PRIORITY_HIGH_ACCURACY,
+                null
+            ).addOnSuccessListener {
+                viewModel.updateCurrentLocation(lat = it.latitude, lng = it.longitude)
+            }
+
+            // Get updates every minute, trying to keep this minimal but effective
+            locationRequest = LocationRequest.Builder(
+                Priority.PRIORITY_HIGH_ACCURACY,
+                TimeUnit.MINUTES.toMillis(1)
+            ).build()
+        }
     }
     // Only register the location updates effect when we have a request
     if (locationRequest != null) {
@@ -112,8 +155,10 @@ fun LocationsScreen(
 //        )
         LocationsMap(
             uiState,
+            currentLocation,
             modifier.fillMaxHeight(0.5f)
         )
+//        LocationPermissionsEffect()
         LocationsScreen(
             uiState = uiState,
             saveLocation = viewModel::saveLocation,
@@ -129,84 +174,11 @@ fun LocationsScreen(
 @Composable
 fun LocationsMap(
     uiState: ArtNearbyUiState,
+    currentLocation: LatLng?,
     modifier: Modifier = Modifier,
 ) {
-    Screen(uiState, modifier)
-
-//
-//    when (uiState) {
-//        ArtNearbyUiState.Loading, ArtNearbyUiState.Empty -> { listOf()} // Do nothing
-//        is ArtNearbyUiState.ArtLocations -> {
-//            uiState.artLocations
-////            GoogleMap(
-////                googleMapOptionsFactory = {
-////                    GoogleMapOptions().mapId("DEMO_MAP_ID")
-////                },
-////                cameraPositionState = cameraPositionState,
-//////        onPOIClick = {
-//////            Log.d(TAG, "POI clicked: ${it.name}")
-//////        }
-////                modifier = modifier,
-////            ) {
-////                val context = LocalContext.current
-////            }
-////            GoogleMapWithLocations(
-////                artLocations = uiState.artLocations,
-////                modifier,
-////            )
-//        }
-//    }
+    Screen(uiState, currentLocation, modifier)
 }
-
-//
-//@Composable
-//private fun GoogleMapWithLocations(
-//    artLocations: List<ArtLocation>,
-//    modifier: Modifier = Modifier,
-////    onAddLocation: (LocationData) -> Unit,
-////    onDeleteLocation: (LocationKey) -> Unit
-//) {
-//    val here = LatLng(38.5636174,-121.4777596)
-//    val hereMarkerState = rememberUpdatedMarkerState(position = here)
-//    val cameraPositionState = rememberCameraPositionState {
-//        position = CameraPosition.fromLatLngZoom(here, 10f)
-//    }
-//    GoogleMap(
-//        modifier = modifier,
-//        cameraPositionState = cameraPositionState,
-//        onMapClick = { position -> print("yayy2!") } //onAddLocation(LocationData(position)) }
-//    ) {
-//        Locations(artLocations)
-//    }
-//}
-//
-//@Composable
-//fun Marker(
-//    position: LatLng,
-//    onClick: () -> Boolean = { false },
-//) {
-//    val markerState = rememberUpdatedMarkerState(position = position)
-//
-//    Marker(
-//        state = markerState,
-//        onClick = { onClick() }
-//    )
-//}
-//
-//@Composable
-//private fun Locations(
-//    artLocations: List<ArtLocation>,
-//) = artLocations.forEach { artLocation ->
-//    key(artLocation.id) {
-//        Marker(
-//            position = LatLng(artLocation.latitude, artLocation.longitude),
-//            onClick = {
-//                print("yayy!!")
-//                true // consume click event to prevent camera move to marker
-//            }
-//        )
-//    }
-//}
 
 @Composable
 internal fun LocationsScreen(
@@ -224,9 +196,12 @@ internal fun LocationsScreen(
     ) {
         when (uiState) {
             ArtNearbyUiState.Loading ->
-                ArtCartLoadingWheel(
-                    contentDesc = stringResource(id = R.string.feature_locations_api_loading),
-                )
+                Box{
+                    ArtCartLoadingWheel(
+                        modifier = modifier.align(Alignment.Center),
+                        contentDesc = stringResource(id = R.string.feature_locations_api_loading),
+                    )
+                }
 
             is ArtNearbyUiState.ArtLocations ->
                 LocationsTabContent(
@@ -236,16 +211,24 @@ internal fun LocationsScreen(
                     selectedLocationId = null, // TODO: uiState.selectedLocationId,
                     shouldHighlightSelectedLocation = shouldHighlightSelectedLocation,
                 )
-
-            is ArtNearbyUiState.Empty -> LocationsEmptyScreen()
+            is ArtNearbyUiState.PermissionNotGranted -> {
+                    LocationsPermissionNotGrantedScreen()
+            }
+            is ArtNearbyUiState.Empty -> {
+                LocationsEmptyScreen()
+            }
         }
     }
-    LocationPermissionsEffect()
 }
 
 @Composable
 private fun LocationsEmptyScreen() {
-    Text(text = stringResource(id = R.string.feature_locations_api_empty_header))
+    Text(text = stringResource(id = R.string.feature_locations_api_empty_header),)
+}
+
+@Composable
+private fun LocationsPermissionNotGrantedScreen() {
+    Text(text = stringResource(id = R.string.feature_locations_api_location_permissions_not_granted),)
 }
 
 @Composable
@@ -400,17 +383,22 @@ private typealias KeyedLocationData = Pair<LocationKey, LocationData>
 //    }
 //}
 
-val sacramento = LatLng(38.5636174,-121.4777596)
+val sacramento = LatLng(0.0,0.0)
 val defaultCameraPosition = CameraPosition.fromLatLngZoom(sacramento, 11f)
 
 @Composable
 private fun Screen(
     uiState: ArtNearbyUiState,
+    currentLocation: LatLng?,
     modifier: Modifier = Modifier
 ) = GoogleMapWithLocations(
     modifier = modifier,
+    currentLocation = currentLocation,
     keyedLocationData = when(uiState) {
-        ArtNearbyUiState.Loading, ArtNearbyUiState.Empty -> emptyList()
+        ArtNearbyUiState.Loading,
+        ArtNearbyUiState.Empty,
+        ArtNearbyUiState.PermissionNotGranted
+            -> emptyList()
         is ArtNearbyUiState.ArtLocations -> uiState.artLocations.map { LocationKey() to LocationData(LatLng(it.latitude, it.longitude))}
     },
 //    onAddLocation = { locationData ->
@@ -432,11 +420,21 @@ private fun Screen(
 @Composable
 private fun GoogleMapWithLocations(
     keyedLocationData: Collection<KeyedLocationData>,
+    currentLocation: LatLng?,
     modifier: Modifier = Modifier,
 //    onAddLocation: (LocationData) -> Unit,
 //    onDeleteLocation: (LocationKey) -> Unit
 ) {
+
     val cameraPositionState = rememberCameraPositionState { position = defaultCameraPosition }
+
+    LaunchedEffect(currentLocation) {
+        currentLocation?.let {
+            cameraPositionState.animate(
+                CameraUpdateFactory.newLatLngZoom(it, 13f)
+            )
+        }
+    }
 
     GoogleMap(
         modifier = modifier,

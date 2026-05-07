@@ -6,12 +6,12 @@ import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import com.coco0o0o.artcart.core.navigation.Navigator
 import com.coco0o0o.artcart.feature.saved.api.navigation.SavedNavKey
-import com.coco0o0o.artcart.feature.saved.impl.SavedScreen2
+import com.coco0o0o.artcart.feature.saved.impl.SavedScreen
 import com.coco0o0o.artcart.feature.locationdetails.api.navigation.navigateToLocationDetails
 
 fun EntryProviderScope<NavKey>.savedEntry(navigator: Navigator) {
     entry<SavedNavKey> {
-        SavedScreen2(
+        SavedScreen(
             onLocationClick = navigator::navigateToLocationDetails,
         )
     }

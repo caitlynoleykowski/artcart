@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SavedViewModel2 @Inject constructor(
+class SavedViewModel @Inject constructor(
     private val locationsRepository: LocationsRepository,
 ) : ViewModel() {
 
@@ -54,6 +54,26 @@ class SavedViewModel2 @Inject constructor(
     fun clearUndoState() {
         shouldDisplayUndoBookmark = false
         lastRemovedBookmarkId = null
+    }
+
+    fun onCheckoutClicked(): String {
+        // TODO: use case
+        // TODO: trigger event on SharedFlow that triggers UI navigation
+        val uiState = savedUiState.value
+        return when (uiState) {
+            is FavoritedArtLocationsUiState.Loading -> {
+                ""
+            }
+            is FavoritedArtLocationsUiState.ArtLocations -> {
+                // TODO: navigate to checkout
+                val url = buildOptimizedGoogleMapsRouteUrl(
+                    points = uiState.artLocations.map { LatLngPoint(it.latitude, it.longitude)})
+                url
+            }
+            is FavoritedArtLocationsUiState.Empty -> {
+                ""
+            }
+        }
     }
 }
 
