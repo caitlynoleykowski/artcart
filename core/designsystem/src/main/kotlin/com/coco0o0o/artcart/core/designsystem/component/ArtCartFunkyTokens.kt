@@ -3,7 +3,7 @@ package com.coco0o0o.artcart.core.designsystem.component
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 
-object ArtCartFunkyTokens {
+internal object ArtCartFunkyTokens {
     val Pink = Color(0xFFFB4C8E)
     val DeepMaroon = Color(0xFF641A35)
     val Ink = Color(0xFF21121A)

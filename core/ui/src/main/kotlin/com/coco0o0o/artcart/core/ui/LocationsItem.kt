@@ -43,7 +43,11 @@ fun LocationsItem(
 ) {
     ListItem(
         leadingContent = {
-            LocationsIcon(locationImageUrl, iconModifier.size(48.dp))
+            DynamicAsyncImage(
+                imageUrl = locationImageUrl,
+                contentDescription = null,
+                modifier = iconModifier.size(96.dp),
+            )
         },
         headlineContent = {
             Text(text = name)
@@ -89,26 +93,6 @@ fun LocationsItem(
             }
             .clickable(enabled = true, onClick = onClick),
     )
-}
-
-@Composable
-private fun LocationsIcon(topicImageUrl: String, modifier: Modifier = Modifier) {
-    if (topicImageUrl.isEmpty()) {
-        Icon(
-            modifier = modifier
-                .background(MaterialTheme.colorScheme.surface)
-                .padding(4.dp),
-            imageVector = Icons.Rounded.Person,
-            // decorative image
-            contentDescription = null,
-        )
-    } else {
-        DynamicAsyncImage(
-            imageUrl = topicImageUrl,
-            contentDescription = null,
-            modifier = modifier,
-        )
-    }
 }
 
 @Preview

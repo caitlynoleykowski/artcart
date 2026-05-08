@@ -15,7 +15,6 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -40,8 +39,6 @@ fun ArtCartLoadingWheel(
     modifier: Modifier = Modifier,
 ) {
     val infiniteTransition = rememberInfiniteTransition(label = "wheel transition")
-
-    // Specifies the float animation for slowly drawing out the lines on entering
     val startValue = if (LocalInspectionMode.current) 0F else 1F
     val floatAnimValues = (0 until NUM_OF_LINES).map { remember { Animatable(startValue) } }
     LaunchedEffect(floatAnimValues) {
@@ -49,39 +46,29 @@ fun ArtCartLoadingWheel(
             launch {
                 floatAnimValues[index].animateTo(
                     targetValue = 0F,
-                    animationSpec = tween(
-                        durationMillis = 100,
-                        easing = FastOutSlowInEasing,
-                        delayMillis = 40 * index,
-                    ),
+                    animationSpec = tween(durationMillis = 120, easing = FastOutSlowInEasing, delayMillis = 35 * index),
                 )
             }
         }
     }
 
-    // Specifies the rotation animation of the entire Canvas composable
     val rotationAnim by infiniteTransition.animateFloat(
         initialValue = 0F,
         targetValue = 360F,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = ROTATION_TIME, easing = LinearEasing),
-        ),
+        animationSpec = infiniteRepeatable(animation = tween(durationMillis = ROTATION_TIME, easing = LinearEasing)),
         label = "wheel rotation animation",
     )
 
-    // Specifies the color animation for the base-to-progress line color change
-    val baseLineColor = MaterialTheme.colorScheme.onBackground
-    val progressLineColor = MaterialTheme.colorScheme.inversePrimary
-
+    val colors = listOf(ArtCartFunkyTokens.Pink, ArtCartFunkyTokens.Lemon, ArtCartFunkyTokens.Mint, ArtCartFunkyTokens.Lilac)
     val colorAnimValues = (0 until NUM_OF_LINES).map { index ->
         infiniteTransition.animateColor(
-            initialValue = baseLineColor,
-            targetValue = baseLineColor,
+            initialValue = colors[index % colors.size],
+            targetValue = colors[(index + 1) % colors.size],
             animationSpec = infiniteRepeatable(
                 animation = keyframes {
                     durationMillis = ROTATION_TIME / 2
-                    progressLineColor at ROTATION_TIME / NUM_OF_LINES / 2 using LinearEasing
-                    baseLineColor at ROTATION_TIME / NUM_OF_LINES using LinearEasing
+                    colors[(index + 2) % colors.size] at ROTATION_TIME / NUM_OF_LINES / 2 using LinearEasing
+                    colors[index % colors.size] at ROTATION_TIME / NUM_OF_LINES using LinearEasing
                 },
                 repeatMode = RepeatMode.Restart,
                 initialStartOffset = StartOffset(ROTATION_TIME / NUM_OF_LINES / 2 * index),
@@ -90,11 +77,10 @@ fun ArtCartLoadingWheel(
         )
     }
 
-    // Draws out the LoadingWheel Canvas composable and sets the animations
     Canvas(
         modifier = modifier
-            .size(48.dp)
-            .padding(8.dp)
+            .size(52.dp)
+            .padding(7.dp)
             .graphicsLayer { rotationZ = rotationAnim }
             .semantics { contentDescription = contentDesc }
             .testTag("loadingWheel"),
@@ -103,12 +89,11 @@ fun ArtCartLoadingWheel(
             rotate(degrees = index * 30f) {
                 drawLine(
                     color = colorAnimValues[index].value,
-                    // Animates the initially drawn 1 pixel alpha from 0 to 1
                     alpha = if (floatAnimValues[index].value < 1f) 1f else 0f,
-                    strokeWidth = 4F,
+                    strokeWidth = if (index % 3 == 0) 7F else 4.5F,
                     cap = StrokeCap.Round,
-                    start = Offset(size.width / 2, size.height / 4),
-                    end = Offset(size.width / 2, floatAnimValues[index].value * size.height / 4),
+                    start = Offset(size.width / 2, size.height / 5),
+                    end = Offset(size.width / 2, floatAnimValues[index].value * size.height / 3),
                 )
             }
         }
@@ -121,37 +106,20 @@ fun ArtCartOverlayLoadingWheel(
     modifier: Modifier = Modifier,
 ) {
     Surface(
-        shape = RoundedCornerShape(60.dp),
-        shadowElevation = 8.dp,
-        color = MaterialTheme.colorScheme.surface.copy(alpha = 0.83f),
-        modifier = modifier
-            .size(60.dp),
-    ) {
-        ArtCartLoadingWheel(
-            contentDesc = contentDesc,
-        )
-    }
+        shape = RoundedCornerShape(topStart = 28.dp, topEnd = 12.dp, bottomEnd = 28.dp, bottomStart = 12.dp),
+        shadowElevation = 10.dp,
+        color = ArtCartFunkyTokens.Cream.copy(alpha = 0.92f),
+        modifier = modifier.size(64.dp),
+    ) { ArtCartLoadingWheel(contentDesc = contentDesc) }
 }
 
 @ThemePreviews
 @Composable
-fun ArtCartLoadingWheelPreview() {
-    ArtCartTheme {
-        Surface {
-            ArtCartLoadingWheel(contentDesc = "LoadingWheel")
-        }
-    }
-}
+fun ArtCartLoadingWheelPreview() { ArtCartTheme { Surface { ArtCartLoadingWheel(contentDesc = "LoadingWheel") } } }
 
 @ThemePreviews
 @Composable
-fun ArtCartOverlayLoadingWheelPreview() {
-    ArtCartTheme {
-        Surface {
-            ArtCartOverlayLoadingWheel(contentDesc = "LoadingWheel")
-        }
-    }
-}
+fun ArtCartOverlayLoadingWheelPreview() { ArtCartTheme { Surface { ArtCartOverlayLoadingWheel(contentDesc = "LoadingWheel") } } }
 
-private const val ROTATION_TIME = 12000
+private const val ROTATION_TIME = 9000
 private const val NUM_OF_LINES = 12

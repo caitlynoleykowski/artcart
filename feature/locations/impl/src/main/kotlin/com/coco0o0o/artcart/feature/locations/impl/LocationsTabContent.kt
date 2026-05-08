@@ -42,7 +42,6 @@ fun LocationsTabContent(
         val scrollableState = rememberLazyListState()
         LazyColumn(
             modifier = Modifier
-                .padding(horizontal = 24.dp)
                 .testTag(LIST_PANE_TEST_TAG),
             contentPadding = PaddingValues(vertical = 16.dp),
             state = scrollableState,

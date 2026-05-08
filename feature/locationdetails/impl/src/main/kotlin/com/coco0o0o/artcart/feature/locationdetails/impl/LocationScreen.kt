@@ -20,7 +20,6 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -64,10 +63,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.platform.testTag
-import com.coco0o0o.artcart.core.designsystem.component.ArtCartFunkyTokens
 import android.content.Intent
 import androidx.compose.ui.draw.clip
 import androidx.core.net.toUri
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartButton
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartIcon
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartIconButton
+import com.coco0o0o.artcart.core.designsystem.component.InfoCard
 
 @Composable
 fun LocationScreen(
@@ -126,14 +128,12 @@ private fun LocationScreen(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(ArtCartFunkyTokens.Cream),
     ) {
         when (locationUiState) {
             LocationUiState.Loading -> {
-                CircularProgressIndicator(
+                ArtCartLoadingWheel(
                     modifier = Modifier.align(Alignment.Center),
-                    color = ArtCartFunkyTokens.Pink,
-                    trackColor = ArtCartFunkyTokens.Lemon.copy(alpha = .45f),
+                    contentDesc = "",
                 )
             }
 
@@ -141,7 +141,6 @@ private fun LocationScreen(
                 Text(
                     text = "Couldn’t load this art spot.",
                     modifier = Modifier.align(Alignment.Center),
-                    color = ArtCartFunkyTokens.DeepMaroon,
                     style = MaterialTheme.typography.titleMedium,
                 )
             }
@@ -193,7 +192,7 @@ private fun LocationDetailsContent(
                             Brush.verticalGradient(
                                 colors = listOf(
                                     Color.Transparent,
-                                    ArtCartFunkyTokens.DeepMaroon.copy(alpha = .72f),
+                                    Color.Black,
                                 ),
                             ),
                         ),
@@ -206,7 +205,7 @@ private fun LocationDetailsContent(
                             Brush.verticalGradient(
                                 colors = listOf(
                                     Color.Transparent,
-                                    ArtCartFunkyTokens.DeepMaroon.copy(alpha = .72f),
+                                    Color.Black,
                                 ),
                             ),
                         )
@@ -215,40 +214,22 @@ private fun LocationDetailsContent(
                 )
 
                 if (showBackButton) {
-                    IconButton(
+                    ArtCartIconButton(
                         onClick = onBackClick,
+                        icon = Icons.AutoMirrored.Filled.ArrowBack,
                         modifier = Modifier
                             .padding(16.dp)
                             .align(Alignment.TopStart)
-                            .background(
-                                ArtCartFunkyTokens.Cream.copy(alpha = .88f),
-                                CircleShape,
-                            ),
-                    ) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back",
-                            tint = ArtCartFunkyTokens.DeepMaroon,
-                        )
-                    }
-                }
-
-                IconButton(
-                    onClick = { onFollowClick(!location.isFavorite) },
-                    modifier = Modifier
-                        .padding(16.dp)
-                        .align(Alignment.TopEnd)
-                        .background(
-                            ArtCartFunkyTokens.Cream.copy(alpha = .88f),
-                            CircleShape,
-                        ),
-                ) {
-                    Icon(
-                        imageVector = if (location.isFavorite) Icons.Filled.Check else Icons.Outlined.Add,
-                        contentDescription = if (location.isFavorite) "Unfavorite" else "Favorite",
-                        tint = ArtCartFunkyTokens.Pink,
                     )
                 }
+
+                ArtCartIconButton(
+                    onClick = { onFollowClick(!location.isFavorite) },
+                    icon = if (location.isFavorite) Icons.Filled.Check else Icons.Outlined.Add,
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .align(Alignment.TopEnd),
+                )
 
                 Column(
                     modifier = Modifier
@@ -258,7 +239,7 @@ private fun LocationDetailsContent(
                     if (location.primaryTypeName.isNotBlank()) {
                         Text(
                             text = location.primaryTypeName.uppercase(),
-                            color = ArtCartFunkyTokens.Lemon,
+                            color = Color.White,
                             style = MaterialTheme.typography.labelLarge,
                             fontWeight = FontWeight.Black,
                         )
@@ -266,7 +247,7 @@ private fun LocationDetailsContent(
 
                     Text(
                         text = location.name.ifBlank { "Unnamed art location" },
-                        color = ArtCartFunkyTokens.Cream,
+                        color = Color.White,
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.Black,
                     )
@@ -281,7 +262,7 @@ private fun LocationDetailsContent(
                     .padding(20.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
-                FunkyInfoCard {
+                InfoCard {
                     DetailRow(
                         icon = Icons.Outlined.Place,
                         label = "Address",
@@ -290,7 +271,7 @@ private fun LocationDetailsContent(
 
                     HorizontalDivider(
                         modifier = Modifier.padding(vertical = 12.dp),
-                        color = ArtCartFunkyTokens.Pink.copy(alpha = .22f),
+                        color = MaterialTheme.colorScheme.primary,
                     )
 
                     DetailRow(
@@ -301,7 +282,7 @@ private fun LocationDetailsContent(
 
                     HorizontalDivider(
                         modifier = Modifier.padding(vertical = 12.dp),
-                        color = ArtCartFunkyTokens.Pink.copy(alpha = .22f),
+                        color = MaterialTheme.colorScheme.primary,
                     )
 
                     DetailRow(
@@ -311,24 +292,12 @@ private fun LocationDetailsContent(
                     )
                 }
 
-                Button(
+                ArtCartButton(
                     onClick = { onLocationClick(location) },
                     modifier = Modifier.fillMaxWidth(),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = ArtCartFunkyTokens.Pink,
-                        contentColor = ArtCartFunkyTokens.Cream,
-                    ),
-                    shape = RoundedCornerShape(
-                        topStart = 28.dp,
-                        topEnd = 10.dp,
-                        bottomEnd = 28.dp,
-                        bottomStart = 10.dp,
-                    ),
                 ) {
                     Text(
                         text = "View on Map",
-                        modifier = Modifier.padding(vertical = 6.dp),
-                        fontWeight = FontWeight.Black,
                     )
                 }
 
@@ -336,7 +305,7 @@ private fun LocationDetailsContent(
                     OutlinedButton(
                         onClick = { /* wire browser intent here */ },
                         modifier = Modifier.fillMaxWidth(),
-                        border = BorderStroke(2.dp, ArtCartFunkyTokens.Pink),
+                        border = BorderStroke(2.dp, color = MaterialTheme.colorScheme.primary,),
                         shape = RoundedCornerShape(
                             topStart = 10.dp,
                             topEnd = 28.dp,
@@ -346,7 +315,7 @@ private fun LocationDetailsContent(
                     ) {
                         Text(
                             text = "Website",
-                            color = ArtCartFunkyTokens.DeepMaroon,
+                            color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.Bold,
                         )
                     }
@@ -354,38 +323,6 @@ private fun LocationDetailsContent(
             }
         }
     }
-}
-
-@Composable
-private fun FunkyInfoCard(
-    modifier: Modifier = Modifier,
-    content: @Composable ColumnScope.() -> Unit,
-) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(
-                color = ArtCartFunkyTokens.Cream,
-                shape = RoundedCornerShape(
-                    topStart = 32.dp,
-                    topEnd = 12.dp,
-                    bottomEnd = 32.dp,
-                    bottomStart = 12.dp,
-                ),
-            )
-            .border(
-                width = 2.dp,
-                color = ArtCartFunkyTokens.Pink.copy(alpha = .55f),
-                shape = RoundedCornerShape(
-                    topStart = 32.dp,
-                    topEnd = 12.dp,
-                    bottomEnd = 32.dp,
-                    bottomStart = 12.dp,
-                ),
-            )
-            .padding(20.dp),
-        content = content,
-    )
 }
 
 @Composable
@@ -400,26 +337,19 @@ private fun DetailRow(
         horizontalArrangement = Arrangement.spacedBy(14.dp),
         verticalAlignment = Alignment.Top,
     ) {
-        Icon(
+        ArtCartIcon(
             imageVector = icon,
-            contentDescription = null,
-            tint = ArtCartFunkyTokens.Pink,
-            modifier = Modifier.size(24.dp),
         )
 
         Column {
             Text(
                 text = label,
-                color = ArtCartFunkyTokens.DeepMaroon.copy(alpha = .7f),
                 style = MaterialTheme.typography.labelMedium,
-                fontWeight = FontWeight.Bold,
             )
 
             Text(
                 text = value,
-                color = ArtCartFunkyTokens.DeepMaroon,
                 style = MaterialTheme.typography.bodyLarge,
-                fontWeight = FontWeight.SemiBold,
             )
         }
     }

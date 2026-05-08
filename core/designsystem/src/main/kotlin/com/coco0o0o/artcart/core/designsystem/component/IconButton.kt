@@ -1,30 +1,29 @@
 package com.coco0o0o.artcart.core.designsystem.component
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.Addchart
 import androidx.compose.material.icons.rounded.Bookmark
 import androidx.compose.material.icons.rounded.BookmarkBorder
+import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material3.FilledIconToggleButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.IconToggleButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.dp
 import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 
-/**
- * Now in Android toggle button with icon and checked icon content slots. Wraps Material 3
- * [IconButton].
- *
- * @param checked Whether the toggle button is currently checked.
- * @param onCheckedChange Called when the user clicks the toggle button and toggles checked.
- * @param modifier Modifier to be applied to the toggle button.
- * @param enabled Controls the enabled state of the toggle button. When `false`, this toggle button
- * will not be clickable and will appear disabled to accessibility services.
- * @param icon The icon content to show when unchecked.
- * @param checkedIcon The icon content to show when checked.
- */
 @Composable
 fun ArtCartIconToggleButton(
     checked: Boolean,
@@ -34,80 +33,65 @@ fun ArtCartIconToggleButton(
     icon: @Composable () -> Unit,
     checkedIcon: @Composable () -> Unit = icon,
 ) {
-    // TODO: File bug
-    // Can't use regular IconToggleButton as it doesn't include a shape (appears square)
-    FilledIconToggleButton(
+    IconToggleButton(
         checked = checked,
         onCheckedChange = onCheckedChange,
-        modifier = modifier,
+//        modifier = modifier.border(
+//            BorderStroke(1.5.dp, if (checked) ArtCartFunkyTokens.Lemon else ArtCartFunkyTokens.Pink.copy(alpha = .55f)),
+//            RoundedCornerShape(topStart = 18.dp, topEnd = 8.dp, bottomEnd = 18.dp, bottomStart = 8.dp),
+//        ),
         enabled = enabled,
         colors = IconButtonDefaults.iconToggleButtonColors(
-            checkedContainerColor = MaterialTheme.colorScheme.primaryContainer,
-            checkedContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-            disabledContainerColor = if (checked) {
-                MaterialTheme.colorScheme.onBackground.copy(
-                    alpha = ArtCartIconButtonDefaults.DISABLED_ICON_BUTTON_CONTAINER_ALPHA,
-                )
-            } else {
-                Color.Transparent
-            },
+            contentColor = ArtCartFunkyTokens.Pink,
+            checkedContainerColor = ArtCartFunkyTokens.Pink,
+            checkedContentColor = Color.White,
+            disabledContainerColor = if (checked) ArtCartFunkyTokens.Pink.copy(alpha = ArtCartIconButtonDefaults.DISABLED_ICON_BUTTON_CONTAINER_ALPHA) else Color.Transparent,
         ),
+    ) { if (checked) checkedIcon() else icon() }
+}
+
+@Composable
+fun ArtCartIconButton(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    icon: ImageVector,
+) {
+    IconButton(
+        onClick = onClick,
+        enabled = enabled,
+        colors = IconButtonDefaults.iconButtonColors(
+            contentColor = Color.White,
+            containerColor = ArtCartFunkyTokens.Pink,
+            disabledContainerColor = ArtCartFunkyTokens.Pink.copy(alpha = ArtCartIconButtonDefaults.DISABLED_ICON_BUTTON_CONTAINER_ALPHA),
+        ),
+        modifier = modifier
     ) {
-        if (checked) checkedIcon() else icon()
+        Icon(
+            imageVector = icon,
+            contentDescription = "Back",
+        )
     }
+}
+
+@ThemePreviews
+@Composable
+fun IconToggleButtonPreview() {
+    ArtCartTheme { ArtCartIconToggleButton(checked = true, onCheckedChange = { }, icon = { Icon(imageVector = Icons.Rounded.Check, contentDescription = null) }, checkedIcon = { Icon(imageVector = Icons.Rounded.Check, contentDescription = null) }) }
+}
+
+@ThemePreviews
+@Composable
+fun IconToggleButtonPreviewUnchecked() {
+    ArtCartTheme { ArtCartIconToggleButton(checked = false, onCheckedChange = { }, icon = { Icon(imageVector = Icons.Rounded.Add, contentDescription = null) }, checkedIcon = { Icon(imageVector = Icons.Rounded.Add, contentDescription = null) }) }
 }
 
 @ThemePreviews
 @Composable
 fun IconButtonPreview() {
-    ArtCartTheme {
-        ArtCartIconToggleButton(
-            checked = true,
-            onCheckedChange = { },
-            icon = {
-                Icon(
-                    imageVector = Icons.Rounded.BookmarkBorder,
-                    contentDescription = null,
-                )
-            },
-            checkedIcon = {
-                Icon(
-                    imageVector = Icons.Rounded.BookmarkBorder,
-                    contentDescription = null,
-                )
-            },
-        )
-    }
+    ArtCartTheme { ArtCartIconButton(onClick = { }, icon = Icons.Rounded.Check) }
 }
 
-@ThemePreviews
-@Composable
-fun IconButtonPreviewUnchecked() {
-    ArtCartTheme {
-        ArtCartIconToggleButton(
-            checked = false,
-            onCheckedChange = { },
-            icon = {
-                Icon(
-                    imageVector = Icons.Rounded.BookmarkBorder,
-                    contentDescription = null,
-                )
-            },
-            checkedIcon = {
-                Icon(
-                    imageVector = Icons.Rounded.Bookmark,
-                    contentDescription = null,
-                )
-            },
-        )
-    }
-}
-
-/**
- * Now in Android icon button default values.
- */
 object ArtCartIconButtonDefaults {
-    // TODO: File bug
-    // IconToggleButton disabled container alpha not exposed by IconButtonDefaults
     const val DISABLED_ICON_BUTTON_CONTAINER_ALPHA = 0.12f
 }

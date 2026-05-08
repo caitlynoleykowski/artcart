@@ -2,6 +2,7 @@ package com.coco0o0o.artcart.core.designsystem.component
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.Tab
@@ -11,21 +12,13 @@ import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
+import androidx.compose.material3.HorizontalDivider
 
-/**
- * Now in Android tab. Wraps Material 3 [Tab] and shifts text label down.
- *
- * @param selected Whether this tab is selected or not.
- * @param onClick The callback to be invoked when this tab is selected.
- * @param modifier Modifier to be applied to the tab.
- * @param enabled Controls the enabled state of the tab. When `false`, this tab will not be
- * clickable and will appear disabled to accessibility services.
- * @param text The text label content.
- */
 @Composable
 fun ArtCartTab(
     selected: Boolean,
@@ -37,30 +30,19 @@ fun ArtCartTab(
     Tab(
         selected = selected,
         onClick = onClick,
-        modifier = modifier,
+        modifier = modifier.clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)),
         enabled = enabled,
+        selectedContentColor = ArtCartFunkyTokens.Pink,
+        unselectedContentColor = ArtCartFunkyTokens.DeepMaroon.copy(alpha = .64f),
         text = {
             val style = MaterialTheme.typography.labelLarge.copy(textAlign = TextAlign.Center)
-            ProvideTextStyle(
-                value = style,
-                content = {
-                    Box(modifier = Modifier.padding(top = ArtCartTabDefaults.TabTopPadding)) {
-                        text()
-                    }
-                },
-            )
+            ProvideTextStyle(value = style) {
+                Box(modifier = Modifier.padding(top = ArtCartTabDefaults.TabTopPadding, bottom = 3.dp)) { text() }
+            }
         },
     )
 }
 
-/**
- * Now in Android tab row. Wraps Material 3 [TabRow].
- *
- * @param selectedTabIndex The index of the currently selected tab.
- * @param modifier Modifier to be applied to the tab row.
- * @param tabs The tabs inside this tab row. Typically this will be multiple [ArtCartTab]s. Each element
- * inside this lambda will be measured and placed evenly across the row, each taking up equal space.
- */
 @Composable
 fun ArtCartTabRow(
     selectedTabIndex: Int,
@@ -70,13 +52,19 @@ fun ArtCartTabRow(
     TabRow(
         selectedTabIndex = selectedTabIndex,
         modifier = modifier,
-        containerColor = Color.Transparent,
-        contentColor = MaterialTheme.colorScheme.onSurface,
+        containerColor = ArtCartFunkyTokens.Cream,
+        contentColor = ArtCartFunkyTokens.DeepMaroon,
         indicator = { tabPositions ->
             TabRowDefaults.SecondaryIndicator(
                 modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
-                height = 2.dp,
-                color = MaterialTheme.colorScheme.onSurface,
+                height = 5.dp,
+                color = ArtCartFunkyTokens.Pink,
+            )
+        },
+        divider = {
+            HorizontalDivider(
+                thickness = 2.dp,
+                color = ArtCartFunkyTokens.Lemon.copy(alpha = .7f),
             )
         },
         tabs = tabs,
@@ -100,6 +88,4 @@ fun TabsPreview() {
     }
 }
 
-object ArtCartTabDefaults {
-    val TabTopPadding = 7.dp
-}
+object ArtCartTabDefaults { val TabTopPadding = 7.dp }

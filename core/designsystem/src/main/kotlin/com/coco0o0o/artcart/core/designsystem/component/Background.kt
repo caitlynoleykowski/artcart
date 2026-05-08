@@ -18,19 +18,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 import com.coco0o0o.artcart.core.designsystem.theme.GradientColors
 import com.coco0o0o.artcart.core.designsystem.theme.LocalBackgroundTheme
 import com.coco0o0o.artcart.core.designsystem.theme.LocalGradientColors
-import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 import kotlin.math.tan
 
-/**
- * The main background for the app.
- * Uses [LocalBackgroundTheme] to set the color and tonal elevation of a [Surface].
- *
- * @param modifier Modifier to be applied to the background.
- * @param content The background content.
- */
 @Composable
 fun ArtCartBackground(
     modifier: Modifier = Modifier,
@@ -43,138 +36,82 @@ fun ArtCartBackground(
         tonalElevation = if (tonalElevation == Dp.Unspecified) 0.dp else tonalElevation,
         modifier = modifier.fillMaxSize(),
     ) {
-        CompositionLocalProvider(LocalAbsoluteTonalElevation provides 0.dp) {
-            content()
-        }
+        CompositionLocalProvider(LocalAbsoluteTonalElevation provides 0.dp) { content() }
     }
 }
 
-/**
- * A gradient background for select screens. Uses [LocalBackgroundTheme] to set the gradient colors
- * of a [Box] within a [Surface].
- *
- * @param modifier Modifier to be applied to the background.
- * @param gradientColors The gradient colors to be rendered.
- * @param content The background content.
- */
 @Composable
 fun ArtCartGradientBackground(
     modifier: Modifier = Modifier,
     gradientColors: GradientColors = LocalGradientColors.current,
     content: @Composable () -> Unit,
 ) {
-    val currentTopColor by rememberUpdatedState(gradientColors.top)
-    val currentBottomColor by rememberUpdatedState(gradientColors.bottom)
+    val currentTopColor by rememberUpdatedState(if (gradientColors.top == Color.Unspecified) ArtCartFunkyTokens.Lemon else gradientColors.top)
+    val currentBottomColor by rememberUpdatedState(if (gradientColors.bottom == Color.Unspecified) ArtCartFunkyTokens.Pink.copy(alpha = .24f) else gradientColors.bottom)
     Surface(
-        color = if (gradientColors.container == Color.Unspecified) {
-            Color.Transparent
-        } else {
-            gradientColors.container
-        },
+        color = if (gradientColors.container == Color.Unspecified) Color.Transparent else gradientColors.container,
         modifier = modifier.fillMaxSize(),
     ) {
         Box(
             Modifier
                 .fillMaxSize()
                 .drawWithCache {
-                    // Compute the start and end coordinates such that the gradients are angled 11.06
-                    // degrees off the vertical axis
-                    val offset = size.height * tan(
-                        Math
-                            .toRadians(11.06)
-                            .toFloat(),
-                    )
-
+                    val offset = size.height * tan(Math.toRadians(11.06).toFloat())
                     val start = Offset(size.width / 2 + offset / 2, 0f)
                     val end = Offset(size.width / 2 - offset / 2, size.height)
-
-                    // Create the top gradient that fades out after the halfway point vertically
                     val topGradient = Brush.linearGradient(
-                        0f to if (currentTopColor == Color.Unspecified) {
-                            Color.Transparent
-                        } else {
-                            currentTopColor
-                        },
-                        0.724f to Color.Transparent,
+                        0f to currentTopColor.copy(alpha = .55f),
+                        0.48f to ArtCartFunkyTokens.Lilac.copy(alpha = .16f),
+                        0.78f to Color.Transparent,
                         start = start,
                         end = end,
                     )
-                    // Create the bottom gradient that fades in before the halfway point vertically
                     val bottomGradient = Brush.linearGradient(
-                        0.2552f to Color.Transparent,
-                        1f to if (currentBottomColor == Color.Unspecified) {
-                            Color.Transparent
-                        } else {
-                            currentBottomColor
-                        },
+                        0.20f to Color.Transparent,
+                        .72f to currentBottomColor,
+                        1f to ArtCartFunkyTokens.Mint.copy(alpha = .30f),
                         start = start,
                         end = end,
                     )
-
+                    val cornerWash = Brush.radialGradient(
+                        colors = listOf(ArtCartFunkyTokens.Pink.copy(alpha = .18f), Color.Transparent),
+                        center = Offset(size.width * .12f, size.height * .18f),
+                        radius = size.minDimension * .9f,
+                    )
                     onDrawBehind {
-                        // There is overlap here, so order is important
                         drawRect(topGradient)
                         drawRect(bottomGradient)
+                        drawRect(cornerWash)
                     }
                 },
-        ) {
-            content()
-        }
+        ) { content() }
     }
 }
 
-/**
- * Multipreview annotation that represents light and dark themes. Add this annotation to a
- * composable to render the both themes.
- */
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Light theme")
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, name = "Dark theme")
 annotation class ThemePreviews
 
 @ThemePreviews
 @Composable
-fun BackgroundDefault() {
-    ArtCartTheme(disableDynamicTheming = true) {
-        ArtCartBackground(Modifier.size(100.dp), content = {})
-    }
-}
+fun BackgroundDefault() { ArtCartTheme(disableDynamicTheming = true) { ArtCartBackground(Modifier.size(100.dp), content = {}) } }
 
 @ThemePreviews
 @Composable
-fun BackgroundDynamic() {
-    ArtCartTheme(disableDynamicTheming = false) {
-        ArtCartBackground(Modifier.size(100.dp), content = {})
-    }
-}
+fun BackgroundDynamic() { ArtCartTheme(disableDynamicTheming = false) { ArtCartBackground(Modifier.size(100.dp), content = {}) } }
 
 @ThemePreviews
 @Composable
-fun BackgroundAndroid() {
-    ArtCartTheme(androidTheme = true) {
-        ArtCartBackground(Modifier.size(100.dp), content = {})
-    }
-}
+fun BackgroundAndroid() { ArtCartTheme(androidTheme = true) { ArtCartBackground(Modifier.size(100.dp), content = {}) } }
 
 @ThemePreviews
 @Composable
-fun GradientBackgroundDefault() {
-    ArtCartTheme(disableDynamicTheming = true) {
-        ArtCartGradientBackground(Modifier.size(100.dp), content = {})
-    }
-}
+fun GradientBackgroundDefault() { ArtCartTheme(disableDynamicTheming = true) { ArtCartGradientBackground(Modifier.size(100.dp), content = {}) } }
 
 @ThemePreviews
 @Composable
-fun GradientBackgroundDynamic() {
-    ArtCartTheme(disableDynamicTheming = false) {
-        ArtCartGradientBackground(Modifier.size(100.dp), content = {})
-    }
-}
+fun GradientBackgroundDynamic() { ArtCartTheme(disableDynamicTheming = false) { ArtCartGradientBackground(Modifier.size(100.dp), content = {}) } }
 
 @ThemePreviews
 @Composable
-fun GradientBackgroundAndroid() {
-    ArtCartTheme(androidTheme = true) {
-        ArtCartGradientBackground(Modifier.size(100.dp), content = {})
-    }
-}
+fun GradientBackgroundAndroid() { ArtCartTheme(androidTheme = true) { ArtCartGradientBackground(Modifier.size(100.dp), content = {}) } }
