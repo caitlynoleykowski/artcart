@@ -3,7 +3,6 @@ package com.coco0o0o.artcart.core.network.model
 import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.network.retrofit.API_KEY
 import kotlinx.serialization.Serializable
-import kotlin.String
 
 @Serializable
 data class DisplayName(

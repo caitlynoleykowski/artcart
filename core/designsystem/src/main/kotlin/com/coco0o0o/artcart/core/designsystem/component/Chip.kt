@@ -1,6 +1,5 @@
 package com.coco0o0o.artcart.core.designsystem.component
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons

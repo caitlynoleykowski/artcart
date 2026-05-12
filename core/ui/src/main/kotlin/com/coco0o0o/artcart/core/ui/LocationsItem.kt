@@ -1,14 +1,11 @@
 package com.coco0o0o.artcart.core.ui
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Check
-import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
@@ -23,8 +20,8 @@ import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.coco0o0o.artcart.core.designsystem.component.DynamicAsyncImage
 import com.coco0o0o.artcart.core.designsystem.component.ArtCartIconToggleButton
+import com.coco0o0o.artcart.core.designsystem.component.DynamicAsyncImage
 import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 import com.coco0o0o.artcart.core.ui.R.string
 
@@ -46,7 +43,7 @@ fun LocationsItem(
             DynamicAsyncImage(
                 imageUrl = locationImageUrl,
                 contentDescription = null,
-                modifier = iconModifier.size(96.dp),
+                modifier = iconModifier.size(64.dp),
             )
         },
         headlineContent = {

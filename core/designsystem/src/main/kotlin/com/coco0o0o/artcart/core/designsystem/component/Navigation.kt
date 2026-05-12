@@ -1,7 +1,10 @@
 package com.coco0o0o.artcart.core.designsystem.component
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Bookmark
 import androidx.compose.material.icons.outlined.Upcoming
@@ -11,9 +14,6 @@ import androidx.compose.material.icons.rounded.Upcoming
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.NavigationDrawerItemDefaults
@@ -91,7 +91,6 @@ fun ArtCartNavigationBar(
     content: @Composable RowScope.() -> Unit,
 ) {
     NavigationBar(
-        modifier = modifier.border(BorderStroke(2.dp, ArtCartFunkyTokens.Pink.copy(alpha = .22f)), RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)),
         contentColor = ArtCartNavigationDefaults.navigationContentColor(),
         tonalElevation = 0.dp,
         content = content,
@@ -343,8 +342,8 @@ object ArtCartNavigationDefaults {
     fun navigationContentColor() = ArtCartFunkyTokens.DeepMaroon.copy(alpha = .72f)
 
     @Composable
-    fun navigationSelectedItemColor() = ArtCartFunkyTokens.Pink
+    fun navigationSelectedItemColor() = MaterialTheme.colorScheme.onPrimaryContainer
 
     @Composable
-    fun navigationIndicatorColor() = ArtCartFunkyTokens.Lemon
+    fun navigationIndicatorColor() = ArtCartFunkyTokens.Pink
 }

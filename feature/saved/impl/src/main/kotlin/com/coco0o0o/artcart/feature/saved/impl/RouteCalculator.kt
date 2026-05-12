@@ -1,7 +1,11 @@
 package com.coco0o0o.artcart.feature.saved.impl
 
 import android.net.Uri
-import kotlin.math.*
+import kotlin.math.asin
+import kotlin.math.cos
+import kotlin.math.pow
+import kotlin.math.sin
+import kotlin.math.sqrt
 
 data class LatLngPoint(
     val lat: Double,

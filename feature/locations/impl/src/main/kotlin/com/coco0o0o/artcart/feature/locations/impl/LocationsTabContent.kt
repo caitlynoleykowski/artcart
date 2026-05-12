@@ -1,5 +1,6 @@
 package com.coco0o0o.artcart.feature.locations.impl
 
+import android.util.Log
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues

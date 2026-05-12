@@ -1,8 +1,7 @@
 package com.coco0o0o.artcart.core.domain
 
-import com.coco0o0o.artcart.core.domain.TopicSortField.NAME
-import com.coco0o0o.artcart.core.model.data.FavoriteableArtLocation
 import com.coco0o0o.artcart.core.model.data.ArtLocation
+import com.coco0o0o.artcart.core.model.data.FavoriteableArtLocation
 import com.coco0o0o.artcart.core.testing.repository.TestLocationsRepository
 import com.coco0o0o.artcart.core.testing.util.MainDispatcherRule
 import kotlinx.coroutines.flow.first

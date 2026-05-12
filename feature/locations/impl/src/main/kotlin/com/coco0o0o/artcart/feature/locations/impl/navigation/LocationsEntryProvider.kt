@@ -6,11 +6,11 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import com.coco0o0o.artcart.core.navigation.Navigator
+import com.coco0o0o.artcart.feature.locationdetails.api.navigation.navigateToLocationDetails
 import com.coco0o0o.artcart.feature.locations.api.navigation.LocationsNavKey
 import com.coco0o0o.artcart.feature.locations.impl.LocationsDetailPlaceholder
 import com.coco0o0o.artcart.feature.locations.impl.LocationsScreen
 import com.coco0o0o.artcart.feature.locations.impl.LocationsViewModel
-import com.coco0o0o.artcart.feature.locationdetails.api.navigation.navigateToLocationDetails
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 fun EntryProviderScope<NavKey>.locationsEntry(navigator: Navigator) {

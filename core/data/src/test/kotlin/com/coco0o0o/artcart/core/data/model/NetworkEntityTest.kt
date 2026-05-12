@@ -4,7 +4,6 @@ import com.coco0o0o.artcart.core.network.model.DisplayName
 import com.coco0o0o.artcart.core.network.model.LatLng
 import com.coco0o0o.artcart.core.network.model.NetworkLocation
 import com.coco0o0o.artcart.core.network.model.PrimaryTypeDisplayName
-import kotlinx.datetime.Instant
 import org.junit.Test
 import kotlin.test.assertEquals
 

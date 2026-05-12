@@ -46,45 +46,57 @@ fun ArtCartGradientBackground(
     gradientColors: GradientColors = LocalGradientColors.current,
     content: @Composable () -> Unit,
 ) {
-    val currentTopColor by rememberUpdatedState(if (gradientColors.top == Color.Unspecified) ArtCartFunkyTokens.Lemon else gradientColors.top)
-    val currentBottomColor by rememberUpdatedState(if (gradientColors.bottom == Color.Unspecified) ArtCartFunkyTokens.Pink.copy(alpha = .24f) else gradientColors.bottom)
+    val currentTopColor by rememberUpdatedState(gradientColors.top)
+    val currentBottomColor by rememberUpdatedState(gradientColors.bottom)
     Surface(
-        color = if (gradientColors.container == Color.Unspecified) Color.Transparent else gradientColors.container,
+        color = if (gradientColors.container == Color.Unspecified) {
+            Color.Transparent
+        } else {
+            gradientColors.container
+        },
         modifier = modifier.fillMaxSize(),
     ) {
         Box(
             Modifier
                 .fillMaxSize()
                 .drawWithCache {
-                    val offset = size.height * tan(Math.toRadians(11.06).toFloat())
+                    val offset = size.height * tan(
+                        Math
+                            .toRadians(11.06)
+                            .toFloat(),
+                    )
+
                     val start = Offset(size.width / 2 + offset / 2, 0f)
                     val end = Offset(size.width / 2 - offset / 2, size.height)
                     val topGradient = Brush.linearGradient(
-                        0f to currentTopColor.copy(alpha = .55f),
-                        0.48f to ArtCartFunkyTokens.Lilac.copy(alpha = .16f),
-                        0.78f to Color.Transparent,
+                        0f to if (currentTopColor == Color.Unspecified) {
+                            Color.Transparent
+                        } else {
+                            currentTopColor
+                        },
+                        0.724f to Color.Transparent,
                         start = start,
                         end = end,
                     )
                     val bottomGradient = Brush.linearGradient(
-                        0.20f to Color.Transparent,
-                        .72f to currentBottomColor,
-                        1f to ArtCartFunkyTokens.Mint.copy(alpha = .30f),
+                        0.2552f to Color.Transparent,
+                        1f to if (currentBottomColor == Color.Unspecified) {
+                            Color.Transparent
+                        } else {
+                            currentBottomColor
+                        },
                         start = start,
                         end = end,
                     )
-                    val cornerWash = Brush.radialGradient(
-                        colors = listOf(ArtCartFunkyTokens.Pink.copy(alpha = .18f), Color.Transparent),
-                        center = Offset(size.width * .12f, size.height * .18f),
-                        radius = size.minDimension * .9f,
-                    )
+
                     onDrawBehind {
                         drawRect(topGradient)
                         drawRect(bottomGradient)
-                        drawRect(cornerWash)
                     }
                 },
-        ) { content() }
+        ) {
+            content()
+        }
     }
 }
 

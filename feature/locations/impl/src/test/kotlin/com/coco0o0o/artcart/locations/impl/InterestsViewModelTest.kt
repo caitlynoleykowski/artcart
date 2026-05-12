@@ -3,8 +3,8 @@ package com.coco0o0o.artcart.locations.impl
 import androidx.lifecycle.SavedStateHandle
 import com.coco0o0o.artcart.core.domain.GetFavoriteableLocationsUseCase
 import com.coco0o0o.artcart.core.domain.RefreshLocationsUseCase
-import com.coco0o0o.artcart.core.model.data.FavoriteableArtLocation
 import com.coco0o0o.artcart.core.model.data.ArtLocation
+import com.coco0o0o.artcart.core.model.data.FavoriteableArtLocation
 import com.coco0o0o.artcart.core.testing.repository.TestLocationsRepository
 import com.coco0o0o.artcart.core.testing.util.MainDispatcherRule
 import com.coco0o0o.artcart.feature.locations.api.navigation.LocationsNavKey

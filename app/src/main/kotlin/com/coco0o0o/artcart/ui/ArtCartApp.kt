@@ -53,10 +53,10 @@ import com.coco0o0o.artcart.core.designsystem.component.ArtCartTopAppBar
 import com.coco0o0o.artcart.core.designsystem.theme.GradientColors
 import com.coco0o0o.artcart.core.navigation.Navigator
 import com.coco0o0o.artcart.core.navigation.toEntries
+import com.coco0o0o.artcart.feature.locationdetails.impl.navigation.locationDetailsEntry
+import com.coco0o0o.artcart.feature.locations.impl.navigation.locationsEntry
 import com.coco0o0o.artcart.feature.saved.impl.navigation.LocalSnackbarHostState
 import com.coco0o0o.artcart.feature.saved.impl.navigation.savedEntry
-import com.coco0o0o.artcart.feature.locations.impl.navigation.locationsEntry
-import com.coco0o0o.artcart.feature.locationdetails.impl.navigation.locationDetailsEntry
 import com.coco0o0o.artcart.navigation.TOP_LEVEL_NAV_ITEMS
 
 @Composable
@@ -68,9 +68,9 @@ fun ArtCartApp(
     var showSettingsDialog by rememberSaveable { mutableStateOf(false) }
 
     ArtCartBackground(modifier = modifier) {
-        ArtCartGradientBackground(
-            gradientColors = GradientColors()
-        ) {
+//        ArtCartGradientBackground(
+//            gradientColors = GradientColors()
+//        ) {
             val snackbarHostState = remember { SnackbarHostState() }
 
             val isOffline by appState.isOffline.collectAsStateWithLifecycle()
@@ -94,7 +94,7 @@ fun ArtCartApp(
                     windowAdaptiveInfo = windowAdaptiveInfo,
                 )
             }
-        }
+//        }
     }
 }
 

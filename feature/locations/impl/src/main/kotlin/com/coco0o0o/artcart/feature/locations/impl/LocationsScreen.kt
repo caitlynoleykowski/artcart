@@ -14,6 +14,8 @@ import androidx.annotation.RequiresPermission
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -60,7 +62,6 @@ import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.google.maps.android.compose.rememberUpdatedMarkerState
 import java.util.concurrent.TimeUnit
-import kotlin.collections.forEach
 
 @SuppressLint("MissingPermission") // TODO: Confused as to whether this is a problem if the user has accepted yet
 @Composable
@@ -196,9 +197,10 @@ internal fun LocationsScreen(
     ) {
         when (uiState) {
             ArtNearbyUiState.Loading ->
-                Box{
+                Box(modifier.fillMaxSize()) {
                     ArtCartLoadingWheel(
-                        modifier = modifier.align(Alignment.Center),
+                        modifier = modifier
+                            .align(Alignment.Center),
                         contentDesc = stringResource(id = R.string.feature_locations_api_loading),
                     )
                 }

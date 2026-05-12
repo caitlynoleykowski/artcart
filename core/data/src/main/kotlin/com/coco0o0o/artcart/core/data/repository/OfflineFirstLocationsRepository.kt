@@ -5,8 +5,8 @@ import com.coco0o0o.artcart.core.database.model.LocationEntity
 import com.coco0o0o.artcart.core.database.model.asDomainModel
 import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.network.Dispatcher
-import com.coco0o0o.artcart.core.network.NetworkDataSource
 import com.coco0o0o.artcart.core.network.Dispatchers
+import com.coco0o0o.artcart.core.network.NetworkDataSource
 import com.coco0o0o.artcart.core.network.di.ApplicationScope
 import com.coco0o0o.artcart.core.network.model.NetworkLocation
 import com.coco0o0o.artcart.core.network.model.toPhotoUrl

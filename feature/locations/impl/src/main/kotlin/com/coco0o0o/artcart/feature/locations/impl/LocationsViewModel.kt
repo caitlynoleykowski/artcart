@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
@@ -53,7 +54,11 @@ class LocationsViewModel @AssistedInject constructor(
     val currentLocation = MutableStateFlow<LatLng?>(null)
 
     init {
-        currentLocation.onEach {
+        currentLocation
+            .distinctUntilChanged {
+                old, new -> old?.latitude == new?.latitude && old?.longitude == new?.longitude
+            }
+            .onEach {
             if (it != null) {
                 refreshLocationsUseCase(lat = it.latitude, lng = it.longitude)
             }

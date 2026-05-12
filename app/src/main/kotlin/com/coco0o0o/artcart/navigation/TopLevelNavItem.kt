@@ -6,9 +6,9 @@ import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material.icons.rounded.LocationCity
 import androidx.compose.material.icons.rounded.ShoppingCart
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.coco0o0o.artcart.feature.saved.api.navigation.SavedNavKey
 import com.coco0o0o.artcart.feature.locations.api.R
 import com.coco0o0o.artcart.feature.locations.api.navigation.LocationsNavKey
+import com.coco0o0o.artcart.feature.saved.api.navigation.SavedNavKey
 import com.coco0o0o.artcart.feature.saved.api.R as savedR
 
 data class TopLevelNavItem(

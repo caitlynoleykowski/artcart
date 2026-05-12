@@ -19,15 +19,6 @@ fun InfoCard(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .background(
-                color = ArtCartFunkyTokens.Cream,
-                shape = RoundedCornerShape(
-                    topStart = 32.dp,
-                    topEnd = 12.dp,
-                    bottomEnd = 32.dp,
-                    bottomStart = 12.dp,
-                ),
-            )
             .border(
                 width = 2.dp,
                 color = ArtCartFunkyTokens.Pink.copy(alpha = .55f),

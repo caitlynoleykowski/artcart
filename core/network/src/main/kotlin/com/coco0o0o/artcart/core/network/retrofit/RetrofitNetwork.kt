@@ -14,9 +14,6 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.Int
-import kotlin.String
-import kotlin.collections.List
 
 const val API_KEY = "AIzaSyAqjWW92spl7JH6ah_u9yGiFAaLSBUuBos"
 
