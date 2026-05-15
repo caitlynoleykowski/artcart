@@ -162,45 +162,6 @@ fun ArtCartMarker(
             showImage = false,
             showSaveButton = false,
         )
-//        Column(
-//            modifier = Modifier
-//                .width(220.dp)
-//                .clip(RoundedCornerShape(16.dp))
-//                .background(Color.White)
-//                .border(
-//                    width = 2.dp,
-//                    color = Color(0xFFFB4C8E),
-//                    shape = RoundedCornerShape(16.dp),
-//                )
-//                .padding(12.dp),
-//        ) {
-//
-//            Text(
-//                text = artLocation.name,
-//                fontWeight = FontWeight.Bold,
-//                fontSize = 16.sp,
-//                color = Color(0xFF4A102A),
-//            )
-//
-//            Spacer(modifier = Modifier.height(6.dp))
-//
-//            Text(
-//                text = artLocation.address,
-//                fontSize = 13.sp,
-//                color = Color.DarkGray,
-//            )
-//
-//            if (artLocation.rating > 0f) {
-//                Spacer(modifier = Modifier.height(8.dp))
-//
-//                Text(
-//                    text = "⭐ ${artLocation.rating}",
-//                    fontSize = 13.sp,
-//                    fontWeight = FontWeight.SemiBold,
-//                    color = Color(0xFF4A102A),
-//                )
-//            }
-//        }
     }
 }
 
