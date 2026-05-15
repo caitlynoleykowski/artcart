@@ -37,6 +37,9 @@ class LocationsViewModel @AssistedInject constructor(
 
     val permissionGrantedState = MutableStateFlow<Boolean?>(null)
 
+    val userCurrentLocation = MutableStateFlow<ArtCartLatLng?>(null)
+    val userSearchLocation = MutableStateFlow<ArtCartLatLng?>(null)
+
     val uiState: StateFlow<ArtNearbyUiState> =
         combine(
             permissionGrantedState,
@@ -52,7 +55,8 @@ class LocationsViewModel @AssistedInject constructor(
                     Firebase.crashlytics.log("LocationsViewModel uiState permissionGranted: $permissionGranted")
                     if (locations.isNotEmpty()) {
                         Log.d("LocationsViewModel", "uiState: ArtNearbyUiState.ArtLocations ${locations.size}")
-                        currentLocation.value?.let {
+                        val searchLocationTarget = userSearchLocation.value ?: userCurrentLocation.value
+                        searchLocationTarget?.let {
                             val sortedLocations = locations.sortByNearestDistance(it)
                             ArtNearbyUiState.ArtLocations(
                                 currentLocation = it,
@@ -79,10 +83,12 @@ class LocationsViewModel @AssistedInject constructor(
                 started = SharingStarted.WhileSubscribed(5_000),
                 initialValue = ArtNearbyUiState.Loading,
             )
-    val currentLocation = MutableStateFlow<ArtCartLatLng?>(null)
 
     init {
-        currentLocation
+        userCurrentLocation
+            .combine(userSearchLocation) { currentLocation, searchLocation ->
+                userSearchLocation.value ?: userCurrentLocation.value
+            }
             .distinctUntilChanged {
                 old, new -> old?.latitude == new?.latitude && old?.longitude == new?.longitude
             }
@@ -94,11 +100,19 @@ class LocationsViewModel @AssistedInject constructor(
             }.launchIn(viewModelScope)
     }
 
-    fun updateCurrentLocation(lat: Double, lng: Double) {
-        Log.d("LocationsViewModel", "updateCurrentLocation: $lat, $lng")
-        Firebase.crashlytics.log("LocationsViewModel updateCurrentLocation: $lat, $lng")
+    fun updateUserCurrentLocation(lat: Double, lng: Double) {
+        Log.d("LocationsViewModel", "updateUserCurrentLocation: $lat, $lng")
+        Firebase.crashlytics.log("LocationsViewModel updateUserCurrentLocation: $lat, $lng")
         viewModelScope.launch {
-            currentLocation.value = (ArtCartLatLng(lat, lng))
+            userCurrentLocation.value = (ArtCartLatLng(lat, lng))
+        }
+    }
+
+    fun updateUserSearchLocation(lat: Double, lng: Double) {
+        Log.d("LocationsViewModel", "updateUserSearchLocation: $lat, $lng")
+        Firebase.crashlytics.log("LocationsViewModel updateUserSearchLocation: $lat, $lng")
+        viewModelScope.launch {
+            userSearchLocation.value = (ArtCartLatLng(lat, lng))
         }
     }
 

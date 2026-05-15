@@ -1,14 +1,19 @@
 package com.coco0o0o.artcart.feature.saved.impl
 
 import android.content.Intent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.core.net.toUri
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -26,7 +31,7 @@ fun SavedScreen(
     SavedScreen(
         uiState = uiState,
         removeFavorite = { id: String, isFavorite: Boolean ->
-            viewModel.removeFromSavedResources(id) // TODO: should be able to undo?
+            viewModel.removeFromSavedResources(id)
         },
         onLocationClick = {
             onLocationClick(it)
@@ -44,6 +49,7 @@ fun SavedScreen(
             }
         },
         modifier = modifier,
+//            .background(Color.White),
     )
 }
 
@@ -61,12 +67,16 @@ internal fun SavedScreen(
     ) {
         when (uiState) {
             FavoritedArtLocationsUiState.Loading ->
-                ArtCartLoadingWheel(
-                    contentDesc = stringResource(id = com.coco0o0o.artcart.feature.saved.api.R.string.feature_saved_api_loading),
-                )
+                Box(modifier.fillMaxSize()) {
+                    ArtCartLoadingWheel(
+                        modifier = modifier
+                            .align(Alignment.Companion.Center),
+                        contentDesc = stringResource(id = com.coco0o0o.artcart.feature.saved.api.R.string.feature_saved_api_loading),
+                    )
+                }
 
             is FavoritedArtLocationsUiState.ArtLocations ->
-                SavedTabContent(
+                SavedListContent(
                     locations = uiState.artLocations,
                     onLocationClick = onLocationClick,
                     onCheckoutClicked = onCheckoutClick,
@@ -75,12 +85,23 @@ internal fun SavedScreen(
                     }
                 )
 
-            is FavoritedArtLocationsUiState.Empty -> LocationsEmptyScreen()
+            is FavoritedArtLocationsUiState.Empty -> {
+                Box(modifier.fillMaxSize()) {
+                    LocationsEmpty(
+                        modifier = modifier
+                            .align(Alignment.Companion.Center),
+                    )
+                }
+            }
         }
     }
 }
 
 @Composable
-private fun LocationsEmptyScreen() {
-    Text(text = stringResource(id = com.coco0o0o.artcart.feature.saved.api.R.string.feature_saved_api_empty_error))
+private fun LocationsEmpty(modifier: Modifier = Modifier) {
+    Text(
+        modifier = modifier,
+        text = stringResource(id = com.coco0o0o.artcart.feature.saved.api.R.string.feature_saved_api_empty_error),
+        textAlign = TextAlign.Center,
+    )
 }

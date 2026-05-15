@@ -27,7 +27,7 @@ import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.ui.LocationsItem
 
 @Composable
-fun SavedTabContent(
+fun SavedListContent(
     locations: List<ArtLocation>,
     onLocationClick: (String) -> Unit,
     onCheckoutClicked: () -> Unit,
@@ -44,7 +44,6 @@ fun SavedTabContent(
         val scrollableState = rememberLazyListState()
         LazyColumn(
             modifier = Modifier,
-//                .testTag(LIST_PANE_TEST_TAG),
             contentPadding = PaddingValues(vertical = 16.dp),
             state = scrollableState,
         ) {
@@ -94,7 +93,7 @@ fun SavedTabContent(
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .fillMaxWidth()
-                    .padding(16.dp)
+                    .padding(24.dp)
             )
         }
     }

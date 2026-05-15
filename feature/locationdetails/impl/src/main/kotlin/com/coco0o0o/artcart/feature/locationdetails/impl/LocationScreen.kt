@@ -63,7 +63,9 @@ fun LocationScreen(
 
     val context = LocalContext.current
 
-    Column(modifier) {
+    Column(modifier,
+//        .background(Color.White)
+    ) {
         // TODO: workaround full screen
         Spacer(modifier = Modifier.height(TopAppBarDefaults.TopAppBarExpandedHeight))
 
@@ -153,10 +155,10 @@ private fun LocationDetailsContent(
     ) {
         item {
             val imageShape = RoundedCornerShape(
-                topStart = 28.dp,
-                topEnd = 10.dp,
-                bottomEnd = 28.dp,
-                bottomStart = 10.dp,
+                topStart = 0.dp,
+                topEnd = 0.dp,
+                bottomEnd = 0.dp,
+                bottomStart = 0.dp,
             )
             Box(
                 modifier = Modifier

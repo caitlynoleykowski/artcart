@@ -6,17 +6,30 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.animation.core.EaseInOut
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.Lifecycle
@@ -129,14 +142,39 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Box(modifier = Modifier.fillMaxSize()) {
                         ArtCartApp(appState)
+
+                        // Below is just for debug, TODO: move to options menu and isolate
+                        var showFeedbackDialog by remember { mutableStateOf(false) }
+                        var text by remember { mutableStateOf("") }
                         ArtCartButton(
                             modifier = Modifier
                                 .align(Alignment.BottomEnd)
-                                .padding(bottom = 116.dp, end = 16.dp)
+                                .padding(bottom = 96.dp, end = 16.dp)
+                                .pulsing()
                             ,
-                            text = { Text("Submit debug logs") },
+                            text = { Text("Submit feedback") },
                             onClick = {
-                                Firebase.crashlytics.recordException(Exception("Debug logs"))
+                                showFeedbackDialog = true
+                                Firebase.crashlytics.recordException(Exception("Bug report"))
+                            }
+                        )
+
+                        if (showFeedbackDialog) AlertDialog(
+                            onDismissRequest = { showFeedbackDialog = false },
+                            title = { Text("Report a bug or leave feedback. What happened?") },
+                            text = {
+                                OutlinedTextField(
+                                    value = text,
+                                    onValueChange = { text = it },
+                                    label = { Text("Describe steps, observed behavior, and expected behavior. Or leave a suggestion! Include your name or email if you would like to be contacted") },
+                                    modifier = Modifier.heightIn(min = 200.dp)
+                                )
+                            },
+                            confirmButton = {
+                                Button(onClick = {
+                                    Firebase.crashlytics.recordException(Exception("Feedback: $text"))
+                                    showFeedbackDialog = false
+                                }) { Text("Submit") }
                             }
                         )
                     }
@@ -167,3 +205,27 @@ data class ThemeSettings(
     val androidTheme: Boolean,
     val disableDynamicTheming: Boolean,
 )
+
+fun Modifier.pulsing(
+    enabled: Boolean = true
+): Modifier = composed {
+
+    if (!enabled) return@composed this
+
+    val infiniteTransition = rememberInfiniteTransition(label = "")
+
+    val scale by infiniteTransition.animateFloat(
+        initialValue = 1f,
+        targetValue = 1.08f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(
+                durationMillis = 900,
+                easing = EaseInOut
+            ),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = ""
+    )
+
+    scale(scale)
+}

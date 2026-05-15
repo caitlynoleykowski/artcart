@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import com.coco0o0o.artcart.core.designsystem.component.ArtCartBackground
 import com.coco0o0o.artcart.core.designsystem.component.ArtCartLoadingWheel
 import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
@@ -69,6 +70,7 @@ private fun LocationsListEmpty(modifier: Modifier = Modifier.Companion) {
     Text(
         modifier = modifier,
         text = stringResource(id = R.string.feature_locations_api_empty_header),
+        textAlign = TextAlign.Center,
     )
 }
 

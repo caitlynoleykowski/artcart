@@ -26,7 +26,13 @@ class SavedViewModel @Inject constructor(
 
     val savedUiState: StateFlow<FavoritedArtLocationsUiState> =
         locationsRepository.getFavoriteLocations()
-            .map<List<ArtLocation>, FavoritedArtLocationsUiState>(FavoritedArtLocationsUiState::ArtLocations)
+            .map { artLocations ->
+                if (artLocations.isEmpty()) {
+                    FavoritedArtLocationsUiState.Empty
+                } else {
+                    FavoritedArtLocationsUiState.ArtLocations(artLocations)
+                }
+            }
             .onStart { emit(FavoritedArtLocationsUiState.Loading) }
             .stateIn(
                 scope = viewModelScope,

@@ -28,11 +28,12 @@ import androidx.compose.ui.draw.clip
 fun SplitSliderScreen(
     topContent: @Composable () -> Unit,
     bottomContent: @Composable () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     var split by remember { mutableFloatStateOf(0.45f) }
 
     BoxWithConstraints(
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ) {
         val density = LocalDensity.current
         val totalHeightPx = with(density) { maxHeight.toPx() }

@@ -49,11 +49,12 @@ fun DynamicAsyncImage(
         },
     )
     val isLocalInspection = LocalInspectionMode.current
-    val shape = RoundedCornerShape(topStart = 28.dp, topEnd = 10.dp, bottomEnd = 28.dp, bottomStart = 10.dp)
+    val shape = RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp, bottomEnd = 10.dp, bottomStart = 10.dp)
     Box(
         modifier = modifier
             .clip(shape)
-            .border(2.dp, ArtCartFunkyTokens.Pink.copy(alpha = .55f), shape),
+//            .border(2.dp, ArtCartFunkyTokens.Pink.copy(alpha = .55f), shape),
+                ,
         contentAlignment = Alignment.Center,
     ) {
         Image(

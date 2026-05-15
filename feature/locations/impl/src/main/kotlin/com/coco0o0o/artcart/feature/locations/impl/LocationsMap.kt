@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.*
 import com.coco0o0o.artcart.core.ui.LocationsItem
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.maps.android.compose.CameraMoveStartedReason
+import com.google.maps.android.compose.MapProperties
 
 @Immutable
 private data class LocationData(val artLocation: ArtLocation)
@@ -38,6 +39,7 @@ val defaultCameraPosition = CameraPosition.fromLatLngZoom(nullIsland, 11f)
 fun ArtCartMap(
     uiState: ArtNearbyUiState,
     currentLocation: ArtCartLatLng?,
+    searchLocation: ArtCartLatLng?,
     modifier: Modifier = Modifier,
     onMapPan: (LatLng) -> Unit = {},
     onSaveLocationClick: (String, Boolean) -> Unit,
@@ -45,6 +47,7 @@ fun ArtCartMap(
 ) = GoogleMapWithLocations(
     modifier = modifier,
     currentLocation = currentLocation?.toLatLng(),
+    searchLocation = searchLocation?.toLatLng(),
     keyedLocationData = when(uiState) {
         ArtNearbyUiState.Loading,
         ArtNearbyUiState.Empty,
@@ -66,6 +69,7 @@ internal fun ArtCartLatLng.toLatLng() = LatLng(latitude, longitude)
 private fun GoogleMapWithLocations(
     keyedLocationData: Collection<KeyedLocationData>,
     currentLocation: LatLng?,
+    searchLocation: LatLng?,
     modifier: Modifier = Modifier,
     onUserPannedMap: (LatLng) -> Unit = {},
     onSaveLocationClick: (String, Boolean) -> Unit,
@@ -74,28 +78,33 @@ private fun GoogleMapWithLocations(
 
     val cameraPositionState = rememberCameraPositionState { position = defaultCameraPosition }
 
-    LaunchedEffect(currentLocation, keyedLocationData) {
-        if (keyedLocationData.isNotEmpty()) {
-            val boundsBuilder = LatLngBounds.builder()
-            keyedLocationData.forEach { location ->
-                val artLocation = location.second.artLocation
-                if (!artLocation.isFavorite) {
-                    boundsBuilder.include(
-                        LatLng(artLocation.latitude, artLocation.longitude)
-                    )
+    LaunchedEffect(searchLocation, currentLocation, keyedLocationData) {
+        if (searchLocation != null ) {
+            // do nothing
+        } else if (keyedLocationData.isNotEmpty()) {
+                val boundsBuilder = LatLngBounds.builder()
+                keyedLocationData.forEach { location ->
+                    val artLocation = location.second.artLocation
+                    if (!artLocation.isFavorite) {
+                        boundsBuilder.include(
+                            LatLng(artLocation.latitude, artLocation.longitude)
+                        )
+                    }
                 }
-            }
-            val bounds = boundsBuilder.build()
+                currentLocation?.let {
+                    boundsBuilder.include(it)
+                }
+                val bounds = boundsBuilder.build()
 
-            cameraPositionState.animate(
-                CameraUpdateFactory.newLatLngBounds(
-                    bounds,
-                    120 // padding in px
+                cameraPositionState.animate(
+                    CameraUpdateFactory.newLatLngBounds(
+                        bounds,
+                        120 // padding in px
+                    )
                 )
-            )
         } else {
             currentLocation?.let {
-                cameraPositionState.animate(
+                cameraPositionState.move(
                     CameraUpdateFactory.newLatLngZoom(it, 13f)
                 )
             }
@@ -106,6 +115,9 @@ private fun GoogleMapWithLocations(
         modifier = modifier,
         cameraPositionState = cameraPositionState,
         onMapClick = {},
+        properties = MapProperties(
+            minZoomPreference = 11f
+        )
     ) {
         Locations(
             keyedLocationData = keyedLocationData,

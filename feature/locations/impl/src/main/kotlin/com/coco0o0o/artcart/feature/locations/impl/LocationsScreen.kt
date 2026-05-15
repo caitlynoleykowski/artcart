@@ -7,6 +7,7 @@ import android.os.Looper
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresPermission
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -20,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -46,7 +48,8 @@ fun LocationsScreen(
     modifier: Modifier = Modifier,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val currentLocation by viewModel.currentLocation.collectAsStateWithLifecycle()
+    val currentLocation by viewModel.userCurrentLocation.collectAsStateWithLifecycle()
+    val searchLocation by viewModel.userSearchLocation.collectAsStateWithLifecycle()
 
     val context = LocalContext.current
 
@@ -86,7 +89,7 @@ fun LocationsScreen(
                 Priority.PRIORITY_HIGH_ACCURACY,
                 null
             ).addOnSuccessListener {
-                viewModel.updateCurrentLocation(lat = it.latitude, lng = it.longitude)
+                viewModel.updateUserCurrentLocation(lat = it.latitude, lng = it.longitude)
             }
 
             val POLL_LOCATION = false
@@ -103,19 +106,22 @@ fun LocationsScreen(
     locationRequest?.let {
         LocationUpdatesEffect(locationRequest = it) { result ->
             result.locations.firstOrNull()?.let {
-                viewModel.updateCurrentLocation(lat = it.latitude, lng = it.longitude)
+                viewModel.updateUserCurrentLocation(lat = it.latitude, lng = it.longitude)
             }
         }
     }
 
     SplitSliderScreen(
+        modifier = modifier,
+//            .background(Color.White),
         topContent = {
             ArtCartMap(
                 uiState,
                 currentLocation,
+                searchLocation,
 //                modifier.fillMaxHeight(0.5f),
                 onMapPan = {
-                    viewModel.updateCurrentLocation(
+                    viewModel.updateUserSearchLocation(
                         lat = it.latitude,
                         lng = it.longitude
                     )
