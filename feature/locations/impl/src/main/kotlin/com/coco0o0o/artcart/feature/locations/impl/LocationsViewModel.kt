@@ -51,7 +51,10 @@ class LocationsViewModel @AssistedInject constructor(
                 true -> {
                     Firebase.crashlytics.log("LocationsViewModel uiState permissionGranted: $permissionGranted")
                     if (locations.isNotEmpty()) {
-                        ArtNearbyUiState.ArtLocations(locations)
+                        ArtNearbyUiState.ArtLocations(
+                            currentLocation = currentLocation.value!!, // must be non null by now
+                            artLocations = locations,
+                        )
                     } else {
                         ArtNearbyUiState.Empty
                     }
@@ -70,8 +73,7 @@ class LocationsViewModel @AssistedInject constructor(
                 started = SharingStarted.WhileSubscribed(5_000),
                 initialValue = ArtNearbyUiState.Loading,
             )
-    // TODO: Don't use the google maps model for LatLng here, make a new one
-    val currentLocation = MutableStateFlow<LatLng?>(null)
+    val currentLocation = MutableStateFlow<ArtCartLatLng?>(null)
 
     init {
         currentLocation
@@ -90,7 +92,7 @@ class LocationsViewModel @AssistedInject constructor(
         Log.d("LocationsViewModel", "updateCurrentLocation: $lat, $lng")
         Firebase.crashlytics.log("LocationsViewModel updateCurrentLocation: $lat, $lng")
         viewModelScope.launch {
-            currentLocation.value = (LatLng(lat, lng))
+            currentLocation.value = (ArtCartLatLng(lat, lng))
         }
     }
 
@@ -114,6 +116,7 @@ sealed interface ArtNearbyUiState {
     data object Loading : ArtNearbyUiState
 
     data class ArtLocations(
+        val currentLocation: ArtCartLatLng,
         val artLocations: List<ArtLocation>,
     ) : ArtNearbyUiState
 

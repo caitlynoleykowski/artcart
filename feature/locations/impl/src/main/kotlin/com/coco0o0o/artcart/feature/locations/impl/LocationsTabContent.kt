@@ -34,7 +34,6 @@ fun LocationsTabContent(
     modifier: Modifier = Modifier,
     withBottomSpacer: Boolean = true,
     selectedLocationId: String? = null,
-    shouldHighlightSelectedLocation: Boolean = false,
 ) {
     Box(
         modifier = modifier
@@ -50,7 +49,6 @@ fun LocationsTabContent(
             locations.forEach { artLocation ->
                 val artLocationId = artLocation.id
                 item(key = artLocationId) {
-                    val isSelected = shouldHighlightSelectedLocation && artLocationId == selectedLocationId
                     LocationsItem(
                         name = artLocation.name,
                         following = artLocation.isFavorite,
@@ -63,7 +61,7 @@ fun LocationsTabContent(
                         onFollowButtonClick = {
                             onSaveClick(artLocationId, it)
                                               },
-                        isSelected = isSelected,
+                        isSelected = false,
                         modifier = Modifier.fillMaxWidth(),
                     )
                 }
