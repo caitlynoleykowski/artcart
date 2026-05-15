@@ -44,21 +44,28 @@ class LocationsViewModel @AssistedInject constructor(
         ) { permissionGranted, locations ->
             when (permissionGranted) {
                 false -> {
+                    Log.d("LocationsViewModel", "uiState: ArtNearbyUiState.PermissionNotGranted")
                     Firebase.crashlytics.log("LocationsViewModel uiState permissionGranted: $permissionGranted")
                     ArtNearbyUiState.PermissionNotGranted
                 }
                 true -> {
                     Firebase.crashlytics.log("LocationsViewModel uiState permissionGranted: $permissionGranted")
                     if (locations.isNotEmpty()) {
-                        ArtNearbyUiState.ArtLocations(
-                            currentLocation = currentLocation.value, // must be non null by now
-                            artLocations = locations,
-                        )
+                        Log.d("LocationsViewModel", "uiState: ArtNearbyUiState.ArtLocations ${locations.size}")
+                        currentLocation.value?.let {
+                            val sortedLocations = locations.sortByNearestDistance(it)
+                            ArtNearbyUiState.ArtLocations(
+                                currentLocation = it,
+                                artLocations = sortedLocations,
+                            )
+                        } ?: ArtNearbyUiState.Loading
                     } else {
+                        Log.d("LocationsViewModel", "uiState: ArtNearbyUiState.Empty")
                         ArtNearbyUiState.Empty
                     }
                 }
                 null -> {
+                    Log.d("LocationsViewModel", "uiState: ArtNearbyUiState.Loading")
                     Firebase.crashlytics.log("LocationsViewModel uiState permissionGranted: $permissionGranted")
                     ArtNearbyUiState.Loading
                 }
@@ -121,4 +128,36 @@ sealed interface ArtNearbyUiState {
 
     data object PermissionNotGranted : ArtNearbyUiState
     data object Empty : ArtNearbyUiState
+}
+
+private fun List<ArtLocation>.sortByNearestDistance(
+    currentLocation: ArtCartLatLng,
+): List<ArtLocation> =
+    sortedBy { location ->
+        haversineMiles(
+            lat1 = currentLocation.latitude,
+            lng1 = currentLocation.longitude,
+            lat2 = location.latitude,
+            lng2 = location.longitude,
+        )
+    }
+
+private fun haversineMiles(
+    lat1: Double,
+    lng1: Double,
+    lat2: Double,
+    lng2: Double,
+): Double {
+    val earthRadiusMiles = 3958.8
+
+    val dLat = Math.toRadians(lat2 - lat1)
+    val dLng = Math.toRadians(lng2 - lng1)
+
+    val a =
+        kotlin.math.sin(dLat / 2) * kotlin.math.sin(dLat / 2) +
+                kotlin.math.cos(Math.toRadians(lat1)) *
+                kotlin.math.cos(Math.toRadians(lat2)) *
+                kotlin.math.sin(dLng / 2) * kotlin.math.sin(dLng / 2)
+
+    return 2 * earthRadiusMiles * kotlin.math.asin(kotlin.math.sqrt(a))
 }

@@ -1,5 +1,6 @@
 package com.coco0o0o.artcart.core.data.repository
 
+import android.util.Log
 import com.coco0o0o.artcart.core.database.dao.LocationDao
 import com.coco0o0o.artcart.core.database.model.LocationEntity
 import com.coco0o0o.artcart.core.database.model.asDomainModel
@@ -40,18 +41,20 @@ internal class OfflineFirstLocationsRepository @Inject constructor(
             // TODO: Switch to io dispatcher maybe?
             // Get favorites and update the network results with that data
             val favorites = locationDao.getFavoriteLocationEntities()
-            val locationEntities = networkLocations
+            val networkLocationsWithIsFavoritedData = networkLocations
                 .map { networkLocation ->
                     val localMatches = favorites.filter { it.id == networkLocation.id }
                     val isFavorite = localMatches.firstOrNull()?.isFavorite ?: false
                     networkLocation.toLocationEntity(isFavorite = isFavorite)
                 }
-            // Delete existing non favorites
-            locationDao.deleteNonFavorites()
             // Upsert using network results with favorited data
             locationDao.upsertLocations(
-                entities = locationEntities,
+                entities = networkLocationsWithIsFavoritedData,
             )
+            // Delete old results
+            val idsToKeep = favorites.map { it.id} + networkLocationsWithIsFavoritedData.map { it.id }
+            Log.d("OfflineFirstLocationsRepository", "refreshLocations: idsToKeep: ${idsToKeep}")
+            locationDao.deleteAllExcept(idsToKeep)
         } catch (e: Exception) {
             Firebase.crashlytics.log("refreshLocations: $lat, $lng")
             Firebase.crashlytics.recordException(e)

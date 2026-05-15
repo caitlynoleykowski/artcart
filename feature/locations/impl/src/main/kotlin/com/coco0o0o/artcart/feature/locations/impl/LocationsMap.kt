@@ -23,6 +23,7 @@ import com.google.maps.android.compose.rememberCameraPositionState
 import com.google.maps.android.compose.rememberUpdatedMarkerState
 import androidx.compose.foundation.layout.*
 import com.coco0o0o.artcart.core.ui.LocationsItem
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.maps.android.compose.CameraMoveStartedReason
 
 @Immutable
@@ -73,11 +74,31 @@ private fun GoogleMapWithLocations(
 
     val cameraPositionState = rememberCameraPositionState { position = defaultCameraPosition }
 
-    LaunchedEffect(currentLocation) {
-        currentLocation?.let {
+    LaunchedEffect(currentLocation, keyedLocationData) {
+        if (keyedLocationData.isNotEmpty()) {
+            val boundsBuilder = LatLngBounds.builder()
+            keyedLocationData.forEach { location ->
+                val artLocation = location.second.artLocation
+                if (!artLocation.isFavorite) {
+                    boundsBuilder.include(
+                        LatLng(artLocation.latitude, artLocation.longitude)
+                    )
+                }
+            }
+            val bounds = boundsBuilder.build()
+
             cameraPositionState.animate(
-                CameraUpdateFactory.newLatLngZoom(it, 13f)
+                CameraUpdateFactory.newLatLngBounds(
+                    bounds,
+                    120 // padding in px
+                )
             )
+        } else {
+            currentLocation?.let {
+                cameraPositionState.animate(
+                    CameraUpdateFactory.newLatLngZoom(it, 13f)
+                )
+            }
         }
     }
 
@@ -130,7 +151,7 @@ fun ArtCartMarker(
         ),
     )
 
-    val markerIcon = rememberMarkerIcon()
+    val markerIcon = rememberMarkerIcon(artLocation.isFavorite)
 
     val artLocationId = artLocation.id
 
@@ -166,13 +187,19 @@ fun ArtCartMarker(
 }
 
 @Composable
-fun rememberMarkerIcon(): BitmapDescriptor {
+fun rememberMarkerIcon(isFavorite: Boolean): BitmapDescriptor {
     val context = LocalContext.current
 
     return remember {
+        val markerDrawable = if (isFavorite) {
+            R.drawable.feature_locations_api_ic_map_marker_added
+        } else {
+            R.drawable.feature_locations_api_ic_map_marker
+        }
+
         val drawable = ContextCompat.getDrawable(
             context,
-            R.drawable.feature_locations_api_ic_map_marker
+            markerDrawable,
         )!!
 
         val bitmap = Bitmap.createBitmap(

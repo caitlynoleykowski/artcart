@@ -35,4 +35,9 @@ interface LocationDao {
 
     @Query("DELETE FROM locations WHERE isFavorite = 0")
     suspend fun deleteNonFavorites()
+
+    @Query(
+        "DELETE FROM locations WHERE id NOT IN (:idsToKeep)"
+    )
+    suspend fun deleteAllExcept(idsToKeep: List<String>)
 }
