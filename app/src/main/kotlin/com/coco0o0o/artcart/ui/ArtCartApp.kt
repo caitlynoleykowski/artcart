@@ -186,6 +186,7 @@ internal fun ArtCartApp(
 
                     ArtCartTopAppBar(
                         titleRes = destination.titleTextId,
+                        titleDrawableRes = destination.titleDrawableResId,
                         navigationIcon = Icons.Rounded.Search,
                         navigationIconContentDescription = stringResource(
                             id = R.string.app_name

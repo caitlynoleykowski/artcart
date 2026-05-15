@@ -10,13 +10,18 @@ plugins {
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi)
     alias(libs.plugins.kotlin.serialization)
+
+    // TODO: convert to using toml
+    // Add the Google services Gradle plugin
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
     defaultConfig {
         applicationId = "com.coco0o0o.artcart"
-        versionCode = 9
-        versionName = "0.1.2" // X.Y.Z; X = Major, Y = minor, Z = Patch level
+        versionCode = 11
+        versionName = "0.1.3" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
         // Custom test runner to set up Hilt dependency graph
         testInstrumentationRunner = "com.coco0o0o.artcart.core.testing.ArtCartTestRunner"
@@ -84,6 +89,9 @@ dependencies {
     implementation(libs.kotlinx.coroutines.guava)
     implementation(libs.coil.kt)
     implementation(libs.kotlinx.serialization.json)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics) // For breadcrumb logs
+    implementation(libs.firebase.crashlytics)
 
     ksp(libs.hilt.compiler)
 

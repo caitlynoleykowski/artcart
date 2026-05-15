@@ -6,10 +6,18 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -19,11 +27,14 @@ import androidx.tracing.trace
 import com.coco0o0o.artcart.MainActivityUiState.Loading
 import com.coco0o0o.artcart.core.data.util.NetworkMonitor
 import com.coco0o0o.artcart.core.data.util.TimeZoneMonitor
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartButton
 import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 import com.coco0o0o.artcart.core.ui.LocalTimeZone
 import com.coco0o0o.artcart.ui.ArtCartApp
 import com.coco0o0o.artcart.ui.rememberArtCartAppState
 import com.coco0o0o.artcart.util.isSystemInDarkTheme
+import com.google.firebase.Firebase
+import com.google.firebase.crashlytics.crashlytics
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -116,7 +127,19 @@ class MainActivity : ComponentActivity() {
                     androidTheme = themeSettings.androidTheme,
                     disableDynamicTheming = themeSettings.disableDynamicTheming,
                 ) {
-                    ArtCartApp(appState)
+                    Box(modifier = Modifier.fillMaxSize()) {
+                        ArtCartApp(appState)
+                        ArtCartButton(
+                            modifier = Modifier
+                                .align(Alignment.BottomEnd)
+                                .padding(bottom = 116.dp, end = 16.dp)
+                            ,
+                            text = { Text("Submit debug logs") },
+                            onClick = {
+                                Firebase.crashlytics.recordException(Exception("Debug logs"))
+                            }
+                        )
+                    }
                 }
             }
         }

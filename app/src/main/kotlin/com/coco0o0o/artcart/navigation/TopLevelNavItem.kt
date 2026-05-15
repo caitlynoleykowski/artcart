@@ -1,5 +1,6 @@
 package com.coco0o0o.artcart.navigation
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ShoppingCart
@@ -16,6 +17,7 @@ data class TopLevelNavItem(
     val unselectedIcon: ImageVector,
     @StringRes val iconTextId: Int,
     @StringRes val titleTextId: Int,
+    @DrawableRes val titleDrawableResId: Int?,
 )
 
 val SAVED = TopLevelNavItem(
@@ -23,6 +25,7 @@ val SAVED = TopLevelNavItem(
     unselectedIcon = Icons.Outlined.ShoppingCart,
     iconTextId = savedR.string.feature_saved_api_title,
     titleTextId = savedR.string.feature_saved_api_title,
+    titleDrawableResId = null,
 )
 
 val LOCATIONS = TopLevelNavItem(
@@ -30,6 +33,7 @@ val LOCATIONS = TopLevelNavItem(
     unselectedIcon = Icons.Rounded.LocationCity,
     iconTextId = R.string.feature_locations_api_title,
     titleTextId = R.string.feature_locations_api_app_title,
+    titleDrawableResId = com.coco0o0o.artcart.core.designsystem.R.drawable.art_cart_logo
 )
 
 val TOP_LEVEL_NAV_ITEMS = mapOf(

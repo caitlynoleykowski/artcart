@@ -31,6 +31,7 @@ import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 
@@ -285,7 +286,7 @@ fun ArtCartNavigationBarPreview() {
                             contentDescription = item,
                         )
                     },
-                    label = { Text(item) },
+                    label = { Text(text = item, fontWeight = FontWeight.SemiBold) },
                     selected = index == 0,
                     onClick = { },
                 )
@@ -339,11 +340,11 @@ fun ArtCartNavigationRailPreview() {
  */
 object ArtCartNavigationDefaults {
     @Composable
-    fun navigationContentColor() = ArtCartFunkyTokens.DeepMaroon.copy(alpha = .72f)
+    fun navigationContentColor() = Color.Black.copy(alpha = .7f)
 
     @Composable
-    fun navigationSelectedItemColor() = MaterialTheme.colorScheme.onPrimaryContainer
+    fun navigationSelectedItemColor() = ArtCartFunkyTokens.Pink
 
     @Composable
-    fun navigationIndicatorColor() = ArtCartFunkyTokens.Pink
+    fun navigationIndicatorColor() = Color.Transparent
 }

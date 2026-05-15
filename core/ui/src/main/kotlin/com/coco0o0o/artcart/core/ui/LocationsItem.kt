@@ -18,6 +18,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.coco0o0o.artcart.core.designsystem.component.ArtCartIconToggleButton
@@ -43,15 +45,24 @@ fun LocationsItem(
             DynamicAsyncImage(
                 imageUrl = locationImageUrl,
                 contentDescription = null,
-                modifier = iconModifier.size(64.dp),
+                modifier = iconModifier.size(72.dp),
             )
         },
         headlineContent = {
-            Text(text = name)
+            Text(
+                text = name,
+                fontWeight = FontWeight.SemiBold,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
         },
         supportingContent = {
             Column {
-                Text(text = description)
+                Text(
+                    text = description,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
                 Text(text = secondaryDescription)
             }
         },

@@ -1,7 +1,10 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 package com.coco0o0o.artcart.core.designsystem.component
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -13,14 +16,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 
 @Composable
 fun ArtCartTopAppBar(
     @StringRes titleRes: Int,
+    @DrawableRes titleDrawableRes: Int? = null,
     navigationIcon: ImageVector,
     navigationIconContentDescription: String,
     modifier: Modifier = Modifier,
@@ -33,7 +39,17 @@ fun ArtCartTopAppBar(
     onNavigationClick: () -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
-        title = { Text(text = stringResource(id = titleRes), fontWeight = FontWeight.Black) },
+        title = {
+            if (titleDrawableRes != null) {
+                Image(
+                    painter = painterResource(titleDrawableRes),
+                    contentDescription = stringResource(id = titleRes),
+                    modifier = Modifier.height(28.dp)
+                )
+            } else {
+                Text(text = stringResource(id = titleRes), fontWeight = FontWeight.Black)
+            }
+        },
         navigationIcon = {
 //            IconButton(onClick = onNavigationClick) {
 //                Icon(imageVector = navigationIcon, contentDescription = navigationIconContentDescription, tint = ArtCartFunkyTokens.Pink)

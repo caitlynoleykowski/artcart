@@ -1,5 +1,6 @@
 package com.coco0o0o.artcart.feature.locations.impl
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,6 +10,8 @@ import com.coco0o0o.artcart.core.domain.RefreshLocationsUseCase
 import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.feature.locations.api.navigation.LocationsNavKey
 import com.google.android.gms.maps.model.LatLng
+import com.google.firebase.Firebase
+import com.google.firebase.crashlytics.crashlytics
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -41,15 +44,32 @@ class LocationsViewModel @AssistedInject constructor(
             getFollowableArtLocationsUseCase()
         ) { permissionGranted, locations ->
             when (permissionGranted) {
-                false -> ArtNearbyUiState.PermissionNotGranted
-                true -> ArtNearbyUiState.ArtLocations(locations)
-                null -> ArtNearbyUiState.Loading
+                false -> {
+                    Firebase.crashlytics.log("LocationsViewModel uiState permissionGranted: $permissionGranted")
+                    ArtNearbyUiState.PermissionNotGranted
+                }
+                true -> {
+                    Firebase.crashlytics.log("LocationsViewModel uiState permissionGranted: $permissionGranted")
+                    if (locations.isNotEmpty()) {
+                        ArtNearbyUiState.ArtLocations(locations)
+                    } else {
+                        ArtNearbyUiState.Empty
+                    }
+                }
+                null -> {
+                    Firebase.crashlytics.log("LocationsViewModel uiState permissionGranted: $permissionGranted")
+                    ArtNearbyUiState.Loading
+                }
             }
-        }.stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = ArtNearbyUiState.Loading,
-        )
+        }
+            .onEach {
+                Firebase.crashlytics.log("LocationsViewModel uiState onEach: $it")
+            }
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5_000),
+                initialValue = ArtNearbyUiState.Loading,
+            )
     // TODO: Don't use the google maps model for LatLng here, make a new one
     val currentLocation = MutableStateFlow<LatLng?>(null)
 
@@ -59,13 +79,16 @@ class LocationsViewModel @AssistedInject constructor(
                 old, new -> old?.latitude == new?.latitude && old?.longitude == new?.longitude
             }
             .onEach {
-            if (it != null) {
-                refreshLocationsUseCase(lat = it.latitude, lng = it.longitude)
-            }
-        }.launchIn(viewModelScope)
+                if (it != null) {
+                    Firebase.crashlytics.log("LocationsViewModel updateCurrentLocation: ${it.latitude}, ${it.longitude}")
+                    refreshLocationsUseCase(lat = it.latitude, lng = it.longitude)
+                }
+            }.launchIn(viewModelScope)
     }
 
     fun updateCurrentLocation(lat: Double, lng: Double) {
+        Log.d("LocationsViewModel", "updateCurrentLocation: $lat, $lng")
+        Firebase.crashlytics.log("LocationsViewModel updateCurrentLocation: $lat, $lng")
         viewModelScope.launch {
             currentLocation.value = (LatLng(lat, lng))
         }

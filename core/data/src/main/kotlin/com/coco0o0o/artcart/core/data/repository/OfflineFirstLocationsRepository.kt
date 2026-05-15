@@ -10,6 +10,8 @@ import com.coco0o0o.artcart.core.network.NetworkDataSource
 import com.coco0o0o.artcart.core.network.di.ApplicationScope
 import com.coco0o0o.artcart.core.network.model.NetworkLocation
 import com.coco0o0o.artcart.core.network.model.toPhotoUrl
+import com.google.firebase.Firebase
+import com.google.firebase.crashlytics.crashlytics
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -28,26 +30,32 @@ internal class OfflineFirstLocationsRepository @Inject constructor(
 ) : LocationsRepository {
 
     override suspend fun refreshLocations(lat: Double, lng: Double) { // TODO: insert params lat lng
-        val networkPlaces = network.getLocations(
-            latitude = lat,
-            longitude = lng,
-        )
-        val networkLocations = networkPlaces.places
-        // TODO: Switch to io dispatcher maybe?
-        // Get favorites and update the network results with that data
-        val favorites = locationDao.getFavoriteLocationEntities()
-        val locationEntities = networkLocations
-            .map { networkLocation ->
-                val localMatches = favorites.filter { it.id == networkLocation.id }
-                val isFavorite = localMatches.firstOrNull()?.isFavorite ?: false
-                networkLocation.toLocationEntity(isFavorite = isFavorite)
-            }
-        // Delete existing non favorites
-        locationDao.deleteNonFavorites()
-        // Upsert using network results with favorited data
-        locationDao.upsertLocations(
-            entities = locationEntities,
-        )
+        try {
+            val networkPlaces = network.getLocations(
+                latitude = lat,
+                longitude = lng,
+            )
+            val networkLocations = networkPlaces.places
+            Firebase.crashlytics.log("refreshLocations: $lat, $lng, networkLocations size: ${networkLocations.size}")
+            // TODO: Switch to io dispatcher maybe?
+            // Get favorites and update the network results with that data
+            val favorites = locationDao.getFavoriteLocationEntities()
+            val locationEntities = networkLocations
+                .map { networkLocation ->
+                    val localMatches = favorites.filter { it.id == networkLocation.id }
+                    val isFavorite = localMatches.firstOrNull()?.isFavorite ?: false
+                    networkLocation.toLocationEntity(isFavorite = isFavorite)
+                }
+            // Delete existing non favorites
+            locationDao.deleteNonFavorites()
+            // Upsert using network results with favorited data
+            locationDao.upsertLocations(
+                entities = locationEntities,
+            )
+        } catch (e: Exception) {
+            Firebase.crashlytics.log("refreshLocations: $lat, $lng")
+            Firebase.crashlytics.recordException(e)
+        }
     }
 
     fun NetworkLocation.toLocationEntity(isFavorite: Boolean = false): LocationEntity {
@@ -65,10 +73,12 @@ internal class OfflineFirstLocationsRepository @Inject constructor(
         )
     }
 
-    override fun getLocations(): Flow<List<ArtLocation>> =
-        locationDao.getLocationEntities().map { locationEntities ->
+    override fun getLocations(): Flow<List<ArtLocation>> {
+        return locationDao.getLocationEntities().map { locationEntities ->
+            Firebase.crashlytics.log("getLocations: locationEntities size: ${locationEntities.size}")
             locationEntities.map(LocationEntity::asDomainModel)
         }
+    }
 
 //    fun getFlashcardSets(userId: String): Flow<List<FlashcardSet>> {
 //

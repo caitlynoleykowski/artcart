@@ -16,6 +16,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -32,6 +34,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -41,6 +45,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.coco0o0o.artcart.core.designsystem.component.ArtCartBackground
 import com.coco0o0o.artcart.core.designsystem.component.ArtCartLoadingWheel
 import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
+import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.ui.DevicePreviews
 import com.coco0o0o.artcart.feature.locations.api.R
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -60,6 +65,7 @@ import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.Marker
 import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
+import com.google.maps.android.compose.rememberMarkerState
 import com.google.maps.android.compose.rememberUpdatedMarkerState
 import java.util.concurrent.TimeUnit
 
@@ -122,11 +128,14 @@ fun LocationsScreen(
                 viewModel.updateCurrentLocation(lat = it.latitude, lng = it.longitude)
             }
 
-            // Get updates every minute, trying to keep this minimal but effective
-            locationRequest = LocationRequest.Builder(
-                Priority.PRIORITY_HIGH_ACCURACY,
-                TimeUnit.MINUTES.toMillis(1)
-            ).build()
+            val POLL_LOCATION = false
+            if (POLL_LOCATION) {
+                // Get updates every minute, trying to keep this minimal but effective
+                locationRequest = LocationRequest.Builder(
+                    Priority.PRIORITY_HIGH_ACCURACY,
+                    TimeUnit.MINUTES.toMillis(1)
+                ).build()
+            }
         }
     }
     // Only register the location updates effect when we have a request
@@ -157,9 +166,21 @@ fun LocationsScreen(
         LocationsMap(
             uiState,
             currentLocation,
-            modifier.fillMaxHeight(0.5f)
+            modifier.fillMaxHeight(0.5f),
+            onMapPan = { viewModel.updateCurrentLocation(lat = it.latitude, lng = it.longitude) }
         )
 //        LocationPermissionsEffect()
+        Text(
+            modifier = Modifier.padding(
+                start = 16.dp,
+                end = 16.dp,
+                top = 32.dp,
+                bottom = 0.dp,
+            ),
+            text = stringResource(id = R.string.feature_locations_api_nearby_art),
+            style = MaterialTheme.typography.headlineSmall,
+            fontWeight = FontWeight.SemiBold,
+        )
         LocationsScreen(
             uiState = uiState,
             saveLocation = viewModel::saveLocation,
@@ -177,8 +198,9 @@ fun LocationsMap(
     uiState: ArtNearbyUiState,
     currentLocation: LatLng?,
     modifier: Modifier = Modifier,
+    onMapPan: (LatLng) -> Unit = {},
 ) {
-    Screen(uiState, currentLocation, modifier)
+    Screen(uiState, currentLocation, modifier, onMapPan)
 }
 
 @Composable
@@ -204,7 +226,6 @@ internal fun LocationsScreen(
                         contentDesc = stringResource(id = R.string.feature_locations_api_loading),
                     )
                 }
-
             is ArtNearbyUiState.ArtLocations ->
                 LocationsTabContent(
                     locations = uiState.artLocations,
@@ -214,23 +235,33 @@ internal fun LocationsScreen(
                     shouldHighlightSelectedLocation = shouldHighlightSelectedLocation,
                 )
             is ArtNearbyUiState.PermissionNotGranted -> {
-                    LocationsPermissionNotGrantedScreen()
+                Box(modifier.fillMaxSize()) {
+                    LocationsPermissionNotGrantedScreen(
+                        modifier = modifier
+                            .align(Alignment.Center),
+                    )
+                }
             }
             is ArtNearbyUiState.Empty -> {
-                LocationsEmptyScreen()
+                Box(modifier.fillMaxSize()) {
+                    LocationsEmptyScreen(
+                        modifier = modifier
+                            .align(Alignment.Center),
+                    )
+                }
             }
         }
     }
 }
 
 @Composable
-private fun LocationsEmptyScreen() {
-    Text(text = stringResource(id = R.string.feature_locations_api_empty_header),)
+private fun LocationsEmptyScreen(modifier: Modifier = Modifier) {
+    Text(modifier = modifier, text = stringResource(id = R.string.feature_locations_api_empty_header),)
 }
 
 @Composable
-private fun LocationsPermissionNotGrantedScreen() {
-    Text(text = stringResource(id = R.string.feature_locations_api_location_permissions_not_granted),)
+private fun LocationsPermissionNotGrantedScreen(modifier: Modifier = Modifier) {
+    Text(modifier = modifier, text = stringResource(id = R.string.feature_locations_api_location_permissions_not_granted),)
 }
 
 @Composable
@@ -347,7 +378,7 @@ fun LocationsScreenEmpty() {
  * but could hold other data related to the location.
  */
 @Immutable
-private data class LocationData(val position: LatLng)
+private data class LocationData(val artLocation: ArtLocation)
 
 /**
  * Unique, stable key for location
@@ -392,7 +423,8 @@ val defaultCameraPosition = CameraPosition.fromLatLngZoom(sacramento, 11f)
 private fun Screen(
     uiState: ArtNearbyUiState,
     currentLocation: LatLng?,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onMapPan: (LatLng) -> Unit = {},
 ) = GoogleMapWithLocations(
     modifier = modifier,
     currentLocation = currentLocation,
@@ -401,7 +433,10 @@ private fun Screen(
         ArtNearbyUiState.Empty,
         ArtNearbyUiState.PermissionNotGranted
             -> emptyList()
-        is ArtNearbyUiState.ArtLocations -> uiState.artLocations.map { LocationKey() to LocationData(LatLng(it.latitude, it.longitude))}
+        is ArtNearbyUiState.ArtLocations ->
+            uiState.artLocations.map {
+                LocationKey() to LocationData(artLocation = it)
+            }
     },
 //    onAddLocation = { locationData ->
 //        dataModel.locationDataMap += LocationKey() to locationData
@@ -409,6 +444,7 @@ private fun Screen(
 //    onDeleteLocation = { key ->
 //        dataModel.locationDataMap -= key
 //    }
+    onMapPan = onMapPan,
 )
 
 /**
@@ -426,6 +462,7 @@ private fun GoogleMapWithLocations(
     modifier: Modifier = Modifier,
 //    onAddLocation: (LocationData) -> Unit,
 //    onDeleteLocation: (LocationKey) -> Unit
+    onMapPan: (LatLng) -> Unit = {},
 ) {
 
     val cameraPositionState = rememberCameraPositionState { position = defaultCameraPosition }
@@ -441,12 +478,18 @@ private fun GoogleMapWithLocations(
     GoogleMap(
         modifier = modifier,
         cameraPositionState = cameraPositionState,
-        onMapClick = {} // position -> onAddLocation(LocationData(position)) }
+        onMapClick = {}, // position -> onAddLocation(LocationData(position)) }
     ) {
         Locations(
             keyedLocationData = keyedLocationData,
             onLocationClick = {} // onDeleteLocation
         )
+    }
+
+    LaunchedEffect(cameraPositionState.isMoving) {
+        if (!cameraPositionState.isMoving) {
+            onMapPan(cameraPositionState.position.target)
+        }
     }
 }
 
@@ -462,28 +505,42 @@ private fun Locations(
     onLocationClick: (LocationKey) -> Unit
 ) = keyedLocationData.forEach { (key, locationData) ->
     key(key) {
-        Marker(
-            position = locationData.position,
+        ArtCartMarker(
+            artLocation = locationData.artLocation,
             onClick = {
                 onLocationClick(key)
-                true // consume click event to prevent camera move to marker
+                false // use default click behavior
             },
         )
     }
 }
 
 @Composable
-fun Marker(
-    position: LatLng,
+fun ArtCartMarker(
+    artLocation: ArtLocation,
     onClick: () -> Boolean = { false },
 ) {
-    val markerState = rememberUpdatedMarkerState(position = position)
+    // The below uses default marker info window functionality. Add custom info window later
+    val markerState = rememberUpdatedMarkerState(
+        position = LatLng(
+            artLocation.latitude,
+            artLocation.longitude,
+        ),
+    )
     val markerIcon = rememberMarkerIcon()
 
     Marker(
         state = markerState,
+        icon = markerIcon,
+        title = artLocation.name,
+        snippet = buildString {
+            append(artLocation.address)
+
+            if (artLocation.rating > 0f) {
+                append("\n⭐ ${artLocation.rating}")
+            }
+        },
         onClick = { onClick() },
-        icon = rememberMarkerIcon()
     )
 }
 

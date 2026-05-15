@@ -30,6 +30,9 @@ dependencies {
     implementation(libs.androidx.compose.material3.adaptive.layout)
     implementation(libs.androidx.compose.material3.adaptive.navigation)
     implementation(libs.androidx.compose.material3.adaptive.navigation3)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics) // For breadcrumb logs
+    implementation(libs.firebase.crashlytics)
 
     testImplementation(projects.core.testing)
     testImplementation(libs.robolectric)

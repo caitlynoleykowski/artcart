@@ -14,6 +14,9 @@ dependencies {
     api(projects.core.common)
     api(projects.core.database)
     api(projects.core.network)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics) // For breadcrumb logs
+    implementation(libs.firebase.crashlytics)
 
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotlinx.serialization.json)
