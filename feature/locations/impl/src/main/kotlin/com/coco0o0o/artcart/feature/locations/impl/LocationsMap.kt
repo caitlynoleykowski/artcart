@@ -33,12 +33,12 @@ val defaultCameraPosition = CameraPosition.fromLatLngZoom(nullIsland, 11f)
 @Composable
 fun ArtCartMap(
     uiState: ArtNearbyUiState,
-    currentLocation: LatLng?,
+    currentLocation: ArtCartLatLng?,
     modifier: Modifier = Modifier,
     onMapPan: (LatLng) -> Unit = {},
 ) = GoogleMapWithLocations(
     modifier = modifier,
-    currentLocation = currentLocation,
+    currentLocation = currentLocation?.toLatLng(),
     keyedLocationData = when(uiState) {
         ArtNearbyUiState.Loading,
         ArtNearbyUiState.Empty,
@@ -51,6 +51,8 @@ fun ArtCartMap(
     },
     onMapPan = onMapPan,
 )
+
+internal fun ArtCartLatLng.toLatLng() = LatLng(latitude, longitude)
 
 @Composable
 private fun GoogleMapWithLocations(
