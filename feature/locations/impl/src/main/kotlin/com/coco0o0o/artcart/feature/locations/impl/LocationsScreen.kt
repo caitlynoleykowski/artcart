@@ -158,39 +158,44 @@ fun LocationsScreen(
     /*
       End handle location updates
      */
-    Column() {
-//        Text(
-//            text = "Large Header",
-//            style = MaterialTheme.typography.displayLarge // Predefined large style
-//        )
-        LocationsMap(
-            uiState,
-            currentLocation,
-            modifier.fillMaxHeight(0.5f),
-            onMapPan = { viewModel.updateCurrentLocation(lat = it.latitude, lng = it.longitude) }
-        )
-//        LocationPermissionsEffect()
-        Text(
-            modifier = Modifier.padding(
-                start = 16.dp,
-                end = 16.dp,
-                top = 32.dp,
-                bottom = 0.dp,
-            ),
-            text = stringResource(id = R.string.feature_locations_api_nearby_art),
-            style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.SemiBold,
-        )
-        LocationsScreen(
-            uiState = uiState,
-            saveLocation = viewModel::saveLocation,
-            onLocationClick = {
-                onLocationClick(it)
-            },
-            shouldHighlightSelectedLocation = shouldHighlightSelectedTopic,
-            //modifier = modifier.background(ComposeColor.Red, RectangleShape),
-        )
-    }
+    SplitSliderScreen(
+        topContent = {
+            LocationsMap(
+                uiState,
+                currentLocation,
+//                modifier.fillMaxHeight(0.5f),
+                onMapPan = {
+                    viewModel.updateCurrentLocation(
+                        lat = it.latitude,
+                        lng = it.longitude
+                    )
+                }
+            )
+        },
+        bottomContent = {
+            Column() {
+                Text(
+                    modifier = Modifier.padding(
+                        start = 16.dp,
+                        end = 16.dp,
+                        top = 16.dp,
+                        bottom = 0.dp,
+                    ),
+                    text = stringResource(id = R.string.feature_locations_api_nearby_art),
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.SemiBold,
+                )
+                LocationsScreen(
+                    uiState = uiState,
+                    saveLocation = viewModel::saveLocation,
+                    onLocationClick = {
+                        onLocationClick(it)
+                    },
+                    shouldHighlightSelectedLocation = shouldHighlightSelectedTopic,
+                )
+            }
+        },
+    )
 }
 
 @Composable
