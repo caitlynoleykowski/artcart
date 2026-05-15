@@ -5,6 +5,6 @@
     <string name="feature_locations_api_nearby_art">Nearby Art</string>
     <string name="feature_locations_api_loading">Loading data</string>
     <string name="feature_locations_api_empty_header">"No locations found in this area.\nTry moving the map to discover\nlocations in other areas!"</string>
-    <string name="feature_locations_api_location_permissions_not_granted">"Location permissions needed"</string>
+    <string name="feature_locations_api_location_permissions_not_granted">"Allow location permission\nto see art near you"</string>
     <string name="feature_locations_api_select_an_interest">Select a location</string>
 </resources>

@@ -1,15 +1,22 @@
 package com.coco0o0o.artcart.feature.locations.impl
 
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import com.coco0o0o.artcart.core.designsystem.component.ArtCartBackground
+import com.coco0o0o.artcart.core.designsystem.component.ArtCartButton
 import com.coco0o0o.artcart.core.designsystem.component.ArtCartLoadingWheel
 import com.coco0o0o.artcart.core.designsystem.theme.ArtCartTheme
 import com.coco0o0o.artcart.core.ui.DevicePreviews
@@ -76,10 +83,29 @@ private fun LocationsListEmpty(modifier: Modifier = Modifier.Companion) {
 
 @Composable
 private fun LocationsPermissionNotGranted(modifier: Modifier = Modifier.Companion) {
-    Text(
-        modifier = modifier,
-        text = stringResource(id = R.string.feature_locations_api_location_permissions_not_granted),
-    )
+    val context = LocalContext.current
+    Column(modifier = modifier) {
+        Text(
+            modifier = modifier,
+            text = stringResource(id = R.string.feature_locations_api_location_permissions_not_granted),
+            textAlign = TextAlign.Center,
+        )
+        ArtCartButton(
+            onClick = {
+                context.startActivity(
+                    Intent(
+                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                        Uri.fromParts("package", context.packageName, null)
+                    )
+                )
+            },
+            Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(all = 8.dp),
+        ) {
+            Text(text = "Open Settings")
+        }
+    }
 }
 
 @DevicePreviews
