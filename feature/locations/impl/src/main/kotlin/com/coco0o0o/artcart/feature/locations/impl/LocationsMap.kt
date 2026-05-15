@@ -18,9 +18,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.GoogleMap
-import com.google.maps.android.compose.Marker
+import com.google.maps.android.compose.MarkerInfoWindowContent
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.google.maps.android.compose.rememberUpdatedMarkerState
+import androidx.compose.foundation.layout.*
+import com.coco0o0o.artcart.core.ui.LocationsItem
+import com.google.maps.android.compose.CameraMoveStartedReason
 
 @Immutable
 private data class LocationData(val artLocation: ArtLocation)
@@ -36,6 +39,8 @@ fun ArtCartMap(
     currentLocation: ArtCartLatLng?,
     modifier: Modifier = Modifier,
     onMapPan: (LatLng) -> Unit = {},
+    onSaveLocationClick: (String, Boolean) -> Unit,
+    onLocationClick: (String) -> Unit,
 ) = GoogleMapWithLocations(
     modifier = modifier,
     currentLocation = currentLocation?.toLatLng(),
@@ -49,7 +54,9 @@ fun ArtCartMap(
                 LocationKey() to LocationData(artLocation = it)
             }
     },
-    onMapPan = onMapPan,
+    onUserPannedMap = onMapPan,
+    onLocationClick = onLocationClick,
+    onSaveLocationClick = onSaveLocationClick,
 )
 
 internal fun ArtCartLatLng.toLatLng() = LatLng(latitude, longitude)
@@ -59,7 +66,9 @@ private fun GoogleMapWithLocations(
     keyedLocationData: Collection<KeyedLocationData>,
     currentLocation: LatLng?,
     modifier: Modifier = Modifier,
-    onMapPan: (LatLng) -> Unit = {},
+    onUserPannedMap: (LatLng) -> Unit = {},
+    onSaveLocationClick: (String, Boolean) -> Unit,
+    onLocationClick: (String) -> Unit,
 ) {
 
     val cameraPositionState = rememberCameraPositionState { position = defaultCameraPosition }
@@ -75,17 +84,20 @@ private fun GoogleMapWithLocations(
     GoogleMap(
         modifier = modifier,
         cameraPositionState = cameraPositionState,
-        onMapClick = {}, // position -> onAddLocation(LocationData(position)) }
+        onMapClick = {},
     ) {
         Locations(
             keyedLocationData = keyedLocationData,
-            onLocationClick = {} // onDeleteLocation
+            onLocationClick = onLocationClick,
+            onSaveLocationClick = onSaveLocationClick,
         )
     }
 
     LaunchedEffect(cameraPositionState.isMoving) {
-        if (!cameraPositionState.isMoving) {
-            onMapPan(cameraPositionState.position.target)
+        if (!cameraPositionState.isMoving &&
+            cameraPositionState.cameraMoveStartedReason == CameraMoveStartedReason.GESTURE
+        ) {
+            onUserPannedMap(cameraPositionState.position.target)
         }
     }
 }
@@ -93,15 +105,14 @@ private fun GoogleMapWithLocations(
 @Composable
 private fun Locations(
     keyedLocationData: Collection<KeyedLocationData>,
-    onLocationClick: (LocationKey) -> Unit
+    onSaveLocationClick: (String, Boolean) -> Unit,
+    onLocationClick: (String) -> Unit,
 ) = keyedLocationData.forEach { (key, locationData) ->
     key(key) {
         ArtCartMarker(
             artLocation = locationData.artLocation,
-            onClick = {
-                onLocationClick(key)
-                false // use default click behavior
-            },
+            onSaveLocationClick = onSaveLocationClick,
+            onLocationClick = onLocationClick,
         )
     }
 }
@@ -109,30 +120,88 @@ private fun Locations(
 @Composable
 fun ArtCartMarker(
     artLocation: ArtLocation,
-    onClick: () -> Boolean = { false },
+    onSaveLocationClick: (String, Boolean) -> Unit,
+    onLocationClick: (String) -> Unit,
 ) {
-    // The below uses default marker info window functionality. Add custom info window later
     val markerState = rememberUpdatedMarkerState(
         position = LatLng(
             artLocation.latitude,
             artLocation.longitude,
         ),
     )
+
     val markerIcon = rememberMarkerIcon()
 
-    Marker(
+    val artLocationId = artLocation.id
+
+    MarkerInfoWindowContent(
         state = markerState,
         icon = markerIcon,
-        title = artLocation.name,
-        snippet = buildString {
-            append(artLocation.address)
-
-            if (artLocation.rating > 0f) {
-                append("\n⭐ ${artLocation.rating}")
-            }
+        onClick = {
+            markerState.showInfoWindow()
+            false
         },
-        onClick = { onClick() },
-    )
+        onInfoWindowClick = {
+            onLocationClick(artLocationId)
+        }
+    ) { marker ->
+        LocationsItem(
+            name = artLocation.name,
+            following = artLocation.isFavorite,
+            description = artLocation.address,
+            secondaryDescription = artLocation.primaryTypeName,
+            locationImageUrl = artLocation.photoUrl,
+            onClick = {
+                onLocationClick(artLocationId)
+            },
+            onSaveButtonClick = {
+                onSaveLocationClick(artLocationId, !artLocation.isFavorite)
+            },
+            isSelected = false,
+            modifier = Modifier.fillMaxWidth(fraction = .8f),
+            showImage = false,
+            showSaveButton = false,
+        )
+//        Column(
+//            modifier = Modifier
+//                .width(220.dp)
+//                .clip(RoundedCornerShape(16.dp))
+//                .background(Color.White)
+//                .border(
+//                    width = 2.dp,
+//                    color = Color(0xFFFB4C8E),
+//                    shape = RoundedCornerShape(16.dp),
+//                )
+//                .padding(12.dp),
+//        ) {
+//
+//            Text(
+//                text = artLocation.name,
+//                fontWeight = FontWeight.Bold,
+//                fontSize = 16.sp,
+//                color = Color(0xFF4A102A),
+//            )
+//
+//            Spacer(modifier = Modifier.height(6.dp))
+//
+//            Text(
+//                text = artLocation.address,
+//                fontSize = 13.sp,
+//                color = Color.DarkGray,
+//            )
+//
+//            if (artLocation.rating > 0f) {
+//                Spacer(modifier = Modifier.height(8.dp))
+//
+//                Text(
+//                    text = "⭐ ${artLocation.rating}",
+//                    fontSize = 13.sp,
+//                    fontWeight = FontWeight.SemiBold,
+//                    color = Color(0xFF4A102A),
+//                )
+//            }
+//        }
+    }
 }
 
 @Composable

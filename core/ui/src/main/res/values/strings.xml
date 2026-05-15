@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="core_ui_bookmark">Saved</string>
-    <string name="core_ui_unbookmark">Unbookmark</string>
+    <string name="core_ui_save_location">Saved</string>
+    <string name="core_ui_unsave_location">Unsaved</string>
     <string name="core_ui_back">Back</string>
 
-    <string name="core_ui_unread_resource_dot_content_description">Unread</string>
-
-    <string name="core_ui_card_tap_action">Open Resource Link</string>
-    <string name="core_ui_card_meta_data_text">%1$s • %2$s</string>
-
-    <string name="core_ui_locationdetails_chip_content_description_when_followed">%1$s is followed</string>
-    <string name="core_ui_locationdetails_chip_content_description_when_not_followed">%1$s is not followed</string>
-
-    <string name="core_ui_locations_card_follow_button_content_desc">Follow interest</string>
-    <string name="core_ui_locations_card_unfollow_button_content_desc">Unfollow interest</string>
-    <string name="core_ui_feed_sharing">Feed sharing</string>
-    <string name="core_ui_feed_sharing_data">%1$s: %2$s</string>
+    <string name="core_ui_locations_card_save_button_content_desc">Add to cart</string>
+    <string name="core_ui_locations_card_unsave_button_content_desc">Remove from cart</string>
 </resources>

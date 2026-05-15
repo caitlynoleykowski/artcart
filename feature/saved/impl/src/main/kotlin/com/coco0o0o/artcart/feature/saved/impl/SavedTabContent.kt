@@ -59,7 +59,7 @@ fun SavedTabContent(
                         secondaryDescription = artLocation.primaryTypeName,
                         locationImageUrl = artLocation.photoUrl,
                         onClick = { onLocationClick(artLocationId) },
-                        onFollowButtonClick = { onFollowButtonClick(artLocationId, it) },
+                        onSaveButtonClick = { onFollowButtonClick(artLocationId, it) },
                         isSelected = isSelected,
                         modifier = Modifier.fillMaxWidth(),
                     )

@@ -1,6 +1,5 @@
 package com.coco0o0o.artcart.feature.locations.impl
 
-import android.util.Log
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -27,10 +26,10 @@ import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.core.ui.LocationsItem
 
 @Composable
-fun LocationsTabContent(
+fun LocationsListContent(
     locations: List<ArtLocation>,
     onLocationClick: (String) -> Unit,
-    onSaveClick: (String, Boolean) -> Unit,
+    onSaveLocationClick: (String, Boolean) -> Unit,
     modifier: Modifier = Modifier,
     withBottomSpacer: Boolean = true,
     selectedLocationId: String? = null,
@@ -57,10 +56,10 @@ fun LocationsTabContent(
                         locationImageUrl = artLocation.photoUrl,
                         onClick = {
                             onLocationClick(artLocationId)
-                                  },
-                        onFollowButtonClick = {
-                            onSaveClick(artLocationId, it)
-                                              },
+                        },
+                        onSaveButtonClick = {
+                            onSaveLocationClick(artLocationId, it)
+                        },
                         isSelected = false,
                         modifier = Modifier.fillMaxWidth(),
                     )

@@ -33,20 +33,24 @@ fun LocationsItem(
     following: Boolean,
     locationImageUrl: String,
     onClick: () -> Unit,
-    onFollowButtonClick: (Boolean) -> Unit,
+    onSaveButtonClick: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
     iconModifier: Modifier = Modifier,
     description: String = "",
     secondaryDescription: String = "",
     isSelected: Boolean = false,
+    showImage: Boolean = true,
+    showSaveButton: Boolean = true,
 ) {
     ListItem(
         leadingContent = {
-            DynamicAsyncImage(
-                imageUrl = locationImageUrl,
-                contentDescription = null,
-                modifier = iconModifier.size(72.dp),
-            )
+            if (showImage) {
+                DynamicAsyncImage(
+                    imageUrl = locationImageUrl,
+                    contentDescription = null,
+                    modifier = iconModifier.size(72.dp),
+                )
+            }
         },
         headlineContent = {
             Text(
@@ -67,26 +71,28 @@ fun LocationsItem(
             }
         },
         trailingContent = {
-            ArtCartIconToggleButton(
-                checked = following,
-                onCheckedChange = onFollowButtonClick,
-                icon = {
-                    Icon(
-                        imageVector = Icons.Rounded.Add,
-                        contentDescription = stringResource(
-                            id = string.core_ui_locations_card_follow_button_content_desc,
-                        ),
-                    )
-                },
-                checkedIcon = {
-                    Icon(
-                        imageVector = Icons.Rounded.Check,
-                        contentDescription = stringResource(
-                            id = string.core_ui_locations_card_unfollow_button_content_desc,
-                        ),
-                    )
-                },
-            )
+            if (showSaveButton) {
+                ArtCartIconToggleButton(
+                    checked = following,
+                    onCheckedChange = onSaveButtonClick,
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Rounded.Add,
+                            contentDescription = stringResource(
+                                id = string.core_ui_locations_card_save_button_content_desc,
+                            ),
+                        )
+                    },
+                    checkedIcon = {
+                        Icon(
+                            imageVector = Icons.Rounded.Check,
+                            contentDescription = stringResource(
+                                id = string.core_ui_locations_card_unsave_button_content_desc,
+                            ),
+                        )
+                    },
+                )
+            }
         },
         colors = ListItemDefaults.colors(
             containerColor = if (isSelected) {
@@ -115,7 +121,7 @@ private fun LocationsCardPreview() {
                 following = false,
                 locationImageUrl = "",
                 onClick = { },
-                onFollowButtonClick = { },
+                onSaveButtonClick = { },
             )
         }
     }
@@ -133,7 +139,7 @@ private fun LocationsCardLongNamePreview() {
                 following = true,
                 locationImageUrl = "",
                 onClick = { },
-                onFollowButtonClick = { },
+                onSaveButtonClick = { },
             )
         }
     }
@@ -152,7 +158,7 @@ private fun LocationsCardLongDescriptionPreview() {
                 following = false,
                 locationImageUrl = "",
                 onClick = { },
-                onFollowButtonClick = { },
+                onSaveButtonClick = { },
             )
         }
     }
@@ -170,7 +176,7 @@ private fun LocationsCardWithEmptyDescriptionPreview() {
                 following = true,
                 locationImageUrl = "",
                 onClick = { },
-                onFollowButtonClick = { },
+                onSaveButtonClick = { },
             )
         }
     }
@@ -188,7 +194,7 @@ private fun LocationsCardSelectedPreview() {
                 following = true,
                 locationImageUrl = "",
                 onClick = { },
-                onFollowButtonClick = { },
+                onSaveButtonClick = { },
                 isSelected = true,
             )
         }

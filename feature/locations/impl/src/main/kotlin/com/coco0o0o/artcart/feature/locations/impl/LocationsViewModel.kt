@@ -9,7 +9,6 @@ import com.coco0o0o.artcart.core.domain.GetFavoriteableLocationsUseCase
 import com.coco0o0o.artcart.core.domain.RefreshLocationsUseCase
 import com.coco0o0o.artcart.core.model.data.ArtLocation
 import com.coco0o0o.artcart.feature.locations.api.navigation.LocationsNavKey
-import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.Firebase
 import com.google.firebase.crashlytics.crashlytics
 import dagger.assisted.Assisted
@@ -52,7 +51,7 @@ class LocationsViewModel @AssistedInject constructor(
                     Firebase.crashlytics.log("LocationsViewModel uiState permissionGranted: $permissionGranted")
                     if (locations.isNotEmpty()) {
                         ArtNearbyUiState.ArtLocations(
-                            currentLocation = currentLocation.value!!, // must be non null by now
+                            currentLocation = currentLocation.value, // must be non null by now
                             artLocations = locations,
                         )
                     } else {
@@ -96,7 +95,7 @@ class LocationsViewModel @AssistedInject constructor(
         }
     }
 
-    fun saveLocation(locationId: String, followed: Boolean) {
+    fun onSaveLocation(locationId: String, followed: Boolean) {
         viewModelScope.launch {
             locationsRepository.updateLocationIsFavorite(locationId, isFavorite = followed)
         }
@@ -116,7 +115,7 @@ sealed interface ArtNearbyUiState {
     data object Loading : ArtNearbyUiState
 
     data class ArtLocations(
-        val currentLocation: ArtCartLatLng,
+        val currentLocation: ArtCartLatLng?,
         val artLocations: List<ArtLocation>,
     ) : ArtNearbyUiState
 

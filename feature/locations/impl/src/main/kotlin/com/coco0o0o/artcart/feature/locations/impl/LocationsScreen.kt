@@ -41,9 +41,9 @@ import java.util.concurrent.TimeUnit
 @SuppressLint("MissingPermission") // TODO: Confused as to whether this is a problem if the user has accepted yet
 @Composable
 fun LocationsScreen(
-    onLocationClick: (String) -> Unit,
-    modifier: Modifier = Modifier,
+    onLocationClick: (String) -> Unit, // Comes from parent to enable navigation
     viewModel: LocationsViewModel,
+    modifier: Modifier = Modifier,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val currentLocation by viewModel.currentLocation.collectAsStateWithLifecycle()
@@ -119,7 +119,11 @@ fun LocationsScreen(
                         lat = it.latitude,
                         lng = it.longitude
                     )
-                }
+                },
+                onSaveLocationClick = viewModel::onSaveLocation,
+                onLocationClick = {
+                    onLocationClick(it)
+                },
             )
         },
         bottomContent = {
@@ -137,7 +141,7 @@ fun LocationsScreen(
                 )
                 LocationsList(
                     uiState = uiState,
-                    saveLocation = viewModel::saveLocation,
+                    onSaveLocationClick = viewModel::onSaveLocation,
                     onLocationClick = {
                         onLocationClick(it)
                     },

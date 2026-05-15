@@ -17,12 +17,10 @@ import com.coco0o0o.artcart.feature.locations.api.R
 @Composable
 internal fun LocationsList(
     uiState: ArtNearbyUiState,
-    saveLocation: (String, Boolean) -> Unit,
+    onSaveLocationClick: (String, Boolean) -> Unit,
     onLocationClick: (String) -> Unit,
     modifier: Modifier = Modifier.Companion,
 ) {
-
-
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.Companion.CenterHorizontally,
@@ -38,10 +36,10 @@ internal fun LocationsList(
                 }
 
             is ArtNearbyUiState.ArtLocations ->
-                LocationsTabContent(
+                LocationsListContent(
                     locations = uiState.artLocations,
                     onLocationClick = onLocationClick,
-                    onSaveClick = saveLocation,
+                    onSaveLocationClick = onSaveLocationClick,
                     selectedLocationId = null, // TODO: uiState.selectedLocationId,
                 )
 
@@ -89,7 +87,7 @@ fun LocationsListLoading() {
         ArtCartBackground {
             LocationsList(
                 uiState = ArtNearbyUiState.Loading,
-                saveLocation = { _, _ -> },
+                onSaveLocationClick = { _, _ -> },
                 onLocationClick = {},
             )
         }
@@ -103,7 +101,7 @@ fun LocationsListEmpty() {
         ArtCartBackground {
             LocationsList(
                 uiState = ArtNearbyUiState.Empty,
-                saveLocation = { _, _ -> },
+                onSaveLocationClick = { _, _ -> },
                 onLocationClick = {},
             )
         }
