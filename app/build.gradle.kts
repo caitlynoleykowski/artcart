@@ -34,7 +34,7 @@ android {
 
     defaultConfig {
         applicationId = "com.coco0o0o.artcart"
-        versionCode = 14
+        versionCode = 15
         versionName = "1.0" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
         // Custom test runner to set up Hilt dependency graph
