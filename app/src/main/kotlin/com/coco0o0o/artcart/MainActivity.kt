@@ -143,40 +143,40 @@ class MainActivity : ComponentActivity() {
                     Box(modifier = Modifier.fillMaxSize()) {
                         ArtCartApp(appState)
 
-                        // Below is just for debug, TODO: move to options menu and isolate
-                        var showFeedbackDialog by remember { mutableStateOf(false) }
-                        var text by remember { mutableStateOf("") }
-                        ArtCartButton(
-                            modifier = Modifier
-                                .align(Alignment.BottomEnd)
-                                .padding(bottom = 96.dp, end = 16.dp)
-                                .pulsing()
-                            ,
-                            text = { Text("Submit feedback") },
-                            onClick = {
-                                showFeedbackDialog = true
-                                Firebase.crashlytics.recordException(Exception("Bug report"))
-                            }
-                        )
+//                        // Below is just for debug, TODO: move to options menu and isolate
+//                        var showFeedbackDialog by remember { mutableStateOf(false) }
+//                        var text by remember { mutableStateOf("") }
+//                        ArtCartButton(
+//                            modifier = Modifier
+//                                .align(Alignment.BottomEnd)
+//                                .padding(bottom = 96.dp, end = 16.dp)
+//                                .pulsing()
+//                            ,
+//                            text = { Text("Submit feedback") },
+//                            onClick = {
+//                                showFeedbackDialog = true
+//                                Firebase.crashlytics.recordException(Exception("Bug report"))
+//                            }
+//                        )
 
-                        if (showFeedbackDialog) AlertDialog(
-                            onDismissRequest = { showFeedbackDialog = false },
-                            title = { Text("Report a bug or leave feedback. What happened?") },
-                            text = {
-                                OutlinedTextField(
-                                    value = text,
-                                    onValueChange = { text = it },
-                                    label = { Text("Describe steps, observed behavior, and expected behavior. Or leave a suggestion! Include your name or email if you would like to be contacted") },
-                                    modifier = Modifier.heightIn(min = 200.dp)
-                                )
-                            },
-                            confirmButton = {
-                                Button(onClick = {
-                                    Firebase.crashlytics.recordException(Exception("Feedback: $text"))
-                                    showFeedbackDialog = false
-                                }) { Text("Submit") }
-                            }
-                        )
+//                        if (showFeedbackDialog) AlertDialog(
+//                            onDismissRequest = { showFeedbackDialog = false },
+//                            title = { Text("Report a bug or leave feedback. What happened?") },
+//                            text = {
+//                                OutlinedTextField(
+//                                    value = text,
+//                                    onValueChange = { text = it },
+//                                    label = { Text("Describe steps, observed behavior, and expected behavior. Or leave a suggestion! Include your name or email if you would like to be contacted") },
+//                                    modifier = Modifier.heightIn(min = 200.dp)
+//                                )
+//                            },
+//                            confirmButton = {
+//                                Button(onClick = {
+//                                    Firebase.crashlytics.recordException(Exception("Feedback: $text"))
+//                                    showFeedbackDialog = false
+//                                }) { Text("Submit") }
+//                            }
+//                        )
                     }
                 }
             }

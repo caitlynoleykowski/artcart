@@ -1,4 +1,5 @@
 import com.coco0o0o.artcart.ArtCartBuildType
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.artcart.android.application)
@@ -17,14 +18,30 @@ plugins {
     id("com.google.firebase.crashlytics")
 }
 
+val localProperties = Properties()
+val localPropertiesFile = File(rootDir, "secrets.properties")
+if (localPropertiesFile.exists() && localPropertiesFile.isFile) {
+    localPropertiesFile.inputStream().use {
+        localProperties.load(it)
+    }
+}
+
 android {
+    buildFeatures {
+        buildConfig = true
+        resValues = true     // For custom resValue
+    }
+
     defaultConfig {
         applicationId = "com.coco0o0o.artcart"
-        versionCode = 11
-        versionName = "0.1.3" // X.Y.Z; X = Major, Y = minor, Z = Patch level
+        versionCode = 14
+        versionName = "1.0" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
         // Custom test runner to set up Hilt dependency graph
         testInstrumentationRunner = "com.coco0o0o.artcart.core.testing.ArtCartTestRunner"
+
+        val googleMapsApiKey = localProperties.getProperty("PLACES_API_KEY") ?: ""
+        resValue ("string", "MAPS_API_KEY", googleMapsApiKey)
     }
 
     buildTypes {

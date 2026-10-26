@@ -17,6 +17,7 @@ generated/
 
 # Local configuration file (sdk path, etc)
 local.properties
+secrets.properties
 
 # Eclipse project files
 .classpath
@@ -47,3 +48,15 @@ captures/
 
 # Kotlin
 .kotlin
+
+#ktlint spotless
+.editorconfig
+
+#github
+.github/*
+
+#google
+.google/*
+
+#??
+.run/*

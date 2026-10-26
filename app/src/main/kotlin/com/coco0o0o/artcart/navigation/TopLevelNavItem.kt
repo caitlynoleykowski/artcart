@@ -33,7 +33,7 @@ val LOCATIONS = TopLevelNavItem(
     unselectedIcon = Icons.Rounded.LocationCity,
     iconTextId = R.string.feature_locations_api_title,
     titleTextId = R.string.feature_locations_api_app_title,
-    titleDrawableResId = com.coco0o0o.artcart.core.designsystem.R.drawable.art_cart_logo
+    titleDrawableResId = com.coco0o0o.artcart.core.designsystem.R.drawable.core_designsystem_art_cart_logo
 )
 
 val TOP_LEVEL_NAV_ITEMS = mapOf(

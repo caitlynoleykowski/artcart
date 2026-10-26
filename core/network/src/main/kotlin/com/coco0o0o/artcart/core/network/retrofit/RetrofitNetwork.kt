@@ -1,6 +1,7 @@
 package com.coco0o0o.artcart.core.network.retrofit
 
 import androidx.tracing.trace
+import com.coco0o0o.artcart.core.network.BuildConfig
 import com.coco0o0o.artcart.core.network.NetworkDataSource
 import com.coco0o0o.artcart.core.network.model.NetworkPlaces
 import kotlinx.serialization.Serializable
@@ -15,7 +16,7 @@ import retrofit2.http.POST
 import javax.inject.Inject
 import javax.inject.Singleton
 
-const val API_KEY = "AIzaSyAqjWW92spl7JH6ah_u9yGiFAaLSBUuBos"
+const val API_KEY = BuildConfig.PLACES_API_KEY
 
 private interface RetrofitArtCartNetworkApi {
 

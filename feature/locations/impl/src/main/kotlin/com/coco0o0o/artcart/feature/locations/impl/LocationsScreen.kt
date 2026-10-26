@@ -139,7 +139,7 @@ fun LocationsScreen(
                         start = 16.dp,
                         end = 16.dp,
                         top = 16.dp,
-                        bottom = 0.dp,
+                        bottom = 8.dp,
                     ),
                     text = stringResource(id = R.string.feature_locations_api_nearby_art),
                     style = MaterialTheme.typography.headlineSmall,

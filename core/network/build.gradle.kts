@@ -40,9 +40,20 @@ val backendUrl = providers.fileContents(
     properties["BACKEND_URL"]
 }.orElse("http://example.com")
 
+val placesApiKey = providers.fileContents(
+    isolated.rootProject.projectDirectory.file("secrets.properties")
+).asText.map { text ->
+    val properties = Properties()
+    properties.load(StringReader(text))
+    properties["PLACES_API_KEY"]
+}.orElse("API_KEY")
+
 androidComponents {
     onVariants {
         it.buildConfigFields!!.put("BACKEND_URL", backendUrl.map { value ->
+            BuildConfigField(type = "String", value = """"$value"""", comment = null)
+        })
+        it.buildConfigFields!!.put("PLACES_API_KEY", placesApiKey.map { value ->
             BuildConfigField(type = "String", value = """"$value"""", comment = null)
         })
     }
