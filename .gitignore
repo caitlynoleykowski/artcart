@@ -61,3 +61,6 @@ captures/
 
 #??
 .run/*
+
+#firebase secrets
+google-services.json
