@@ -1,1 +1,0 @@
-app for finding art near you
